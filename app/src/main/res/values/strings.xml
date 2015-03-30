@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Intrepid-Android</string>
+    <string name="app_name">intrepid-android</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>

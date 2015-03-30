@@ -1,4 +1,4 @@
-package ryanracioppo.intrepid_android;
+package com.swishlabs.intrepid_android;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
