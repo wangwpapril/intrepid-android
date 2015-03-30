@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/login_background">
+    android:background="@drawable/bg_login">
     
     <include
     android:layout_width="fill_parent"
@@ -31,7 +31,7 @@
                 android:paddingRight="5dip"
                 android:paddingTop="10dip"
                 android:paddingBottom="10dip"
-		        android:src="@drawable/logo3" />
+		        android:src="@drawable/ace_logo" />
 	        
 	        <TextView
 				android:id="@+id/travel_smart"
