@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:background="@color/list_item_background"
+    android:orientation="horizontal" >
+    <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        >
+    <ImageView 
+        android:id="@+id/country_flag_item_iv"
+        android:layout_width="80dip"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="10dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_height="80dip"
+        android:src="@drawable/ic_launcher"
+        />
+    </LinearLayout>
+    <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        >
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/country_name"
+            android:textSize="16sp"
+            android:textColor="#3f4649"
+            />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/country_desc"
+            android:textSize="12sp"
+            android:textColor="#808386"
+            />
+    </LinearLayout>
+        <!-- 
+	public View llBottomLine;
+	llBottomLine = findViewById(R.id.category_bottom_gray_line);
+	 -->
+    <include 
+        android:visibility="gone"
+        android:id="@+id/category_bottom_gray_line"
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        layout="@layout/gray_divider_horizontal"
+        />
+
+</LinearLayout>

@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title_rl"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/title_background" >
+
+    <FrameLayout
+        android:id="@+id/navi_go_up"
+        android:layout_width="63dip"
+        android:layout_height="fill_parent"
+        android:layout_centerVertical="true" >
+
+        <ImageView
+            android:id="@+id/title_iv_back"
+            android:layout_width="63dip"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left|center_vertical"
+            android:scaleType="center"
+            android:src="@drawable/icon_titlebar_return"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/ic_action_overflow"
+        android:layout_width="65dip"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip" >
+
+        <ImageView
+            android:id="@+id/title_iv_right"
+            android:layout_width="45dip"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:scaleType="center"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/title_tv_right"
+            android:layout_width="45dip"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Edit"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/title_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="aaa"
+        android:textColor="@color/white"
+        android:textSize="@dimen/custom_title_text_size" />
+    
+    
+    <ImageView 
+        android:visibility="gone"
+        android:id="@+id/title_name_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        />
+
+    <EditText
+        android:id="@+id/title_name_et"
+        android:layout_width="240dip"
+        android:layout_height="30dip"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@color/white"
+        android:cursorVisible="true"
+        android:drawableLeft="@drawable/search_title"
+        android:drawablePadding="10dip"
+        android:hint="Please input keywords"
+        android:paddingLeft="10dip"
+        android:textColor="#4b4b4b"
+        android:textCursorDrawable="@null"
+        android:visibility="gone" />
+
+</RelativeLayout>
