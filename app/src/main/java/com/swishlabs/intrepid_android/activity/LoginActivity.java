@@ -1,10 +1,6 @@
 package com.swishlabs.intrepid_android.activity;
 
 
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
@@ -22,10 +18,14 @@ import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.api.callback.ControlerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControlerContentCallback;
+import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.User;
 import com.swishlabs.intrepid_android.data.store.beans.UserTable;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class LoginActivity extends BaseActivity {
@@ -129,7 +129,7 @@ public class LoginActivity extends BaseActivity {
 			};
 			
 			ControlerContentTask cct = new ControlerContentTask(
-					"https://api.intrepid247.com/v1/users/login", icc,
+					Constants.BASE_URL+"users/login", icc,
 					Enums.ConnMethod.POST,false);
 
 			JSONObject user = new JSONObject();

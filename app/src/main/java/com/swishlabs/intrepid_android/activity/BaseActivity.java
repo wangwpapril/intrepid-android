@@ -35,7 +35,6 @@ public abstract class BaseActivity extends Activity implements OnClickListener{
 		MyApplication.getInstance().addActivity(this);
 		context = this;
 		Common.context = this;
-
 	}
 	
 	protected void initTitleView() {
