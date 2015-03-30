@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00000000</color>
+    <color name="window_bg">#f0f0f0</color>
+	<color name="light_gray">#999999</color>
+    <color name="title_background">#666666</color>
+    <color name="list_item_background">#F3F3F3</color>
+    <color name="common_list_divider">#dddddd</color>
+   
+	
+    <color name="null_color">#00ffffff</color>
+    <color name="black">#000000</color>
+    <color name="deep_black_bg">#2E2E2E</color>
+    <color name="gray">#C0C0C0</color>
+    <color name="blue">#005473</color>
+    <color name="white">#ffffff</color>
+    <color name="milky">#f7f7f7</color>
+    <color name="orginal_price_bg">#c30e24</color>
+	<color name="translucent_background">#00000000</color>
+	<color name="blacktranslucent_background">#99000000</color>
+    <color name="font_deep_color">#b1282f</color>
+    <color name="list_item_bg">#ffe7e6e3</color>
+    <color name="deep_gray">#666666</color>
+    <color name="light_sky_blue">#87CEFA</color>
+    <color name="dialog_bg">#FF282828</color>
+
+    <color name="background_border_corlor">#FFADB9D6</color>
+
+    <color name="list_item_sel">#eaeaea</color>
+	
+	<!-- blue skin backgroundcolor -->
+	<color name="background_blue">#e6f9ff</color>
+	<color name="background_coupon_item">#fff4f4f4</color>
+	<color name="content_background">#FFEFD5</color>
+
+
+
+    <color name="pink">#ff005c</color>
+    <color name="light_pink">#f89ebe</color>
+    <color name="deep_pink">#990000</color>
+    <color name="pink_about_cart">#ff0000</color>
+    <color name="edittext_bg_nor">#cfcfcf</color>
+    <color name="edittext_bg_sel">#e3e3e3</color>
+    <color name="progress_bg">#00d2ff</color>
+    
+    <color name="font_color">#ff6900</color>
+    
+    <color name="circle">#8f8f8f</color>
+    <color name="circle_active">#ffa500</color>
+    <color name="tab_text">#ffe2e2e2</color>
+    <color name="tab_text_select">#ffffa800</color>
+    
+    <drawable name="divder">#34333a</drawable>
+        
+    
+     
+</resources>

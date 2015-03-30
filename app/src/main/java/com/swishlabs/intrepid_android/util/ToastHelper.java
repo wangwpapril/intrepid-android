@@ -1,4 +1,4 @@
-package com.intrepid.travel.utils;
+package com.swishlabs.intrepid_android.util;
 
 
 import com.intrepid.travel.MyApplication;

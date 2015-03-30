@@ -1,4 +1,4 @@
-package com.intrepid.travel.utils;
+package com.swishlabs.intrepid_android.util;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

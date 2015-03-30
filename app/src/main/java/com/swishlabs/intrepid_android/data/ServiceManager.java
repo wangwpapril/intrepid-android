@@ -1,4 +1,4 @@
-package com.intrepid.travel;
+package com.swishlabs.intrepid_android.data;
 
 import com.intrepid.travel.store.DatabaseManager;
 

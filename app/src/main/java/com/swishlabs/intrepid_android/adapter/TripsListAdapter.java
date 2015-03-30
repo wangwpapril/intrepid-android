@@ -1,4 +1,4 @@
-package com.intrepid.travel.ui.adapter;
+package com.swishlabs.intrepid_android.adapter;
 
 import java.util.List;
 

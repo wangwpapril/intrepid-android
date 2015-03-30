@@ -1,4 +1,4 @@
-package com.intrepid.travel.store.beans;
+package com.swishlabs.intrepid_android.data.store.beans;
 
 import java.io.ByteArrayOutputStream;
 

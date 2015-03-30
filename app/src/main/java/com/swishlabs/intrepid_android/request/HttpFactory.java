@@ -1,4 +1,4 @@
-package com.intrepid.travel.net;
+package com.swishlabs.intrepid_android.request;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;

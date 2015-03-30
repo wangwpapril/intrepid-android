@@ -1,4 +1,4 @@
-package com.intrepid.travel.net;
+package com.swishlabs.intrepid_android.data.api.callback;
 
 import java.util.ArrayList;
 import java.util.List;

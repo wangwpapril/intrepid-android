@@ -1,4 +1,4 @@
-package com.intrepid.travel.ui.activity;
+package com.swishlabs.intrepid_android.activity;
 
 import java.util.ArrayList;
 import java.util.List;

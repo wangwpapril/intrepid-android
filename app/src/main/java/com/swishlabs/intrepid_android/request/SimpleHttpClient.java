@@ -1,4 +1,4 @@
-package com.intrepid.travel.net;
+package com.swishlabs.intrepid_android.request;
 
 import java.io.InterruptedIOException;
 import java.io.OutputStream;

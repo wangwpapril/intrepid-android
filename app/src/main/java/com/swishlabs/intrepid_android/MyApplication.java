@@ -1,4 +1,4 @@
-package com.intrepid.travel;
+package com.swishlabs.intrepid_android;
 
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.ArrayList;

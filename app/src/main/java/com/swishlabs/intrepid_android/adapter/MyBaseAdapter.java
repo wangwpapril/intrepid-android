@@ -1,4 +1,4 @@
-package com.intrepid.travel.ui.adapter;
+package com.swishlabs.intrepid_android.adapter;
 
 import com.intrepid.travel.R;
 import com.intrepid.travel.ui.activity.BaseActivity;

@@ -1,4 +1,4 @@
-package com.intrepid.travel.net;
+package com.swishlabs.intrepid_android.request;
 
 public class ResultHolder {
 	private boolean isSuccess;

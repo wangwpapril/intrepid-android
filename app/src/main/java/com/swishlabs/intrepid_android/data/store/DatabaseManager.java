@@ -1,4 +1,4 @@
-package com.intrepid.travel.store;
+package com.swishlabs.intrepid_android.data.store;
 
 
 import java.util.HashMap;
