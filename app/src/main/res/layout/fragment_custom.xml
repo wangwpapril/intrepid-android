@@ -4,7 +4,6 @@
 
     <include
         android:id="@+id/titleBar"
-        android:layout_alignParentTop="true"
         layout="@layout/title_bar" />
 
     <com.intrepid.travel.ui.control.TabNaviBar
@@ -19,6 +18,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tabNaviBar1"
-        android:background="@drawable/default568h2x" />
+        android:background="#333f48" />
 
 </RelativeLayout>

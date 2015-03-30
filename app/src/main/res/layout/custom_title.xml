@@ -2,7 +2,7 @@
     android:id="@+id/title_rl"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/title_background" >
+    android:background="#333f48" >
 
     <FrameLayout
         android:id="@+id/navi_go_up"

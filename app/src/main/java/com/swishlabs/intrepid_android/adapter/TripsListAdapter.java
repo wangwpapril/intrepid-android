@@ -51,21 +51,21 @@ public class TripsListAdapter extends MyBaseAdapter {
 					.findViewById(R.id.country_flag_item_iv);
 			holder.tvName = (TextView) convertView
 					.findViewById(R.id.country_name);
-			holder.tvDesc = (TextView) convertView
-					.findViewById(R.id.country_desc);
-			holder.llBottomLine = convertView
-					.findViewById(R.id.category_bottom_gray_line);
+//			holder.tvDesc = (TextView) convertView
+//					.findViewById(R.id.country_desc);
+//			holder.llBottomLine = convertView
+//					.findViewById(R.id.category_bottom_gray_line);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		if(position == datas.size()-1){
-			holder.llBottomLine.setVisibility(View.VISIBLE);
-		}else{
-			holder.llBottomLine.setVisibility(View.GONE);
-		}
+//		if(position == datas.size()-1){
+//			holder.llBottomLine.setVisibility(View.VISIBLE);
+//		}else{
+//			holder.llBottomLine.setVisibility(View.GONE);
+//		}
 		Destination model = datas.get(position);
 		holder.tvName.setText(model.name);
-		holder.tvDesc.setText(model.type);
+//		holder.tvDesc.setText(model.type);
 		final ImageView imageView = holder.ivIcon;
 		imageView.setTag(model.imageFlag.version3.sourceUrl);
 		ImageLoader.DisplayImage(model.imageFlag.version3.sourceUrl, context, imageView);
@@ -76,8 +76,8 @@ public class TripsListAdapter extends MyBaseAdapter {
 	private class ViewHolder {
 		public ImageView ivIcon;
 		public TextView tvName;
-		public TextView tvDesc;
-		public View llBottomLine;
+//		public TextView tvDesc;
+//		public View llBottomLine;
 	}
 
 }
