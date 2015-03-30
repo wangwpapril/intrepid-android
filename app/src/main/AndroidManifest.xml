@@ -55,10 +55,7 @@
             android:name=".activity.LoginActivity"
             android:screenOrientation="portrait" >
         </activity>
-        <activity
-            android:name=".activity.MainActivity"
-            android:screenOrientation="portrait" >
-        </activity>
+
         <activity
             android:name=".activity.TripsListActivity"
             android:screenOrientation="portrait" >
