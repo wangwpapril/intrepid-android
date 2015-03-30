@@ -1,20 +1,27 @@
 package com.swishlabs.intrepid_android.data.store;
 
 
-import java.util.ArrayList;
-
-import com.swishlabs.intrepid_android.MyApplication;
-import com.swishlabs.intrepid_android.util.StringUtil;
-
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.swishlabs.intrepid_android.MyApplication;
+import com.swishlabs.intrepid_android.data.api.model.Trip;
+import com.swishlabs.intrepid_android.util.StringUtil;
+
+import java.util.ArrayList;
+
 
 public class Database {
     private String name;
+
+    //trips contants
+    private static final String TABLE_TRIPS = "trips";
+    private static final String KEY_ID = "id";
+    private static final String KEY_DESTINATION_ID = "destination_id";
 
     private DatabaseOpenHelper dbOpenHelper;
     private SQLiteDatabase db;
@@ -29,6 +36,9 @@ public class Database {
 
         @Override
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
+            String createTripsTable = "CREATE TABLE " + TABLE_TRIPS + "("
+                    + KEY_ID + " INTEGER PRIMARY KEY," + KEY_DESTINATION_ID + " TEXT)";
+            db.execSQL(createTripsTable);
         }
 
         @Override
@@ -76,6 +86,11 @@ public class Database {
 
     public SQLiteDatabase getDb() {
         return db;
+    }
+
+    public void addTrip(Trip trip){
+        SQLiteDatabase db = getDb();
+        ContentValues values = new ContentValues();
     }
 
     public synchronized boolean execSql(String sql) {
