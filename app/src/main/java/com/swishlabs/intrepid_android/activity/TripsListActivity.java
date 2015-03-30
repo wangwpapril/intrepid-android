@@ -1,12 +1,5 @@
 package com.swishlabs.intrepid_android.activity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,9 +10,17 @@ import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.adapter.TripsListAdapter;
 import com.swishlabs.intrepid_android.data.api.callback.ControlerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControlerContentCallback;
+import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class TripsListActivity extends BaseActivity {
@@ -103,7 +104,7 @@ public class TripsListActivity extends BaseActivity {
 		token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
 		
 		ControlerContentTask cct = new ControlerContentTask(
-				"https://api.intrepid247.com/v1/destinations?short_list=true&token=" + token, icc,
+                Constants.BASE_URL+"destinations?short_list=true&token=" + token, icc,
 				Enums.ConnMethod.GET,false);
 		String ss = null;
 		cct.execute(ss);
