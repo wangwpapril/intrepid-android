@@ -13,14 +13,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-import com.intrepid.travel.Enums.ConnMethod;
-import com.intrepid.travel.Enums.PreferenceKeys;
-import com.intrepid.travel.R;
-import com.intrepid.travel.models.Destination;
-import com.intrepid.travel.net.ControlerContentTask;
-import com.intrepid.travel.net.IControlerContentCallback;
-import com.intrepid.travel.ui.adapter.TripsListAdapter;
-import com.intrepid.travel.utils.SharedPreferenceUtil;
+import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.adapter.TripsListAdapter;
+import com.swishlabs.intrepid_android.data.api.callback.ControlerContentTask;
+import com.swishlabs.intrepid_android.data.api.callback.IControlerContentCallback;
+import com.swishlabs.intrepid_android.data.api.model.Destination;
+import com.swishlabs.intrepid_android.util.Enums;
+import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 
 
 public class TripsListActivity extends BaseActivity {
@@ -101,11 +100,11 @@ public class TripsListActivity extends BaseActivity {
 		};
 		
 		String token = null;
-		token = SharedPreferenceUtil.getString(PreferenceKeys.token.toString(), null);
+		token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
 		
 		ControlerContentTask cct = new ControlerContentTask(
 				"https://api.intrepid247.com/v1/destinations?short_list=true&token=" + token, icc,
-				ConnMethod.GET,false);
+				Enums.ConnMethod.GET,false);
 		String ss = null;
 		cct.execute(ss);
 

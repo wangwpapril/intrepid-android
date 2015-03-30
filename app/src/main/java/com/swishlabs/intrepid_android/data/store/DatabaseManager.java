@@ -7,6 +7,8 @@ import java.util.Map;
 
 import android.content.Context;
 
+import com.swishlabs.intrepid_android.MyApplication;
+
 
 public class DatabaseManager {
     private Map<String, Database> dbCache;

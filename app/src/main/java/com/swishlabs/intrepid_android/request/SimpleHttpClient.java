@@ -1,5 +1,6 @@
 package com.swishlabs.intrepid_android.request;
 
+import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.util.Enums;
 
 import java.io.InterruptedIOException;

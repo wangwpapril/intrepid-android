@@ -15,6 +15,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
 
+import com.swishlabs.intrepid_android.MyApplication;
 
 
 public class DeviceInfoHelper {

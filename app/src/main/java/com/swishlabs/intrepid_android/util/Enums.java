@@ -96,9 +96,9 @@ public class Enums {
 
 	public enum NetStatus
 	{
-		Disable(ToastHelper.getStringFromResources(R.string.network_disconnected)),
-		WIFI(ToastHelper.getStringFromResources(R.string.network_wifi_connected)),
-		MOBILE(ToastHelper.getStringFromResources(R.string.network_mobile_connected)), NetStatus();
+        Disable(ToastHelper.getStringFromResources(R.string.network_disconnected)),
+        WIFI(ToastHelper.getStringFromResources(R.string.network_wifi_connected)),
+        MOBILE(ToastHelper.getStringFromResources(R.string.network_mobile_connected));
 		
 		private final String svalue;
 

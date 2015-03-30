@@ -12,6 +12,18 @@
         <item name="android:dividerHeight">@dimen/divier_height</item>
         <item name="android:cacheColorHint">@null</item>
     </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>
+
+
+    </style>
+    <style name="ActionBar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="AppTheme.Widget.TextView" parent="android:Widget.Holo.Light.TextView">
+    </style>
     
     <style name = "ButtonStyle">        
         <item name="android:textSize">@dimen/text_size_normal</item>

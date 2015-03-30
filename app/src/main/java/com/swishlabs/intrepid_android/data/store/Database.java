@@ -2,7 +2,8 @@ package com.swishlabs.intrepid_android.data.store;
 
 
 import java.util.ArrayList;
-import com.intrepid.travel.MyApplication;
+
+import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.util.StringUtil;
 
 import android.content.Context;

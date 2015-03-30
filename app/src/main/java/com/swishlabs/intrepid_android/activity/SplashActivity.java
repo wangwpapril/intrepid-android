@@ -7,8 +7,9 @@ import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.intrepid.travel.MyApplication;
-import com.intrepid.travel.R;
+import com.swishlabs.intrepid_android.MyApplication;
+import com.swishlabs.intrepid_android.R;
+
 
 /**
  * Splash screen activity is used to show splash . Here we use handler to show

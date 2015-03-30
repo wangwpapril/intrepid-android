@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.activity.BaseActivity;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 
