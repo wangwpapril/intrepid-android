@@ -15,8 +15,6 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
 
-import com.intrepid.travel.Enums.NetStatus;
-import com.intrepid.travel.MyApplication;
 
 
 public class DeviceInfoHelper {
@@ -107,7 +105,7 @@ public class DeviceInfoHelper {
 	} 
 	
 
-	public NetStatus getNetStatus(){
+	public Enums.NetStatus getNetStatus(){
 		ConnectivityManager connMgr = null;
 		NetworkInfo activeInfo = null;
 		
@@ -121,15 +119,15 @@ public class DeviceInfoHelper {
 		if (activeInfo != null && activeInfo.isConnected()) {	
 			switch (activeInfo.getType()) {
 			case ConnectivityManager.TYPE_MOBILE:			
-				return NetStatus.MOBILE;
+				return Enums.NetStatus.MOBILE;
 			case ConnectivityManager.TYPE_WIFI:				
-				return NetStatus.WIFI;
+				return Enums.NetStatus.WIFI;
 			default:	
-				return NetStatus.Disable;
+				return Enums.NetStatus.Disable;
 			}
 		}
 		else{	
-			return NetStatus.Disable;
+			return Enums.NetStatus.Disable;
 		}
 	}
 	

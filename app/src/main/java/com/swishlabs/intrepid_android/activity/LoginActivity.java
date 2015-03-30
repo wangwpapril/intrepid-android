@@ -18,16 +18,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.intrepid.travel.Enums.ConnMethod;
-import com.intrepid.travel.Enums.PreferenceKeys;
-import com.intrepid.travel.MyApplication;
-import com.intrepid.travel.R;
-import com.intrepid.travel.models.User;
-import com.intrepid.travel.net.ControlerContentTask;
-import com.intrepid.travel.net.IControlerContentCallback;
-import com.intrepid.travel.store.beans.UserTable;
-import com.intrepid.travel.utils.SharedPreferenceUtil;
-
+import com.swishlabs.intrepid_android.data.api.callback.ControlerContentTask;
+import com.swishlabs.intrepid_android.data.api.callback.IControlerContentCallback;
+import com.swishlabs.intrepid_android.data.api.model.User;
+import com.swishlabs.intrepid_android.data.store.beans.UserTable;
+import com.swishlabs.intrepid_android.util.Enums;
+import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 
 
 public class LoginActivity extends BaseActivity {
@@ -112,9 +108,9 @@ public class LoginActivity extends BaseActivity {
 		            User ww = null;
 		            ww = UserTable.getInstance().getUser(user.id);
 
-		            SharedPreferenceUtil.setString(PreferenceKeys.userId.toString(), user.id);
-		    		SharedPreferenceUtil.setString(PreferenceKeys.token.toString(), user.token);
-		    		SharedPreferenceUtil.setBoolean(getApplicationContext(), PreferenceKeys.loginStatus.toString(), true);
+		            SharedPreferenceUtil.setString(Enums.PreferenceKeys.userId.toString(), user.id);
+		    		SharedPreferenceUtil.setString(Enums.PreferenceKeys.token.toString(), user.token);
+		    		SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), true);
 		            
 					Intent mIntent = new Intent(LoginActivity.this,TripsListActivity.class);
 					startActivity(mIntent);
@@ -132,7 +128,7 @@ public class LoginActivity extends BaseActivity {
 			
 			ControlerContentTask cct = new ControlerContentTask(
 					"https://api.intrepid247.com/v1/users/login", icc,
-					ConnMethod.POST,false);
+					Enums.ConnMethod.POST,false);
 
 			JSONObject user = new JSONObject();
 			try {

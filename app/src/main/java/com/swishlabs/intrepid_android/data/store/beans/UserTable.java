@@ -6,13 +6,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import com.intrepid.travel.models.User;
-import com.intrepid.travel.store.Bean;
-import com.intrepid.travel.utils.StringUtil;
 
 import android.database.Cursor;
 import android.util.Base64;
 
+import com.swishlabs.intrepid_android.data.api.model.User;
+import com.swishlabs.intrepid_android.data.store.Bean;
+import com.swishlabs.intrepid_android.util.StringUtil;
 
 
 public class UserTable extends Bean {
@@ -67,7 +67,7 @@ public class UserTable extends Bean {
             	sql = "UPDATE " + TABLE_NAME + " SET " + SAVE_COMP + " = ? "  + " WHERE " + USER_ID  +" = " + userId ;
             	db.execSql(sql, dealStream);
             } else {
-            	sql = StringUtil.simpleFormat("replace into %s (%s,%s) values (?,?)", TABLE_NAME, SAVE_COMP,USER_ID);
+            	sql = StringUtil.simpleFormat("replace into %s (%s,%s) values (?,?)", TABLE_NAME, SAVE_COMP, USER_ID);
             	 db.execSql(sql, dealStream,userId);
             }
 

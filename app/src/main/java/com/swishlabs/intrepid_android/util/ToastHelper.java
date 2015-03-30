@@ -1,7 +1,7 @@
 package com.swishlabs.intrepid_android.util;
 
 
-import com.intrepid.travel.MyApplication;
+import com.swishlabs.intrepid_android.MyApplication;
 
 import android.widget.Toast;
 

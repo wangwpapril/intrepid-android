@@ -79,7 +79,7 @@ public class Enums {
 		token("token"),
 		password("password"),
 		loginStatus("login status"),
-		userId("user id");
+		userId("user id"), ;
 	
 		private final String svalue;
 
@@ -98,7 +98,7 @@ public class Enums {
 	{
 		Disable(ToastHelper.getStringFromResources(R.string.network_disconnected)),
 		WIFI(ToastHelper.getStringFromResources(R.string.network_wifi_connected)),
-		MOBILE(ToastHelper.getStringFromResources(R.string.network_mobile_connected));
+		MOBILE(ToastHelper.getStringFromResources(R.string.network_mobile_connected)), NetStatus();
 		
 		private final String svalue;
 

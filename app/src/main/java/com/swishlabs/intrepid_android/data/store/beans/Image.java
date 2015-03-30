@@ -2,12 +2,13 @@ package com.swishlabs.intrepid_android.data.store.beans;
 
 import java.io.ByteArrayOutputStream;
 
-import com.intrepid.travel.store.Bean;
-import com.intrepid.travel.utils.StringUtil;
 
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
+import com.swishlabs.intrepid_android.data.store.Bean;
+import com.swishlabs.intrepid_android.util.StringUtil;
 
 
 public class Image extends Bean {

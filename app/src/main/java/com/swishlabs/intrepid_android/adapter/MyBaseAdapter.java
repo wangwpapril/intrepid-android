@@ -1,11 +1,10 @@
 package com.swishlabs.intrepid_android.adapter;
 
-import com.intrepid.travel.R;
-import com.intrepid.travel.ui.activity.BaseActivity;
-import com.intrepid.travel.utils.ImageLoader;
 
 import android.view.LayoutInflater;
 import android.widget.BaseAdapter;
+
+import com.swishlabs.intrepid_android.activity.BaseActivity;
 
 
 public abstract class MyBaseAdapter extends BaseAdapter {

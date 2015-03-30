@@ -3,7 +3,7 @@ package com.swishlabs.intrepid_android.data.store;
 
 import java.util.ArrayList;
 import com.intrepid.travel.MyApplication;
-import com.intrepid.travel.utils.StringUtil;
+import com.swishlabs.intrepid_android.util.StringUtil;
 
 import android.content.Context;
 import android.database.Cursor;

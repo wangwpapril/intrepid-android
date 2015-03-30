@@ -1,5 +1,7 @@
 package com.swishlabs.intrepid_android.request;
 
+import com.swishlabs.intrepid_android.util.Enums;
+
 import java.io.InterruptedIOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -11,8 +13,6 @@ import java.util.List;
 
 import org.apache.http.conn.ConnectTimeoutException;
 
-import com.intrepid.travel.Enums.NetStatus;
-import com.intrepid.travel.MyApplication;
 
 
 public class SimpleHttpClient {
@@ -33,8 +33,8 @@ public class SimpleHttpClient {
 
 	
 	public static String doPost(PostParameter[] postParams,String connectionUrl,int connectTimeout) throws Exception{
-		NetStatus netStatus = MyApplication.getNetStatus();
-		if(netStatus == NetStatus.Disable){
+		Enums.NetStatus netStatus = MyApplication.getNetStatus();
+		if(netStatus == Enums.NetStatus.Disable){
 			return String.valueOf(NETWORK_DISABLED);
 		}
 		
@@ -84,8 +84,8 @@ public class SimpleHttpClient {
 	}
 
 	public static String doGet(String connectionUrl,int connectTimeout) throws Exception{
-		NetStatus netStatus = MyApplication.getNetStatus();
-		if(netStatus == NetStatus.Disable){
+		Enums.NetStatus netStatus = MyApplication.getNetStatus();
+		if(netStatus == Enums.NetStatus.Disable){
 			return String.valueOf(NETWORK_DISABLED);
 		}
 	

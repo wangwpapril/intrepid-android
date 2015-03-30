@@ -1,9 +1,9 @@
 package com.swishlabs.intrepid_android.data;
 
-import com.intrepid.travel.store.DatabaseManager;
 
 import android.content.Context;
 
+import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 
 
 public class ServiceManager {

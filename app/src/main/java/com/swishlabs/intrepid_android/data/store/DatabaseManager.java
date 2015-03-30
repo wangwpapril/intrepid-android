@@ -4,7 +4,6 @@ package com.swishlabs.intrepid_android.data.store;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.intrepid.travel.MyApplication;
 
 import android.content.Context;
 

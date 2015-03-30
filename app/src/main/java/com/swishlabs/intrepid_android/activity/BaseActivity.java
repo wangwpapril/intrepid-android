@@ -10,9 +10,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.intrepid.travel.MyApplication;
-import com.intrepid.travel.R;
-import com.intrepid.travel.utils.Common;
+import com.swishlabs.intrepid_android.util.Common;
+
 
 public abstract class BaseActivity extends Activity implements OnClickListener{
 

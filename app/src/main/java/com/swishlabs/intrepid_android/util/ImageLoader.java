@@ -10,13 +10,14 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.util.Stack;
 
-import com.intrepid.travel.store.beans.Image;
 
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
+
+import com.swishlabs.intrepid_android.data.store.beans.Image;
 
 public class ImageLoader {
 

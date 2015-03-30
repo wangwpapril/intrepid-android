@@ -6,11 +6,15 @@ import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
-import com.intrepid.travel.Enums.ConnMethod;
-import com.intrepid.travel.utils.Common;
 
 import android.os.AsyncTask;
 import android.os.Handler;
+
+import com.swishlabs.intrepid_android.request.IContentParms;
+import com.swishlabs.intrepid_android.request.ResultHolder;
+import com.swishlabs.intrepid_android.request.SimpleHttpClient;
+import com.swishlabs.intrepid_android.util.Common;
+import com.swishlabs.intrepid_android.util.Enums;
 
 
 public class ControlerContentTask extends
@@ -18,13 +22,13 @@ public class ControlerContentTask extends
 
 	private IControlerContentCallback icc;
 	private String url;
-	private ConnMethod connMethod;
+	private Enums.ConnMethod connMethod;
 	private boolean isHideLoading;
 	private static int NORMAL_TIMEOUT = 6000;				
 
 
 	public ControlerContentTask(String url, IControlerContentCallback icc,
-			ConnMethod connMethod,boolean isHideLoading){
+			Enums.ConnMethod connMethod,boolean isHideLoading){
 		this.icc = icc;
 		this.url = url;
 		this.connMethod = connMethod;

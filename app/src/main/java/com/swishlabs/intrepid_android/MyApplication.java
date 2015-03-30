@@ -4,16 +4,18 @@ import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.intrepid.travel.Enums.NetStatus;
-import com.intrepid.travel.Enums.PreferenceKeys;
-import com.intrepid.travel.utils.DeviceInfoHelper;
-import com.intrepid.travel.utils.Logger;
-import com.intrepid.travel.utils.SharedPreferenceUtil;
+
 
 import android.app.Activity;
 import android.app.Application;
 import android.content.pm.PackageManager;
 import android.util.Log;
+
+import com.swishlabs.intrepid_android.data.ServiceManager;
+import com.swishlabs.intrepid_android.util.DeviceInfoHelper;
+import com.swishlabs.intrepid_android.util.Enums;
+import com.swishlabs.intrepid_android.util.Logger;
+import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 
 
 public class MyApplication extends Application implements UncaughtExceptionHandler{
@@ -26,7 +28,7 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
 	private ArrayList<Activity> activityList;				
 	
 	private static boolean loginStatus = false;		
-	private static NetStatus netStatus = null;									
+	private static Enums.NetStatus netStatus = null;
 	private static String userId;								
 	public static Object mLock;
 	
@@ -67,11 +69,11 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
 		MyApplication.userId = userId;
 	}
 	
-	public static NetStatus getNetStatus() {
+	public static Enums.NetStatus getNetStatus() {
 		return netStatus;
 	}
 
-	public static void setNetStatus(NetStatus netStatus) {
+	public static void setNetStatus(Enums.NetStatus netStatus) {
 		MyApplication.netStatus = netStatus;
 	}
 	
@@ -120,7 +122,7 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
 		mLock=new Object();
 		ServiceManager.init(this);
 		intentHashMap=new HashMap<String, Object>();
-		loginStatus = SharedPreferenceUtil.getBoolean(getApplicationContext(),PreferenceKeys.loginStatus.toString(), false);
+		loginStatus = SharedPreferenceUtil.getBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), false);
 		activityList = new ArrayList<Activity>();
 		
 		Thread.setDefaultUncaughtExceptionHandler(this);  
