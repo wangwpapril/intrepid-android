@@ -27,7 +27,7 @@ public class TripsListActivity extends BaseActivity {
 
 	protected static final String TAG = "TripsListActivity";
 	private ListView listView;
-	private List<Destination> datas;
+	private List<Destination> mDestinationList;
 	private TripsListAdapter tripsListAdapter;
 
 	@Override
@@ -36,11 +36,11 @@ public class TripsListActivity extends BaseActivity {
 		this.setContentView(R.layout.trip_list);
 		initView();
 		
-		if(datas == null) {
+		if(mDestinationList == null) {
 			getTripList();
 		}else{
 			tripsListAdapter = new TripsListAdapter(
-					datas, context);
+                    mDestinationList, context);
 			listView.setAdapter(tripsListAdapter);
 		}
 	
@@ -78,13 +78,13 @@ public class TripsListActivity extends BaseActivity {
 					des = new JSONObject(content);
 					JSONArray array = des.getJSONArray("destinations");
 					int len = array.length();
-					datas = new ArrayList<Destination>(len);
+					mDestinationList = new ArrayList<Destination>(len);
 					for (int i =0;i < len; i++){
-						datas.add(new Destination(array.getJSONObject(i)));
+						mDestinationList.add(new Destination(array.getJSONObject(i)));
 					}
 					
 					tripsListAdapter = new TripsListAdapter(
-							datas, context);
+                            mDestinationList, context);
 					listView.setAdapter(tripsListAdapter);
 
 				} catch (JSONException e) {
