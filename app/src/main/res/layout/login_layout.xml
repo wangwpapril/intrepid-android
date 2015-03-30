@@ -49,7 +49,9 @@ android:paddingBottom="10dip"
                 android:paddingTop="10dip"
                 android:orientation="vertical"
                 android:gravity="center_horizontal"
-        android:layout_below="@+id/travel_smart">
+        android:layout_below="@+id/travel_smart"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
 
 
                 <EditText
@@ -94,13 +96,13 @@ android:paddingBottom="10dip"
                  android:text="Sign Up"
             android:textColor="@color/white"
             android:textSize="22sp"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-                 android:gravity="center_horizontal"
+        android:gravity="center_horizontal"
                  android:textAlignment="center"
                  android:layout_gravity="center_horizontal"
                  android:clickable="true"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/butSignIn" />
+        android:layout_below="@+id/butSignIn"
+        android:linksClickable="false" />
 
     <TextView
             android:id="@+id/termsofuse"
