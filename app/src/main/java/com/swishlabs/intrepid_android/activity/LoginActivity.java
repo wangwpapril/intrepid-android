@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.swishlabs.intrepid_android.MyApplication;
+import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.api.callback.ControlerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControlerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.User;

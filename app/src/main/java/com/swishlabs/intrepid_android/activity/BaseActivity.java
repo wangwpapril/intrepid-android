@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.swishlabs.intrepid_android.MyApplication;
+import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.util.Common;
 
 
