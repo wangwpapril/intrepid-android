@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
@@ -34,10 +35,10 @@ public class LoginActivity extends BaseActivity {
 	
 	private Button imBtnSignIn;
 	private EditText editTextEmail, editTextPassword;
-	private TextView signUp;
+	private TextView signUp,learnMore,termsUse;
 
 
-	@Override
+    @Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.login_layout);
@@ -52,8 +53,15 @@ public class LoginActivity extends BaseActivity {
 		editTextEmail = (EditText) findViewById(R.id.signinEmailEditText);
 		editTextPassword = (EditText) findViewById(R.id.signinPasswordEditText);
 		signUp = (TextView) findViewById(R.id.sign_up);
-		
-		imBtnSignIn.setOnClickListener(this);
+        signUp.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+
+        learnMore = (TextView) findViewById(R.id.learnMore);
+        learnMore.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+
+        termsUse = (TextView) findViewById(R.id.termsofuse);
+        termsUse.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+
+        imBtnSignIn.setOnClickListener(this);
 		editTextPassword.setTransformationMethod(PasswordTransformationMethod
 				.getInstance());
 
