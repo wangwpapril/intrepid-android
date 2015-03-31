@@ -1,6 +1,9 @@
 package com.swishlabs.intrepid_android.activity;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -12,6 +15,8 @@ import com.swishlabs.intrepid_android.data.api.callback.ControlerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControlerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
+import com.swishlabs.intrepid_android.data.api.model.Trip;
+import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 
@@ -30,6 +35,8 @@ public class TripsListActivity extends BaseActivity {
 	private List<Destination> mDestinationList;
 	private TripsListAdapter tripsListAdapter;
 
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -45,6 +52,7 @@ public class TripsListActivity extends BaseActivity {
 		}
 	
 	}
+
 	
 
 	@Override
@@ -61,12 +69,54 @@ public class TripsListActivity extends BaseActivity {
 		super.initTitleView();
 		listView = (ListView) findViewById(R.id.trip_list);
 		listView.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+			public void onItemClick(AdapterView<?> adapter, View view, int position,
 					long arg3) {
-
+                Log.d("Trip list", "You hit destination:" + position);
+                CreateTrip(position);
 			}
 		});
 	}
+
+    public int getTripCount() {
+        String countQuery = "SELECT  * FROM " + Database.TABLE_TRIPS;
+        Cursor cursor = mDatabase.getDb().rawQuery(countQuery, null);
+        return cursor.getCount();
+    }
+
+    public boolean isTripUnique(String destinationName){
+        
+    }
+
+    private void CreateTrip(int position){
+        Destination destination = mDestinationList.get(position);
+//        Trip trip = new Trip(destination.getCountry());
+
+
+        ContentValues values = new ContentValues();
+        values.put(Database.KEY_ID, getTripCount());
+        values.put(Database.KEY_DESTINATION_COUNTRY, destination.getCountry());
+
+
+        // Inserting Row
+        mDatabase.getDb().insert(Database.TABLE_TRIPS, null, values);
+        Log.d("Trip List", "You inserted some values into tthe TABLE :O");
+//        db.close(); // Closing database connection
+        Trip trip = getTrip(0);
+        Log.d("Trip List", "The first trip is to:"+trip.getDestinationName());
+    }
+
+    public Trip getTrip(int id) {
+        Cursor cursor = mDatabase.getDb().query(Database.TABLE_TRIPS, new String[] { Database.KEY_ID,
+                        Database.KEY_DESTINATION_COUNTRY}, Database.KEY_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        Trip trip = new Trip(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1));
+        // return contact
+        return trip;
+    }
 	
 	private void getTripList(){
 
@@ -128,5 +178,8 @@ public class TripsListActivity extends BaseActivity {
 			
 		}
 	}
+
+
+
 
 }

@@ -1,9 +1,9 @@
 package com.swishlabs.intrepid_android.data.api.model;
 
-import java.io.Serializable;
-
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.Serializable;
 
 public class Destination implements Serializable {
 
@@ -44,5 +44,9 @@ public class Destination implements Serializable {
 		}
 		
 	}
+
+    public String getCountry(){
+        return name;
+    }
 
 }

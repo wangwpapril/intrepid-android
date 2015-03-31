@@ -31,7 +31,9 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
 	private static Enums.NetStatus netStatus = null;
 	private static String userId;								
 	public static Object mLock;
-	
+
+    public DatabaseManager mDatabaseManager;
+    public Database mDatabase;
 
 	private static MyApplication instance;
 	
@@ -61,8 +63,7 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
 		return deviceInfoHelper;
 	}
 
-    public DatabaseManager mDatabaseManager;
-    public Database mDatabase;
+
 	
 	public static String getUserId() {
 		return userId;
@@ -134,7 +135,7 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
 
     public void loadDatabase(){
         mDatabaseManager = new DatabaseManager();
-        mDatabase = mDatabaseManager.openDatabase("Intrepid");
+        mDatabase = mDatabaseManager.openDatabase("Intrepid.db");
     }
 
 	

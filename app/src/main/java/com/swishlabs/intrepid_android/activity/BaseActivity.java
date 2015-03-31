@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.data.store.Database;
+import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Common;
 
 
@@ -24,6 +26,9 @@ public abstract class BaseActivity extends Activity implements OnClickListener{
 	protected ImageView ivTitleRight;
 	protected EditText ivTitleMiddle;
 	protected TextView tvTitleRight;
+
+    public DatabaseManager mDatabaseManager;
+    public Database mDatabase;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +40,14 @@ public abstract class BaseActivity extends Activity implements OnClickListener{
 		MyApplication.getInstance().addActivity(this);
 		context = this;
 		Common.context = this;
+        loadDatabase();
 	}
-	
+
+    public void loadDatabase(){
+        mDatabaseManager = new DatabaseManager(this.getBaseContext());
+        mDatabase = mDatabaseManager.openDatabase("Intrepid.db");
+    }
+
 	protected void initTitleView() {
 		tvTitleName = (TextView) findViewById(R.id.title_name);
 		ivTitleName = (ImageView)findViewById(R.id.title_name_iv);
