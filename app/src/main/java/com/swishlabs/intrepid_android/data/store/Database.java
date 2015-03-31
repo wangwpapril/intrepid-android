@@ -36,13 +36,11 @@ public class Database {
 
         @Override
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
             String createTripsTable = "CREATE TABLE " + TABLE_TRIPS + "("
                     + KEY_ID + " INTEGER PRIMARY KEY," + KEY_DESTINATION_ID + " TEXT" + ")";
             db = sqLiteDatabase;
             db.execSQL(createTripsTable);
         }
-
         @Override
         public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
             // delete the database first
