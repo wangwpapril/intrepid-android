@@ -21,7 +21,7 @@ public class Database {
     //trips contants
     private static final String TABLE_TRIPS = "trips";
     private static final String KEY_ID = "id";
-    private static final String KEY_DESTINATION_ID = "destination_id";
+    private static final String KEY_DESTINATION_ID = "destinationId";
 
     private DatabaseOpenHelper dbOpenHelper;
     private SQLiteDatabase db;
@@ -36,8 +36,10 @@ public class Database {
 
         @Override
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
+
             String createTripsTable = "CREATE TABLE " + TABLE_TRIPS + "("
-                    + KEY_ID + " INTEGER PRIMARY KEY," + KEY_DESTINATION_ID + " TEXT)";
+                    + KEY_ID + " INTEGER PRIMARY KEY," + KEY_DESTINATION_ID + " TEXT" + ")";
+            db = sqLiteDatabase;
             db.execSQL(createTripsTable);
         }
 

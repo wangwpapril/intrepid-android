@@ -1,21 +1,21 @@
 package com.swishlabs.intrepid_android;
 
-import java.lang.Thread.UncaughtExceptionHandler;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-
-
 import android.app.Activity;
 import android.app.Application;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
 import com.swishlabs.intrepid_android.data.ServiceManager;
+import com.swishlabs.intrepid_android.data.store.Database;
+import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.DeviceInfoHelper;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.Logger;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
+
+import java.lang.Thread.UncaughtExceptionHandler;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class MyApplication extends Application implements UncaughtExceptionHandler{
@@ -60,6 +60,9 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
 			deviceInfoHelper = new DeviceInfoHelper();
 		return deviceInfoHelper;
 	}
+
+    public DatabaseManager mDatabaseManager;
+    public Database mDatabase;
 	
 	public static String getUserId() {
 		return userId;
@@ -125,9 +128,14 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
 		loginStatus = SharedPreferenceUtil.getBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), false);
 		activityList = new ArrayList<Activity>();
 		
-		Thread.setDefaultUncaughtExceptionHandler(this);  
-			
+		Thread.setDefaultUncaughtExceptionHandler(this);
+	    loadDatabase();
 	}
+
+    public void loadDatabase(){
+        mDatabaseManager = new DatabaseManager();
+        mDatabase = mDatabaseManager.openDatabase("Intrepid");
+    }
 
 	
 	public int getVersionCode() {
