@@ -84,7 +84,7 @@ public class TripsListActivity extends BaseActivity {
     }
 
     public boolean isTripUnique(String destinationName){
-        
+        return true;
     }
 
     private void CreateTrip(int position){
