@@ -41,7 +41,7 @@ public class SplashActivity extends Activity {
 			public void run(){
 				Intent mIntent = null;
 				if(MyApplication.getLoginStatus()) {
-					mIntent = new Intent(SplashActivity.this,TripsListActivity.class);
+					mIntent = new Intent(SplashActivity.this,DestinationsListActivity.class);
 				}else{
 					mIntent = new Intent(SplashActivity.this,LoginActivity.class);
 				}

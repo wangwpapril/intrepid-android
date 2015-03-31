@@ -2,25 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.swishlabs.intrepid_android" >
 
-
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.SET_DEBUG_APP" />
-
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!-- For Both permission include NETWORK_PROVIDER and GPS_PROVIDER -->
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
     <uses-permission android:name="android.permission.RESTART_PACKAGES" />
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -38,9 +30,9 @@
         android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo"
+        android:theme="@style/Theme.AppCompat.Light"
         android:label="@string/app_name"
         android:largeHeap="true" >
-
         <activity
             android:name=".activity.SplashActivity"
             android:label="@string/app_name"
@@ -55,12 +47,14 @@
             android:name=".activity.LoginActivity"
             android:screenOrientation="portrait" >
         </activity>
-
         <activity
-            android:name=".activity.TripsListActivity"
+            android:name=".activity.DestinationsListActivity"
             android:screenOrientation="portrait" >
         </activity>
-
+        <activity
+            android:name=".activity.TripPagesActivity"
+            android:label="@string/title_activity_trip_pages" >
+        </activity>
     </application>
 
 </manifest>

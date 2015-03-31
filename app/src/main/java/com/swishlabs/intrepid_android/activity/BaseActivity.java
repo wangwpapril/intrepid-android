@@ -33,8 +33,8 @@ public abstract class BaseActivity extends Activity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);	
-		
+		super.onCreate(savedInstanceState);
+
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		Log.i(MyApplication.TAG, "Base Activity onCreate()");
 		MyApplication.getInstance().addActivity(this);

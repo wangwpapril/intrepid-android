@@ -10,13 +10,14 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.swishlabs.intrepid_android.R;
-import com.swishlabs.intrepid_android.adapter.TripsListAdapter;
+import com.swishlabs.intrepid_android.adapter.DestinationsListAdapter;
 import com.swishlabs.intrepid_android.data.api.callback.ControlerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControlerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
+import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 
@@ -28,27 +29,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TripsListActivity extends BaseActivity {
+public class DestinationsListActivity extends BaseActivity {
 
 	protected static final String TAG = "TripsListActivity";
 	private ListView listView;
 	private List<Destination> mDestinationList;
-	private TripsListAdapter tripsListAdapter;
+	private DestinationsListAdapter mDestinationsListAdapter;
 
 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		this.setContentView(R.layout.trip_list);
+		this.setContentView(R.layout.destination_list);
 		initView();
 		
 		if(mDestinationList == null) {
 			getTripList();
 		}else{
-			tripsListAdapter = new TripsListAdapter(
+			mDestinationsListAdapter = new DestinationsListAdapter(
                     mDestinationList, context);
-			listView.setAdapter(tripsListAdapter);
+			listView.setAdapter(mDestinationsListAdapter);
 		}
 	
 	}
@@ -77,12 +78,6 @@ public class TripsListActivity extends BaseActivity {
 		});
 	}
 
-    public int getTripCount() {
-        String countQuery = "SELECT  * FROM " + Database.TABLE_TRIPS;
-        Cursor cursor = mDatabase.getDb().rawQuery(countQuery, null);
-        return cursor.getCount();
-    }
-
     public boolean isTripUnique(String destinationName){
         return true;
     }
@@ -91,10 +86,11 @@ public class TripsListActivity extends BaseActivity {
         Destination destination = mDestinationList.get(position);
 //        Trip trip = new Trip(destination.getCountry());
 
-
+        int tripCount = DatabaseManager.getTripCount(mDatabase);
         ContentValues values = new ContentValues();
-        values.put(Database.KEY_ID, getTripCount());
+        values.put(Database.KEY_ID, tripCount);
         values.put(Database.KEY_DESTINATION_COUNTRY, destination.getCountry());
+        values.put(Database.KEY_DESTINATION_ID, destination.getId());
 
 
         // Inserting Row
@@ -106,9 +102,9 @@ public class TripsListActivity extends BaseActivity {
     }
 
     public Trip getTrip(int id) {
-        Cursor cursor = mDatabase.getDb().query(Database.TABLE_TRIPS, new String[] { Database.KEY_ID,
+        Cursor cursor = mDatabase.getDb().query(Database.TABLE_TRIPS, new String[]{Database.KEY_ID,
                         Database.KEY_DESTINATION_COUNTRY}, Database.KEY_ID + "=?",
-                new String[] { String.valueOf(id) }, null, null, null, null);
+                new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
@@ -133,9 +129,9 @@ public class TripsListActivity extends BaseActivity {
 						mDestinationList.add(new Destination(array.getJSONObject(i)));
 					}
 					
-					tripsListAdapter = new TripsListAdapter(
+					mDestinationsListAdapter = new DestinationsListAdapter(
                             mDestinationList, context);
-					listView.setAdapter(tripsListAdapter);
+					listView.setAdapter(mDestinationsListAdapter);
 
 				} catch (JSONException e) {
 					e.printStackTrace();

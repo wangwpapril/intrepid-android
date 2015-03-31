@@ -49,4 +49,8 @@ public class Destination implements Serializable {
         return name;
     }
 
+    public String getId(){
+        return id;
+    }
+
 }

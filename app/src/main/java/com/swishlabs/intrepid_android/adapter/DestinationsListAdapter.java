@@ -14,11 +14,11 @@ import com.swishlabs.intrepid_android.activity.BaseActivity;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 
 
-public class TripsListAdapter extends MyBaseAdapter {
+public class DestinationsListAdapter extends MyBaseAdapter {
 	private List<Destination> datas;
 
-	public TripsListAdapter(List<Destination> datas,
-			BaseActivity context) {
+	public DestinationsListAdapter(List<Destination> datas,
+                                   BaseActivity context) {
 		this.datas = datas;
 		this.context = context;
 		super.init();
@@ -44,7 +44,7 @@ public class TripsListAdapter extends MyBaseAdapter {
 		ViewHolder holder = null;
 		if (convertView == null) {
 			holder = new ViewHolder();
-			convertView = LayoutInflater.from(context).inflate(R.layout.trip_list_item,
+			convertView = LayoutInflater.from(context).inflate(R.layout.destination_list_item,
 					null);
 
 			holder.ivIcon = (ImageView) convertView
