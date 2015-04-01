@@ -11,6 +11,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -158,4 +160,10 @@ public class StringUtil {
         return sb.toString();
     }
 
+    public static boolean isEmail(String email){
+        String str="[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+        Pattern p = Pattern.compile(str);
+        Matcher m = p.matcher(email);
+        return m.matches();
+    }
 }
