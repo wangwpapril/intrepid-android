@@ -1,24 +1,28 @@
 package com.swishlabs.intrepid_android.activity;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.data.api.model.Trip;
+import com.swishlabs.intrepid_android.data.store.Database;
+import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 
 import java.util.Locale;
 
-public class TripPagesActivity extends FragmentActivity {
+public class TripPagesActivity extends ActionBarActivity implements TripFragment.OnFragmentInteractionListener
+{
 
-
+    public DatabaseManager mDatabaseManager;
+    public Database mDatabase;
+    public int mTripCount;
+    public TripPagesActivity mTripPagesActivity;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -35,6 +39,16 @@ public class TripPagesActivity extends FragmentActivity {
      */
     ViewPager mViewPager;
 
+    public Database getDatabase(){
+        return mDatabase;
+    }
+
+    public void loadDatabase(){
+        mDatabaseManager = new DatabaseManager(this.getBaseContext());
+        mDatabase = mDatabaseManager.openDatabase("Intrepid.db");
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +57,15 @@ public class TripPagesActivity extends FragmentActivity {
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        // Set up the ViewPager with the sections adapter.
+        mTripPagesActivity = this;
+        loadDatabase();
+        mTripCount = DatabaseManager.getTripCount(mDatabase);
+
+
+
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+        mSectionsPagerAdapter = new SectionsPagerAdapter(mViewPager);
 
     }
 
@@ -74,6 +92,11 @@ public class TripPagesActivity extends FragmentActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -81,22 +104,28 @@ public class TripPagesActivity extends FragmentActivity {
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
+        public SectionsPagerAdapter(ViewPager pager) {
+            super(getSupportFragmentManager());
+
+            mViewPager.setAdapter(this);
+            this.notifyDataSetChanged();
         }
 
         @Override
         public Fragment getItem(int position) {
+            Trip trip = DatabaseManager.getTrip(position, mDatabase);
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+
+            return TripFragment.newInstance(trip.getId(), trip.getDestinationName());
         }
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
 //            int tripCount = DatabaseManager.getTripCount(mDatabase);
-            return 3;
+// number of pages to be able to swipe through
+
+            return mTripCount;
         }
 
         @Override
@@ -114,37 +143,8 @@ public class TripPagesActivity extends FragmentActivity {
         }
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
 
-        public PlaceholderFragment() {
-        }
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_trip_pages, container, false);
-            return rootView;
-        }
-    }
 
 }

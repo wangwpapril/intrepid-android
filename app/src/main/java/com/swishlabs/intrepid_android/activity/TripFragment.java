@@ -1,14 +1,17 @@
 package com.swishlabs.intrepid_android.activity;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.data.api.model.Trip;
+import com.swishlabs.intrepid_android.data.store.Database;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,25 +21,23 @@ import com.swishlabs.intrepid_android.R;
  * Use the {@link TripFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TripFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class TripFragment extends android.support.v4.app.Fragment {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    Trip mTrip;
+    int mTripIndex;
+    Database mDatabase;
 
     private OnFragmentInteractionListener mListener;
 
     // TODO: Rename and change types and number of parameters
-    public static TripFragment newInstance(String param1, String param2) {
+    public static TripFragment newInstance(int id, String destinationName) {
         TripFragment fragment = new TripFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt("id", id);
+        args.putString("destinationName", destinationName);
         fragment.setArguments(args);
+        Log.d("did we create", " a friggin trip fragment");
+
         return fragment;
     }
 
@@ -44,20 +45,26 @@ public class TripFragment extends Fragment {
         // Required empty public constructor
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_trip, container, false);
+        View view = inflater.inflate(R.layout.fragment_trip, container, false);
+        mTripIndex = getArguments().getInt("id");
+        String destinationName = getArguments().getString("destinationName");
+//        mTrip = DatabaseManager.getTrip(mTripIndex, mDatabase);
+        Log.d("TripFragment", "Loaded: "+destinationName);
+        return view;
+    }
+
+    public void getCountry(){
+        
     }
 
     // TODO: Rename method, update argument and hook method into UI event

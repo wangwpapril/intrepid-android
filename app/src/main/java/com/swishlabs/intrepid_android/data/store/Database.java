@@ -19,7 +19,7 @@ public class Database {
     //trips contants
     public static final String TABLE_TRIPS = "trips";
     public static final String KEY_ID = "id";
-    public static final String KEY_DESTINATION_ID = "destinationId";
+    public static final String KEY_COUNTRY_ID = "countryId";
     public static final String KEY_DESTINATION_COUNTRY = "destinationCountry";
 
     private DatabaseOpenHelper dbOpenHelper;
@@ -38,7 +38,7 @@ public class Database {
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
             String createTripsTable = "CREATE TABLE " + TABLE_TRIPS + "("
                     + KEY_ID + " INTEGER PRIMARY KEY," + KEY_DESTINATION_COUNTRY + " TEXT,"
-                    + KEY_DESTINATION_ID + " TEXT,"+ ")";
+                    + KEY_COUNTRY_ID + " TEXT"+ ")";
             db = sqLiteDatabase;
             db.execSQL(createTripsTable);
         }

@@ -1,6 +1,7 @@
 package com.swishlabs.intrepid_android.activity;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -76,6 +77,7 @@ public class DestinationsListActivity extends BaseActivity {
                 CreateTrip(position);
 			}
 		});
+
 	}
 
     public boolean isTripUnique(String destinationName){
@@ -90,26 +92,31 @@ public class DestinationsListActivity extends BaseActivity {
         ContentValues values = new ContentValues();
         values.put(Database.KEY_ID, tripCount);
         values.put(Database.KEY_DESTINATION_COUNTRY, destination.getCountry());
-        values.put(Database.KEY_DESTINATION_ID, destination.getId());
+        values.put(Database.KEY_COUNTRY_ID, destination.getId());
 
 
         // Inserting Row
         mDatabase.getDb().insert(Database.TABLE_TRIPS, null, values);
         Log.d("Trip List", "You inserted some values into tthe TABLE :O");
 //        db.close(); // Closing database connection
-        Trip trip = getTrip(0);
-        Log.d("Trip List", "The first trip is to:"+trip.getDestinationName());
+//        Trip trip = getTrip(0);
+//        Log.d("Trip List", "The first trip is to:"+trip.getDestinationName());
+
+        Intent intent = new Intent(DestinationsListActivity.this, TripPagesActivity.class);
+        intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     public Trip getTrip(int id) {
         Cursor cursor = mDatabase.getDb().query(Database.TABLE_TRIPS, new String[]{Database.KEY_ID,
-                        Database.KEY_DESTINATION_COUNTRY}, Database.KEY_ID + "=?",
+                        Database.KEY_DESTINATION_COUNTRY, Database.KEY_COUNTRY_ID}, Database.KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
         Trip trip = new Trip(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1));
+                cursor.getString(1), cursor.getString(2));
         // return contact
         return trip;
     }
