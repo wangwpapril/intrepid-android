@@ -55,6 +55,7 @@ public class LoginActivity extends BaseActivity {
 		editTextPassword = (EditText) findViewById(R.id.signinPasswordEditText);
 		signUp = (TextView) findViewById(R.id.sign_up);
         signUp.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+        signUp.setOnClickListener(this);
 
         learnMore = (TextView) findViewById(R.id.learnMore);
         learnMore.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
@@ -73,9 +74,6 @@ public class LoginActivity extends BaseActivity {
 	protected void initTitle(){
 		tvTitleName.setText(R.string.login_title_name);
 		ivTitleBack.setVisibility(View.VISIBLE);
-//		tvTitleRight.setVisibility(View.VISIBLE);
-//		tvTitleRight.setText(R.string.login_title_register);
-//		tvTitleRight.setOnClickListener(this);
 		ivTitleBack.setOnClickListener(this);
 	}
 	
@@ -166,7 +164,9 @@ public class LoginActivity extends BaseActivity {
 
 
 		} else if (v == signUp) {
-			
+            Intent mIntent = new Intent(LoginActivity.this,SignupActivity.class);
+            startActivity(mIntent);
+            LoginActivity.this.finish();
 
 	} else if (v == ivTitleBack) {
 		onBackPressed();

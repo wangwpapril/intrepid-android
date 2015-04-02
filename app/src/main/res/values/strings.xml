@@ -7,7 +7,7 @@
     <string name="network_disconnected">network is unavailable</string>
     <string name="login_email_input_error">Email input error</string>
     <string name="login_password_null">Password can not be empty</string>
-    <string name="login_title_name">Log in</string>
+    <string name="login_title_name">Log In</string>
     
     <string name="confirm_button">Confirm</string>
     <string name="cancel_button">Cancel</string>
@@ -28,6 +28,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="email_format_error">The email format is invalid</string>
     <string name="login_failed">Invalid login credentials</string>
+    <string name="signup_title_name">Sign Up</string>
+    <string name="input_empty_error">All fields are required.</string>
+    <string name="ok_button">OK</string>
+    <string name="username_length_error">Username must be at least 3 characters.</string>
+    <string name="password_length_error">Password must be at least 7 characters.</string>
 
 
 </resources>

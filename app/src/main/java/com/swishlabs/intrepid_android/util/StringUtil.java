@@ -177,7 +177,7 @@ public class StringUtil {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage(strMessage);
         builder.setTitle(strTitle);
-        builder.setPositiveButton(R.string.confirm_button,
+        builder.setPositiveButton(R.string.ok_button,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
