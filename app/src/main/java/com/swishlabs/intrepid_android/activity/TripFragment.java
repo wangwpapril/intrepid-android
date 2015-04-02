@@ -64,7 +64,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
     }
 
     public void getCountry(){
-        
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
