@@ -24,6 +24,7 @@ import com.swishlabs.intrepid_android.data.api.model.User;
 import com.swishlabs.intrepid_android.data.store.beans.UserTable;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
+import com.swishlabs.intrepid_android.util.StringUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -86,16 +87,20 @@ public class LoginActivity extends BaseActivity {
 			String email = editTextEmail.getText().toString();
 			String password = editTextPassword.getText().toString();
 			if (TextUtils.isEmpty(email)) {
-				showAlertDialog(getResources().getString(
+				StringUtil.showAlertDialog(getResources().getString(
 						R.string.login_title_name), getResources()
-						.getString(R.string.login_email_input_error));
+						.getString(R.string.login_email_input_error), this);
 				return;
-			}
+			} else if (!StringUtil.isEmail(email)){
+                StringUtil.showAlertDialog(getResources().getString(R.string.login_title_name),
+                        getResources().getString(R.string.email_format_error),this);
+                return;
+            }
 
 			if (TextUtils.isEmpty(password)) {
-				showAlertDialog(getResources().getString(
+				StringUtil.showAlertDialog(getResources().getString(
 						R.string.login_title_name), getResources()
-						.getString(R.string.login_password_null));
+						.getString(R.string.login_password_null),this);
 				return;
 			}
 			
@@ -129,8 +134,8 @@ public class LoginActivity extends BaseActivity {
 				}
 
 				public void handleError(Exception e){
-					showAlertDialog(getResources().getString(
-							R.string.login_title_name), "Invalid login credentials");
+					StringUtil.showAlertDialog(getResources().getString(
+							R.string.login_title_name),getResources().getString(R.string.login_failed), context);
 					return;
 
 				}
@@ -170,34 +175,5 @@ public class LoginActivity extends BaseActivity {
 	
 	}
 	
-	private void showAlertDialog(String strTitle, String strMessage) {
-		AlertDialog.Builder builder = new Builder(this);
-		builder.setMessage(strMessage);
-		builder.setTitle(strTitle);
-		builder.setPositiveButton(R.string.confirm_button,
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-					}
-				});
-
-		AlertDialog alertDialog = builder.create();
-
-		alertDialog.setCancelable(false);
-
-		alertDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
-
-			public boolean onKey(DialogInterface dialog, int keyCode,
-					KeyEvent event) {
-				if (keyCode == KeyEvent.KEYCODE_SEARCH) {
-					return true;
-				} else {
-					return false; 
-				}
-			}
-		});
-
-		alertDialog.show();
-	}
 
 }
