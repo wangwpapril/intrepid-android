@@ -36,7 +36,6 @@ public class TripFragment extends android.support.v4.app.Fragment {
         args.putInt("id", id);
         args.putString("destinationName", destinationName);
         fragment.setArguments(args);
-        Log.d("did we create", " a friggin trip fragment");
 
         return fragment;
     }
