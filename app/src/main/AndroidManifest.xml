@@ -48,6 +48,10 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name=".activity.SignupActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name=".activity.DestinationsListActivity"
             android:screenOrientation="portrait" >
         </activity>
