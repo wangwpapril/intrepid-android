@@ -12,13 +12,5 @@
         android:id="@+id/tripName"
         android:text="@string/hello_blank_fragment"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/tripName2"
-        android:layout_below="@id/tripName"
-        android:text="@string/hello_blank_fragment"/>
 
 </RelativeLayout>

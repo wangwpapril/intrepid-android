@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
@@ -26,6 +27,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
     Trip mTrip;
     int mTripIndex;
     Database mDatabase;
+    TextView mCountryName;
 
     private OnFragmentInteractionListener mListener;
 
@@ -59,11 +61,14 @@ public class TripFragment extends android.support.v4.app.Fragment {
         String destinationName = getArguments().getString("destinationName");
 //        mTrip = DatabaseManager.getTrip(mTripIndex, mDatabase);
         Log.d("TripFragment", "Loaded: "+destinationName);
+
+        mCountryName = (TextView)view.findViewById(R.id.tripName);
+        getCountry(destinationName);
         return view;
     }
 
-    public void getCountry(){
-
+    public void getCountry(String destinationName){
+        mCountryName.setText(destinationName);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
