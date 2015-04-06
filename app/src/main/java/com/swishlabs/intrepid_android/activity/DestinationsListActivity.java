@@ -55,6 +55,49 @@ public class DestinationsListActivity extends BaseActivity {
 	
 	}
 
+    private void getTripList(){
+
+        IControlerContentCallback icc = new IControlerContentCallback() {
+            public void handleSuccess(String content){
+
+                JSONObject des;
+                try {
+                    des = new JSONObject(content);
+                    JSONArray array = des.getJSONArray("destinations");
+                    int len = array.length();
+                    mDestinationList = new ArrayList<Destination>(len);
+                    for (int i =0;i < len; i++){
+                        mDestinationList.add(new Destination(array.getJSONObject(i)));
+                    }
+
+                    mDestinationsListAdapter = new DestinationsListAdapter(
+                            mDestinationList, context);
+                    listView.setAdapter(mDestinationsListAdapter);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            public void handleError(Exception e){
+
+                return;
+
+            }
+        };
+
+        String token = null;
+        token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
+
+        ControlerContentTask cct = new ControlerContentTask(
+                Constants.BASE_URL+"destinations?short_list=true&token=" + token, icc,
+                Enums.ConnMethod.GET,false);
+        String ss = null;
+        cct.execute(ss);
+
+    }
+
 	
 
 	@Override
@@ -74,11 +117,45 @@ public class DestinationsListActivity extends BaseActivity {
 			public void onItemClick(AdapterView<?> adapter, View view, int position,
 					long arg3) {
                 Log.d("Trip list", "You hit destination:" + position);
+//                LoadTripFromApi(position);
                 CreateTrip(position);
+
 			}
 		});
 
 	}
+
+    public void LoadTripFromApi(int tripId){
+        IControlerContentCallback icc = new IControlerContentCallback() {
+            public void handleSuccess(String content){
+
+                JSONObject destination;
+                try {
+                    destination = new JSONObject(content);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            public void handleError(Exception e){
+
+                return;
+
+            }
+        };
+
+        String token = null;
+        token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
+        String destinationId = "";
+        ControlerContentTask cct = new ControlerContentTask(
+                Constants.BASE_URL+"destinations/"+destinationId+"/token=" + token, icc,
+                Enums.ConnMethod.GET,false);
+        String ss = null;
+        cct.execute(ss);
+    }
 
     public boolean isTripUnique(String destinationName){
         return true;
@@ -121,48 +198,7 @@ public class DestinationsListActivity extends BaseActivity {
         return trip;
     }
 	
-	private void getTripList(){
 
-		IControlerContentCallback icc = new IControlerContentCallback() {
-			public void handleSuccess(String content){
-
-				JSONObject des;
-				try {
-					des = new JSONObject(content);
-					JSONArray array = des.getJSONArray("destinations");
-					int len = array.length();
-					mDestinationList = new ArrayList<Destination>(len);
-					for (int i =0;i < len; i++){
-						mDestinationList.add(new Destination(array.getJSONObject(i)));
-					}
-					
-					mDestinationsListAdapter = new DestinationsListAdapter(
-                            mDestinationList, context);
-					listView.setAdapter(mDestinationsListAdapter);
-
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-				
-			}
-
-			public void handleError(Exception e){
-
-				return;
-
-			}
-		};
-		
-		String token = null;
-		token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
-		
-		ControlerContentTask cct = new ControlerContentTask(
-                Constants.BASE_URL+"destinations?short_list=true&token=" + token, icc,
-				Enums.ConnMethod.GET,false);
-		String ss = null;
-		cct.execute(ss);
-
-	}
 
 	@Override
 	protected void initTitle(){
