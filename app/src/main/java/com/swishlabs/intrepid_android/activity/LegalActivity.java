@@ -101,7 +101,7 @@ public class LegalActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_legal, menu);
+//        getMenuInflater().inflate(R.menu.menu_legal, menu);
         return true;
     }
 
@@ -131,8 +131,8 @@ public class LegalActivity extends BaseActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_legal, container, false);
-            return rootView;
+//            View rootView = inflater.inflate(R.layout.fragment_legal, container, false);
+            return null;
         }
     }
 }
