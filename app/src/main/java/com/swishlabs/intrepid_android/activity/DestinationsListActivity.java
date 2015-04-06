@@ -117,7 +117,7 @@ public class DestinationsListActivity extends BaseActivity {
 			public void onItemClick(AdapterView<?> adapter, View view, int position,
 					long arg3) {
                 Log.d("Trip list", "You hit destination:" + position);
-//                LoadTripFromApi(position);
+                LoadTripFromApi(position);
                 CreateTrip(position);
 
 			}
@@ -125,14 +125,14 @@ public class DestinationsListActivity extends BaseActivity {
 
 	}
 
-    public void LoadTripFromApi(int tripId){
+    public void LoadTripFromApi(int destinationPosition){
         IControlerContentCallback icc = new IControlerContentCallback() {
             public void handleSuccess(String content){
 
                 JSONObject destination;
                 try {
                     destination = new JSONObject(content);
-
+                    destination.getClass();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -149,7 +149,7 @@ public class DestinationsListActivity extends BaseActivity {
 
         String token = null;
         token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
-        String destinationId = "";
+        String destinationId = mDestinationList.get(destinationPosition).getId();
         ControlerContentTask cct = new ControlerContentTask(
                 Constants.BASE_URL+"destinations/"+destinationId+"/token=" + token, icc,
                 Enums.ConnMethod.GET,false);
