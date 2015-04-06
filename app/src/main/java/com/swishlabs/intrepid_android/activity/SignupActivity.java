@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -161,6 +162,7 @@ public class SignupActivity extends BaseActivity {
 	protected void initTitle() {
 		tvTitleName.setText(getResources().getString(R.string.signup_title_name));
 		ivTitleBack.setVisibility(View.VISIBLE);
+        ivTitleBack.setOnClickListener(this);
 	}
 
 	@Override
@@ -222,9 +224,8 @@ public class SignupActivity extends BaseActivity {
 
 		} else if (v == termsUse) {
 			Intent i = new Intent();
-//			i.setClass(context, ActivityLogin.class);
+			i.setClass(context, LegalActivity.class);
 			context.startActivity(i);
-			context.finish();
 		} else if (v == ivTitleBack) {
 			context.finish();
 		}
@@ -279,8 +280,9 @@ public class SignupActivity extends BaseActivity {
 
 				JSONObject jsonObj = null, userObj = null;
 				User user = null;
-				
-				try {
+                Log.d("signUp user",content);
+
+                try {
 					jsonObj = new JSONObject(content);
 					userObj = jsonObj.getJSONObject("user");
 					user = new User(userObj);
@@ -332,6 +334,7 @@ public class SignupActivity extends BaseActivity {
 		}
 		
 		cct.execute(signUp.toString());
+        Log.d("signUp data",signUp.toString());
 
 	}
 	
@@ -342,6 +345,7 @@ public class SignupActivity extends BaseActivity {
 
 				JSONArray jsonObj = null;
 			    JSONObject jo = null;
+                Log.d("Email sent",content);
 				
 				try {
 					jsonObj = new JSONArray(content);
@@ -385,14 +389,14 @@ public class SignupActivity extends BaseActivity {
 
 		String text = String.format("Hi %s,\n\nThank you for signing up with ACE Travel Smart.\n"
 				+ "Please click on the confirmation link below to activate your account.\n"
-				+ "https://app.acetravelsmart.com/users/activate/%s", firstName, activationCode);
+				+ "https://app-staging.intrepid247.com/users/activate/%s", firstName, activationCode);
 		
 		JSONObject message = new JSONObject();
 		JSONObject to = new JSONObject();
 		JSONArray toArray = null;
 		try {
-//            to.put("email", email);
-            to.put("email", "wwang@peakcontact.com");
+            to.put("email", email);
+//            to.put("email", "wwang@peakcontact.com");
 			to.put("name",firstName+" "+lastName);
 		} catch (JSONException e2) {
 			e2.printStackTrace();
@@ -418,6 +422,7 @@ public class SignupActivity extends BaseActivity {
 		}
 		
 		cct.execute(send.toString());
+        Log.d("email send.json", send.toString());
 		
 	}
 

@@ -202,8 +202,8 @@ public class DestinationsListActivity extends BaseActivity {
 
 	@Override
 	protected void initTitle(){
-		ivTitleBack.setVisibility(View.VISIBLE);
-		ivTitleBack.setOnClickListener(this);
+//		ivTitleBack.setVisibility(View.VISIBLE);
+//		ivTitleBack.setOnClickListener(this);
 		tvTitleName.setText("Trips");
 //		ivTitleRight.setVisibility(View.VISIBLE);
 //		ivTitleBack.setImageResource(R.drawable.title_left_search);
