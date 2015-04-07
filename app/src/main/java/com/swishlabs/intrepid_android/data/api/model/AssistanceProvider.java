@@ -19,6 +19,9 @@ public class AssistanceProvider implements Serializable {
 	public String phone;
 	
 	public AssistanceProvider(JSONObject obj) throws JSONException {
+        if(obj == null)
+            return;
+
 		id = obj.getString("id");
 		name = obj.getString("name");
 		phone =  obj.getString("phone");

@@ -23,6 +23,10 @@ public class Destination implements Serializable {
 	public Image imageFlag;
 		
 	public Destination(JSONObject obj) throws JSONException {
+
+        if(obj == null)
+            return;
+
 		id = obj.getString("id");
 		name = obj.getString("name");
 		type = obj.getString("type");

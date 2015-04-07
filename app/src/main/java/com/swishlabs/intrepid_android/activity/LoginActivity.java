@@ -121,12 +121,14 @@ public class LoginActivity extends BaseActivity {
 
                     if(user != null) {
                         UserTable.getInstance().saveUser(user);
-                        User ww = null;
-                        ww = UserTable.getInstance().getUser(user.id);
+//                        User ww = null;
+//                        ww = UserTable.getInstance().getUser(user.id);
 
                         SharedPreferenceUtil.setString(Enums.PreferenceKeys.userId.toString(), user.id);
                         SharedPreferenceUtil.setString(Enums.PreferenceKeys.token.toString(), user.token);
                         SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), true);
+
+                        MyApplication.setLoginStatus(true);
 
                         Intent mIntent = new Intent(LoginActivity.this, DestinationsListActivity.class);
                         startActivity(mIntent);
