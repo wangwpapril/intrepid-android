@@ -31,14 +31,24 @@ public class Destination implements Serializable {
 			JSONObject images = obj.getJSONObject("images");
 			if (images.has("currency"))
 			{
-				JSONObject imagecy = images.getJSONObject("currency");
-				imageCurrency = new Image(imagecy);
+                Object rr = images.get("currency");
+                if(rr instanceof JSONObject) {
+                    JSONObject imagecy = images.getJSONObject("currency");
+                    imageCurrency = new Image(imagecy);
+                } else {
+                    imageCurrency = new Image(null);
+                }
 			}
 			
 			if (images.has("flag"))
 			{
-				JSONObject imagefg = images.getJSONObject("flag");
-				imageFlag = new Image(imagefg);
+                Object rr = images.get("flag");
+                if(rr instanceof JSONObject) {
+                    JSONObject imagefg = images.getJSONObject("flag");
+                    imageFlag = new Image(imagefg);
+                } else {
+                    imageFlag = new Image(null);
+                }
 			}
 
 		}

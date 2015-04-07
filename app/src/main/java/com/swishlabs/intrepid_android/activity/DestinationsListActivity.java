@@ -21,6 +21,7 @@ import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
+import com.swishlabs.intrepid_android.util.StringUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -82,6 +83,7 @@ public class DestinationsListActivity extends BaseActivity {
 
             public void handleError(Exception e){
 
+                StringUtil.showAlertDialog("Trips", "Data error !", context);
                 return;
 
             }

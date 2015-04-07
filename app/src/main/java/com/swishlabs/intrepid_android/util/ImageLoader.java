@@ -34,6 +34,10 @@ public class ImageLoader {
 
 	public void DisplayImage(String url, Activity activity, ImageView imageView) {
 
+        if(url == null) {
+            imageView.setImageResource(stub_id);
+            return;
+        }
 		String Url=null;		
 		Url = url.replaceAll(" ", "%20");
 		imageView.setTag(Url);
