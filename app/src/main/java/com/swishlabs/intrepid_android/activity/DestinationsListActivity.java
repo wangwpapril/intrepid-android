@@ -20,7 +20,6 @@ import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Enums;
-import com.swishlabs.intrepid_android.util.SaveImage;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 import com.swishlabs.intrepid_android.util.StringUtil;
 
@@ -133,11 +132,12 @@ public class DestinationsListActivity extends BaseActivity {
 
                 JSONObject destination;
                 try {
-                    destination = new JSONObject(content);
-                    JSONArray images = destination.getJSONArray("images");
-                    String general_image_url = (String)images.get(0);
-                    String generalImageUri = SaveImage.saveImageLocally(general_image_url, "tripImage", DestinationsListActivity.this);
-                    CreateTrip(destinationPosition, generalImageUri);
+                    destination = new JSONObject(content).getJSONObject("destination");
+
+                    JSONObject images = destination.getJSONObject("images");
+                    String general_image_url = images.getJSONObject("intro").getString("source_url");
+//                    String generalImageUri = SaveImage.saveImageLocally(general_image_url, "tripImage", DestinationsListActivity.this);
+                    CreateTrip(destinationPosition, general_image_url);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
