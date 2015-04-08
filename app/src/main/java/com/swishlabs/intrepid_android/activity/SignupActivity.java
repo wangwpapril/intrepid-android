@@ -172,14 +172,6 @@ public class SignupActivity extends BaseActivity {
 
 		} else if (v == btnSignUp) {
 
-/*			String firstName = etFirstName.getText().toString();
-			String lastName = etLastName.getText().toString();
-			String email = etEmail.getText().toString();
-			String country = etCountry.getText().toString();
-			String userName = etUserName.getText().toString();
-			String password = etPassword.getText().toString();
-			String policyNumber = etPolicyNumber.getText().toString();
-*/			
 			firstName = etFirstName.getText().toString();
 			lastName = etLastName.getText().toString();
 			email = etEmail.getText().toString();
@@ -192,7 +184,6 @@ public class SignupActivity extends BaseActivity {
 					TextUtils.isEmpty(email) || TextUtils.isEmpty(country) ||
 					TextUtils.isEmpty(userName) || TextUtils.isEmpty(password) ||
 					TextUtils.isEmpty(policyNumber)) {
-//				ToastHelper.showToast("All fields are required.", 2000);
                 StringUtil.showAlertDialog(getResources().getString(
                         R.string.signup_title_name), getResources()
                         .getString(R.string.input_empty_error), this);
@@ -237,11 +228,18 @@ public class SignupActivity extends BaseActivity {
 
 		IControlerContentCallback icc = new IControlerContentCallback() {
 			public void handleSuccess(String content) {
-				JSONObject company = null;
+				JSONObject temp = null,company = null;
 				try {
-					company = new JSONObject(content).getJSONObject("company");
-					companyId = company.getString("id");	
-					signUp();
+                    temp = new JSONObject(content);
+                    if(temp.has("company")) {
+                        company = new JSONObject(content).getJSONObject("company");
+                        companyId = company.getString("id");
+                        signUp();
+                    }else {
+                        StringUtil.showAlertDialog(getResources().getString(R.string.signup_title_name), "Policy Number is incorrect!", context);
+                        return;
+
+                    }
 					
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -249,7 +247,8 @@ public class SignupActivity extends BaseActivity {
 		}
 
 			public void handleError(Exception e) {
-				return;
+                StringUtil.showAlertDialog(getResources().getString(R.string.signup_title_name), "Policy Number is incorrect!", context);
+                return;
 			}
 		};
 		ControlerContentTask cct = new ControlerContentTask(
@@ -284,16 +283,33 @@ public class SignupActivity extends BaseActivity {
 
                 try {
 					jsonObj = new JSONObject(content);
-					userObj = jsonObj.getJSONObject("user");
-					user = new User(userObj);
+                    if(jsonObj.has("error")) {
+                        JSONArray errorMessage = jsonObj.getJSONObject("error").getJSONArray("message");
+                        String message = String.valueOf((Object) errorMessage.get(0));
+                        StringUtil.showAlertDialog(getResources().getString(R.string.signup_title_name), message, context);
+                        return;
+
+                    }else if(jsonObj.has("user")) {
+                        userObj = jsonObj.getJSONObject("user");
+                        user = new User(userObj);
+                    }else {
+                        StringUtil.showAlertDialog(getResources().getString(R.string.signup_title_name), "Sign Up failed, Please try it again", context);
+                        return;
+                    }
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}	
 	            
-	            activationCode = user.activationCode;
-                token = user.token;
+	            if(user != null) {
+                    activationCode = user.activationCode;
+                    token = user.token;
 
-	            sendEmailWithActivationCode();
+                    sendEmailWithActivationCode();
+                }else {
+                    StringUtil.showAlertDialog(getResources().getString(R.string.signup_title_name), "Sign Up failed, Please try it again", context);
+                    return;
+
+                }
 
 			}
 
@@ -344,12 +360,10 @@ public class SignupActivity extends BaseActivity {
 			public void handleSuccess(String content){
 
 				JSONArray jsonObj = null;
-			    JSONObject jo = null;
                 Log.d("Email sent",content);
 				
 				try {
 					jsonObj = new JSONArray(content);
-					jo = jsonObj.getJSONObject(0);
 					if ("sent".equals(jsonObj.getJSONObject(0).getString("status"))){
                         AlertDialog.Builder builder = new AlertDialog.Builder(context);
                         builder.setMessage("Thank you for signing up. Please check your email to activate your account.");
@@ -366,17 +380,23 @@ public class SignupActivity extends BaseActivity {
                         AlertDialog dialog = builder.create();
                         dialog.show();
 
-					}
+					}else if("error".equals(jsonObj.getJSONObject(0).getString("status"))){
+                        StringUtil.showAlertDialog(getResources().getString(R.string.signup_title_name), jsonObj.getJSONObject(0).getString("message"), context);
+                        return;
+
+                    }
 
 				} catch (JSONException e) {
 					e.printStackTrace();
-				}	
+                    StringUtil.showAlertDialog(getResources().getString(R.string.signup_title_name), "Please try again later.", context);
+                    return;
+
+                }
 	            
 			}
 
 			public void handleError(Exception e){
-//				showAlertDialog(getResources().getString(
-	//					R.string.login_title_name), "Invalid login credentials");
+                StringUtil.showAlertDialog(getResources().getString(R.string.signup_title_name), "Please try again later.", context);
 				return;
 
 			}
@@ -396,7 +416,6 @@ public class SignupActivity extends BaseActivity {
 		JSONArray toArray = null;
 		try {
             to.put("email", email);
-//            to.put("email", "wwang@peakcontact.com");
 			to.put("name",firstName+" "+lastName);
 		} catch (JSONException e2) {
 			e2.printStackTrace();

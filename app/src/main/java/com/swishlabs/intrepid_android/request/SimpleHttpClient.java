@@ -169,6 +169,9 @@ public class SimpleHttpClient {
 				response = new Response(connection);
 				responseCode = response.getStatusCode();
 
+                if (responseCode == NOT_FOUND)
+                    return response.asString();
+
 				if (responseCode != OK) {
 					if (responseCode < INTERNAL_SERVER_ERROR
 							|| retriedCount == retryCount)

@@ -26,6 +26,7 @@ import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 import com.swishlabs.intrepid_android.util.StringUtil;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -110,16 +111,37 @@ public class LoginActivity extends BaseActivity {
                     JSONObject jsonObj = null, userObj = null;
                     User user = null;
 
-                    try {
-                        jsonObj = new JSONObject(content);
+                try {
+//                        jsonObj = new JSONObject(content);
+//                        userObj = jsonObj.getJSONObject("user");
+//                        user = new User(userObj);
+//                    } catch (JSONException e) {
+//                        // TODO Auto-generated catch block
+//                        e.printStackTrace();
+//                    }
+
+                    jsonObj = new JSONObject(content);
+                    if(jsonObj.has("error")) {
+                        JSONArray errorMessage = jsonObj.getJSONObject("error").getJSONArray("message");
+                        String message = String.valueOf((Object) errorMessage.get(0));
+                        StringUtil.showAlertDialog(getResources().getString(R.string.login_title_name), message, context);
+                        return;
+
+                    }else if(jsonObj.has("user")) {
                         userObj = jsonObj.getJSONObject("user");
                         user = new User(userObj);
-                    } catch (JSONException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
+                    }else {
+                        StringUtil.showAlertDialog(getResources().getString(R.string.login_title_name), getResources().getString(R.string.login_failed), context);
+                        return;
                     }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    StringUtil.showAlertDialog(getResources().getString(R.string.login_title_name), getResources().getString(R.string.login_failed), context);
+                    return;
+                }
 
-                    if(user != null) {
+
+                if(user != null) {
                         UserTable.getInstance().saveUser(user);
 //                        User ww = null;
 //                        ww = UserTable.getInstance().getUser(user.id);
