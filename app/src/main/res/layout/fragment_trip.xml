@@ -2,18 +2,21 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.swishlabs.intrepid_android.activity.TripFragment">
+             tools:context="com.swishlabs.intrepid_android.activity.TripFragment"
+    android:background="@drawable/bg_login">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tripName"
-        android:text="@string/hello_blank_fragment"
+        android:text="Trip Name"
         android:gravity="center"
-        android:layout_marginBottom="37dp"
+        android:layout_marginBottom="25dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="17sp"
+        android:textColor="#fff" />
 
     <ImageView
         android:layout_width="wrap_content"
