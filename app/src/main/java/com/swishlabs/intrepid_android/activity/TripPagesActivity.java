@@ -117,7 +117,7 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
 
-            return TripFragment.newInstance(trip.getId(), trip.getDestinationName());
+            return TripFragment.newInstance(trip.getId(), trip.getDestinationName(), trip.getGeneralImage());
         }
 
         @Override

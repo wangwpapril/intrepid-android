@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.swishlabs.intrepid_android.R;
@@ -28,15 +29,17 @@ public class TripFragment extends android.support.v4.app.Fragment {
     int mTripIndex;
     Database mDatabase;
     TextView mCountryName;
+    ImageView mCountryImage;
 
     private OnFragmentInteractionListener mListener;
 
     // TODO: Rename and change types and number of parameters
-    public static TripFragment newInstance(int id, String destinationName) {
+    public static TripFragment newInstance(int id, String destinationName, String imageURL) {
         TripFragment fragment = new TripFragment();
         Bundle args = new Bundle();
         args.putInt("id", id);
         args.putString("destinationName", destinationName);
+        args.putString("imageURL", imageURL);
         fragment.setArguments(args);
 
         return fragment;
@@ -59,16 +62,20 @@ public class TripFragment extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_trip, container, false);
         mTripIndex = getArguments().getInt("id");
         String destinationName = getArguments().getString("destinationName");
+        String imageURL = getArguments().getString("imageURL");
 //        mTrip = DatabaseManager.getTrip(mTripIndex, mDatabase);
         Log.d("TripFragment", "Loaded: "+destinationName);
 
         mCountryName = (TextView)view.findViewById(R.id.tripName);
-        getCountry(destinationName);
+        mCountryImage = (ImageView)view.findViewById(R.id.tripImage);
+
+        getCountry(destinationName, imageURL);
         return view;
     }
 
-    public void getCountry(String destinationName){
+    public void getCountry(String destinationName, String imageURL){
         mCountryName.setText(destinationName);
+        mCountryImage.setImageURI(Uri.parse(imageURL));
     }
 
     // TODO: Rename method, update argument and hook method into UI event

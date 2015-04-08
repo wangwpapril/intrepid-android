@@ -22,4 +22,8 @@ public class Trip {
     public int getId(){
         return id;
     }
+
+    public String getGeneralImage(){
+        return mGeneralImage;
+    }
 }

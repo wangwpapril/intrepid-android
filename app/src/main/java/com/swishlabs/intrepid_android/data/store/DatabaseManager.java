@@ -43,13 +43,13 @@ public class DatabaseManager {
 
     public static Trip getTrip(int id, Database database) {
         Cursor cursor = database.getDb().query(Database.TABLE_TRIPS, new String[]{Database.KEY_ID,
-                        Database.KEY_DESTINATION_COUNTRY, Database.KEY_COUNTRY_ID}, Database.KEY_ID + "=?",
+                        Database.KEY_DESTINATION_COUNTRY, Database.KEY_COUNTRY_ID, Database.KEY_GENERAL_IMAGE_URI}, Database.KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
         Trip trip = new Trip(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getString(2));
+                cursor.getString(1), cursor.getString(2), cursor.getString(3));
         // return contact
         return trip;
     }
