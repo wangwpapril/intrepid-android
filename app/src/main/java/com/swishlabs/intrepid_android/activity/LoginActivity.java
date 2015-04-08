@@ -152,7 +152,7 @@ public class LoginActivity extends BaseActivity {
 
                         MyApplication.setLoginStatus(true);
 
-                        Intent mIntent = new Intent(LoginActivity.this, DestinationsListActivity.class);
+                        Intent mIntent = new Intent(LoginActivity.this, TripPagesActivity.class);
                         startActivity(mIntent);
                         LoginActivity.this.finish();
                     } else {

@@ -119,11 +119,14 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
 
         @Override
         public Fragment getItem(int position) {
-            Trip trip = DatabaseManager.getTrip(position, mDatabase);
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
+            if (position == 0){
+                return TripFragment.newInstance(-1, "", "");
+            }else{
+                Trip trip = DatabaseManager.getTrip(position-1, mDatabase);
 
-            return TripFragment.newInstance(trip.getId(), trip.getDestinationName(), trip.getGeneralImage());
+                return TripFragment.newInstance(trip.getId(), trip.getDestinationName(), trip.getGeneralImage());
+            }
+
         }
 
         @Override
@@ -131,7 +134,7 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
 //            int tripCount = DatabaseManager.getTripCount(mDatabase);
 // number of pages to be able to swipe through
 
-            return mTripCount;
+            return mTripCount+1;
         }
 
         @Override
