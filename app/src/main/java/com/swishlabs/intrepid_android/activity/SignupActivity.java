@@ -25,8 +25,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.swishlabs.intrepid_android.R;
-import com.swishlabs.intrepid_android.data.api.callback.ControlerContentTask;
-import com.swishlabs.intrepid_android.data.api.callback.IControlerContentCallback;
+import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
+import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.Country;
 import com.swishlabs.intrepid_android.data.api.model.User;
 import com.swishlabs.intrepid_android.util.Enums;
@@ -73,7 +73,7 @@ public class SignupActivity extends BaseActivity {
 	
 	private void fetchCountries() {
 		
-		IControlerContentCallback icc = new IControlerContentCallback() {
+		IControllerContentCallback icc = new IControllerContentCallback() {
 			public void handleSuccess(String content) {
 				JSONObject countries = null;
 				try {
@@ -104,7 +104,7 @@ public class SignupActivity extends BaseActivity {
 				return;
 			}
 		};
-		ControlerContentTask cct = new ControlerContentTask(
+		ControllerContentTask cct = new ControllerContentTask(
 				"https://staging.intrepid247.com/v1/countries", icc,
 				Enums.ConnMethod.GET, false);
 
@@ -226,7 +226,7 @@ public class SignupActivity extends BaseActivity {
 
 	private void checkGroupNumber() {
 
-		IControlerContentCallback icc = new IControlerContentCallback() {
+		IControllerContentCallback icc = new IControllerContentCallback() {
 			public void handleSuccess(String content) {
 				JSONObject temp = null,company = null;
 				try {
@@ -251,7 +251,7 @@ public class SignupActivity extends BaseActivity {
                 return;
 			}
 		};
-		ControlerContentTask cct = new ControlerContentTask(
+		ControllerContentTask cct = new ControllerContentTask(
 				"https://staging.intrepid247.com/v1/companies/checkGroupNum", icc,
 				Enums.ConnMethod.POST, false);
 		
@@ -274,7 +274,7 @@ public class SignupActivity extends BaseActivity {
 
 	private void signUp() {
 		
-		IControlerContentCallback icc = new IControlerContentCallback() {
+		IControllerContentCallback icc = new IControllerContentCallback() {
 			public void handleSuccess(String content){
 
 				JSONObject jsonObj = null, userObj = null;
@@ -321,7 +321,7 @@ public class SignupActivity extends BaseActivity {
 			}
 		};
 		
-		ControlerContentTask cct = new ControlerContentTask(
+		ControllerContentTask cct = new ControllerContentTask(
 				"https://staging.intrepid247.com/v1/users", icc,
 				Enums.ConnMethod.POST,false);
 
@@ -356,7 +356,7 @@ public class SignupActivity extends BaseActivity {
 	
 	private void sendEmailWithActivationCode(){
 		
-		IControlerContentCallback icc = new IControlerContentCallback() {
+		IControllerContentCallback icc = new IControllerContentCallback() {
 			public void handleSuccess(String content){
 
 				JSONArray jsonObj = null;
@@ -402,7 +402,7 @@ public class SignupActivity extends BaseActivity {
 			}
 		};
 		
-		ControlerContentTask cct = new ControlerContentTask(
+		ControllerContentTask cct = new ControllerContentTask(
 				"https://mandrillapp.com/api/1.0/messages/send.json", icc,
 				Enums.ConnMethod.POST,false);
 

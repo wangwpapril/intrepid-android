@@ -17,8 +17,8 @@ import android.widget.TextView;
 
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
-import com.swishlabs.intrepid_android.data.api.callback.ControlerContentTask;
-import com.swishlabs.intrepid_android.data.api.callback.IControlerContentCallback;
+import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
+import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.User;
 import com.swishlabs.intrepid_android.data.store.beans.UserTable;
@@ -105,7 +105,7 @@ public class LoginActivity extends BaseActivity {
                 return;
             }
 
-            IControlerContentCallback icc = new IControlerContentCallback() {
+            IControllerContentCallback icc = new IControllerContentCallback() {
                 public void handleSuccess(String content) {
 
                     JSONObject jsonObj = null, userObj = null;
@@ -171,7 +171,7 @@ public class LoginActivity extends BaseActivity {
                 }
             };
 
-            ControlerContentTask cct = new ControlerContentTask(
+            ControllerContentTask cct = new ControllerContentTask(
                     Constants.BASE_URL + "users/login", icc,
                     Enums.ConnMethod.POST, false);
 

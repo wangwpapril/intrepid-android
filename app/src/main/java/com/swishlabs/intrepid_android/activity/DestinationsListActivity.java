@@ -12,8 +12,8 @@ import android.widget.ListView;
 
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.adapter.DestinationsListAdapter;
-import com.swishlabs.intrepid_android.data.api.callback.ControlerContentTask;
-import com.swishlabs.intrepid_android.data.api.callback.IControlerContentCallback;
+import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
+import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
@@ -58,7 +58,7 @@ public class DestinationsListActivity extends BaseActivity {
 
     private void getTripList(){
 
-        IControlerContentCallback icc = new IControlerContentCallback() {
+        IControllerContentCallback icc = new IControllerContentCallback() {
             public void handleSuccess(String content){
 
                 JSONObject des;
@@ -92,7 +92,7 @@ public class DestinationsListActivity extends BaseActivity {
         String token = null;
         token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
 
-        ControlerContentTask cct = new ControlerContentTask(
+        ControllerContentTask cct = new ControllerContentTask(
                 Constants.BASE_URL+"destinations?short_list=true&token=" + token, icc,
                 Enums.ConnMethod.GET,false);
         String ss = null;
@@ -128,7 +128,9 @@ public class DestinationsListActivity extends BaseActivity {
 
     public void LoadTripFromApi(final int destinationPosition){
         final String destinationId = mDestinationList.get(destinationPosition).getId();
-        IControlerContentCallback icc = new IControlerContentCallback() {
+
+        IControllerContentCallback icc = new IControllerContentCallback() {
+
             public void handleSuccess(String content){
 
                 JSONObject destination;
@@ -162,8 +164,7 @@ public class DestinationsListActivity extends BaseActivity {
 
         String token = null;
         token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
-
-        ControlerContentTask cct = new ControlerContentTask(
+        ControllerContentTask cct = new ControllerContentTask(
                 Constants.BASE_URL+"destinations/"+destinationId+"?token=" + token, icc,
                 Enums.ConnMethod.GET,false);
         String ss = null;

@@ -1,6 +1,6 @@
 package com.swishlabs.intrepid_android.data.api.callback;
 
-public interface IControlerContentCallback {
+public interface IControllerContentCallback {
 
 	public void handleSuccess(String content);
 
