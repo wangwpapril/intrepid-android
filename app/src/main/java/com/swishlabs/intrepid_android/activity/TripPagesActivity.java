@@ -23,6 +23,11 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
     public Database mDatabase;
     public int mTripCount;
     public TripPagesActivity mTripPagesActivity;
+    public static TripPagesActivity instance;
+
+    public static TripPagesActivity getInstance(){
+        return instance;
+    }
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -52,6 +57,7 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        instance=this;
         setContentView(R.layout.activity_trip_pages);
 
 

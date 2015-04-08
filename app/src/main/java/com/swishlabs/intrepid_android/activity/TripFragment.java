@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
+import com.swishlabs.intrepid_android.util.ImageLoader;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +31,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
     Database mDatabase;
     TextView mCountryName;
     ImageView mCountryImage;
+    protected ImageLoader imageLoader;
 
     private OnFragmentInteractionListener mListener;
 
@@ -37,6 +39,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
     public static TripFragment newInstance(int id, String destinationName, String imageURL) {
         TripFragment fragment = new TripFragment();
         Bundle args = new Bundle();
+
         args.putInt("id", id);
         args.putString("destinationName", destinationName);
         args.putString("imageURL", imageURL);
@@ -54,6 +57,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        imageLoader = new ImageLoader(TripPagesActivity.getInstance(), R.drawable.abc_item_background_holo_light);
     }
 
     @Override
@@ -75,7 +79,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
 
     public void getCountry(String destinationName, String imageURL){
         mCountryName.setText(destinationName);
-//        ImageLoader.DisplayImage(imageURL, this, mCountryImage);
+        imageLoader.DisplayImage(imageURL, TripPagesActivity.getInstance(), mCountryImage);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
