@@ -20,6 +20,7 @@ public class Database {
     public static final String TABLE_TRIPS = "trips";
     public static final String KEY_ID = "id";
     public static final String KEY_COUNTRY_ID = "countryId";
+    public static final String KEY_GENERAL_IMAGE_URI = "imageGeneral";
     public static final String KEY_DESTINATION_COUNTRY = "destinationCountry";
 
     private DatabaseOpenHelper dbOpenHelper;
@@ -37,7 +38,7 @@ public class Database {
         @Override
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
             String createTripsTable = "CREATE TABLE " + TABLE_TRIPS + "("
-                    + KEY_ID + " INTEGER PRIMARY KEY," + KEY_DESTINATION_COUNTRY + " TEXT,"
+                    + KEY_ID + " INTEGER PRIMARY KEY," + KEY_DESTINATION_COUNTRY + " TEXT," + KEY_GENERAL_IMAGE_URI + " TEXT,"
                     + KEY_COUNTRY_ID + " TEXT"+ ")";
             db = sqLiteDatabase;
             db.execSQL(createTripsTable);

@@ -7,10 +7,12 @@ public class Trip {
     public int id;
     public String mDestinationName;
     public String mCountryId;
+    public String mGeneralImage;
 
-    public Trip(int id, String destinationName, String destinationId){
+    public Trip(int id, String destinationName, String destinationId, String generalImage){
        this.mDestinationName = destinationName;
        this.mCountryId = destinationId;
+       this.mGeneralImage = generalImage;
     }
 
     public String getDestinationName(){
@@ -19,5 +21,9 @@ public class Trip {
 
     public int getId(){
         return id;
+    }
+
+    public String getGeneralImage(){
+        return mGeneralImage;
     }
 }
