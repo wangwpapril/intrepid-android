@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
@@ -57,7 +58,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        imageLoader = new ImageLoader(TripPagesActivity.getInstance(), R.drawable.abc_item_background_holo_light);
+        imageLoader = new ImageLoader(TripPagesActivity.getInstance(),  R.drawable.abc_item_background_holo_light);
     }
 
     @Override
@@ -79,7 +80,8 @@ public class TripFragment extends android.support.v4.app.Fragment {
 
     public void getCountry(String destinationName, String imageURL){
         mCountryName.setText(destinationName);
-        imageLoader.DisplayImage(imageURL, TripPagesActivity.getInstance(), mCountryImage);
+        Picasso.with(TripPagesActivity.getInstance()).load(imageURL).resize(1200,1200).into(mCountryImage);
+//        imageLoader.DisplayImage(imageURL, TripPagesActivity.getInstance(), mCountryImage);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -127,6 +127,7 @@ public class DestinationsListActivity extends BaseActivity {
 	}
 
     public void LoadTripFromApi(final int destinationPosition){
+        final String destinationId = mDestinationList.get(destinationPosition).getId();
         IControlerContentCallback icc = new IControlerContentCallback() {
             public void handleSuccess(String content){
 
@@ -135,9 +136,18 @@ public class DestinationsListActivity extends BaseActivity {
                     destination = new JSONObject(content).getJSONObject("destination");
 
                     JSONObject images = destination.getJSONObject("images");
-                    String general_image_url = images.getJSONObject("intro").getString("source_url");
-//                    String generalImageUri = SaveImage.saveImageLocally(general_image_url, "tripImage", DestinationsListActivity.this);
-                    CreateTrip(destinationPosition, general_image_url);
+                    final String general_image_url = images.getJSONObject("intro").getString("source_url");
+//                    Thread t = new Thread(new Runnable() {
+//                        public void run() {
+//                            Looper.prepare();
+//                            String generalImageUri = SaveImage.saveImageLocally(general_image_url, "tripImage"+destinationId, DestinationsListActivity.this);
+//                            CreateTrip(destinationPosition, generalImageUri);
+//                        }
+//                    });
+//
+//                    t.start();
+                    String encodedURL = general_image_url.replace(" ", "%20");
+                            CreateTrip(destinationPosition, encodedURL);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -152,7 +162,7 @@ public class DestinationsListActivity extends BaseActivity {
 
         String token = null;
         token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
-        String destinationId = mDestinationList.get(destinationPosition).getId();
+
         ControlerContentTask cct = new ControlerContentTask(
                 Constants.BASE_URL+"destinations/"+destinationId+"?token=" + token, icc,
                 Enums.ConnMethod.GET,false);
