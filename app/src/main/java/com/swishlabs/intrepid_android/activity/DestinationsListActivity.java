@@ -142,8 +142,6 @@ public class DestinationsListActivity extends BaseActivity {
 
             public void handleError(Exception e){
 
-                return;
-
             }
         };
 
