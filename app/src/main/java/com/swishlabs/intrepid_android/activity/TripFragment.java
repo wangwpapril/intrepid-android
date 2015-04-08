@@ -75,7 +75,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
 
     public void getCountry(String destinationName, String imageURL){
         mCountryName.setText(destinationName);
-        mCountryImage.setImageURI(Uri.parse(imageURL));
+//        ImageLoader.DisplayImage(imageURL, this, mCountryImage);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
