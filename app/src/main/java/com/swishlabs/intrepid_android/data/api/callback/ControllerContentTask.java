@@ -17,17 +17,17 @@ import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.Enums;
 
 
-public class ControlerContentTask extends
+public class ControllerContentTask extends
 		AsyncTask<String, Void, ResultHolder> {
 
-	private IControlerContentCallback icc;
+	private IControllerContentCallback icc;
 	private String url;
 	private Enums.ConnMethod connMethod;
 	private boolean isHideLoading;
 	private static int NORMAL_TIMEOUT = 6000;				
 
 
-	public ControlerContentTask(String url, IControlerContentCallback icc,
+	public ControllerContentTask(String url, IControllerContentCallback icc,
 			Enums.ConnMethod connMethod,boolean isHideLoading){
 		this.icc = icc;
 		this.url = url;

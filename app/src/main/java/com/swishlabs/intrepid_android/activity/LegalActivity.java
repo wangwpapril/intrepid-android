@@ -15,8 +15,8 @@ import android.widget.TextView;
 
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.adapter.DestinationsListAdapter;
-import com.swishlabs.intrepid_android.data.api.callback.ControlerContentTask;
-import com.swishlabs.intrepid_android.data.api.callback.IControlerContentCallback;
+import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
+import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 import com.swishlabs.intrepid_android.data.api.model.Image;
@@ -52,7 +52,7 @@ public class LegalActivity extends BaseActivity {
     }
 
     private void fetchLegal() {
-        IControlerContentCallback icc = new IControlerContentCallback() {
+        IControllerContentCallback icc = new IControllerContentCallback() {
             public void handleSuccess(String content){
 
                 JSONObject company;
@@ -75,7 +75,7 @@ public class LegalActivity extends BaseActivity {
         };
 
 
-        ControlerContentTask cct = new ControlerContentTask(
+        ControllerContentTask cct = new ControllerContentTask(
                 Constants.BASE_URL+"companies/52525252/legal", icc,
                 Enums.ConnMethod.GET,false);
         String ss = null;
