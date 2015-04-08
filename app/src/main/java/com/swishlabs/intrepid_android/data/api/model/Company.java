@@ -32,12 +32,15 @@ public class Company implements Serializable {
 	public String localeCode;
 	public String createdAt;
 	public String updatedAt;
-		
-	public Company(String name){
-		this.name = name;
-	}
-	
+
 	public Company(JSONObject obj) throws JSONException {
+
+        if(obj == null){
+            parent = new Parent(null);
+            apList = null;
+            return;
+        }
+
 		id = obj.getString("id");
 		name = obj.getString("name");
 		email = obj.getString("email");
@@ -69,7 +72,5 @@ public class Company implements Serializable {
 		}
 	}
 
-	
 
-	
 }

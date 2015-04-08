@@ -31,6 +31,10 @@ public class Parent implements Serializable {
 	public String countryId;
 	
 	public Parent(JSONObject obj) throws JSONException {
+
+        if(obj == null)
+            return;
+
 		id = obj.getString("id");
 		name = obj.getString("name");
 		email =  obj.getString("email");

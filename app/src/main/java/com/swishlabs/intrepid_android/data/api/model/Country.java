@@ -32,6 +32,10 @@ public class Country implements Serializable{
     public Time updatedAt;
     
     public Country (JSONObject obj) throws JSONException {
+
+        if(obj == null)
+            return;
+
     	name = obj.getString("name");
     	countryCode = obj.getString("country_code");
     	

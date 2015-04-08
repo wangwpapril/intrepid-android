@@ -27,7 +27,10 @@ public class imageVersion implements Serializable {
 	public String fileSize;
 		
 	public imageVersion(JSONObject obj) throws JSONException {
-		
+
+        if(obj == null) {
+            return;
+        }
 		pid = obj.getString("pid");
 		sourceUrl = obj.getString("source_url");
 		localeCode = obj.getString("locale_code");

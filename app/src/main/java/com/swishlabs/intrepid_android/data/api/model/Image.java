@@ -39,6 +39,13 @@ public class Image implements Serializable {
 	
 	public Image(JSONObject obj) throws JSONException {
 //		id = obj.getString("id");
+        if (obj == null) {
+            version1 = new imageVersion(null);
+            version2 = new imageVersion(null);
+            version3 = new imageVersion(null);
+            return;
+        }
+
 		pid = obj.getString("pid");
 		sourceUrl = obj.getString("source_url");
 		localeCode = obj.getString("locale_code");

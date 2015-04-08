@@ -58,6 +58,11 @@ public class User implements Serializable {
 	
 	
 	public User(JSONObject obj) throws JSONException {
+
+        if(obj == null){
+            company = new Company(null);
+            return;
+        }
 		id = obj.getString("id");
 		userName = obj.getString("username");
 		email = obj.getString("email");
@@ -83,8 +88,14 @@ public class User implements Serializable {
 		
 		
 		if (obj.has("company")) {
-			JSONObject cp = obj.getJSONObject("company");
-			company = new Company(cp);
+
+            Object tmp = obj.get("company");
+            if(tmp instanceof JSONObject) {
+                JSONObject cp = obj.getJSONObject("company");
+                company = new Company(cp);
+            }else {
+                company = new Company(null);
+            }
 		}
 		
 	}
