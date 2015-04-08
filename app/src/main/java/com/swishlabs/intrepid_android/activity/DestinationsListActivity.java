@@ -20,6 +20,7 @@ import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Enums;
+import com.swishlabs.intrepid_android.util.SaveImage;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 import com.swishlabs.intrepid_android.util.StringUtil;
 
@@ -120,21 +121,23 @@ public class DestinationsListActivity extends BaseActivity {
 					long arg3) {
                 Log.d("Trip list", "You hit destination:" + position);
                 LoadTripFromApi(position);
-                CreateTrip(position);
 
 			}
 		});
 
 	}
 
-    public void LoadTripFromApi(int destinationPosition){
+    public void LoadTripFromApi(final int destinationPosition){
         IControlerContentCallback icc = new IControlerContentCallback() {
             public void handleSuccess(String content){
 
                 JSONObject destination;
                 try {
                     destination = new JSONObject(content);
-                    destination.getClass();
+                    JSONArray images = destination.getJSONArray("images");
+                    String general_image_url = (String)images.get(0);
+                    String generalImageUri = SaveImage.saveImageLocally(general_image_url, "tripImage", DestinationsListActivity.this);
+                    CreateTrip(destinationPosition, generalImageUri);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -151,7 +154,7 @@ public class DestinationsListActivity extends BaseActivity {
         token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
         String destinationId = mDestinationList.get(destinationPosition).getId();
         ControlerContentTask cct = new ControlerContentTask(
-                Constants.BASE_URL+"destinations/"+destinationId+"/token=" + token, icc,
+                Constants.BASE_URL+"destinations/"+destinationId+"?token=" + token, icc,
                 Enums.ConnMethod.GET,false);
         String ss = null;
         cct.execute(ss);
@@ -161,7 +164,7 @@ public class DestinationsListActivity extends BaseActivity {
         return true;
     }
 
-    private void CreateTrip(int position){
+    private void CreateTrip(int position, String generalImageUri){
         Destination destination = mDestinationList.get(position);
 //        Trip trip = new Trip(destination.getCountry());
 
@@ -170,11 +173,11 @@ public class DestinationsListActivity extends BaseActivity {
         values.put(Database.KEY_ID, tripCount);
         values.put(Database.KEY_DESTINATION_COUNTRY, destination.getCountry());
         values.put(Database.KEY_COUNTRY_ID, destination.getId());
+        values.put(Database.KEY_GENERAL_IMAGE_URI, generalImageUri);
 
 
         // Inserting Row
         mDatabase.getDb().insert(Database.TABLE_TRIPS, null, values);
-        Log.d("Trip List", "You inserted some values into tthe TABLE :O");
 //        db.close(); // Closing database connection
 //        Trip trip = getTrip(0);
 //        Log.d("Trip List", "The first trip is to:"+trip.getDestinationName());
@@ -187,13 +190,13 @@ public class DestinationsListActivity extends BaseActivity {
 
     public Trip getTrip(int id) {
         Cursor cursor = mDatabase.getDb().query(Database.TABLE_TRIPS, new String[]{Database.KEY_ID,
-                        Database.KEY_DESTINATION_COUNTRY, Database.KEY_COUNTRY_ID}, Database.KEY_ID + "=?",
+                        Database.KEY_DESTINATION_COUNTRY, Database.KEY_COUNTRY_ID, Database.KEY_GENERAL_IMAGE_URI}, Database.KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
         Trip trip = new Trip(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getString(2));
+                cursor.getString(1), cursor.getString(2), cursor.getString(3));
         // return contact
         return trip;
     }

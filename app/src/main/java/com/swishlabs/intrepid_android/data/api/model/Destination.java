@@ -18,6 +18,8 @@ public class Destination implements Serializable {
 
 	public String type;
 
+    public String generalImage;
+
 	public Image imageCurrency;
 	
 	public Image imageFlag;
@@ -65,6 +67,10 @@ public class Destination implements Serializable {
 
     public String getId(){
         return id;
+    }
+
+    public String getGeneralImage(){
+        return generalImage;
     }
 
 }
