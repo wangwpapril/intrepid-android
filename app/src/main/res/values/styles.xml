@@ -6,7 +6,6 @@
     -->
 
     <!-- Application theme. -->
-    
     <style name = "ListViewStyle">        
         <item name="android:divider">@drawable/divder</item>
         <item name="android:dividerHeight">@dimen/divier_height</item>
@@ -15,9 +14,10 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>
-
+        <item name="background">@drawable/nav_bg</item>
 
     </style>
+
     <style name="ActionBar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">#fff</item>
         <item name="android:textSize">18sp</item>
