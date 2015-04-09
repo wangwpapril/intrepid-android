@@ -14,6 +14,7 @@ import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 
+import java.util.List;
 import java.util.Locale;
 
 public class TripPagesActivity extends ActionBarActivity implements TripFragment.OnFragmentInteractionListener
@@ -24,6 +25,7 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
     public int mTripCount;
     public TripPagesActivity mTripPagesActivity;
     public static TripPagesActivity instance;
+    public List<Trip> mTripList;
 
     public static TripPagesActivity getInstance(){
         return instance;
@@ -66,9 +68,10 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
 
         mTripPagesActivity = this;
         loadDatabase();
-        mTripCount = DatabaseManager.getTripCount(mDatabase);
+//        mTripCount = DatabaseManager.getTripCount(mDatabase);
 
-
+        mTripList = DatabaseManager.getTripArray(mDatabase);
+        mTripCount = mTripList.size();
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mSectionsPagerAdapter = new SectionsPagerAdapter(mViewPager);
@@ -121,7 +124,8 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
             if (position == 0){
                 return TripFragment.newInstance(-1, "", "");
             }else{
-                Trip trip = DatabaseManager.getTrip(position-1, mDatabase);
+//                Trip trip = DatabaseManager.getTrip(position - 1, mDatabase);
+                Trip trip = mTripList.get(position -1);
 
                 return TripFragment.newInstance(trip.getId(), trip.getDestinationName(), trip.getGeneralImage());
             }

@@ -12,6 +12,7 @@ public class Trip {
        this.mDestinationName = destinationName;
        this.mCountryId = destinationId;
        this.mGeneralImage = generalImage;
+       this.id = id;
     }
 
     public String getDestinationName(){

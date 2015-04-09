@@ -3,9 +3,7 @@ package com.swishlabs.intrepid_android.activity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
-
 import android.content.DialogInterface;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,6 +22,7 @@ import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
+import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.ImageLoader;
 
 /**
@@ -150,7 +149,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             TranslateAnimation anim = new TranslateAnimation(0, 0, 0, -2000);
-                            anim.setDuration(1300);
+                            anim.setDuration(1000);
                             anim.setAnimationListener(new Animation.AnimationListener() {
                                 @Override
                                 public void onAnimationStart(Animation animation) {
@@ -160,7 +159,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
                                 @Override
                                 public void onAnimationEnd(Animation animation) {
                                    Database db = TripPagesActivity.getInstance().getDatabase();
-//                                   DatabaseManager.deleteTrip(index, db);
+                                   DatabaseManager.deleteTrip(index, db);
                                     Intent mIntent = new Intent(TripPagesActivity.getInstance(),TripPagesActivity.class);
                                     startActivity(mIntent);
                                     TripPagesActivity.getInstance().finish();
@@ -172,6 +171,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
 
                                 }
                             });
+                            anim.setFillAfter(true);
                             view.startAnimation(anim);
                         }
 

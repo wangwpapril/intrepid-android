@@ -21,7 +21,6 @@ import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
-import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 import com.swishlabs.intrepid_android.util.StringUtil;
@@ -200,9 +199,8 @@ public class DestinationsListActivity extends BaseActivity {
         Destination destination = mDestinationList.get(position);
 //        Trip trip = new Trip(destination.getCountry());
 
-        int tripCount = DatabaseManager.getTripCount(mDatabase);
+
         ContentValues values = new ContentValues();
-        values.put(Database.KEY_ID, tripCount);
         values.put(Database.KEY_DESTINATION_COUNTRY, destination.getCountry());
         values.put(Database.KEY_COUNTRY_ID, destination.getId());
         values.put(Database.KEY_GENERAL_IMAGE_URI, generalImageUri);

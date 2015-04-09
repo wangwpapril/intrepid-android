@@ -31,7 +31,7 @@ public class Database {
         @Override
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
             String createTripsTable = "CREATE TABLE " + TABLE_TRIPS + "("
-                    + KEY_ID + " INTEGER PRIMARY KEY," + KEY_DESTINATION_COUNTRY + " TEXT," + KEY_GENERAL_IMAGE_URI + " TEXT,"
+                    + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_DESTINATION_COUNTRY + " TEXT," + KEY_GENERAL_IMAGE_URI + " TEXT,"
                     + KEY_COUNTRY_ID + " TEXT"+ ")";
             db = sqLiteDatabase;
             db.execSQL(createTripsTable);
