@@ -7,6 +7,7 @@ import android.database.Cursor;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,11 +48,30 @@ public class DatabaseManager {
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
-
         Trip trip = new Trip(Integer.parseInt(cursor.getString(0)),
                 cursor.getString(1), cursor.getString(2), cursor.getString(3));
         // return contact
         return trip;
+    }
+
+    public static ArrayList<Trip> getTripArray(Database database){
+        ArrayList<Trip> tripList= new ArrayList<>();
+        Cursor  cursor = database.getDb().rawQuery("select * from " + Database.TABLE_TRIPS, null);
+
+        if (cursor .moveToFirst()) {
+
+            while (cursor.isAfterLast() == false) {
+//                (int id, String destinationName, String destinationId, String generalImage)
+                String string0 = cursor.getString(0);
+//                String string1 = cursor.getString(1);
+//                String string2 = cursor.getString(2);
+//                String string3 = cursor.getString(3);
+                Trip trip = new Trip(Integer.valueOf(string0),cursor.getString(1), cursor.getString(3), cursor.getString(2));
+                tripList.add(trip);
+                cursor.moveToNext();
+            }
+        }
+        return tripList;
     }
 
     public static void deleteTrip(int id, Database database){
