@@ -4,22 +4,6 @@
     android:layout_height="fill_parent"
     android:background="#333f48" >
 
-    <FrameLayout
-        android:id="@+id/navi_go_up"
-        android:layout_width="63dip"
-        android:layout_height="fill_parent"
-        android:layout_centerVertical="true" >
-
-        <ImageView
-            android:id="@+id/title_iv_back"
-            android:layout_width="63dip"
-            android:layout_height="fill_parent"
-            android:layout_gravity="left|center_vertical"
-            android:scaleType="center"
-            android:src="@drawable/icon_titlebar_return"
-            android:visibility="gone" />
-    </FrameLayout>
-
     <RelativeLayout
         android:id="@+id/ic_action_overflow"
         android:layout_width="65dip"
