@@ -1,6 +1,5 @@
 package com.swishlabs.intrepid_android.data.store;
 
-
 import com.swishlabs.intrepid_android.data.ServiceManager;
 
 public abstract class Bean {

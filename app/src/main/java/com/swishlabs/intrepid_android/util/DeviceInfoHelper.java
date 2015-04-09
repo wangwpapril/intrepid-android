@@ -17,7 +17,6 @@ import android.view.WindowManager;
 
 import com.swishlabs.intrepid_android.MyApplication;
 
-
 public class DeviceInfoHelper {
 
 	private TelephonyManager mTelephonyManager;
@@ -30,11 +29,9 @@ public class DeviceInfoHelper {
 		this.mContext = MyApplication.getInstance();
 	}
 
-	
 	public String getPhoneNumberString(){
 		return mTelephonyManager.getLine1Number()==null?"":mTelephonyManager.getLine1Number();
 	}
-	
 
 	public String getDeviceId(){
 	 
@@ -48,7 +45,6 @@ public class DeviceInfoHelper {
 			return ANDROID_DEFAULT_DEVICE_ID;
 		}		
 	}
-	
 
 	public String translateDeviceId(){
 		String deviceId=getDeviceId();
@@ -59,11 +55,9 @@ public class DeviceInfoHelper {
 		
 	}
 
-	
 	public String getDeviceSoftwareVersion(){
 		return mTelephonyManager.getDeviceSoftwareVersion();
 	}
-	
 
 	public String getDisplayMetrics(){
 		DisplayMetrics dm = new DisplayMetrics();
@@ -72,22 +66,18 @@ public class DeviceInfoHelper {
 		
 		return dm.heightPixels + "x" + dm.widthPixels;   
 	}
-	
 
 	public String getDeviceModel(){
 		return  android.os.Build.MODEL;
 	}
-	
 
 	public static String getDeviceVersionSDK(){
 		return  android.os.Build.VERSION.SDK;
 	} 
-	
-	
+
 	public static String getDeviceVersionRelease(){
 		return  android.os.Build.VERSION.RELEASE;
 	} 	
-	
 
 	public static String[] getAppVersionName(Context context) {     
 	   String version[] = new String[2];
@@ -131,8 +121,7 @@ public class DeviceInfoHelper {
 			return Enums.NetStatus.Disable;
 		}
 	}
-	
-	
+
     public static long getAvailableInternalMemorySize() {
         File path = Environment.getDataDirectory();
         StatFs stat = new StatFs(path.getPath());
@@ -141,7 +130,6 @@ public class DeviceInfoHelper {
         return availableBlocks * blockSize;
     }
 
-
     public static long getTotalInternalMemorySize() {
         File path = Environment.getDataDirectory();
         StatFs stat = new StatFs(path.getPath());
@@ -149,7 +137,6 @@ public class DeviceInfoHelper {
         long totalBlocks = stat.getBlockCount();
         return totalBlocks * blockSize;
     }
-
 
     public static long getAvailableExternalMemorySize() {
         if (externalMemoryAvailable()) {
@@ -163,7 +150,6 @@ public class DeviceInfoHelper {
         }
     }
 
-
     public static long getTotalExternalMemorySize() {
         if (externalMemoryAvailable()) {
             File path = Environment.getExternalStorageDirectory();
@@ -175,10 +161,8 @@ public class DeviceInfoHelper {
             return ERROR;
         }
     }
-    
 
     public static boolean externalMemoryAvailable() {
         return android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
     }
-
 }

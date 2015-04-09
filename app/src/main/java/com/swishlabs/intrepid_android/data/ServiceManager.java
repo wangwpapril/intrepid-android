@@ -1,6 +1,5 @@
 package com.swishlabs.intrepid_android.data;
 
-
 import android.content.Context;
 
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;

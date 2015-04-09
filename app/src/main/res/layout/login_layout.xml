@@ -21,49 +21,49 @@
 
     <TextView
         android:id="@+id/travel_smart"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
         android:paddingTop="0dip"
-            android:gravity="center_horizontal"
-            android:text="TRAVEL SMART"
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:gravity="center_horizontal"
+        android:text="TRAVEL SMART"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <RelativeLayout
-                android:id="@+id/inputLayout"
-                android:layout_width="240dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dip"
+        android:id="@+id/inputLayout"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dip"
         android:orientation="vertical"
-                android:gravity="center_horizontal"
+        android:gravity="center_horizontal"
         android:layout_below="@+id/travel_smart"
         android:layout_centerHorizontal="true"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp">
 
 
-                <EditText
-                    android:id="@+id/signinEmailEditText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:ems="10"
-                    android:gravity="left"
-                    android:hint="EMAIL"
-                    android:textColorHint="@color/white"
-                    android:textColor="@color/white"
-                    android:textSize="17sp"
-                    android:background="#00000000"
-                    android:inputType="textEmailAddress"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:padding="10dp">
+        <EditText
+            android:id="@+id/signinEmailEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:gravity="left"
+            android:hint="EMAIL"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:background="#00000000"
+            android:inputType="textEmailAddress"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:padding="10dp">
 
-                </EditText>
+        </EditText>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="2px"
@@ -78,18 +78,18 @@
 
 
         <EditText
-                    android:id="@+id/signinPasswordEditText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+            android:id="@+id/signinPasswordEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:ems="10"
-                    android:gravity="left"
-                    android:hint="PASSWORD"
-                    android:textColorHint="@color/white"
-                    android:textColor="@color/white"
-                    android:textSize="17sp"
-                    android:background="#00000000"
-                    android:inputType="textPassword"
+            android:gravity="left"
+            android:hint="PASSWORD"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:background="#00000000"
+            android:inputType="textPassword"
             android:layout_alignParentLeft="false"
             android:layout_marginLeft="20dp"
             android:layout_alignParentTop="false"
@@ -98,7 +98,7 @@
             android:layout_marginRight="20dp"
             android:padding="10dp">
 
-                </EditText>
+        </EditText>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="2px"
@@ -114,30 +114,30 @@
     </RelativeLayout>
 
     <TextView
-            android:id="@+id/sign_up"
-            android:layout_marginTop="15dip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="0dp"
-                 android:text="Sign Up"
-            android:textColor="#ececec"
-            android:textSize="18sp"
+        android:id="@+id/sign_up"
+        android:layout_marginTop="15dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="0dp"
+        android:text="Sign Up"
+        android:textColor="#ececec"
+        android:textSize="18sp"
         android:gravity="center_horizontal"
-                 android:textAlignment="center"
-                 android:layout_gravity="center_horizontal"
-                 android:clickable="true"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
+        android:clickable="true"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/butSignIn"
         android:linksClickable="false"
         android:padding="10dp" />
 
     <TextView
-            android:id="@+id/learnMore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="Learn More"
-            android:textSize="16sp"
+        android:id="@+id/learnMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="Learn More"
+        android:textSize="16sp"
         android:textColor="@color/white"
         android:layout_alignParentEnd="true"
         android:layout_alignBottom="@+id/termsofuse"
@@ -145,12 +145,12 @@
         android:padding="10dp" />
 
     <TextView
-            android:id="@+id/termsofuse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="Terms of Use"
-            android:textSize="16sp"
+        android:id="@+id/termsofuse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="Terms of Use"
+        android:textSize="16sp"
         android:textColor="@color/white"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
@@ -162,18 +162,18 @@
         android:layout_marginLeft="10dp" />
 
     <Button
-                android:id="@+id/butSignIn"
+        android:id="@+id/butSignIn"
         android:layout_gravity="center"
-                android:text="LOG IN"
-                android:gravity="center"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/login_btn"
-                android:longClickable="false"
-                android:clickable="true"
-                android:adjustViewBounds="true"
+        android:text="LOG IN"
+        android:gravity="center"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_btn"
+        android:longClickable="false"
+        android:clickable="true"
+        android:adjustViewBounds="true"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:layout_below="@+id/inputLayout"

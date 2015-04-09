@@ -94,8 +94,6 @@ public class Enums {
 				this.svalue = value;
 		}
 	}
-	
-
 
 	public enum NetStatus
 	{
@@ -113,6 +111,4 @@ public class Enums {
 				this.svalue = value;
 		}
 	}
-	
-	
 }

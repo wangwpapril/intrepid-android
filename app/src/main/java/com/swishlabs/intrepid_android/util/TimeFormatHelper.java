@@ -135,5 +135,4 @@ public class TimeFormatHelper {
 			return new Date().getTime();
 		}
 	}
-	
 }

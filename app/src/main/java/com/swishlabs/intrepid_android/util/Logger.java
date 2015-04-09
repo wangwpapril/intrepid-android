@@ -97,5 +97,4 @@ public class Logger {
 			file = null;
 		}
 	}
-
 }

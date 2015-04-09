@@ -1,6 +1,5 @@
 package com.swishlabs.intrepid_android.data.store;
 
-
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -152,5 +151,4 @@ public class Database {
         else
             return 0;
     }
-
 }

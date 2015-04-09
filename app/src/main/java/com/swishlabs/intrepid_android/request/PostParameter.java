@@ -1,11 +1,8 @@
 package com.swishlabs.intrepid_android.request;
 
-
 public class PostParameter {
-
 	private String name;
 	private Object object;
-	
 	public PostParameter(String name,Object object){
 		this.name=name;
 		this.object=object;

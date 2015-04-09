@@ -1,7 +1,5 @@
 package com.swishlabs.intrepid_android.util;
 
-
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;

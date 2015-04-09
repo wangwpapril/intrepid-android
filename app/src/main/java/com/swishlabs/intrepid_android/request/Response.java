@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.util.zip.GZIPInputStream;
 
-
 public class Response {
 
 	private int statusCode;
@@ -15,11 +14,8 @@ public class Response {
 	private HttpURLConnection con;
 	private String responseAsString=null;
 	private boolean streamConsumed=false;
-	
 	public Response(){
-		
 	}
-	
 	public Response(HttpURLConnection connection) throws Exception{
 		this.con=connection;
 		try{
@@ -80,6 +76,5 @@ public class Response {
 	public int getStatusCode() {
 		return statusCode;
 	}
-	
 
 }

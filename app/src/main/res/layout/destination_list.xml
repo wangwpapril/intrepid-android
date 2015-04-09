@@ -20,8 +20,8 @@
         android:textColor="#333f48"
         android:textColorHint="#333f48"
         android:textCursorDrawable="@null"
- 	 />
-    
+        />
+
     <ListView
         android:id="@+id/trip_list"
         android:layout_width="fill_parent"

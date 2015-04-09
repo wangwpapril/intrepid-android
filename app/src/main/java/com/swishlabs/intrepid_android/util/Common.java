@@ -29,7 +29,6 @@ public class Common {
 		}
 	}
 
-
 	public static void showLoading() {
 		if (dialogLoading != null)
 			return;

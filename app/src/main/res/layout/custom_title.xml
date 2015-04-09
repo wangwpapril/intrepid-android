@@ -41,9 +41,9 @@
         android:text="aaa"
         android:textColor="@color/white"
         android:textSize="@dimen/custom_title_text_size" />
-    
-    
-    <ImageView 
+
+
+    <ImageView
         android:visibility="gone"
         android:id="@+id/title_name_iv"
         android:layout_width="wrap_content"
