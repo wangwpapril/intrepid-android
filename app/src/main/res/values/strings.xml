@@ -1,30 +1,21 @@
 <resources>
-
     <string name="app_name">Travel_Smart</string>
-
     <string name="network_wifi_connected">Wi-Fi is available</string>
     <string name="network_mobile_connected">The network is available</string>
     <string name="network_disconnected">The network is unreachable.</string>
     <string name="login_email_input_error">The email was not valid</string>
     <string name="login_password_null">The password field cannot be left blank</string>
     <string name="login_title_name">Log In</string>
-
     <string name="confirm_button">Confirm</string>
     <string name="cancel_button">Cancel</string>
     <string name="agree_button">Agree</string>
     <string name="disagree_button">disagree</string>
     <string name="title_activity_trip_pages">Trips</string>
-
-
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
-
     <string name="hello_world">Hello world!</string>
-
     <string name="action_settings">Settings</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="email_format_error">The email format you entered is invalid</string>
     <string name="login_failed">The login credentials you entered are invalid.</string>
@@ -33,7 +24,5 @@
     <string name="ok_button">OK</string>
     <string name="username_length_error">Username must be at least 3 characters.</string>
     <string name="password_length_error">Password must be at least 7 characters.</string>
-    <string name="title_activity_legal">LegalActivity</string>
-
-
+    <string name="title_activity_legal">Legal</string>
 </resources>
