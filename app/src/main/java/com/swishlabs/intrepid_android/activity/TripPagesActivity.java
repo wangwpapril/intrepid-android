@@ -15,7 +15,6 @@ import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 
 import java.util.List;
-import java.util.Locale;
 
 public class TripPagesActivity extends ActionBarActivity implements TripFragment.OnFragmentInteractionListener
 {
@@ -31,14 +30,6 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         return instance;
     }
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
     SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**
@@ -62,14 +53,8 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         instance=this;
         setContentView(R.layout.activity_trip_pages);
 
-
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-
         mTripPagesActivity = this;
         loadDatabase();
-//        mTripCount = DatabaseManager.getTripCount(mDatabase);
-
         mTripList = DatabaseManager.getTripArray(mDatabase);
         mTripCount = mTripList.size();
 
@@ -87,9 +72,7 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -138,19 +121,6 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
             return mTripCount+1;
         }
 
-        @Override
-        public CharSequence getPageTitle(int position) {
-            Locale l = Locale.getDefault();
-            switch (position) {
-                case 0:
-                    return getString(R.string.title_section1).toUpperCase(l);
-                case 1:
-                    return getString(R.string.title_section2).toUpperCase(l);
-                case 2:
-                    return getString(R.string.title_section3).toUpperCase(l);
-            }
-            return null;
-        }
     }
 
 }
