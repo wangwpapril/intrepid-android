@@ -160,9 +160,6 @@ public class SignupActivity extends BaseActivity {
 	
 	@Override
 	protected void initTitle() {
-		tvTitleName.setText(getResources().getString(R.string.signup_title_name));
-		ivTitleBack.setVisibility(View.VISIBLE);
-        ivTitleBack.setOnClickListener(this);
 	}
 
 	@Override

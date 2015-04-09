@@ -4,10 +4,13 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.swishlabs.intrepid_android.R;
@@ -29,6 +32,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 
 public class DestinationsListActivity extends BaseActivity {
@@ -37,7 +41,7 @@ public class DestinationsListActivity extends BaseActivity {
 	private ListView listView;
 	private List<Destination> mDestinationList;
 	private DestinationsListAdapter mDestinationsListAdapter;
-
+    public static EditText mEditTextSearch;
 
 
 	@Override
@@ -124,7 +128,27 @@ public class DestinationsListActivity extends BaseActivity {
 			}
 		});
 
-	}
+        mEditTextSearch = (EditText) findViewById(R.id.search_ed);
+        mEditTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String text = mEditTextSearch.getText().toString().toLowerCase(Locale.getDefault());
+                mDestinationsListAdapter.getFilter(context).filter(text);
+
+            }
+        });
+
+    }
 
     public void LoadTripFromApi(final int destinationPosition){
         final String destinationId = mDestinationList.get(destinationPosition).getId();

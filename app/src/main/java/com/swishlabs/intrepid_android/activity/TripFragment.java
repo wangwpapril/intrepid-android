@@ -3,7 +3,9 @@ package com.swishlabs.intrepid_android.activity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
+
 import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -76,13 +78,22 @@ public class TripFragment extends android.support.v4.app.Fragment {
         String destinationName = getArguments().getString("destinationName");
         String imageURL = getArguments().getString("imageURL");
 //        mTrip = DatabaseManager.getTrip(mTripIndex, mDatabase);
-        Log.d("TripFragment", "Loaded: "+destinationName);
 
-        mCountryName = (TextView)view.findViewById(R.id.tripName);
-        mCountryImage = (ImageView)view.findViewById(R.id.tripImage);
-
-        getCountry(destinationName, imageURL);
-        setupSwipe(view, mCountryImage, mTripIndex);
+        mCountryImage = (ImageView) view.findViewById(R.id.tripImage);
+        mCountryName = (TextView) view.findViewById(R.id.tripName);
+        if (mTripIndex == -1) {
+            mCountryImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent mIntent = new Intent(TripPagesActivity.getInstance(), DestinationsListActivity.class);
+                    startActivity(mIntent);
+                }
+            });
+        }else{
+            Log.d("TripFragment", "Loaded: " + destinationName);
+            getCountry(destinationName, imageURL);
+            setupSwipe(view, mCountryImage, mTripIndex);
+        }
         return view;
     }
 
