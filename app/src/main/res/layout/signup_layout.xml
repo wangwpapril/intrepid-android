@@ -7,15 +7,15 @@
 
 
     <RelativeLayout
-                android:id="@+id/inputLayout"
-                android:layout_width="240dp"
-                android:layout_height="wrap_content"
+        android:id="@+id/inputLayout"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
         android:paddingTop="10dip"
-                android:orientation="vertical"
-                android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
         android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp">
 
 
@@ -262,7 +262,7 @@
             android:layout_marginRight="20dp"
             android:textSize="17sp" />
 
-       </RelativeLayout>
+    </RelativeLayout>
 
     <Button
         android:id="@+id/butSignUp"

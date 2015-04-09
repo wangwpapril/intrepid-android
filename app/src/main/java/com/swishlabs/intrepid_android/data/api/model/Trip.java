@@ -8,7 +8,6 @@ public class Trip {
     public String mDestinationName;
     public String mCountryId;
     public String mGeneralImage;
-
     public Trip(int id, String destinationName, String destinationId, String generalImage){
        this.mDestinationName = destinationName;
        this.mCountryId = destinationId;
@@ -19,11 +18,9 @@ public class Trip {
     public String getDestinationName(){
         return mDestinationName;
     }
-
     public int getId(){
         return id;
     }
-
     public String getGeneralImage(){
         return mGeneralImage;
     }

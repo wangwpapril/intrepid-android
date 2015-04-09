@@ -42,7 +42,6 @@ public class DestinationsListActivity extends BaseActivity {
 	private DestinationsListAdapter mDestinationsListAdapter;
     public static EditText mEditTextSearch;
 
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -102,8 +101,6 @@ public class DestinationsListActivity extends BaseActivity {
         cct.execute(ss);
 
     }
-
-	
 
 	@Override
 	protected void onResume() {
@@ -238,20 +235,10 @@ public class DestinationsListActivity extends BaseActivity {
 
 	@Override
 	protected void initTitle(){
-//		ivTitleBack.setVisibility(View.VISIBLE);
-//		ivTitleBack.setOnClickListener(this);
-		tvTitleName.setText("Trips");
-//		ivTitleRight.setVisibility(View.VISIBLE);
-//		ivTitleBack.setImageResource(R.drawable.title_left_search);
 	}
 
 	@Override
 	public void onClick(View v){
-		if(v == ivTitleBack){
-			finish();
-		}else if(v == ivTitleRight){
-			
-		}
 	}
 
 

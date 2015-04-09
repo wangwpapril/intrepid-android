@@ -6,18 +6,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AssistanceProvider implements Serializable {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -6491498174329215221L;
 
+	private static final long serialVersionUID = -6491498174329215221L;
 	public String id;
-	
 	public String name;
-	
 	public String phone;
-	
 	public AssistanceProvider(JSONObject obj) throws JSONException {
         if(obj == null)
             return;
@@ -26,6 +19,4 @@ public class AssistanceProvider implements Serializable {
 		name = obj.getString("name");
 		phone =  obj.getString("phone");
 	}
-
-	
 }

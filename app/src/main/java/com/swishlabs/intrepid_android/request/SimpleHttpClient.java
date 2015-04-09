@@ -14,8 +14,6 @@ import java.util.List;
 
 import org.apache.http.conn.ConnectTimeoutException;
 
-
-
 public class SimpleHttpClient {
 		
 	private static final int OK = 200;// OK: Success!
@@ -29,9 +27,7 @@ public class SimpleHttpClient {
 	private static final int BAD_GATEWAY = 502;
 	private static final int SERVICE_UNAVAILABLE = 503;
 	private static final int NETWORK_DISABLED=601;
-
 	private static int retryCount = 1;
-
 	
 	public static String doPost(PostParameter[] postParams,String connectionUrl,int connectTimeout) throws Exception{
 		Enums.NetStatus netStatus = MyApplication.getNetStatus();
@@ -190,7 +186,6 @@ public class SimpleHttpClient {
 
 		return response.asString();
 	}
-
 
 	private static String encodeParameters(PostParameter[] postParams) throws Exception {
 		StringBuffer buffer = new StringBuffer();

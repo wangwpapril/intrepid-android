@@ -1,6 +1,5 @@
 package com.swishlabs.intrepid_android.data.store;
 
-
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -12,29 +11,23 @@ import com.swishlabs.intrepid_android.util.StringUtil;
 
 import java.util.ArrayList;
 
-
 public class Database {
     private String name;
 
-    //trips contants
+    //trips constants
     public static final String TABLE_TRIPS = "trips";
     public static final String KEY_ID = "id";
     public static final String KEY_COUNTRY_ID = "countryId";
     public static final String KEY_GENERAL_IMAGE_URI = "imageGeneral";
     public static final String KEY_DESTINATION_COUNTRY = "destinationCountry";
-
     private DatabaseOpenHelper dbOpenHelper;
     private SQLiteDatabase db;
-
-
     private class DatabaseOpenHelper extends SQLiteOpenHelper {
         Context mContext;
-
         DatabaseOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory cursorFactory, int version) {
             super(context, name, cursorFactory, version);
             mContext = context;
         }
-
         @Override
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
             String createTripsTable = "CREATE TABLE " + TABLE_TRIPS + "("
@@ -57,39 +50,30 @@ public class Database {
                             tables.add(cursor.getString(0));
                         }
                     } catch (Exception e) {
- //                       Logg.e(e);
                     } finally {
                         cursor.close();
                     }
                 }
-
                 if (null != tables && tables.size() > 0) {
                     for (String table : tables) {
                         sql = "DROP TABLE IF EXISTS " + table;
                         sqLiteDatabase.execSQL(sql);
                     }
-
                 }
-
-
             }
         }
     }
-
     public Database(String name) {
         this(MyApplication.getInstance(), name);
     }
-
     public Database(Context context, String name) {
         dbOpenHelper = new DatabaseOpenHelper(context, name, null, MyApplication.getInstance().getVersionCode());
         db = dbOpenHelper.getWritableDatabase();
         this.name = name;
     }
-
     public SQLiteDatabase getDb() {
         return db;
     }
-
     public synchronized boolean execSql(String sql) {
         boolean ret = false;
 
@@ -102,7 +86,6 @@ public class Database {
 
         return ret;
     }
-
     public synchronized boolean execSql(String sql, Object... args) {
         boolean ret = false;
 
@@ -117,11 +100,9 @@ public class Database {
 
         return ret;
     }
-
     public synchronized Object[][] query(String sql) {
         return query(sql, new String[]{});
     }
-
     public synchronized Object[][] query(String sql, String[] args) {
         Object[][] ret = null;
 
@@ -149,7 +130,6 @@ public class Database {
 
         return ret;
     }
-
     public Object getSingleValue(String sql, String... args) {
         Object[][] qs = query(sql, args);
         Object ret = null;
@@ -157,7 +137,6 @@ public class Database {
             ret = qs[0][0];
         return ret;
     }
-
     public String getSingleString(String sql, String... args) {
         Object q = getSingleValue(sql, args);
         if (q != null)
@@ -165,7 +144,6 @@ public class Database {
         else
             return "";
     }
-
     public long count(String tableName) {
         Object q = getSingleValue(StringUtil.simpleFormat("select count(1) from %s;", tableName));
         if (q != null)
@@ -173,5 +151,4 @@ public class Database {
         else
             return 0;
     }
-
 }

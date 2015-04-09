@@ -42,7 +42,7 @@
             android:layout_alignTop="@+id/title"
             android:layout_marginRight="25dp" />
 
-        </RelativeLayout>
+    </RelativeLayout>
 
 
     <ScrollView
@@ -61,6 +61,6 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="15sp" />
-        </ScrollView>
+    </ScrollView>
 
 </RelativeLayout>

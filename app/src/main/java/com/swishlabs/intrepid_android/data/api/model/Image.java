@@ -9,34 +9,18 @@ import org.json.JSONObject;
 
 public class Image implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4382929655913164547L;
-	
 	public String id;
-
 	public String pid;
-
 	public String sourceUrl;
-
 	public String localeCode;
-	
 	public String type;
-	
 	public String width;
-	
 	public String height;
-	
 	public String fileSize;
-	
 	public imageVersion version1;
-	
 	public imageVersion version2;
-	
 	public imageVersion version3;
-	
-	
 	public Image(JSONObject obj) throws JSONException {
 //		id = obj.getString("id");
         if (obj == null) {
@@ -54,7 +38,6 @@ public class Image implements Serializable {
 		height = obj.getString("height");
 		fileSize = obj.getString("file_size");
 		
-		
 		if (obj.has("versions")) {
 			
 			JSONObject ve = obj.getJSONObject("versions");
@@ -70,7 +53,5 @@ public class Image implements Serializable {
 				version3 = new imageVersion (ve.getJSONObject("3x"));
 			}
 		}
-
 	}
-		
 }

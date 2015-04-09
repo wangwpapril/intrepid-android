@@ -7,21 +7,12 @@ import java.io.Serializable;
 
 public class Destination implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8309984110697352775L;
-	
 	public String id;
-
 	public String name;
-
 	public String type;
-
     public String generalImage;
-
 	public Image imageCurrency;
-	
 	public Image imageFlag;
 		
 	public Destination(JSONObject obj) throws JSONException {

@@ -7,9 +7,7 @@ import java.security.NoSuchAlgorithmException;
 
 import android.util.Log;
 
-
 public class Encrypt {
-	
 
 	public static String toMD5(String plaintext){
 		 MessageDigest md5 = null;
@@ -95,5 +93,4 @@ public class Encrypt {
 		}
 		return sb.toString();
 	}
-
 }

@@ -10,29 +10,20 @@ import org.json.JSONObject;
 
 public class Company implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7442295700648642515L;
-	
 	public String id;
 	public String name;
 	public String email;
 	public String groupNumber;
-	
 	public Parent parent;
-	
 	public String classes;
 	public String countryCode;
-	
 	public List<AssistanceProvider> apList;
-	
 	public String content;
 	public String images;
 	public String localeCode;
 	public String createdAt;
 	public String updatedAt;
-
 	public Company(JSONObject obj) throws JSONException {
 
         if(obj == null){
@@ -52,7 +43,6 @@ public class Company implements Serializable {
 		localeCode = obj.getString("locale_code");
 		createdAt = obj.getString("created_at");
 		updatedAt = obj.getString("updated_at");
-		
 		
 		if (obj.has("parent")) {
 			JSONObject pa = obj.getJSONObject("parent");
