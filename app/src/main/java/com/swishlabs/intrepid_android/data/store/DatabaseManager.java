@@ -44,6 +44,7 @@ public class DatabaseManager {
         Trip trip = new Trip(Integer.parseInt(cursor.getString(0)),
                 cursor.getString(1), cursor.getString(2), cursor.getString(3));
         // return contact
+        database.getDb().close();
         return trip;
     }
 
@@ -70,5 +71,6 @@ public class DatabaseManager {
 
     public static void deleteTrip(int id, Database database){
         database.getDb().delete(Database.TABLE_TRIPS, Database.KEY_ID + "=" + id, null);
+        database.getDb().close();
     }
 }

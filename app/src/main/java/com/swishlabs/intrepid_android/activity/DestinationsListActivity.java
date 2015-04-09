@@ -208,7 +208,7 @@ public class DestinationsListActivity extends BaseActivity {
 
         // Inserting Row
         mDatabase.getDb().insert(Database.TABLE_TRIPS, null, values);
-//        db.close(); // Closing database connection
+        mDatabase.getDb().close();
 //        Trip trip = getTrip(0);
 //        Log.d("Trip List", "The first trip is to:"+trip.getDestinationName());
 
