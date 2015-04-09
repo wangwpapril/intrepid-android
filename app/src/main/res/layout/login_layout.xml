@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/bg_login">
+    android:background="@drawable/bg_login"
+    android:id="@+id/login_page">
 
     <ImageView
         android:id="@+id/logo"
@@ -28,8 +29,7 @@
             android:text="TRAVEL SMART"
             android:textColor="@color/white"
             android:textSize="22sp"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_marginBottom="10dp" />
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <RelativeLayout
                 android:id="@+id/inputLayout"
@@ -60,7 +60,8 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp">
+                    android:layout_marginRight="20dp"
+                    android:padding="10dp">
 
                 </EditText>
         <TextView
@@ -92,9 +93,10 @@
             android:layout_alignParentLeft="false"
             android:layout_marginLeft="20dp"
             android:layout_alignParentTop="false"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:layout_below="@+id/signinEmailEditText"
-            android:layout_marginRight="20dp">
+            android:layout_marginRight="20dp"
+            android:padding="10dp">
 
                 </EditText>
         <TextView
@@ -113,7 +115,7 @@
 
     <TextView
             android:id="@+id/sign_up"
-            android:layout_marginTop="25dip"
+            android:layout_marginTop="15dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="0dp"
@@ -126,7 +128,8 @@
                  android:clickable="true"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/butSignIn"
-        android:linksClickable="false" />
+        android:linksClickable="false"
+        android:padding="10dp" />
 
     <TextView
             android:id="@+id/learnMore"
@@ -138,7 +141,8 @@
         android:textColor="@color/white"
         android:layout_alignParentEnd="true"
         android:layout_alignBottom="@+id/termsofuse"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="10dp"
+        android:padding="10dp" />
 
     <TextView
             android:id="@+id/termsofuse"
@@ -150,8 +154,11 @@
         android:textColor="@color/white"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp" />
+        android:paddingLeft="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:padding="10dp" />
 
     <Button
                 android:id="@+id/butSignIn"
@@ -170,7 +177,7 @@
         android:textSize="15sp"
         android:layout_below="@+id/inputLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dip"
+        android:layout_marginTop="20dip"
         android:textAlignment="center" />
 
 </RelativeLayout>
