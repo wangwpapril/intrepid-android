@@ -75,9 +75,6 @@ public class LoginActivity extends BaseActivity {
 
 	@Override
 	protected void initTitle(){
-//		tvTitleName.setText(R.string.login_title_name);
-//		ivTitleBack.setVisibility(View.VISIBLE);
-//		ivTitleBack.setOnClickListener(this);
 	}
 	
 

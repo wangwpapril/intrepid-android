@@ -95,8 +95,7 @@ public class DestinationsListAdapter extends MyBaseAdapter {
     private class ViewHolder {
 		public ImageView countryIcon;
 		public TextView countryName;
-//		public TextView tvDesc;
-//		public View llBottomLine;
+//
 	}
 
     private class TripListFilter extends Filter {
