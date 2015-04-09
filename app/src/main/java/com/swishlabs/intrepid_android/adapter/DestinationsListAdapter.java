@@ -122,9 +122,9 @@ public class DestinationsListAdapter extends MyBaseAdapter {
 
                 List<Destination> filteredDatas = new ArrayList<Destination>();
 
-                for (int i=0; i < datas.size(); i++)
+                for (int i=0; i < datas_clone.size(); i++)
                 {
-                    Destination tmpData = datas.get(i);
+                    Destination tmpData = datas_clone.get(i);
                     String name = tmpData.name;
                     name = name.toLowerCase(Locale.getDefault());
 
