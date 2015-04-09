@@ -75,6 +75,9 @@ public class Enums {
 		currentUser("current user"),
 
 		netStatus("network status̬"),
+        firstname("first name"),
+        lastname("last name"),
+        email("email"),
 		username("user name"),
 		token("token"),
 		password("password"),

@@ -148,6 +148,10 @@ public class LoginActivity extends BaseActivity {
 
                         SharedPreferenceUtil.setString(Enums.PreferenceKeys.userId.toString(), user.id);
                         SharedPreferenceUtil.setString(Enums.PreferenceKeys.token.toString(), user.token);
+                        SharedPreferenceUtil.setString(Enums.PreferenceKeys.email.toString(),user.email);
+                        SharedPreferenceUtil.setString(Enums.PreferenceKeys.firstname.toString(),user.firstName);
+                        SharedPreferenceUtil.setString(Enums.PreferenceKeys.lastname.toString(),user.lastName);
+                        SharedPreferenceUtil.setString(Enums.PreferenceKeys.username.toString(),user.userName);
                         SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), true);
 
                         MyApplication.setLoginStatus(true);
