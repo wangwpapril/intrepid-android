@@ -53,4 +53,8 @@ public class DatabaseManager {
         // return contact
         return trip;
     }
+
+    public static void deleteTrip(int id, Database database){
+        database.getDb().delete(Database.TABLE_TRIPS, Database.KEY_ID + "=" + id, null);
+    }
 }
