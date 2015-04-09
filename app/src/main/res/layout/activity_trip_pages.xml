@@ -6,4 +6,5 @@
     tools:context="com.swishlabs.intrepid_android.activity.TripPagesActivity"
     android:background="@drawable/bg_login" />
 
+    
 

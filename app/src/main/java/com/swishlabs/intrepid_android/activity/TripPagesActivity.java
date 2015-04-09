@@ -134,9 +134,7 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
 
         @Override
         public int getCount() {
-//            int tripCount = DatabaseManager.getTripCount(mDatabase);
-// number of pages to be able to swipe through
-
+            // number of pages to be able to swipe through
             return mTripCount+1;
         }
 
