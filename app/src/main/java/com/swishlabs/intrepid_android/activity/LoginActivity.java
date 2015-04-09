@@ -35,9 +35,9 @@ public class LoginActivity extends BaseActivity {
 
 	protected static final String TAG = "LoginActivity";
 	
-	private Button imBtnSignIn;
-	private EditText editTextEmail, editTextPassword;
-	private TextView signUp,learnMore,termsUse;
+	private Button loginBtn;
+	private EditText emailTextField, passwordTextField;
+	private TextView signUp,learnMore,termsOfUseBtn;
 
 
     @Override
@@ -51,9 +51,9 @@ public class LoginActivity extends BaseActivity {
 
 	private void initView(){
 		super.initTitleView();
-		imBtnSignIn = (Button) findViewById(R.id.butSignIn);
-		editTextEmail = (EditText) findViewById(R.id.signinEmailEditText);
-		editTextPassword = (EditText) findViewById(R.id.signinPasswordEditText);
+        loginBtn = (Button) findViewById(R.id.butSignIn);
+        emailTextField = (EditText) findViewById(R.id.signinEmailEditText);
+        passwordTextField = (EditText) findViewById(R.id.signinPasswordEditText);
 		signUp = (TextView) findViewById(R.id.sign_up);
         signUp.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         signUp.setOnClickListener(this);
@@ -62,12 +62,12 @@ public class LoginActivity extends BaseActivity {
         learnMore.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         learnMore.setOnClickListener(this);
 
-        termsUse = (TextView) findViewById(R.id.termsofuse);
-        termsUse.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
-        termsUse.setOnClickListener(this);
+        termsOfUseBtn = (TextView) findViewById(R.id.termsofuse);
+        termsOfUseBtn.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+        termsOfUseBtn.setOnClickListener(this);
 
-        imBtnSignIn.setOnClickListener(this);
-		editTextPassword.setTransformationMethod(PasswordTransformationMethod
+        loginBtn.setOnClickListener(this);
+        passwordTextField.setTransformationMethod(PasswordTransformationMethod
 				.getInstance());
 
 
@@ -83,10 +83,10 @@ public class LoginActivity extends BaseActivity {
 
 	@Override
 	public void onClick(View v) {
-        if (v == imBtnSignIn) {
+        if (v == loginBtn) {
 
-            String email = editTextEmail.getText().toString();
-            String password = editTextPassword.getText().toString();
+            String email = emailTextField.getText().toString();
+            String password = passwordTextField.getText().toString();
             if (TextUtils.isEmpty(email)) {
                 StringUtil.showAlertDialog(getResources().getString(
                         R.string.login_title_name), getResources()
@@ -203,9 +203,7 @@ public class LoginActivity extends BaseActivity {
             Intent mIntent = new Intent(LoginActivity.this, SignupActivity.class);
             startActivity(mIntent);
 
-        } else if (v == ivTitleBack) {
-            onBackPressed();
-        } else if (v == termsUse) {
+        } else if (v == termsOfUseBtn) {
             Intent mIntent = new Intent(LoginActivity.this, LegalActivity.class);
             startActivity(mIntent);
 

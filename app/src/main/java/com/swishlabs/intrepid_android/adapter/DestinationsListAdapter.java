@@ -55,9 +55,9 @@ public class DestinationsListAdapter extends MyBaseAdapter {
 			convertView = LayoutInflater.from(context).inflate(R.layout.destination_list_item,
 					null);
 
-			holder.ivIcon = (ImageView) convertView
+			holder.countryIcon = (ImageView) convertView
 					.findViewById(R.id.country_flag_item_iv);
-			holder.tvName = (TextView) convertView
+			holder.countryName = (TextView) convertView
 					.findViewById(R.id.country_name);
 //			holder.tvDesc = (TextView) convertView
 //					.findViewById(R.id.country_desc);
@@ -72,9 +72,9 @@ public class DestinationsListAdapter extends MyBaseAdapter {
 //			holder.llBottomLine.setVisibility(View.GONE);
 //		}
 		Destination model = datas.get(position);
-		holder.tvName.setText(model.name);
+		holder.countryName.setText(model.name);
 //		holder.tvDesc.setText(model.type);
-		final ImageView imageView = holder.ivIcon;
+		final ImageView imageView = holder.countryIcon;
 		imageView.setTag(model.imageFlag.version3.sourceUrl);
 		ImageLoader.DisplayImage(model.imageFlag.version3.sourceUrl, context, imageView);
 		convertView.setTag(holder);
@@ -93,8 +93,8 @@ public class DestinationsListAdapter extends MyBaseAdapter {
     }
 
     private class ViewHolder {
-		public ImageView ivIcon;
-		public TextView tvName;
+		public ImageView countryIcon;
+		public TextView countryName;
 //		public TextView tvDesc;
 //		public View llBottomLine;
 	}

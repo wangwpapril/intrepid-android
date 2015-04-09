@@ -5,12 +5,6 @@
     android:orientation="vertical"
     android:background="#fff">
 
-    <include
-        android:id="@+id/triplist_title"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/custom_title_height"
-        layout="@layout/custom_title" />
- 
     <EditText
         android:id="@+id/search_ed"
         android:layout_width="fill_parent"
