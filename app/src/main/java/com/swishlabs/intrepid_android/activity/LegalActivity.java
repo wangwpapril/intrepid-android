@@ -39,11 +39,6 @@ public class LegalActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.legal_layout);
-/*        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }*/
 
         legal = (TextView) findViewById(R.id.legal_content);
         cancel = (ImageView) findViewById(R.id.cancel);
@@ -83,7 +78,6 @@ public class LegalActivity extends BaseActivity {
 
     }
 
-
     @Override
     public void onClick (View view) {
         if(view == cancel){
@@ -96,6 +90,5 @@ public class LegalActivity extends BaseActivity {
     protected void initTitle() {
 
     }
-
 
 }

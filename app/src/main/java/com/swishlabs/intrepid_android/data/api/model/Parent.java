@@ -9,27 +9,15 @@ import org.json.JSONObject;
 
 public class Parent implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4965695632276223806L;
-	
 	public String id;
-	
 	public String name;
-	
 	public String email;
-	
 	public String groupNumber;
-	
 	public String parentId;
-	
 	public String createdAt;
-	
 	public String updatedAt;
-	
 	public String countryId;
-	
 	public Parent(JSONObject obj) throws JSONException {
 
         if(obj == null)
@@ -44,6 +32,4 @@ public class Parent implements Serializable {
 		updatedAt =  obj.getString("updated_at");
 		countryId =  obj.getString("country_id");
 	}
-
-	
 }

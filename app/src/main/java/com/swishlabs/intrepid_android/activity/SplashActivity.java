@@ -18,10 +18,8 @@ import com.swishlabs.intrepid_android.R;
  */
 public class SplashActivity extends Activity {
 
-
 	private static final String TAG = "SplashActivity";	
-	
-   		
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,10 +49,7 @@ public class SplashActivity extends Activity {
 		},2000);	
   
 	}
-
 	private void initialize(){
 	
 	}
-	
-
 }

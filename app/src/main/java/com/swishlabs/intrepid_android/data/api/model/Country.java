@@ -6,25 +6,18 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by wwang on 15-03-31.
- */
 public class Country implements Serializable{
-    public String id;
 
+    public String id;
     public String name;
     public String population;
     public String area;
-
     public String latitude;
-
     public String longitude;
     public String countryCode;
-
     public String currencyCode;
     public String capital;
     public String capitalId;
-
     public Content content;
     public String images;
     public String localeCode;

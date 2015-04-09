@@ -69,8 +69,6 @@ public class LoginActivity extends BaseActivity {
         loginBtn.setOnClickListener(this);
         passwordTextField.setTransformationMethod(PasswordTransformationMethod
 				.getInstance());
-
-
 	}
 
 	@Override
@@ -136,7 +134,6 @@ public class LoginActivity extends BaseActivity {
                     StringUtil.showAlertDialog(getResources().getString(R.string.login_title_name), getResources().getString(R.string.login_failed), context);
                     return;
                 }
-
 
                 if(user != null) {
                         UserTable.getInstance().saveUser(user);

@@ -36,15 +36,15 @@ import com.swishlabs.intrepid_android.util.StringUtil;
 public class SignupActivity extends BaseActivity {
 
 	protected static final String TAG = "SignupActivity";
-	private EditText etFirstName;
-	private EditText etLastName;
-	private EditText etEmail;
-	private AutoCompleteTextView etCountry;
-	private EditText etUserName;
-	private EditText etPassword;
-	private EditText etPolicyNumber;
+	private EditText signupFirstName;
+	private EditText signupLastName;
+	private EditText signupEmail;
+	private AutoCompleteTextView signupCountry;
+	private EditText signupUserName;
+	private EditText signupPassword;
+	private EditText signupPolicyNumber;
 	private Button btnSignUp;
-	private TextView termsUse;
+	private TextView termsOfUseBtn;
 	
 	private List<Country> countryList;
 	
@@ -93,7 +93,7 @@ public class SignupActivity extends BaseActivity {
 					}
 					countryAdapter = new ArrayAdapter(context, android.R.layout.simple_spinner_item, countryNames);
 //					countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-					etCountry.setAdapter(countryAdapter);
+                    signupCountry.setAdapter(countryAdapter);
 
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -115,36 +115,36 @@ public class SignupActivity extends BaseActivity {
 
 	private void initView() {
 		super.initTitleView();
-		etFirstName = (EditText) findViewById(R.id.firstNameEditText);
-		etLastName = (EditText) findViewById(R.id.lastNameEditText);
-		etEmail = (EditText) findViewById(R.id.emailEditText);
-		etCountry = (AutoCompleteTextView) findViewById(R.id.countryEditText);
-		etUserName = (EditText) findViewById(R.id.userNameEditText);
-		etPassword = (EditText) findViewById(R.id.PasswordEditText);
-		etPolicyNumber = (EditText) findViewById(R.id.policyNumberEditText);
-		etUserName = (EditText) findViewById(R.id.userNameEditText);
+        signupFirstName = (EditText) findViewById(R.id.firstNameEditText);
+        signupLastName = (EditText) findViewById(R.id.lastNameEditText);
+        signupEmail = (EditText) findViewById(R.id.emailEditText);
+        signupCountry = (AutoCompleteTextView) findViewById(R.id.countryEditText);
+        signupUserName = (EditText) findViewById(R.id.userNameEditText);
+        signupPassword = (EditText) findViewById(R.id.PasswordEditText);
+        signupPolicyNumber = (EditText) findViewById(R.id.policyNumberEditText);
+        signupUserName = (EditText) findViewById(R.id.userNameEditText);
 		btnSignUp = (Button) findViewById(R.id.butSignUp);
 		btnSignUp.setOnClickListener(this);
-		termsUse = (TextView) findViewById(R.id.termsofUse);
-		termsUse.setOnClickListener(this);
-		termsUse.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
-		
-		
-		etCountry.setAdapter(countryAdapter);
-		etCountry.setEnabled(true);
+        termsOfUseBtn = (TextView) findViewById(R.id.termsofUse);
+        termsOfUseBtn.setOnClickListener(this);
+        termsOfUseBtn.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+
+
+        signupCountry.setAdapter(countryAdapter);
+        signupCountry.setEnabled(true);
 //		etCountry.setDropDownBackgroundResource(R.drawable.login_btn);
 
-		etCountry.setOnClickListener(new OnClickListener() {
+        signupCountry.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				etCountry.showDropDown();
+                signupCountry.showDropDown();
 
 			}
 			
 		});
-		
-		etCountry.setOnItemClickListener(new OnItemClickListener() {
+
+        signupCountry.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
@@ -164,18 +164,18 @@ public class SignupActivity extends BaseActivity {
 
 	@Override
 	public void onClick(View v) {
-		if (v == etCountry) {
-			etCountry.setEnabled(true);
+		if (v == signupCountry) {
+            signupCountry.setEnabled(true);
 
 		} else if (v == btnSignUp) {
 
-			firstName = etFirstName.getText().toString();
-			lastName = etLastName.getText().toString();
-			email = etEmail.getText().toString();
-			country = etCountry.getText().toString();
-			userName = etUserName.getText().toString();
-			password = etPassword.getText().toString();
-			policyNumber = etPolicyNumber.getText().toString();
+			firstName = signupFirstName.getText().toString();
+			lastName = signupLastName.getText().toString();
+			email = signupEmail.getText().toString();
+			country = signupCountry.getText().toString();
+			userName =signupUserName.getText().toString();
+			password = signupPassword.getText().toString();
+			policyNumber = signupPolicyNumber.getText().toString();
 			
 			if (TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) ||
 					TextUtils.isEmpty(email) || TextUtils.isEmpty(country) ||
@@ -210,7 +210,7 @@ public class SignupActivity extends BaseActivity {
 			
 			checkGroupNumber();
 
-		} else if (v == termsUse) {
+		} else if (v == termsOfUseBtn) {
 			Intent i = new Intent();
 			i.setClass(context, LegalActivity.class);
 			context.startActivity(i);
@@ -439,7 +439,5 @@ public class SignupActivity extends BaseActivity {
 		
 		cct.execute(send.toString());
         Log.d("email send.json", send.toString());
-		
 	}
-
 }

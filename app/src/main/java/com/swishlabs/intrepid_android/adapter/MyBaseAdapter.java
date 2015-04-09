@@ -9,7 +9,6 @@ import com.swishlabs.intrepid_android.util.ImageLoader;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.activity.BaseActivity;
 
-
 public abstract class MyBaseAdapter extends BaseAdapter {
 
 	protected BaseActivity context;
@@ -21,5 +20,4 @@ public abstract class MyBaseAdapter extends BaseAdapter {
 			ImageLoader = new ImageLoader(context, R.drawable.ic_launcher);
 		}
 	}
-
 }
