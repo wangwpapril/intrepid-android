@@ -21,11 +21,8 @@ public abstract class BaseActivity extends Activity implements OnClickListener{
 
 	protected BaseActivity context;
 	protected TextView tvTitleName;
-	protected ImageView ivTitleName;
 	protected ImageView ivTitleBack;
 	protected ImageView ivTitleRight;
-	protected EditText ivTitleMiddle;
-	protected TextView tvTitleRight;
 
     public DatabaseManager mDatabaseManager;
     public Database mDatabase;
@@ -49,13 +46,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener{
     }
 
 	protected void initTitleView() {
-		tvTitleName = (TextView) findViewById(R.id.title_name);
-		ivTitleName = (ImageView)findViewById(R.id.title_name_iv);
-		ivTitleBack = (ImageView) findViewById(R.id.title_iv_back);
-		ivTitleRight = (ImageView) findViewById(R.id.title_iv_right);
-		ivTitleMiddle = (EditText) findViewById(R.id.title_name_et);
-		tvTitleRight = (TextView) findViewById(R.id.title_tv_right);
-		initTitle();
+
 	}
 
 	protected abstract void initTitle();
