@@ -40,4 +40,23 @@
     <color name="tab_text">#ffe2e2e2</color>
     <color name="tab_text_select">#ffffa800</color>
     <drawable name="divder">#34333a</drawable>
+
+
+    <color name="theme_default_primary">#333f48</color>
+    <color name="theme_default_primary_dark">#333f48</color>
+    <color name="theme_accent">#84bd00</color>
+    <color name="theme_window_background">#ECECEC</color>
+
+    <!-- general text colors -->
+    <color name="text">#333f48</color>
+    <color name="secondary">#727272</color>
+    <color name="hint">#B8B8B8</color>
+    <color name="dividers">#DADADA</color>
+
+    <!-- general colors for drawer -->
+    <color name="list_background">#F2F2F2</color>
+    <!-- primary colors for drawer -->
+    <color name="list_background_normal">#FCFCFC</color>
+    <!-- secondary colors for drawer -->
+    <color name="list_background_secondary_normal">#F2F2F2</color>
 </resources>

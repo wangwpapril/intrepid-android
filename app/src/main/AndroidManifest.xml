@@ -32,7 +32,7 @@
         android:icon="@drawable/logo"
         android:label="Travel Smart"
         android:largeHeap="true"
-        android:theme="@style/Theme.AppCompat.Light" >
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".activity.SplashActivity"
             android:label="Welcome"
