@@ -4,9 +4,56 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:text="Overview"
-        android:layout_height="wrap_content"/>
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="480dp"
+        android:id="@+id/content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:id="@+id/overview_image"
+            android:background="@drawable/example_image" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/overview_content"
+            android:layout_below="@+id/overview_image"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Location"
+                android:id="@+id/destination_subtitle"
+                android:layout_alignParentStart="false"
+                android:textStyle="bold"
+                android:layout_toRightOf="@+id/section_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Mexico is bordered to the north by the states of California, Arizona, New Mexico, and Texas, to the west and south by the Pacific Ocean, to the east by the Gulf of Mexico, and to the southeast by Belize, Guatemala, and the Caribbean Sea. "
+                android:id="@+id/destination_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="false"
+                android:layout_below="@+id/destination_subtitle"
+                android:layout_marginTop="10dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/section_icon"
+                android:layout_above="@+id/destination_content"
+                android:layout_alignParentEnd="false"
+                android:layout_alignTop="@+id/destination_subtitle"
+                android:src="@drawable/example_icon"
+                android:layout_marginRight="10dp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
 </LinearLayout>
