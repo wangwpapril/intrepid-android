@@ -66,6 +66,10 @@
             android:name=".activity.LegalActivity"
             android:label="Legal" >
         </activity>
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:label="Legal" >
+        </activity>
     </application>
 
 </manifest>
