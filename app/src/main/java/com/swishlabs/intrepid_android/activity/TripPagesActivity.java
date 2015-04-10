@@ -1,5 +1,6 @@
 package com.swishlabs.intrepid_android.activity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -77,6 +78,10 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            Intent mIntent = new Intent(TripPagesActivity.this, SettingsActivity.class);
+            startActivity(mIntent);
+
             return true;
         }
 

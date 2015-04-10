@@ -1,26 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
     <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="500dp"
+    android:layout_height="wrap_content"
     android:layout_width="fill_parent"
+    android:fillViewport="true"
     android:scrollbars="none"
-    android:layout_alignParentBottom="true"
     >
+
 <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_marginTop="150dp"
-    android:background="#333f48"
+    android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:alpha="0.95">
+    android:alpha="0.95"
+    android:background="@android:color/transparent">
+    <ImageButton
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/expand_menu"
+        android:src="@drawable/top_menu_expanded"
+        android:layout_alignParentTop="false"
+        android:baselineAlignBottom="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:layout_marginBottom="0.5dp" />
 <LinearLayout
     android:layout_height="90dp"
     android:id="@+id/row1"
-    android:layout_width="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_below="@+id/expand_menu"
+    android:background="#bdb9b1">
     <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_weight="0.84"
-        android:layout_height="fill_parent"
-        android:id="@+id/overview_menu_btn">
+        android:layout_weight="0.82"
+        android:layout_height="match_parent"
+        android:id="@+id/overview_menu_btn"
+        android:background="#333f48"
+        android:layout_marginRight="0.5dp"
+        android:layout_marginBottom="0.5dp">
 
         <ImageView
             android:layout_width="fill_parent"
@@ -44,9 +59,11 @@
 
     <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_weight="0.88"
-        android:layout_height="fill_parent"
-        android:id="@+id/health_menu_btn">
+        android:layout_weight="0.89"
+        android:layout_height="match_parent"
+        android:id="@+id/health_menu_btn"
+        android:background="#333f48"
+        android:layout_marginBottom="0.5dp">
 
         <ImageView
             android:layout_width="fill_parent"
@@ -70,9 +87,13 @@
 
     <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_weight="1"
-        android:layout_height="fill_parent"
-        android:id="@+id/security_menu_btn">
+        android:layout_weight="1.03"
+        android:layout_height="match_parent"
+        android:id="@+id/security_menu_btn"
+        android:background="#333f48"
+        android:layout_gravity="right"
+        android:layout_marginBottom="0.5dp"
+        android:layout_marginLeft="0.5dp">
 
         <ImageView
             android:layout_width="fill_parent"
@@ -96,16 +117,29 @@
 
   </LinearLayout>
 
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/white_label"
+        android:background="#333f48"
+        android:layout_below="@+id/row3"
+        android:padding="5dp"
+        android:layout_marginTop="0.5dp" />
+
     <LinearLayout
         android:layout_height="90dp"
         android:id="@+id/row2"
         android:layout_below="@id/row1"
-        android:layout_width="match_parent">
+        android:layout_width="fill_parent">
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="fill_parent"
-            android:id="@+id/alerts_menu_btn">
+            android:layout_weight="1.07"
+            android:layout_height="match_parent"
+            android:id="@+id/alerts_menu_btn"
+            android:background="#333f48"
+            android:layout_marginBottom="0.5dp"
+            android:layout_marginRight="0.5dp">
 
             <ImageView
                 android:layout_width="fill_parent"
@@ -129,9 +163,11 @@
 
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_weight="0.55"
-            android:layout_height="fill_parent"
-            android:id="@+id/weather_menu_btn">
+            android:layout_weight="0.58"
+            android:layout_height="match_parent"
+            android:id="@+id/weather_menu_btn"
+            android:background="#333f48"
+            android:layout_marginBottom="0.5dp">
 
             <ImageView
                 android:layout_width="fill_parent"
@@ -155,9 +191,13 @@
 
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_weight="0.62"
-            android:layout_height="fill_parent"
-            android:id="@+id/insurance_menu_btn">
+            android:layout_weight="0.68"
+            android:layout_height="match_parent"
+            android:id="@+id/insurance_menu_btn"
+            android:background="#333f48"
+            android:layout_gravity="right"
+            android:layout_marginBottom="0.5dp"
+            android:layout_marginLeft="0.5dp">
 
             <ImageView
                 android:layout_width="fill_parent"
@@ -185,13 +225,15 @@
         android:layout_height="90dp"
         android:id="@+id/row3"
         android:layout_below="@id/row2"
-        android:layout_width="match_parent">
+        android:layout_width="fill_parent">
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_weight="0.54"
-            android:layout_height="fill_parent"
+            android:layout_weight="0.52"
+            android:layout_height="match_parent"
             android:textAlignment="center"
-            android:id="@+id/assistance_menu_btn">
+            android:id="@+id/assistance_menu_btn"
+            android:background="#333f48"
+            android:layout_marginRight="0.5dp">
 
             <ImageView
                 android:layout_width="fill_parent"
@@ -216,8 +258,9 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_weight="1"
-            android:layout_height="fill_parent"
-            android:id="@+id/trips_menu_btn">
+            android:layout_height="match_parent"
+            android:id="@+id/trips_menu_btn"
+            android:background="#333f48">
 
             <ImageView
                 android:layout_width="fill_parent"
@@ -241,9 +284,11 @@
 
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="fill_parent"
-            android:id="@+id/settings_menu_btn">
+            android:layout_weight="0.92"
+            android:layout_height="match_parent"
+            android:id="@+id/settings_menu_btn"
+            android:background="#333f48"
+            android:layout_marginLeft="0.5dp">
 
             <ImageView
                 android:layout_width="fill_parent"
@@ -266,5 +311,6 @@
         </FrameLayout>
 
     </LinearLayout>
+
 </RelativeLayout>
  </ScrollView>
