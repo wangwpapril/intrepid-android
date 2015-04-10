@@ -1,23 +1,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
                 tools:context="com.swishlabs.intrepid_android.activity.ViewDestinationActivity">
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/drawer_menu"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentBottom="false"
+        android:layout_below="@+id/content">
+    </include>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="480dp"
+        android:id="@+id/content"></RelativeLayout>
 
     <TextView
         android:text="@string/hello_world"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_alignParentBottom="true"
-        layout="@layout/drawer_menu" >
-    </include>
+        android:layout_height="wrap_content"
+        android:id="@+id/textView" />
 
 </RelativeLayout>
