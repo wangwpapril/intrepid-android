@@ -22,15 +22,15 @@
 
         <ImageView
             android:layout_width="fill_parent"
-            android:src="@drawable/weather_ic"
+            android:src="@drawable/overview_ic"
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp" />
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:textColor="@color/white"
-            android:text="Button Test"
+            android:text="Overview"
             android:textAlignment="center"
             android:layout_height="30dp"
             android:layout_gravity="center_horizontal|bottom"
@@ -45,19 +45,20 @@
 
         <ImageView
             android:layout_width="fill_parent"
-            android:src="@drawable/weather_ic"
+            android:src="@drawable/health_ic"
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp" />
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:textColor="@color/white"
-            android:text="Button Test"
+            android:text="Health"
             android:textAlignment="center"
             android:layout_height="30dp"
             android:gravity="center"
-            android:layout_gravity="center_horizontal|bottom" />
+            android:layout_gravity="center_horizontal|bottom"
+            android:id="@+id/" />
     </FrameLayout>
 
     <FrameLayout
@@ -67,19 +68,20 @@
 
         <ImageView
             android:layout_width="fill_parent"
-            android:src="@drawable/weather_ic"
+            android:src="@drawable/security_ic"
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp" />
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:textColor="@color/white"
-            android:text="Button Test"
+            android:text="Security"
             android:textAlignment="center"
             android:layout_height="30dp"
             android:gravity="center"
-            android:layout_gravity="center_horizontal|bottom" />
+            android:layout_gravity="center_horizontal|bottom"
+            android:id="@+id/" />
     </FrameLayout>
 
   </LinearLayout>
@@ -96,19 +98,20 @@
 
             <ImageView
                 android:layout_width="fill_parent"
-                android:src="@drawable/weather_ic"
+                android:src="@drawable/alerts_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp" />
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:textColor="@color/white"
-                android:text="Button Test"
+                android:text="Alerts"
                 android:textAlignment="center"
                 android:layout_height="30dp"
                 android:gravity="center"
-                android:layout_gravity="center_horizontal|bottom" />
+                android:layout_gravity="center_horizontal|bottom"
+                android:id="@+id/" />
         </FrameLayout>
 
         <FrameLayout
@@ -124,13 +127,14 @@
                 android:layout_marginBottom="10dp" />
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:textColor="@color/white"
-                android:text="Button Test"
+                android:text="Weather"
                 android:textAlignment="center"
                 android:layout_height="30dp"
                 android:gravity="center"
-                android:layout_gravity="center_horizontal|bottom" />
+                android:layout_gravity="center_horizontal|bottom"
+                android:id="@+id/" />
         </FrameLayout>
 
         <FrameLayout
@@ -140,19 +144,20 @@
 
             <ImageView
                 android:layout_width="fill_parent"
-                android:src="@drawable/weather_ic"
+                android:src="@drawable/ace_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp" />
 
             <TextView
-                android:layout_width="fill_parent"
-                android:text="Button Test"
+                android:layout_width="wrap_content"
+                android:text="Insurance"
                 android:textColor="@color/white"
                 android:textAlignment="center"
                 android:layout_height="30dp"
                 android:layout_gravity="center_horizontal|bottom"
-                android:gravity="center" />
+                android:gravity="center"
+                android:id="@+id/" />
         </FrameLayout>
 
     </LinearLayout>
@@ -170,19 +175,20 @@
 
             <ImageView
                 android:layout_width="fill_parent"
-                android:src="@drawable/weather_ic"
+                android:src="@drawable/assistance_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp" />
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:textColor="@color/white"
-                android:text="Button Test"
+                android:text="Assistance"
                 android:textAlignment="center"
                 android:layout_height="30dp"
                 android:gravity="center"
-                android:layout_gravity="center_horizontal|bottom" />
+                android:layout_gravity="center_horizontal|bottom"
+                android:id="@+id/" />
         </FrameLayout>
 
         <FrameLayout
@@ -192,19 +198,20 @@
 
             <ImageView
                 android:layout_width="fill_parent"
-                android:src="@drawable/weather_ic"
+                android:src="@drawable/trips_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp" />
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:textColor="@color/white"
-                android:text="Button Test"
+                android:text="Trips"
                 android:textAlignment="center"
                 android:layout_height="30dp"
                 android:gravity="center"
-                android:layout_gravity="center_horizontal|bottom" />
+                android:layout_gravity="center_horizontal|bottom"
+                android:id="@+id/" />
         </FrameLayout>
 
         <FrameLayout
@@ -214,19 +221,20 @@
 
             <ImageView
                 android:layout_width="fill_parent"
-                android:src="@drawable/weather_ic"
+                android:src="@drawable/settings_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp" />
 
             <TextView
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:textColor="@color/white"
-                android:text="Button Test"
+                android:text="Settings"
                 android:textAlignment="center"
                 android:layout_height="30dp"
                 android:gravity="center"
-                android:layout_gravity="center_horizontal|bottom" />
+                android:layout_gravity="center_horizontal|bottom"
+                android:id="@+id/" />
         </FrameLayout>
 
     </LinearLayout>
