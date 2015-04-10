@@ -46,17 +46,14 @@
         <activity
             android:name=".activity.LoginActivity"
             android:label="Login" >
-
         </activity>
         <activity
             android:name=".activity.SignupActivity"
             android:label="Signup" >
-
         </activity>
         <activity
             android:name=".activity.DestinationsListActivity"
             android:label="Trips" >
-
         </activity>
         <activity
             android:name=".activity.TripPagesActivity"
@@ -65,6 +62,10 @@
         <activity
             android:name=".activity.LegalActivity"
             android:label="Legal" >
+        </activity>
+        <activity
+            android:name=".activity.ViewDestinationActivity"
+            android:label="@string/title_activity_view_destination" >
         </activity>
     </application>
 

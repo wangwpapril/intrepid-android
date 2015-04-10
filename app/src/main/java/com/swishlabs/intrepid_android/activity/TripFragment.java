@@ -90,6 +90,13 @@ public class TripFragment extends android.support.v4.app.Fragment {
             Log.d("TripFragment", "Loaded: " + destinationName);
             getCountry(destinationName, imageURL);
             setupSwipe(view, mCountryImage, mTripIndex);
+            mCountryImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent mIntent = new Intent(TripPagesActivity.getInstance(), ViewDestinationActivity.class);
+                    startActivity(mIntent);
+                }
+            });
         }
         return view;
     }
