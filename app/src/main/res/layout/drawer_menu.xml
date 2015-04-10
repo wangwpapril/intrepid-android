@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
     <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content"
     android:layout_width="fill_parent"
     android:scrollbars="none"
     android:layout_alignParentBottom="true"
@@ -15,7 +15,7 @@
     <ImageButton
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
+        android:id="@+id/expand_menu"
         android:src="@drawable/top_menu_expanded"
         android:layout_alignParentTop="false"
         android:baselineAlignBottom="true"
@@ -25,7 +25,7 @@
     android:layout_height="90dp"
     android:id="@+id/row1"
     android:layout_width="match_parent"
-    android:layout_below="@+id/imageButton"
+    android:layout_below="@+id/expand_menu"
     android:background="#333f48">
     <FrameLayout
         android:layout_width="wrap_content"
@@ -106,6 +106,15 @@
     </FrameLayout>
 
   </LinearLayout>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/white_label"
+        android:background="#333f48"
+        android:layout_below="@+id/row3"
+        android:padding="5dp" />
 
     <LinearLayout
         android:layout_height="90dp"
