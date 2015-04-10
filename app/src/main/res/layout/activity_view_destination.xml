@@ -16,10 +16,10 @@
         android:layout_height="wrap_content"
         layout="@layout/drawer_menu"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/content">
+        android:layout_alignParentBottom="true">
     </include>
 
+<<<<<<< HEAD
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="480dp"
@@ -79,6 +79,8 @@
 
 >>>>>>> df9ff3aff9541599d21061a4f26eb841c63b79d9
     </RelativeLayout>
+=======
+>>>>>>> 543e607af80099f27f7df0058a3d3eb4b39e0558
 
 </RelativeLayout>
 
