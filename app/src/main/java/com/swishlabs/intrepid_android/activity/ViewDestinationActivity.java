@@ -148,7 +148,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_destination_overview, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_overview_general, container, false);
             return rootView;
         }
     }
