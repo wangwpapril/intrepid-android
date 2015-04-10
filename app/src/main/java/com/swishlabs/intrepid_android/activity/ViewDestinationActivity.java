@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
 
 import java.util.Locale;
 
@@ -43,6 +44,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_destination);
         instance = this;
+        IntrepidMenu.setupMenu(instance, ViewDestinationActivity.this);
 
 
         // Create the adapter that will return a fragment for each of the three
