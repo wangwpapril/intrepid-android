@@ -18,7 +18,7 @@
     android:layout_width="match_parent">
     <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="0.84"
         android:layout_height="fill_parent"
         android:id="@+id/overview_menu_btn">
 
@@ -27,22 +27,24 @@
             android:src="@drawable/overview_ic"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:textColor="@color/white"
             android:text="Overview"
             android:textAlignment="center"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|bottom"
             android:gravity="center"
-            android:id="@+id/overview_text_menu" />
+            android:id="@+id/overview_text_menu"
+            android:textSize="15sp"
+            android:padding="10dp" />
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="0.88"
         android:layout_height="fill_parent"
         android:id="@+id/health_menu_btn">
 
@@ -51,17 +53,19 @@
             android:src="@drawable/health_ic"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:textColor="@color/white"
             android:text="Health"
             android:textAlignment="center"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_gravity="center_horizontal|bottom"
-            android:id="@+id/health_text_menu" />
+            android:id="@+id/health_text_menu"
+            android:textSize="15sp"
+            android:padding="10dp" />
     </FrameLayout>
 
     <FrameLayout
@@ -75,17 +79,19 @@
             android:src="@drawable/security_ic"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:textColor="@color/white"
             android:text="Security"
             android:textAlignment="center"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_gravity="center_horizontal|bottom"
-            android:id="@+id/security_text_menu" />
+            android:id="@+id/security_text_menu"
+            android:textSize="15sp"
+            android:padding="10dp" />
     </FrameLayout>
 
   </LinearLayout>
@@ -106,17 +112,19 @@
                 android:src="@drawable/alerts_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="15dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:textColor="@color/white"
                 android:text="Alerts"
                 android:textAlignment="center"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|bottom"
-                android:id="@+id/alerts_text_menu" />
+                android:id="@+id/alerts_text_menu"
+                android:textSize="15sp"
+                android:padding="10dp" />
         </FrameLayout>
 
         <FrameLayout
@@ -130,17 +138,19 @@
                 android:src="@drawable/weather_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="15dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:textColor="@color/white"
                 android:text="Weather"
                 android:textAlignment="center"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|bottom"
-                android:id="@+id/weather_text_menu" />
+                android:id="@+id/weather_text_menu"
+                android:textSize="15sp"
+                android:padding="10dp" />
         </FrameLayout>
 
         <FrameLayout
@@ -154,17 +164,19 @@
                 android:src="@drawable/ace_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="15dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:text="Insurance"
                 android:textColor="@color/white"
                 android:textAlignment="center"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|bottom"
                 android:gravity="center"
-                android:id="@+id/insurance_text_menu" />
+                android:id="@+id/insurance_text_menu"
+                android:textSize="15sp"
+                android:padding="10dp" />
         </FrameLayout>
 
     </LinearLayout>
@@ -176,7 +188,7 @@
         android:layout_width="match_parent">
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.54"
             android:layout_height="fill_parent"
             android:textAlignment="center"
             android:id="@+id/assistance_menu_btn">
@@ -186,17 +198,19 @@
                 android:src="@drawable/assistance_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="15dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:textColor="@color/white"
                 android:text="Assistance"
                 android:textAlignment="center"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|bottom"
-                android:id="@+id/assistance_menu_text" />
+                android:id="@+id/assistance_menu_text"
+                android:textSize="15sp"
+                android:padding="10dp" />
         </FrameLayout>
 
         <FrameLayout
@@ -210,17 +224,19 @@
                 android:src="@drawable/trips_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="15dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:textColor="@color/white"
                 android:text="Trips"
                 android:textAlignment="center"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|bottom"
-                android:id="@+id/trips_menu_text" />
+                android:id="@+id/trips_menu_text"
+                android:textSize="15sp"
+                android:padding="10dp" />
         </FrameLayout>
 
         <FrameLayout
@@ -234,17 +250,19 @@
                 android:src="@drawable/settings_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="15dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:textColor="@color/white"
                 android:text="Settings"
                 android:textAlignment="center"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|bottom"
-                android:id="@+id/settings_menu_text" />
+                android:id="@+id/settings_menu_text"
+                android:textSize="15sp"
+                android:padding="10dp" />
         </FrameLayout>
 
     </LinearLayout>
