@@ -12,7 +12,16 @@
         android:background="?attr/colorPrimary"
         android:paddingTop="16dp"
         android:elevation="4dp"
-        android:transitionName="actionBar"/>
+        android:transitionName="actionBar">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trip"
+        android:textColor="#fff"
+        android:layout_gravity="center"
+        android:id="@+id/toolbar_title" />
+    </android.support.v7.widget.Toolbar>
+
     <include
     android:layout_width="fill_parent"
     android:layout_height="@dimen/custom_title_height"
