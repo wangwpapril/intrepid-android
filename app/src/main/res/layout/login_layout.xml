@@ -14,7 +14,6 @@
         android:paddingTop="10dip"
         android:paddingBottom="10dip"
         android:src="@drawable/ace_logo"
-        android:layout_below="@+id/include"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dip"
         android:layout_marginBottom="10dp" />

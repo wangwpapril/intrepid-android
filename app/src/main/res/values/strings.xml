@@ -25,5 +25,9 @@
     <string name="username_length_error">Username must be at least 3 characters.</string>
     <string name="password_length_error">Password must be at least 7 characters.</string>
     <string name="title_activity_legal">Legal</string>
+
     <string name="title_activity_view_destination">ViewDestinationActivity</string>
+
+    <string name="settings_title_name">Settings</string>
+
 </resources>

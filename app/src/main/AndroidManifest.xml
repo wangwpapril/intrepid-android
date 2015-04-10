@@ -67,6 +67,10 @@
             android:name=".activity.ViewDestinationActivity"
             android:label="@string/title_activity_view_destination" >
         </activity>
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:label="Legal" >
+        </activity>
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@ import com.swishlabs.intrepid_android.R;
 public class Enums {
 
 	public enum ConnMethod {
-		GET("get"), POST("post");
+		GET("get"), POST("post"),PUT("put");
 		private String type;
 
 		private ConnMethod(String type){
@@ -94,6 +94,8 @@ public class Enums {
 				this.svalue = value;
 		}
 	}
+	
+
 
 	public enum NetStatus
 	{
@@ -111,4 +113,6 @@ public class Enums {
 				this.svalue = value;
 		}
 	}
+	
+	
 }

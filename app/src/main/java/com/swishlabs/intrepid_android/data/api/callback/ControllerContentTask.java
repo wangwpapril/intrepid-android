@@ -16,6 +16,7 @@ import com.swishlabs.intrepid_android.request.SimpleHttpClient;
 import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.Enums;
 
+
 public class ControllerContentTask extends
 		AsyncTask<String, Void, ResultHolder> {
 
@@ -33,6 +34,7 @@ public class ControllerContentTask extends
 		this.connMethod = connMethod;
 		this.isHideLoading = isHideLoading;
 	}
+	
 	
 	@Override
 	protected void onPreExecute() {
@@ -76,7 +78,11 @@ public class ControllerContentTask extends
 				rh.setResult(SimpleHttpClient.post(json, url, NORMAL_TIMEOUT));
 					
 				break;
-			}
+            case PUT:
+                rh.setResult(SimpleHttpClient.put(json, url, NORMAL_TIMEOUT));
+
+
+            }
 			rh.setSuccess(true);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -95,4 +101,6 @@ public class ControllerContentTask extends
 			icc.handleError(new Exception(result.getResult()));
 		}
 	}
+	
+	
 }
