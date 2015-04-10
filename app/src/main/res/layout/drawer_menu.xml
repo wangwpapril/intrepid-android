@@ -30,7 +30,7 @@
     android:background="#bdb9b1">
     <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_weight="0.82"
+        android:layout_weight="1"
         android:layout_height="match_parent"
         android:id="@+id/overview_menu_btn"
         android:background="#333f48"
@@ -59,7 +59,7 @@
 
     <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_weight="0.89"
+        android:layout_weight="1"
         android:layout_height="match_parent"
         android:id="@+id/health_menu_btn"
         android:background="#333f48"
@@ -87,7 +87,7 @@
 
     <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_weight="1.03"
+        android:layout_weight="1"
         android:layout_height="match_parent"
         android:id="@+id/security_menu_btn"
         android:background="#333f48"
@@ -131,10 +131,11 @@
         android:layout_height="90dp"
         android:id="@+id/row2"
         android:layout_below="@id/row1"
-        android:layout_width="fill_parent">
+        android:layout_width="fill_parent"
+        android:background="#bdb9b1">
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_weight="1.07"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:id="@+id/alerts_menu_btn"
             android:background="#333f48"
@@ -163,7 +164,7 @@
 
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_weight="0.58"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:id="@+id/weather_menu_btn"
             android:background="#333f48"
@@ -191,7 +192,7 @@
 
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_weight="0.68"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:id="@+id/insurance_menu_btn"
             android:background="#333f48"
@@ -225,10 +226,11 @@
         android:layout_height="90dp"
         android:id="@+id/row3"
         android:layout_below="@id/row2"
-        android:layout_width="fill_parent">
+        android:layout_width="fill_parent"
+        android:background="#bdb9b1">
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_weight="0.52"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:textAlignment="center"
             android:id="@+id/assistance_menu_btn"
@@ -284,7 +286,7 @@
 
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_weight="0.92"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:id="@+id/settings_menu_btn"
             android:background="#333f48"
