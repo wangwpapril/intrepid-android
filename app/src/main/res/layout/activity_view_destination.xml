@@ -5,10 +5,7 @@
 
     tools:context="com.swishlabs.intrepid_android.activity.ViewDestinationActivity">
 
-    <com.astuetz.PagerSlidingTabStrip
-        android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="48dip" />
+
     <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
