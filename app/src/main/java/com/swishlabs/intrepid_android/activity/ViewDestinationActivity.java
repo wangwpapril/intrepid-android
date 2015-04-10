@@ -110,9 +110,9 @@ public class ViewDestinationActivity extends ActionBarActivity {
             Locale l = Locale.getDefault();
             switch (position) {
                 case 0:
-                    return "Overview";
+                    return "General";
                 case 1:
-                    return "Embassy";
+                    return "Culture";
                 case 2:
                     return "Currency";
             }

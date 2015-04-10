@@ -6,13 +6,7 @@
     tools:context="com.swishlabs.intrepid_android.activity.ViewDestinationActivity">
 
 
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/drawer_menu"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true">
-    </include>
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="480dp"
@@ -22,6 +16,20 @@
             android:id="@+id/pager"
             android:layout_width="fill_parent">
         </android.support.v4.view.ViewPager>
-        </RelativeLayout>
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/content">
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/drawer_menu"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true">
+    </include>
+    </ScrollView>
+
 </RelativeLayout>
 
