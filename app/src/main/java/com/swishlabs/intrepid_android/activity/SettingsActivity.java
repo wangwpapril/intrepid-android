@@ -48,10 +48,6 @@ public class SettingsActivity extends BaseActivity {
 	private Button btnUpdate;
 	private TextView signOut;
 	
-	private List<Country> countryList;
-	
-	private ArrayAdapter countryAdapter = null;
-	private String countryCode = null;
 	private String firstName = null;
 	private String lastName = null;
 	private String email = null;
@@ -60,7 +56,6 @@ public class SettingsActivity extends BaseActivity {
 	private String newPassword = null;
 	private String userId = null;
     private String token = null;
-	private List<String> countryNames = null, countryCodes = null;
 
 
 	@Override
@@ -73,12 +68,12 @@ public class SettingsActivity extends BaseActivity {
 	}
 
     private void initUserData() {
-        firstName = SharedPreferenceUtil.getString(Enums.PreferenceKeys.firstname.toString()," ");
-        lastName = SharedPreferenceUtil.getString(Enums.PreferenceKeys.lastname.toString()," ");
-        email = SharedPreferenceUtil.getString(Enums.PreferenceKeys.email.toString()," ");
-        userName = SharedPreferenceUtil.getString(Enums.PreferenceKeys.username.toString()," ");
-        userId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString()," ");
-        token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString()," ");
+        firstName = SharedPreferenceUtil.getString(Enums.PreferenceKeys.firstname.toString(),"");
+        lastName = SharedPreferenceUtil.getString(Enums.PreferenceKeys.lastname.toString(),"");
+        email = SharedPreferenceUtil.getString(Enums.PreferenceKeys.email.toString(),"");
+        userName = SharedPreferenceUtil.getString(Enums.PreferenceKeys.username.toString(),"");
+        userId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(),"");
+        token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(),"");
 
     }
 
@@ -164,6 +159,7 @@ public class SettingsActivity extends BaseActivity {
 	}
 
     private void signOut() {
+
         SharedPreferenceUtil.setString(Enums.PreferenceKeys.userId.toString(), "");
         SharedPreferenceUtil.setString(Enums.PreferenceKeys.token.toString(), "");
         SharedPreferenceUtil.setString(Enums.PreferenceKeys.email.toString(),"");
@@ -195,7 +191,8 @@ public class SettingsActivity extends BaseActivity {
                         return;
 
                     }else if(jsonObj.has("success")) {
-                        StringUtil.showAlertDialog(getResources().getString(R.string.settings_title_name), jsonObj.getString("success"), context);
+//                       StringUtil.showAlertDialog(getResources().getString(R.string.settings_title_name), jsonObj.getString("success"), context);
+                        updateProfile();
                         return;
                     }else {
                         StringUtil.showAlertDialog(getResources().getString(R.string.settings_title_name), "Password reset failed, Please try it again", context);
@@ -256,8 +253,12 @@ public class SettingsActivity extends BaseActivity {
                         return;
 
                     }else if(jsonObj.has("user")) {
-                        userObj = jsonObj.getJSONObject("user");
-                        user = new User(userObj);
+//                        userObj = jsonObj.getJSONObject("user");
+//                        user = new User(userObj);
+
+                        StringUtil.showAlertDialog(getResources().getString(R.string.settings_title_name), "Your profile has been updated.", context);
+                        return;
+
                     }else {
                         StringUtil.showAlertDialog(getResources().getString(R.string.settings_title_name), "Update failed, Please try it again", context);
                         return;
@@ -267,7 +268,6 @@ public class SettingsActivity extends BaseActivity {
                     StringUtil.showAlertDialog(getResources().getString(R.string.settings_title_name), "Update failed, Please try it again", context);
                     return;
 				}
-	            
 
 			}
 
