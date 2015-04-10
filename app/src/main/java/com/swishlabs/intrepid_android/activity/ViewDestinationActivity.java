@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.astuetz.PagerSlidingTabStrip;
 import com.swishlabs.intrepid_android.R;
 
 import java.util.Locale;
@@ -81,6 +82,10 @@ public class ViewDestinationActivity extends ActionBarActivity {
             }));
 
         }
+
+        PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+        tabs.setViewPager(mViewPager);
+//        tabs.setOnPageChangeListener(mPageChangeListener);
 
     }
 
