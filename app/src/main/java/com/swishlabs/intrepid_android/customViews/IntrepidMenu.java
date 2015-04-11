@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -60,10 +61,15 @@ public class IntrepidMenu extends ScrollView {
     private float mLastMotionY;
     private int mDeltaY = 0;
     private int mLastDeltaY = 0;
+    private VelocityTracker mVelocityTracker;
 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if (mVelocityTracker == null) {
+            mVelocityTracker = VelocityTracker.obtain();
+        }
+        mVelocityTracker.addMovement(event);
         final int action = event.getAction();
         final float y = event.getRawY();
         switch (action) {
@@ -89,7 +95,9 @@ public class IntrepidMenu extends ScrollView {
                     }else {
                         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
                                 this.getLayoutParams();
-                        params.height = this.getLayoutParams().height + mDeltaY;
+                        int minHeight =  Math.min(this.getLayoutParams().height + mDeltaY, convertDPtoPixels(300));
+                        params.height = Math.max(minHeight,convertDPtoPixels(25));
+
                         this.setLayoutParams(params);
                     }
                 }
@@ -97,63 +105,76 @@ public class IntrepidMenu extends ScrollView {
 
                 break;
             case MotionEvent.ACTION_UP:
-                if (this.getHeight() < convertDPtoPixels(150)){
-                    TranslateAnimation anim = new TranslateAnimation(0, 0, 0, (this.getHeight()-convertDPtoPixels(10)));
-                    anim.setDuration(300);
-                    final ScrollView scroller = this;
-                    this.startAnimation(anim);
-                    anim.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
+                final VelocityTracker velocityTracker = mVelocityTracker;
+                velocityTracker.computeCurrentVelocity(1000);
+                int velocityY= (int) velocityTracker.getYVelocity();
+                Log.e("VELOCITY", velocityY+"");
+                if (velocityY > 600) {
+                    snapToBottom();
 
-                        }
 
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
-                                    scroller.getLayoutParams();
-                            params.height = convertDPtoPixels(10);
-                            scroller.setLayoutParams(params);
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-
-                        }
-                    });
-
-                }else{
-                    int initial_position = this.getHeight();
-                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
-                            this.getLayoutParams();
-                    params.height = convertDPtoPixels(300);
-                    this.setLayoutParams(params);
-
-                    TranslateAnimation anim = new TranslateAnimation(0, 0, convertDPtoPixels(300)-initial_position, 0);
-                    anim.setDuration(300);
-                    this.startAnimation(anim);
-                    anim.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-
-                        }
-                    });
+                } else if (velocityY < -600) {
+                    snapToTop();
+                } else {
+                    if (this.getHeight() < convertDPtoPixels(150)) {
+                        snapToBottom();
+                    }else{
+                        snapToTop();
+                    }
                 }
+
+                if (mVelocityTracker != null) {
+                    mVelocityTracker.recycle();
+                    mVelocityTracker = null;
+                }
+
                 break;
             case MotionEvent.ACTION_CANCEL:
 
              }
        return true;
+    }
+
+    private void snapToBottom() {
+
+            TranslateAnimation anim = new TranslateAnimation(0, 0, 0, (this.getHeight() - convertDPtoPixels(25)));
+            anim.setDuration(300);
+            final ScrollView scroller = this;
+            this.startAnimation(anim);
+            anim.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+                    scroller.setDrawingCacheEnabled(true);
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
+                            scroller.getLayoutParams();
+                    params.height = convertDPtoPixels(25);
+                    scroller.setLayoutParams(params);
+                    scroller.setDrawingCacheEnabled(false);
+                    scroller.clearAnimation();
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+
+    }
+
+    private void snapToTop(){
+        int initial_position = this.getHeight();
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
+                this.getLayoutParams();
+        params.height = convertDPtoPixels(300);
+        this.setLayoutParams(params);
+
+        TranslateAnimation anim = new TranslateAnimation(0, 0, convertDPtoPixels(300)-initial_position, 0);
+        anim.setDuration(300);
+        this.startAnimation(anim);
     }
 
     private int convertDPtoPixels(int dp){

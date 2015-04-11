@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
     <com.swishlabs.intrepid_android.customViews.IntrepidMenu
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="10dp"
+    android:layout_height="25dp"
     android:layout_width="fill_parent"
     android:fillViewport="true"
     android:scrollbars="none"
