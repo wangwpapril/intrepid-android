@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <ScrollView
+    <com.swishlabs.intrepid_android.customViews.IntrepidMenu
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="wrap_content"
+    android:layout_height="10dp"
     android:layout_width="fill_parent"
     android:fillViewport="true"
     android:scrollbars="none"
+    android:overScrollMode="never"
+    android:layout_alignParentBottom="true"
     android:nestedScrollingEnabled="true">
 
 <RelativeLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:alpha="0.95"
-    android:background="@android:color/transparent">
+    android:background="@android:color/transparent"
+    >
     <ImageButton
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -314,5 +317,10 @@
 
     </LinearLayout>
 
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar"/>
+
 </RelativeLayout>
- </ScrollView>
+ </com.swishlabs.intrepid_android.customViews.IntrepidMenu>

@@ -3,8 +3,12 @@ package com.swishlabs.intrepid_android.customViews;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import com.swishlabs.intrepid_android.R;
@@ -14,11 +18,94 @@ import com.swishlabs.intrepid_android.activity.TripPagesActivity;
 /**
  * Created by ryanracioppo on 2015-04-09.
  */
+
+
+
 public class IntrepidMenu extends ScrollView {
 
+    private int mInitialHeight =0;
 
     public IntrepidMenu(Context context) {
         super(context);
+        mInitialHeight = this.getLayoutParams().height;
+    }
+
+    public IntrepidMenu(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        mInitialHeight = this.getMeasuredHeight();
+
+
+    }
+
+    public IntrepidMenu (Context context, AttributeSet attrs, int defStyleAttr){
+        super(context, attrs, defStyleAttr);
+        mInitialHeight = this.getLayoutParams().height;
+    }
+
+    @Override
+    public void onScrollChanged(int x, int y, int oldx, int oldy){
+        super.onScrollChanged(x, y, oldx, oldy);
+
+//        final float scale = getContext().getResources().getDisplayMetrics().density;
+//        int dps = 10;
+//        int width = this.getWidth();
+//        int pixels = (int) (dps * scale + 0.5f);
+//
+//        this.setLayoutParams(new RelativeLayout.LayoutParams(width, y));
+//        this.setScrollY(0);
+    }
+    private int maxScroll = 0;
+    private float mLastMotionY;
+    private int mDeltaY = 0;
+    private int mLastDeltaY = 0;
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        final int action = event.getAction();
+        final float y = event.getRawY();
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+
+
+                // Remember where the motion event started
+
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if (maxScroll == 0) {
+                    maxScroll = this.getChildAt(0).getLayoutParams().height;
+                }
+
+                mDeltaY = (int) (mLastMotionY - y);
+
+                mLastMotionY = y;
+                Log.e("y", y+"is y");
+                Log.e("delta", mDeltaY+" is deltay");
+                if (mDeltaY < 100 && mDeltaY > -100) {
+                    if (mDeltaY > 0 && this.getHeight()> 900){
+
+                    }else {
+                        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
+                                this.getLayoutParams();
+                        params.height = this.getLayoutParams().height + mDeltaY;
+                        this.setLayoutParams(params);
+                    }
+                }
+
+
+                break;
+            case MotionEvent.ACTION_UP:
+                if (this.getHeight() < mInitialHeight + 150){
+                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
+                            this.getLayoutParams();
+                    params.height = mInitialHeight;
+                    this.setLayoutParams(params);
+                }
+                break;
+            case MotionEvent.ACTION_CANCEL:
+
+             }
+       return true;
     }
 
     public static void setupMenu(final Context context, final Activity activity){
@@ -35,7 +122,7 @@ public class IntrepidMenu extends ScrollView {
             @Override
             public void onClick(View view) {
                 Intent mIntent = new Intent(context, TripPagesActivity.class);
-                activity.startActivity(mIntent);                
+                activity.startActivity(mIntent);
             }
         });
 
