@@ -7,6 +7,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -82,7 +84,7 @@ public class IntrepidMenu extends ScrollView {
                 Log.e("y", y+"is y");
                 Log.e("delta", mDeltaY+" is deltay");
                 if (mDeltaY < 100 && mDeltaY > -100) {
-                    if (mDeltaY > 0 && this.getHeight()> 900){
+                    if (mDeltaY > 0 && this.getHeight()> convertDPtoPixels(300)){
 
                     }else {
                         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
@@ -95,17 +97,45 @@ public class IntrepidMenu extends ScrollView {
 
                 break;
             case MotionEvent.ACTION_UP:
-                if (this.getHeight() < mInitialHeight + 150){
-                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
-                            this.getLayoutParams();
-                    params.height = mInitialHeight;
-                    this.setLayoutParams(params);
+                if (this.getHeight() < convertDPtoPixels(150)){
+                    TranslateAnimation anim = new TranslateAnimation(0, 0, 0, (this.getHeight()-convertDPtoPixels(10)));
+                    anim.setDuration(600);
+                    final ScrollView scroller = this;
+                    this.startAnimation(anim);
+                    anim.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
+                                    scroller.getLayoutParams();
+                            params.height = convertDPtoPixels(10);
+                            scroller.setLayoutParams(params);
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+
+                }else{
+                    
                 }
                 break;
             case MotionEvent.ACTION_CANCEL:
 
              }
        return true;
+    }
+
+    private int convertDPtoPixels(int dp){
+        final float scale = getContext().getResources().getDisplayMetrics().density;
+        int pixels = (int) (dp * scale + 0.5f);
+        return pixels;
     }
 
     public static void setupMenu(final Context context, final Activity activity){
