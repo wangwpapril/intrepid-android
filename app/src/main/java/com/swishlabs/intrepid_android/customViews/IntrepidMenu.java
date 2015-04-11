@@ -99,7 +99,7 @@ public class IntrepidMenu extends ScrollView {
             case MotionEvent.ACTION_UP:
                 if (this.getHeight() < convertDPtoPixels(150)){
                     TranslateAnimation anim = new TranslateAnimation(0, 0, 0, (this.getHeight()-convertDPtoPixels(10)));
-                    anim.setDuration(600);
+                    anim.setDuration(300);
                     final ScrollView scroller = this;
                     this.startAnimation(anim);
                     anim.setAnimationListener(new Animation.AnimationListener() {
@@ -123,7 +123,31 @@ public class IntrepidMenu extends ScrollView {
                     });
 
                 }else{
-                    
+                    int initial_position = this.getHeight();
+                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
+                            this.getLayoutParams();
+                    params.height = convertDPtoPixels(300);
+                    this.setLayoutParams(params);
+
+                    TranslateAnimation anim = new TranslateAnimation(0, 0, convertDPtoPixels(300)-initial_position, 0);
+                    anim.setDuration(300);
+                    this.startAnimation(anim);
+                    anim.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
                 }
                 break;
             case MotionEvent.ACTION_CANCEL:
