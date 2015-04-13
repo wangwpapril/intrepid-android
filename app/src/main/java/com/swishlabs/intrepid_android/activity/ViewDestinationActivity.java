@@ -74,6 +74,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
             @Override
             public void onPageSelected(int position) {
                 mToolbarTitle.setText(tabNames.get(position));
+                mTabContainer.setScrollIndicator(position);
             }
 
             @Override

@@ -21,12 +21,16 @@ import java.util.ArrayList;
 
 
 
-public class CustomTabContainer extends LinearLayout {
+public class CustomTabContainer extends RelativeLayout {
 
     private Context mContext;
     private int mTabAmount;
     private ViewPager mViewPager;
     private Activity mActivity;
+    private TextView mTabSelector;
+
+    private int tabWidth;
+    private int tabHeight;
 
     public CustomTabContainer(Context context) {
         super(context);
@@ -46,9 +50,14 @@ public class CustomTabContainer extends LinearLayout {
     public void createTabs(ArrayList<String> tabNames, ViewPager viewPager){
         mViewPager = viewPager;
         mTabAmount = tabNames.size();
+        mTabSelector = (TextView)findViewById(R.id.tabSelector);
+        LinearLayout layout = (LinearLayout)findViewById(R.id.tabLayout);
+        tabWidth = this.getWidth()/mTabAmount;
+        tabHeight = this.getHeight();
+        LayoutParams selectorParams = new LayoutParams(tabWidth,tabHeight/10);
+        mTabSelector.setLayoutParams(selectorParams);
+        mTabSelector.setWidth(tabWidth);
 
-        final int tabWidth = this.getWidth()/mTabAmount;
-        final int tabHeight = this.getHeight();
         for (int i = 0; i<mTabAmount; i++) {
 
             View child = LayoutInflater.from(mContext).inflate(
@@ -58,7 +67,7 @@ public class CustomTabContainer extends LinearLayout {
             params.height = tabHeight;
             child.setLayoutParams(params);
 
-            this.addView(child);
+            layout.addView(child);
             TextView tabText = (TextView)child.findViewById(R.id.tabText);
             tabText.setText(tabNames.get(i));
             Log.e("CreateTab", tabNames.get(i));
@@ -68,6 +77,16 @@ public class CustomTabContainer extends LinearLayout {
 
 
     }
+
+    public void slideScrollIndicator(int position){
+
+    }
+
+    public void setScrollIndicator(int position){
+        mTabSelector.setX(tabWidth*position);
+    }
+
+
 
     private void setListener(View view, final int position){
         view.setOnClickListener(new OnClickListener() {

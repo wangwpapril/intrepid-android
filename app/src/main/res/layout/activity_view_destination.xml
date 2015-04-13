@@ -32,6 +32,17 @@
         android:id="@+id/tabContainer"
         android:layout_below="@id/toolbar"
         android:layout_height="30dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:id="@+id/tabLayout"
+            android:layout_height="fill_parent"></LinearLayout>
+        <TextView
+            android:layout_width="0dp"
+            android:id="@+id/tabSelector"
+            android:background="@color/blue"
+            android:layout_alignBottom="@id/tabContainer"
+            android:layout_height="4dp"/>
     </com.swishlabs.intrepid_android.customViews.CustomTabContainer>
 
 
