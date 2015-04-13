@@ -17,6 +17,7 @@ import android.widget.ScrollView;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.activity.SettingsActivity;
 import com.swishlabs.intrepid_android.activity.TripPagesActivity;
+import com.swishlabs.intrepid_android.activity.ViewDestinationActivity;
 
 /**
  * Created by ryanracioppo on 2015-04-09.
@@ -187,6 +188,14 @@ public class IntrepidMenu extends ScrollView {
     }
 
     public static void setupMenu(final Context context, final Activity activity){
+        FrameLayout overviewButton = (FrameLayout)activity.findViewById(R.id.overview_menu_btn);
+        overviewButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mIntent = new Intent(context, ViewDestinationActivity.class);
+                activity.startActivity(mIntent);
+            }
+        });
         FrameLayout settingsButton = (FrameLayout)activity.findViewById(R.id.settings_menu_btn);
         settingsButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -203,6 +212,7 @@ public class IntrepidMenu extends ScrollView {
                 activity.startActivity(mIntent);
             }
         });
+
 
     }
 
