@@ -5,7 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.swishlabs.intrepid_android.MyApplication;
+import com.swishlabs.intrepid_android.data.api.model.HealthConditionDis;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
+import com.swishlabs.intrepid_android.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +32,42 @@ public class DatabaseManager {
             return db;
         }
     }
-    public static int getTripCount(Database database) {
+
+    public static int getHealthConCount(Database database, String id){
+//        String countQuery = "SELECT  * FROM " + Database.TABLE_HEALTH_CONDITION;
+        String countQuery = "SELECT * FROM " + Database.TABLE_HEALTH_CONDITION
+                + " WHERE " + Database.KEY_COUNTRY_ID  +" = " + id;
+
+        Cursor cursor = database.getDb().rawQuery(countQuery,null);
+        return cursor.getCount();
+    }
+
+    public static ArrayList<HealthConditionDis> getHealthConArray(Database database, String id){
+
+        ArrayList<HealthConditionDis> conList = new ArrayList<>();
+
+        String countQuery = "SELECT * FROM " + Database.TABLE_HEALTH_CONDITION
+                + " WHERE " + Database.KEY_COUNTRY_ID  +" = " + id;
+
+        Cursor cursor = database.getDb().rawQuery(countQuery,null);
+        if(cursor.moveToFirst()) {
+            while (cursor.isAfterLast() == false) {
+                HealthConditionDis hcDis = new HealthConditionDis( Integer.valueOf(cursor.getString(0)),
+                        cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4),
+                        cursor.getString(5));
+                conList.add(hcDis);
+                cursor.moveToNext();
+
+            }
+
+        }
+
+
+        return conList;
+
+    }
+
+    public static int getTripCount(Database database, String id) {
         String countQuery = "SELECT  * FROM " + Database.TABLE_TRIPS;
         Cursor cursor = database.getDb().rawQuery(countQuery, null);
         return cursor.getCount();
