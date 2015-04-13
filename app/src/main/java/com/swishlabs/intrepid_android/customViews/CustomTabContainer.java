@@ -1,5 +1,6 @@
 package com.swishlabs.intrepid_android.customViews;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -25,6 +26,7 @@ public class CustomTabContainer extends LinearLayout {
     private Context mContext;
     private int mTabAmount;
     private ViewPager mViewPager;
+    private Activity mActivity;
 
     public CustomTabContainer(Context context) {
         super(context);

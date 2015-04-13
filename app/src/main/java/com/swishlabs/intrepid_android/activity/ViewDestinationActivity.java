@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.CustomTabContainer;
@@ -28,7 +29,9 @@ public class ViewDestinationActivity extends ActionBarActivity {
      * The {@link android.support.v4.view.ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
+    TextView mToolbarTitle;
     CustomTabContainer mTabContainer;
+    ArrayList<String> tabNames = new ArrayList<String>();
 
     private String[] tabs = { "Overview", "Climate", "Currency" };
     public static ViewDestinationActivity getInstance(){
@@ -41,7 +44,9 @@ public class ViewDestinationActivity extends ActionBarActivity {
         setContentView(R.layout.activity_view_destination);
         instance = this;
         IntrepidMenu.setupMenu(instance, ViewDestinationActivity.this);
+        setupTabNames();
 
+        mToolbarTitle = (TextView)findViewById(R.id.toolbar_title);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -51,10 +56,37 @@ public class ViewDestinationActivity extends ActionBarActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        setOnPageChangeListener(mViewPager);
 
 
 
 
+    }
+
+
+    private void setOnPageChangeListener(ViewPager viewPager){
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mToolbarTitle.setText(tabNames.get(position));
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    protected void setupTabNames(){
+        tabNames.add("Overview");
+        tabNames.add("Culture");
+        tabNames.add("Currency");
     }
 
     @Override
@@ -65,11 +97,6 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
     private void createTabs(){
         mTabContainer = (CustomTabContainer)findViewById(R.id.tabContainer);
-
-        ArrayList<String> tabNames = new ArrayList<String>();
-        tabNames.add("Overview");
-        tabNames.add("Culture");
-        tabNames.add("Currency");
         mTabContainer.createTabs(tabNames, mViewPager);
 
 
