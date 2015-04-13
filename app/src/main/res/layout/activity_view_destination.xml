@@ -38,10 +38,9 @@
             android:id="@+id/tabLayout"
             android:layout_height="fill_parent"></LinearLayout>
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="50dp"
             android:id="@+id/tabSelector"
             android:background="@color/blue"
-            android:layout_alignBottom="@id/tabContainer"
             android:layout_height="4dp"/>
     </com.swishlabs.intrepid_android.customViews.CustomTabContainer>
 
