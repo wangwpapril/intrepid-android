@@ -19,8 +19,10 @@ import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
+import com.swishlabs.intrepid_android.data.api.model.HealthCondition;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
+import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 import com.swishlabs.intrepid_android.util.StringUtil;
@@ -42,7 +44,10 @@ public class DestinationsListActivity extends BaseActivity {
 	private DestinationsListAdapter mDestinationsListAdapter;
     public static EditText mEditTextSearch;
 
-	@Override
+    private List<HealthCondition> healthConditionList;
+
+
+    @Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.destination_list);
@@ -154,9 +159,20 @@ public class DestinationsListActivity extends BaseActivity {
             public void handleSuccess(String content){
 
                 JSONObject destination;
+                JSONArray healthCondition;
                 try {
                     destination = new JSONObject(content).getJSONObject("destination");
+                    if(destination.has("health_conditions")) {
+                        healthCondition = destination.getJSONArray("health_conditions");
+                        int len = healthCondition.length();
+                        healthConditionList = new ArrayList<HealthCondition>(len);
+                        for(int i = 0;i<len;i++){
+                            healthConditionList.add(new HealthCondition(healthCondition.getJSONObject(i)));
+                            CreateHealthCondition(destination.optString("id"), String.valueOf(i));
 
+                        }
+
+                    }
                     JSONObject images = destination.getJSONObject("images");
                     final String general_image_url = images.getJSONObject("intro").getString("source_url");
 //                    Thread t = new Thread(new Runnable() {
@@ -193,6 +209,22 @@ public class DestinationsListActivity extends BaseActivity {
 
     public boolean isTripUnique(String destinationName){
         return true;
+    }
+
+    private void CreateHealthCondition(String id, String index){
+
+        int indexId = Integer.parseInt(index);
+        ContentValues values = new ContentValues();
+        values.put(Database.KEY_COUNTRY_ID,id);
+        values.put(Database.KEY_CONDITION_ID,index);
+        values.put(Database.KEY_CONDITION_DESCRIPTION,healthConditionList.get(indexId).content.description);
+        values.put(Database.KEY_CONDITION_NAME,healthConditionList.get(indexId).name);
+        values.put(Database.KEY_CONDITION_SYMPTOMS,healthConditionList.get(indexId).content.symptoms);
+        values.put(Database.KEY_CONDITION_PREVENTION,healthConditionList.get(indexId).content.prevention);
+        values.put(Database.KEY_GENERAL_IMAGE_URI,healthConditionList.get(indexId).images.sourceUrl.replace(" ", "%20"));
+
+        mDatabase.getDb().insert(Database.TABLE_HEALTH_CONDITION, null, values);
+
     }
 
     private void CreateTrip(int position, String generalImageUri){
