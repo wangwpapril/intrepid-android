@@ -13,28 +13,24 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.customViews.CustomTabContainer;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class ViewDestinationActivity extends ActionBarActivity {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link android.support.v4.app.FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
+
     SectionsPagerAdapter mSectionsPagerAdapter;
     public static ViewDestinationActivity instance;
     /**
      * The {@link android.support.v4.view.ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
+    CustomTabContainer mTabContainer;
 
-    private String[] tabs = { "Overview", "Embassies", "Currency" };
+    private String[] tabs = { "Overview", "Climate", "Currency" };
     public static ViewDestinationActivity getInstance(){
         return instance;
     }
@@ -55,9 +51,20 @@ public class ViewDestinationActivity extends ActionBarActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        createTabs();
 
 
 
+    }
+
+    private void createTabs(){
+        mTabContainer = (CustomTabContainer)findViewById(R.id.tabContainer);
+
+        ArrayList<String> tabNames = new ArrayList<String>();
+        tabNames.add("Overview");
+        tabNames.add("Climate");
+        tabNames.add("Currency");
+        mTabContainer.createTabs(tabNames);
     }
 
 

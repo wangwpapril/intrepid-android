@@ -5,6 +5,12 @@
 
     tools:context="com.swishlabs.intrepid_android.activity.ViewDestinationActivity">
 
+    <com.swishlabs.intrepid_android.customViews.CustomTabContainer
+        android:layout_width="fill_parent"
+        android:id="@+id/tabContainer"
+        android:layout_height="80dp">
+    </com.swishlabs.intrepid_android.customViews.CustomTabContainer>
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"

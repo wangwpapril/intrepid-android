@@ -135,16 +135,19 @@ public class IntrepidMenu extends ScrollView {
        return true;
     }
 
-    private void snapToBottom() {
 
-            TranslateAnimation anim = new TranslateAnimation(0, 0, 0, (this.getHeight() - convertDPtoPixels(25)));
+    private void snapToBottom() {
+            int movement = this.getHeight()-convertDPtoPixels(25);
+            TranslateAnimation anim = new TranslateAnimation(0, 0, 0, movement);
             anim.setDuration(300);
             final ScrollView scroller = this;
             this.startAnimation(anim);
+
             anim.setAnimationListener(new Animation.AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {
                     scroller.setDrawingCacheEnabled(true);
+
                 }
 
                 @Override
