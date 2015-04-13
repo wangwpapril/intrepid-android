@@ -1,6 +1,7 @@
 package com.swishlabs.intrepid_android.customViews;
 
 import android.content.Context;
+import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ public class CustomTabContainer extends LinearLayout {
 
     private Context mContext;
     private int mTabAmount;
+    private ViewPager mViewPager;
 
     public CustomTabContainer(Context context) {
         super(context);
@@ -39,8 +41,8 @@ public class CustomTabContainer extends LinearLayout {
         mContext = context;
     }
 
-    public void createTabs(ArrayList<String> tabNames){
-
+    public void createTabs(ArrayList<String> tabNames, ViewPager viewPager){
+        mViewPager = viewPager;
         mTabAmount = tabNames.size();
 
         final int tabWidth = this.getWidth()/mTabAmount;
@@ -53,13 +55,31 @@ public class CustomTabContainer extends LinearLayout {
             params.width = tabWidth;
             params.height = tabHeight;
             child.setLayoutParams(params);
+
             this.addView(child);
             TextView tabText = (TextView)child.findViewById(R.id.tabText);
             tabText.setText(tabNames.get(i));
             Log.e("CreateTab", tabNames.get(i));
+            setListener(child, i);
+
         }
 
 
     }
+
+    private void setListener(View view, final int position){
+        view.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mViewPager.setCurrentItem(position);
+            }
+        });
+    }
+
+
+
+
+
+
 
 }

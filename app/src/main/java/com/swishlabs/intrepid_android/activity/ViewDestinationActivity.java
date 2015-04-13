@@ -68,10 +68,13 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
         ArrayList<String> tabNames = new ArrayList<String>();
         tabNames.add("Overview");
-        tabNames.add("Climate");
+        tabNames.add("Culture");
         tabNames.add("Currency");
-        mTabContainer.createTabs(tabNames);
+        mTabContainer.createTabs(tabNames, mViewPager);
+
+
     }
+
 
 
     @Override

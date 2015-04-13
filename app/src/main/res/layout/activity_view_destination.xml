@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:paddingTop="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:elevation="4dp"
         android:transitionName="actionBar">
     <TextView
@@ -30,7 +31,7 @@
         android:layout_width="fill_parent"
         android:id="@+id/tabContainer"
         android:layout_below="@id/toolbar"
-        android:layout_height="50dp">
+        android:layout_height="30dp">
     </com.swishlabs.intrepid_android.customViews.CustomTabContainer>
 
 
@@ -38,6 +39,7 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_below="@id/tabContainer"
         android:id="@+id/content">
         <android.support.v4.view.ViewPager
             android:layout_height="fill_parent"
