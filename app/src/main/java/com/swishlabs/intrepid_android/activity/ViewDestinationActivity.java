@@ -56,7 +56,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        setOnPageChangeListener(mViewPager);
+
 
 
 
@@ -68,13 +68,12 @@ public class ViewDestinationActivity extends ActionBarActivity {
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+                mTabContainer.slideScrollIndicator(position, positionOffsetPixels);
             }
 
             @Override
             public void onPageSelected(int position) {
                 mToolbarTitle.setText(tabNames.get(position));
-                mTabContainer.setScrollIndicator(position);
             }
 
             @Override
@@ -99,6 +98,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
     private void createTabs(){
         mTabContainer = (CustomTabContainer)findViewById(R.id.tabContainer);
         mTabContainer.createTabs(tabNames, mViewPager);
+        setOnPageChangeListener(mViewPager);
 
 
     }

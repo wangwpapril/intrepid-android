@@ -79,12 +79,8 @@ public class CustomTabContainer extends RelativeLayout {
 
     }
 
-    public void slideScrollIndicator(int position){
-
-    }
-
-    public void setScrollIndicator(int position){
-        mTabSelector.setX(tabWidth*position);
+    public void slideScrollIndicator(int position, int positionOffsetPixels){
+        mTabSelector.setX(position*tabWidth+positionOffsetPixels/mTabAmount);
     }
 
 
