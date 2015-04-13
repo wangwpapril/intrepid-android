@@ -16,10 +16,18 @@ public class Database {
 
     //trips constants
     public static final String TABLE_TRIPS = "trips";
+    public static final String TABLE_HEALTH_CONDITION = "healthCondition";
     public static final String KEY_ID = "id";
     public static final String KEY_COUNTRY_ID = "countryId";
     public static final String KEY_GENERAL_IMAGE_URI = "imageGeneral";
     public static final String KEY_DESTINATION_COUNTRY = "destinationCountry";
+
+    public static final String KEY_CONDITION_ID = "healthConditionId";
+    public static final String KEY_CONDITION_NAME = "healthConditionName";
+    public static final String KEY_CONDITION_DESCRIPTION = "healthConditionDescription";
+    public static final String KEY_CONDITION_SYMPTOMS = "healthConditionSymptoms";
+    public static final String KEY_CONDITION_PREVENTION = "healthConditionPrevention";
+
     private DatabaseOpenHelper dbOpenHelper;
     private SQLiteDatabase db;
     private class DatabaseOpenHelper extends SQLiteOpenHelper {
@@ -35,6 +43,16 @@ public class Database {
                     + KEY_COUNTRY_ID + " TEXT"+ ")";
             db = sqLiteDatabase;
             db.execSQL(createTripsTable);
+
+            String createHealthConditionTable = "CREATE TABLE " + TABLE_HEALTH_CONDITION + "("
+                    + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_COUNTRY_ID + " TEXT,"
+                    + KEY_CONDITION_ID + " TEXT,"
+                    + KEY_CONDITION_NAME + " TEXT,"
+                    + KEY_CONDITION_DESCRIPTION + " TEXT,"
+                    + KEY_CONDITION_SYMPTOMS + " TEXT,"
+                    + KEY_CONDITION_PREVENTION + " TEXT,"
+                    + KEY_GENERAL_IMAGE_URI + " TEXT" + ")";
+            db.execSQL(createHealthConditionTable);
         }
         @Override
         public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
