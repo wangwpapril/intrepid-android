@@ -130,7 +130,7 @@ public class DatabaseManager {
                         Database.KEY_COMMUNICATIONS, Database.KEY_OTHER_CONCERNS, Database.KEY_DEVELOPMENT, Database.KEY_LOCATION,
                         Database.KEY_CULTURAL_NORMS, Database.KEY_SOURCES, Database.KEY_CURRENCY, Database.KEY_RELIGION,
                         Database.KEY_TIMEZONE, Database.KEY_SAFETY, Database.KEY_GOVERNMENT, Database.KEY_VISAMAP,
-                        Database.KEY_ELECTRICITY, Database.KEY_ETHNIC_MAKEUP, Database.KEY_LANGUAGE_INFORMATION, Database.KEY_VISA_REQUIREMENT
+                        Database.KEY_ELECTRICITY, Database.KEY_ETHNIC_MAKEUP, Database.KEY_LANGUAGE_INFORMATION, Database.KEY_VISA_REQUIREMENT,
                         Database.KEY_CLIMATE_INFO, Database.KEY_IMAGE1, Database.KEY_IMAGE2, Database.KEY_IMAGE3}, Database.KEY_DESTINATION_ID + "=?",
                 new String[]{String.valueOf(destinationId)}, null, null, null, null);
         if (cursor != null)
