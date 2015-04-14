@@ -14,7 +14,9 @@ public class Trip {
        this.mGeneralImage = generalImage;
        this.id = id;
     }
-
+    public String getCountryId(){
+        return mCountryId;
+    }
     public String getDestinationName(){
         return mDestinationName;
     }

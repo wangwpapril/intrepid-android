@@ -268,7 +268,7 @@ public class DestinationsListActivity extends BaseActivity {
         String currency_image_url = images.getJSONObject("currency").getString("source_url").replace(" ", "%20");
 
         ContentValues values = new ContentValues();
-        values.put(Database.KEY_DESTINATION_COUNTRY, destinationId);
+        values.put(Database.KEY_DESTINATION_ID, destinationId);
         values.put(Database.KEY_COMMUNICATIONS, communicationsInfrastructure);
         values.put(Database.KEY_OTHER_CONCERNS, otherConcerns);
         values.put(Database.KEY_DEVELOPMENT, development);

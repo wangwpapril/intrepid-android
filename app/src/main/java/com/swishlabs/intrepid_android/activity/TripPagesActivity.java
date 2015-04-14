@@ -110,12 +110,12 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         @Override
         public Fragment getItem(int position) {
             if (position == 0){
-                return TripFragment.newInstance(-1, "", "");
+                return TripFragment.newInstance(-1, "", "", "");
             }else{
 //                Trip trip = DatabaseManager.getTrip(position - 1, mDatabase);
                 Trip trip = mTripList.get(position -1);
 
-                return TripFragment.newInstance(trip.getId(), trip.getDestinationName(), trip.getGeneralImage());
+                return TripFragment.newInstance(trip.getId(), trip.getDestinationName(), trip.getGeneralImage(), trip.getCountryId());
             }
 
         }

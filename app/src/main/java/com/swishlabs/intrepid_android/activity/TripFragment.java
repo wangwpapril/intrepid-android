@@ -37,6 +37,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
 
     Trip mTrip;
     int mTripIndex;
+    String mDestinationId;
     Database mDatabase;
     TextView mCountryName;
     ImageView mCountryImage;
@@ -45,12 +46,13 @@ public class TripFragment extends android.support.v4.app.Fragment {
     private OnFragmentInteractionListener mListener;
 
     // TODO: Rename and change types and number of parameters
-    public static TripFragment newInstance(int id, String destinationName, String imageURL) {
+    public static TripFragment newInstance(int id, String destinationName, String imageURL, String destinationId) {
         TripFragment fragment = new TripFragment();
         Bundle args = new Bundle();
 
         args.putInt("id", id);
         args.putString("destinationName", destinationName);
+        args.putString("destinationId", destinationId);
         args.putString("imageURL", imageURL);
         fragment.setArguments(args);
 
@@ -72,6 +74,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trip, container, false);
         mTripIndex = getArguments().getInt("id");
+        mDestinationId = getArguments().getString("destinationId");
         String destinationName = getArguments().getString("destinationName");
         String imageURL = getArguments().getString("imageURL");
 //        mTrip = DatabaseManager.getTrip(mTripIndex, mDatabase);
@@ -94,6 +97,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
                 @Override
                 public void onClick(View v) {
                     Intent mIntent = new Intent(TripPagesActivity.getInstance(), ViewDestinationActivity.class);
+                    mIntent.putExtra("destinationId", mDestinationId);
                     startActivity(mIntent);
                 }
             });

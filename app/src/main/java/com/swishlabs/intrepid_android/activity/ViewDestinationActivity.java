@@ -15,6 +15,9 @@ import android.view.ViewGroup;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.CustomTabContainer;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
+import com.swishlabs.intrepid_android.data.api.model.DestinationInformation;
+import com.swishlabs.intrepid_android.data.store.Database;
+import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -27,7 +30,11 @@ public class ViewDestinationActivity extends ActionBarActivity {
     /**
      * The {@link android.support.v4.view.ViewPager} that will host the section contents.
      */
+    public DatabaseManager mDatabaseManager;
+    public Database mDatabase;
     ViewPager mViewPager;
+    String mDestinationId;
+    DestinationInformation mDestinationInformation;
 //    TextView mToolbarTitle;
     CustomTabContainer mTabContainer;
     ArrayList<String> tabNames = new ArrayList<String>();
@@ -40,15 +47,14 @@ public class ViewDestinationActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadDatabase();
+        mDestinationId = getIntent().getStringExtra("destinationId");
+        mDestinationInformation = DatabaseManager.getDestinationInformation(mDatabase,mDestinationId);
         setContentView(R.layout.activity_view_destination);
         instance = this;
         IntrepidMenu.setupMenu(instance, ViewDestinationActivity.this);
         setupTabNames();
 
-//        mToolbarTitle = (TextView)findViewById(R.id.toolbar_title);
-
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
 
@@ -57,9 +63,11 @@ public class ViewDestinationActivity extends ActionBarActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
 
+    }
 
-
-
+    public void loadDatabase(){
+        mDatabaseManager = new DatabaseManager(this.getBaseContext());
+        mDatabase = mDatabaseManager.openDatabase("Intrepid.db");
     }
 
 
