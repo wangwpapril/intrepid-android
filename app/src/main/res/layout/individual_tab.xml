@@ -7,7 +7,7 @@
 
     <TextView
         android:layout_width="fill_parent"
-        android:background="@color/black"
+        android:background="@drawable/subnav_bg"
         android:textColor="@color/white"
         android:id="@+id/tabText"
 
