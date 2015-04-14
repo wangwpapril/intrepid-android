@@ -18,6 +18,7 @@ import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.activity.SettingsActivity;
 import com.swishlabs.intrepid_android.activity.TripPagesActivity;
 import com.swishlabs.intrepid_android.activity.ViewDestinationActivity;
+import com.swishlabs.intrepid_android.activity.ViewHealthActivity;
 
 /**
  * Created by ryanracioppo on 2015-04-09.
@@ -209,6 +210,14 @@ public class IntrepidMenu extends ScrollView {
             @Override
             public void onClick(View view) {
                 Intent mIntent = new Intent(context, TripPagesActivity.class);
+                activity.startActivity(mIntent);
+            }
+        });
+        FrameLayout healthButton = (FrameLayout)activity.findViewById(R.id.health_menu_btn);
+        healthButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mIntent = new Intent(context, ViewHealthActivity.class);
                 activity.startActivity(mIntent);
             }
         });
