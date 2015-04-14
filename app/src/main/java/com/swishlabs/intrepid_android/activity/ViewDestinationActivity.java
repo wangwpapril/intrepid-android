@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.CustomTabContainer;
@@ -142,7 +141,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            return OverviewGeneralFragment.newInstance(position + 1);
         }
 
         @Override
@@ -169,7 +168,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class OverviewGeneralFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -180,15 +179,15 @@ public class ViewDestinationActivity extends ActionBarActivity {
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
+        public static OverviewGeneralFragment newInstance(int sectionNumber) {
+            OverviewGeneralFragment fragment = new OverviewGeneralFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
             return fragment;
         }
 
-        public PlaceholderFragment() {
+        public OverviewGeneralFragment() {
         }
 
         @Override

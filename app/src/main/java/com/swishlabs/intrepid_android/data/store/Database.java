@@ -39,6 +39,7 @@ public class Database {
     public static final String KEY_MEDICATION_STORAGE = "healthMedicationStorage";
     public static final String KEY_MEDICATION_NOTES = "healthMedicationNotes";
 
+    public static final String KEY_DESTINATION_ID = "destinationId";
     public static final String KEY_COMMUNICATIONS = "communicationsInfrastructure";
     public static final String KEY_OTHER_CONCERNS = "otherConcerns";
     public static final String KEY_DEVELOPMENT = "development";
@@ -105,6 +106,7 @@ public class Database {
 
             String createDestinationInfoTable = "CREATE TABLE " + TABLE_DESTINATION_INFORMATION + "("
                     + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + KEY_DESTINATION_ID + " TEXT,"
                     + KEY_COMMUNICATIONS + " TEXT,"
                     + KEY_OTHER_CONCERNS + " TEXT,"
                     + KEY_DEVELOPMENT + " TEXT,"

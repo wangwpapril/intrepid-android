@@ -5,11 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.swishlabs.intrepid_android.MyApplication;
-import com.swishlabs.intrepid_android.data.api.model.HealthCondition;
+import com.swishlabs.intrepid_android.data.api.model.DestinationInformation;
 import com.swishlabs.intrepid_android.data.api.model.HealthConditionDis;
 import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
-import com.swishlabs.intrepid_android.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -118,15 +117,33 @@ public class DatabaseManager {
             while (cursor.isAfterLast() == false) {
 //                (int id, String destinationName, String destinationId, String generalImage)
                 String string0 = cursor.getString(0);
-//                String string1 = cursor.getString(1);
-//                String string2 = cursor.getString(2);
-//                String string3 = cursor.getString(3);
                 Trip trip = new Trip(Integer.valueOf(string0),cursor.getString(1), cursor.getString(3), cursor.getString(2));
                 tripList.add(trip);
                 cursor.moveToNext();
             }
         }
         return tripList;
+    }
+
+    public static DestinationInformation getDestinationInformation(Database database, String destinationId){
+        Cursor cursor = database.getDb().query(Database.TABLE_DESTINATION_INFORMATION, new String[]{Database.KEY_DESTINATION_ID,
+                        Database.KEY_COMMUNICATIONS, Database.KEY_OTHER_CONCERNS, Database.KEY_DEVELOPMENT, Database.KEY_LOCATION,
+                        Database.KEY_CULTURAL_NORMS, Database.KEY_SOURCES, Database.KEY_CURRENCY, Database.KEY_RELIGION,
+                        Database.KEY_TIMEZONE, Database.KEY_SAFETY, Database.KEY_GOVERNMENT, Database.KEY_VISAMAP,
+                        Database.KEY_ELECTRICITY, Database.KEY_ETHNIC_MAKEUP, Database.KEY_LANGUAGE_INFORMATION, Database.KEY_VISA_REQUIREMENT
+                        Database.KEY_CLIMATE_INFO, Database.KEY_IMAGE1, Database.KEY_IMAGE2, Database.KEY_IMAGE3}, Database.KEY_DESTINATION_ID + "=?",
+                new String[]{String.valueOf(destinationId)}, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+        DestinationInformation destinationInformation = new DestinationInformation(cursor.getString(0), cursor.getString(1), cursor.getString(2),
+                cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
+                cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
+                cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18),
+                cursor.getString(19), cursor.getString(20));
+
+        // return contact
+        database.getDb().close();
+        return destinationInformation;
     }
 
 

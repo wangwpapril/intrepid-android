@@ -4,6 +4,7 @@ package com.swishlabs.intrepid_android.data.api.model;
  * Created by ryanracioppo on 2015-04-14.
  */
 public class DestinationInformation {
+    public String mDestinationId;
     public String mCommunicationsInfrastructure;
     public String mOtherConcerns;
     public String mDevelopment;
@@ -25,9 +26,10 @@ public class DestinationInformation {
     public String mImage2;
     public String mImage3;
 
-    public DestinationInformation(String communicationsInfrastructure, String otherConcerns, String development, String location, String culturalNorms, String sources,
+    public DestinationInformation(String destinationId, String communicationsInfrastructure, String otherConcerns, String development, String location, String culturalNorms, String sources,
         String currency, String religion, String timeZone, String safety, String typeOfGovernment, String visaMapAttributionUri, String electricity,
         String ethnicMakeup, String languageInfo, String visaRequirements, String climate, String image1, String image2, String image3){
+        this.mDestinationId = destinationId;
         this.mCommunicationsInfrastructure = communicationsInfrastructure;
         this.mOtherConcerns = otherConcerns;
         this.mDevelopment = development;
