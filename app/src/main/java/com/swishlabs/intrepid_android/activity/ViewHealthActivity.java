@@ -7,24 +7,42 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ListView;
 
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.adapter.HealthListAdapter;
+import com.swishlabs.intrepid_android.adapter.HealthMedListAdapter;
 import com.swishlabs.intrepid_android.customViews.CustomTabContainer;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
+import com.swishlabs.intrepid_android.data.api.model.HealthConditionDis;
+import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
+import com.swishlabs.intrepid_android.data.store.Database;
+import com.swishlabs.intrepid_android.data.store.DatabaseManager;
+import com.swishlabs.intrepid_android.util.Enums;
+import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class ViewHealthActivity extends ActionBarActivity {
 
     SectionsPagerAdapter mSectionsPagerAdapter;
     public static ViewHealthActivity instance;
+    public static EditText mEditTextSearch;
+
+    public Database mDatabase;
+    public DatabaseManager mDatabaseManager;
     /**
      * The {@link android.support.v4.view.ViewPager} that will host the section contents.
      */
@@ -33,8 +51,27 @@ public class ViewHealthActivity extends ActionBarActivity {
     CustomTabContainer mTabContainer;
     ArrayList<String> tabNames = new ArrayList<String>();
 
+    public static List<HealthConditionDis> mHealthConList = new ArrayList<HealthConditionDis>();
+    public int mHealthCount;
+
+    public static List<HealthMedicationDis> mHealthMedList = new ArrayList<HealthMedicationDis>();
+    public int mHealthMedCount;
+
+    public static HealthMedListAdapter mHealthMedListAdapter;
+    public static HealthListAdapter mHealthListAdapter;
+    public static int index = 0;
+
     public static ViewHealthActivity getInstance(){
         return instance;
+    }
+
+    public Database getDatabase(){
+        return mDatabase;
+    }
+
+    public void loadDatabase(){
+        mDatabaseManager = new DatabaseManager(this.getBaseContext());
+        mDatabase = mDatabaseManager.openDatabase("Intrepid.db");
     }
 
     @Override
@@ -44,6 +81,15 @@ public class ViewHealthActivity extends ActionBarActivity {
         instance = this;
         IntrepidMenu.setupMenu(instance, ViewHealthActivity.this);
         setupTabNames();
+        loadDatabase();
+
+        String countryId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currentCountryId.toString(),"");
+
+        mHealthConList = DatabaseManager.getHealthConArray(mDatabase, countryId);
+        mHealthCount = mHealthConList.size();
+
+//        mHealthMedList = DatabaseManager.getHealthMedArray(mDatabase,countryId);
+//        mHealthMedCount = mHealthMedList.size();
 
 //        mToolbarTitle = (TextView)findViewById(R.id.toolbar_title);
 
@@ -55,9 +101,40 @@ public class ViewHealthActivity extends ActionBarActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        mEditTextSearch = (EditText) findViewById(R.id.search_ed);
+        mEditTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+//                    String text = mEditTextSearch.getText().toString().toLowerCase(Locale.getDefault());
+                String text = s.toString().toLowerCase(Locale.getDefault());
+                switch (index) {
+                    case 0:
+                        mHealthListAdapter.getFilter(instance).filter(text);
+                        break;
+                    case 1:
+                        mHealthMedListAdapter.getFilter(instance).filter(text);
+                        break;
+                }
+
+            }
+        });
+
+
+
     }
 
-    private void setOnPageChangeListener(ViewPager viewPager){
+    private void setOnPageChangeListener(final ViewPager viewPager){
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -66,7 +143,8 @@ public class ViewHealthActivity extends ActionBarActivity {
 
             @Override
             public void onPageSelected(int position) {
-//                mToolbarTitle.setText(tabNames.get(position));
+
+                index = position;
             }
 
             @Override
@@ -115,7 +193,7 @@ public class ViewHealthActivity extends ActionBarActivity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
+            // Show 2 total pages.
             return 2;
         }
 
@@ -143,6 +221,8 @@ public class ViewHealthActivity extends ActionBarActivity {
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
 
+        private ListView list;
+
         /**
          * Returns a new instance of this fragment for the given section
          * number.
@@ -161,7 +241,36 @@ public class ViewHealthActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+            Bundle args = getArguments();
+            int index = args.getInt(ARG_SECTION_NUMBER);
+//            final HealthListAdapter mHealthListAdapter;
+  //          final HealthMedListAdapter mHealthMedListAdapter;
             View rootView = inflater.inflate(R.layout.fragment_view_health, container, false);
+
+            switch (index) {
+                case 1:
+                    list = (ListView) rootView.findViewById(R.id.health_list);
+
+                    mHealthListAdapter = new HealthListAdapter(
+                            mHealthConList, instance);
+                    list.setAdapter(mHealthListAdapter);
+                    list.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        }
+                    });
+                    break;
+                case 2:
+                    list = (ListView) rootView.findViewById(R.id.health_list);
+
+                    mHealthMedListAdapter = new HealthMedListAdapter(
+                            mHealthMedList, instance);
+                    list.setAdapter(mHealthMedListAdapter);
+                    break;
+
+            }
+
             return rootView;
         }
     }
