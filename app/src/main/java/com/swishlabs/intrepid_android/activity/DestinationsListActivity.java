@@ -167,6 +167,8 @@ public class DestinationsListActivity extends BaseActivity {
                         healthCondition = destination.getJSONArray("health_conditions");
                         int len = healthCondition.length();
                         healthConditionList = new ArrayList<HealthCondition>(len);
+                       SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(),destination.optString("id"));
+
                         for(int i = 0;i<len;i++){
                             healthConditionList.add(new HealthCondition(healthCondition.getJSONObject(i)));
                             CreateHealthCondition(destination.optString("id"), String.valueOf(i));
@@ -219,7 +221,7 @@ public class DestinationsListActivity extends BaseActivity {
         values.put(Database.KEY_CONDITION_ID,index);
         values.put(Database.KEY_CONDITION_NAME,healthConditionList.get(indexId).name);
         values.put(Database.KEY_COUNTRY_ID,id);
-        values.put(Database.KEY_GENERAL_IMAGE_URI,healthConditionList.get(indexId).images.sourceUrl.replace(" ", "%20"));
+        values.put(Database.KEY_GENERAL_IMAGE_URI,healthConditionList.get(indexId).images.version3.sourceUrl.replace(" ", "%20"));
         values.put(Database.KEY_CONDITION_DESCRIPTION,healthConditionList.get(indexId).content.description);
         values.put(Database.KEY_CONDITION_SYMPTOMS,healthConditionList.get(indexId).content.symptoms);
         values.put(Database.KEY_CONDITION_PREVENTION,healthConditionList.get(indexId).content.prevention);
