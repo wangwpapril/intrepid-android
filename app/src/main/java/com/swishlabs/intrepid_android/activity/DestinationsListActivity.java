@@ -21,6 +21,7 @@ import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 import com.swishlabs.intrepid_android.data.api.model.HealthCondition;
 import com.swishlabs.intrepid_android.data.api.model.HealthConditionDis;
+import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
@@ -46,6 +47,7 @@ public class DestinationsListActivity extends BaseActivity {
     public static EditText mEditTextSearch;
 
     private List<HealthCondition> healthConditionList;
+    private List<HealthMedicationDis> healthMedicationList;
 
 
     @Override
@@ -160,14 +162,16 @@ public class DestinationsListActivity extends BaseActivity {
             public void handleSuccess(String content){
 
                 JSONObject destination;
-                JSONArray healthCondition;
+                JSONArray healthCondition, healthMedication;
+                String countryId;
                 try {
                     destination = new JSONObject(content).getJSONObject("destination");
+                    countryId = destination.optString("id");
+                    SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(),countryId);
                     if(destination.has("health_conditions")) {
                         healthCondition = destination.getJSONArray("health_conditions");
                         int len = healthCondition.length();
                         healthConditionList = new ArrayList<HealthCondition>(len);
-                       SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(),destination.optString("id"));
 
                         for(int i = 0;i<len;i++){
                             healthConditionList.add(new HealthCondition(healthCondition.getJSONObject(i)));
@@ -176,6 +180,33 @@ public class DestinationsListActivity extends BaseActivity {
                         }
 
                     }
+
+                    if(destination.has("medications")){
+                        healthMedication = destination.getJSONArray("medications");
+                        int len = healthMedication.length();
+                        healthMedicationList = new ArrayList<HealthMedicationDis>(len);
+
+                        for(int i = 0;i < len;i++){
+                            JSONObject temp = healthMedication.getJSONObject(i);
+                            HealthMedicationDis tempMed = new HealthMedicationDis();
+                            tempMed.id = Integer.valueOf(temp.optString("id"));
+                            tempMed.mMedicationName = temp.optString("name");
+                            tempMed.mCountryId = countryId;
+                            tempMed.mBrandNames = temp.getJSONObject("content").optString("brand_names");
+                            tempMed.mDescription = temp.getJSONObject("content").optString("description");
+                            tempMed.mSideEffects = temp.getJSONObject("content").optString("side_effects");
+                            tempMed.mStorage = temp.getJSONObject("content").optString("storage");
+                            tempMed.mNotes = temp.getJSONObject("content").optString("notes");
+                            tempMed.mGeneralImage = temp.getJSONObject("images").getJSONObject("general")
+                                    .getJSONObject("versions").getJSONObject("3x").optString("source_url").replace(" ", "%20");
+
+                            healthMedicationList.add(tempMed);
+                            CreateHealthMedication(countryId, String.valueOf(i));
+
+                        }
+
+                    }
+
                     JSONObject images = destination.getJSONObject("images");
                     final String general_image_url = images.getJSONObject("intro").getString("source_url");
 //                    Thread t = new Thread(new Runnable() {
@@ -214,6 +245,24 @@ public class DestinationsListActivity extends BaseActivity {
         return true;
     }
 
+    private void CreateHealthMedication(String id, String index){
+
+        int indexId = Integer.parseInt(index);
+        ContentValues values = new ContentValues();
+        values.put(Database.KEY_MEDICATION_ID,index);
+        values.put(Database.KEY_MEDICATION_NAME,healthMedicationList.get(indexId).getmMedicationName());
+        values.put(Database.KEY_COUNTRY_ID,id);
+        values.put(Database.KEY_GENERAL_IMAGE_URI, healthMedicationList.get(indexId).getmGeneralImage());
+        values.put(Database.KEY_MEDICATION_BRAND_NAME, healthMedicationList.get(indexId).getmBrandNames());
+        values.put(Database.KEY_MEDICATION_DESCRIPTION, healthMedicationList.get(indexId).getmDescription());
+        values.put(Database.KEY_MEDICATION_SIDE_EFFECTS, healthMedicationList.get(indexId).getmSideEffects());
+        values.put(Database.KEY_MEDICATION_STORAGE, healthMedicationList.get(indexId).getmStorage());
+        values.put(Database.KEY_MEDICATION_NOTES, healthMedicationList.get(indexId).getmNotes());
+
+        mDatabase.getDb().insert(Database.TABLE_HEALTH_MEDICATION, null, values);
+
+    }
+
     private void CreateHealthCondition(String id, String index){
 
         int indexId = Integer.parseInt(index);
@@ -221,7 +270,7 @@ public class DestinationsListActivity extends BaseActivity {
         values.put(Database.KEY_CONDITION_ID,index);
         values.put(Database.KEY_CONDITION_NAME,healthConditionList.get(indexId).name);
         values.put(Database.KEY_COUNTRY_ID,id);
-        values.put(Database.KEY_GENERAL_IMAGE_URI,healthConditionList.get(indexId).images.version3.sourceUrl.replace(" ", "%20"));
+        values.put(Database.KEY_GENERAL_IMAGE_URI, healthConditionList.get(indexId).images.version3.sourceUrl.replace(" ", "%20"));
         values.put(Database.KEY_CONDITION_DESCRIPTION,healthConditionList.get(indexId).content.description);
         values.put(Database.KEY_CONDITION_SYMPTOMS,healthConditionList.get(indexId).content.symptoms);
         values.put(Database.KEY_CONDITION_PREVENTION,healthConditionList.get(indexId).content.prevention);

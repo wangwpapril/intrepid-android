@@ -17,6 +17,8 @@ public class Database {
     //trips constants
     public static final String TABLE_TRIPS = "trips";
     public static final String TABLE_HEALTH_CONDITION = "healthCondition";
+    public static final String TABLE_HEALTH_MEDICATION = "healthMedication";
+
     public static final String KEY_ID = "id";
     public static final String KEY_COUNTRY_ID = "countryId";
     public static final String KEY_GENERAL_IMAGE_URI = "imageGeneral";
@@ -27,6 +29,14 @@ public class Database {
     public static final String KEY_CONDITION_DESCRIPTION = "healthConditionDescription";
     public static final String KEY_CONDITION_SYMPTOMS = "healthConditionSymptoms";
     public static final String KEY_CONDITION_PREVENTION = "healthConditionPrevention";
+
+    public static final String KEY_MEDICATION_ID = "healthMedicationId";
+    public static final String KEY_MEDICATION_NAME = "healthMedicationName";
+    public static final String KEY_MEDICATION_DESCRIPTION = "healthMedicationDescription";
+    public static final String KEY_MEDICATION_BRAND_NAME = "healthMedicationBrandName";
+    public static final String KEY_MEDICATION_SIDE_EFFECTS = "healthMedicationSideEffects";
+    public static final String KEY_MEDICATION_STORAGE = "healthMedicationStorage";
+    public static final String KEY_MEDICATION_NOTES = "healthMedicationNotes";
 
     private DatabaseOpenHelper dbOpenHelper;
     private SQLiteDatabase db;
@@ -54,6 +64,20 @@ public class Database {
                     + KEY_CONDITION_SYMPTOMS + " TEXT,"
                     + KEY_CONDITION_PREVENTION + " TEXT"+ ")";
             db.execSQL(createHealthConditionTable);
+
+            String createHealthMedicationTable = "CREATE TABLE " + TABLE_HEALTH_MEDICATION + "("
+                    + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + KEY_MEDICATION_ID + " TEXT,"
+                    + KEY_MEDICATION_NAME + " TEXT,"
+                    + KEY_COUNTRY_ID + " TEXT,"
+                    + KEY_GENERAL_IMAGE_URI + " TEXT,"
+                    + KEY_MEDICATION_BRAND_NAME + " TEXT,"
+                    + KEY_MEDICATION_DESCRIPTION + " TEXT,"
+                    + KEY_MEDICATION_SIDE_EFFECTS + " TEXT,"
+                    + KEY_MEDICATION_STORAGE + " TEXT,"
+                    + KEY_MEDICATION_NOTES + " TEXT"+ ")";
+            db.execSQL(createHealthMedicationTable);
+
         }
         @Override
         public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
