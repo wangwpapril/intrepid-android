@@ -32,6 +32,7 @@
         android:icon="@drawable/logo"
         android:label="Travel Smart"
         android:largeHeap="true"
+
         android:theme="@style/AppTheme" >
         <activity
             android:name=".activity.SplashActivity"
@@ -45,34 +46,42 @@
         </activity>
         <activity
             android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"
             android:label="Login" >
         </activity>
         <activity
             android:name=".activity.SignupActivity"
+            android:screenOrientation="portrait"
             android:label="Signup" >
         </activity>
         <activity
             android:name=".activity.DestinationsListActivity"
+            android:screenOrientation="portrait"
             android:label="Trips" >
         </activity>
         <activity
             android:name=".activity.TripPagesActivity"
+            android:screenOrientation="portrait"
             android:label="Trips" >
         </activity>
         <activity
             android:name=".activity.LegalActivity"
+            android:screenOrientation="portrait"
             android:label="Legal" >
         </activity>
         <activity
             android:name=".activity.ViewDestinationActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_view_destination" >
         </activity>
         <activity
             android:name=".activity.SettingsActivity"
+            android:screenOrientation="portrait"
             android:label="Legal" >
         </activity>
         <activity
             android:name=".activity.ViewHealthActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_view_health" >
         </activity>
     </application>
