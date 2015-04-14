@@ -21,10 +21,13 @@ public class DestinationInformation {
     public String mLanguageInfo;
     public String mVisaRequirements;
     public String mClimate;
+    public String mImage1;
+    public String mImage2;
+    public String mImage3;
 
     public DestinationInformation(String communicationsInfrastructure, String otherConcerns, String development, String location, String culturalNorms, String sources,
         String currency, String religion, String timeZone, String safety, String typeOfGovernment, String visaMapAttributionUri, String electricity,
-        String ethnicMakeup, String languageInfo, String visaRequirements, String climate){
+        String ethnicMakeup, String languageInfo, String visaRequirements, String climate, String image1, String image2, String image3){
         this.mCommunicationsInfrastructure = communicationsInfrastructure;
         this.mOtherConcerns = otherConcerns;
         this.mDevelopment = development;
@@ -42,6 +45,9 @@ public class DestinationInformation {
         this.mLanguageInfo = languageInfo;
         this.mVisaRequirements = visaRequirements;
         this.mClimate = climate;
+        this.mImage1 = image1;
+        this.mImage2 = image2;
+        this.mImage3 = image3;
     }
 
     public String getCommunicationsInfrastructure() {

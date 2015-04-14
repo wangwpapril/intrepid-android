@@ -18,6 +18,7 @@ public class Database {
     public static final String TABLE_TRIPS = "trips";
     public static final String TABLE_HEALTH_CONDITION = "healthCondition";
     public static final String TABLE_HEALTH_MEDICATION = "healthMedication";
+    public static final String TABLE_DESTINATION_INFORMATION = "destinationInformation";
 
     public static final String KEY_ID = "id";
     public static final String KEY_COUNTRY_ID = "countryId";
@@ -38,6 +39,28 @@ public class Database {
     public static final String KEY_MEDICATION_STORAGE = "healthMedicationStorage";
     public static final String KEY_MEDICATION_NOTES = "healthMedicationNotes";
 
+    public static final String KEY_COMMUNICATIONS = "communicationsInfrastructure";
+    public static final String KEY_OTHER_CONCERNS = "otherConcerns";
+    public static final String KEY_DEVELOPMENT = "development";
+    public static final String KEY_LOCATION = "location";
+    public static final String KEY_CULTURAL_NORMS = "culturalNorms";
+    public static final String KEY_SOURCES = "sources";
+    public static final String KEY_CURRENCY = "currency";
+    public static final String KEY_RELIGION = "religion";
+    public static final String KEY_TIMEZONE = "timeZone";
+    public static final String KEY_SAFETY = "safety";
+    public static final String KEY_GOVERNMENT = "government";
+    public static final String KEY_VISAMAP = "visaMap";
+    public static final String KEY_ELECTRICITY = "electricity";
+    public static final String KEY_ETHNIC_MAKEUP = "ethnicMakeup";
+    public static final String KEY_LANGUAGE_INFORMATION = "languageInfo";
+    public static final String KEY_VISA_REQUIREMENT = "visaRequirement";
+    public static final String KEY_CLIMATE_INFO = "climate";
+    public static final String KEY_IMAGE1 = "image1";
+    public static final String KEY_IMAGE2 = "image2";
+    public static final String KEY_IMAGE3 = "image3";
+
+
     private DatabaseOpenHelper dbOpenHelper;
     private SQLiteDatabase db;
     private class DatabaseOpenHelper extends SQLiteOpenHelper {
@@ -49,7 +72,9 @@ public class Database {
         @Override
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
             String createTripsTable = "CREATE TABLE " + TABLE_TRIPS + "("
-                    + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_DESTINATION_COUNTRY + " TEXT," + KEY_GENERAL_IMAGE_URI + " TEXT,"
+                    + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + KEY_DESTINATION_COUNTRY + " TEXT,"
+                    + KEY_GENERAL_IMAGE_URI + " TEXT,"
                     + KEY_COUNTRY_ID + " TEXT"+ ")";
             db = sqLiteDatabase;
             db.execSQL(createTripsTable);
@@ -77,6 +102,30 @@ public class Database {
                     + KEY_MEDICATION_STORAGE + " TEXT,"
                     + KEY_MEDICATION_NOTES + " TEXT"+ ")";
             db.execSQL(createHealthMedicationTable);
+
+            String createDestinationInfoTable = "CREATE TABLE " + TABLE_DESTINATION_INFORMATION + "("
+                    + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + KEY_COMMUNICATIONS + " TEXT,"
+                    + KEY_OTHER_CONCERNS + " TEXT,"
+                    + KEY_DEVELOPMENT + " TEXT,"
+                    + KEY_LOCATION + " TEXT,"
+                    + KEY_CULTURAL_NORMS + " TEXT,"
+                    + KEY_SOURCES + " TEXT,"
+                    + KEY_CURRENCY + " TEXT,"
+                    + KEY_RELIGION + " TEXT,"
+                    + KEY_TIMEZONE + " TEXT,"
+                    + KEY_SAFETY + " TEXT,"
+                    + KEY_GOVERNMENT + " TEXT,"
+                    + KEY_VISAMAP + " TEXT,"
+                    + KEY_ELECTRICITY + " TEXT,"
+                    + KEY_ETHNIC_MAKEUP + " TEXT,"
+                    + KEY_LANGUAGE_INFORMATION + " TEXT,"
+                    + KEY_VISA_REQUIREMENT + " TEXT,"
+                    + KEY_CLIMATE_INFO + " TEXT,"
+                    + KEY_IMAGE1 + " TEXT,"
+                    + KEY_IMAGE2 + " TEXT,"
+                    + KEY_IMAGE3 + " TEXT"+ ")";
+            db.execSQL(createDestinationInfoTable);
 
         }
         @Override
