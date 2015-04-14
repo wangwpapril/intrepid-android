@@ -216,9 +216,10 @@ public class DestinationsListActivity extends BaseActivity {
 //                    });
 //
 //                    t.start();
+                    saveDestinationInformation(destination, images);
                     String encodedURL = general_image_url.replace(" ", "%20");
                             CreateTrip(destinationPosition, encodedURL);
-                    saveDestinationInformation(destination, images);
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
