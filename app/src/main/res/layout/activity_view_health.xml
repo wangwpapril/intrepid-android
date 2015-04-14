@@ -48,12 +48,28 @@
             android:layout_height="1dp"/>
     </com.swishlabs.intrepid_android.customViews.CustomTabContainer>
 
+    <EditText
+        android:id="@+id/search_ed"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_below="@+id/tabContainer"
+        android:layout_centerHorizontal="true"
+        android:background="#e1e1e1"
+        android:cursorVisible="true"
+        android:drawableLeft="@drawable/search_title"
+        android:drawablePadding="10dip"
+        android:hint="Tap to Search"
+        android:paddingLeft="30dip"
+        android:textColor="#333f48"
+        android:textColorHint="#333f48"
+        android:textCursorDrawable="@null"
+        />
 
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/tabContainer"
+        android:layout_below="@id/search_ed"
         android:id="@+id/content">
         <android.support.v4.view.ViewPager
             android:layout_height="fill_parent"
