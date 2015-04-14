@@ -7,6 +7,7 @@ import android.database.Cursor;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.data.api.model.HealthCondition;
 import com.swishlabs.intrepid_android.data.api.model.HealthConditionDis;
+import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.util.StringUtil;
 
@@ -66,6 +67,30 @@ public class DatabaseManager {
 
     }
 
+    public static ArrayList<HealthMedicationDis> getHealthMedArray(Database database, String id){
+
+        ArrayList<HealthMedicationDis> medList = new ArrayList<>();
+
+        String countQuery = "SELECT * FROM " + Database.TABLE_HEALTH_MEDICATION
+                + " WHERE " + Database.KEY_COUNTRY_ID  +" = " + id;
+
+        Cursor cursor = database.getDb().rawQuery(countQuery,null);
+        if(cursor.moveToFirst()) {
+            while (cursor.isAfterLast() == false) {
+                HealthMedicationDis hmDis = new HealthMedicationDis( Integer.valueOf(cursor.getString(1)),
+                        cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),
+                        cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9));
+                medList.add(hmDis);
+                cursor.moveToNext();
+
+            }
+
+        }
+
+        return medList;
+
+    }
+
     public static int getTripCount(Database database, String id) {
         String countQuery = "SELECT  * FROM " + Database.TABLE_TRIPS;
         Cursor cursor = database.getDb().rawQuery(countQuery, null);
@@ -109,4 +134,5 @@ public class DatabaseManager {
         database.getDb().delete(Database.TABLE_TRIPS, Database.KEY_ID + "=" + id, null);
         database.getDb().close();
     }
+
 }
