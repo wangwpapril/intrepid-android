@@ -71,6 +71,10 @@
             android:name=".activity.SettingsActivity"
             android:label="Legal" >
         </activity>
+        <activity
+            android:name=".activity.ViewHealthActivity"
+            android:label="@string/title_activity_view_health" >
+        </activity>
     </application>
 
 </manifest>

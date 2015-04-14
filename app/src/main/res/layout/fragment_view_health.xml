@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.swishlabs.intrepid_android.activity.ViewHealthActivity$PlaceholderFragment">
+
+    <EditText
+        android:id="@+id/search_ed"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_centerHorizontal="true"
+        android:background="#e1e1e1"
+        android:cursorVisible="true"
+        android:drawableLeft="@drawable/search_title"
+        android:drawablePadding="10dip"
+        android:hint="Tap to Search"
+        android:paddingLeft="20dip"
+        android:textColor="#333f48"
+        android:textColorHint="#333f48"
+        android:textCursorDrawable="@null"
+        />
+
+    <ListView
+        android:id="@+id/health_list"
+        android:layout_width="fill_parent"
+        android:padding="0dp"
+        android:layout_height="wrap_content"
+        android:divider="@color/common_list_divider"
+        android:dividerHeight="@dimen/common_list_divider_height"
+        android:scrollbars="none" />
+
+</RelativeLayout>

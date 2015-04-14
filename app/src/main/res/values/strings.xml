@@ -29,5 +29,6 @@
     <string name="title_activity_view_destination">Trip</string>
 
     <string name="settings_title_name">Settings</string>
+    <string name="title_activity_view_health">ViewHealthActivity</string>
 
 </resources>
