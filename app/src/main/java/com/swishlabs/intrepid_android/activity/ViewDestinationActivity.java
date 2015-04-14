@@ -29,7 +29,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
      * The {@link android.support.v4.view.ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
-    TextView mToolbarTitle;
+//    TextView mToolbarTitle;
     CustomTabContainer mTabContainer;
     ArrayList<String> tabNames = new ArrayList<String>();
 
@@ -46,7 +46,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
         IntrepidMenu.setupMenu(instance, ViewDestinationActivity.this);
         setupTabNames();
 
-        mToolbarTitle = (TextView)findViewById(R.id.toolbar_title);
+//        mToolbarTitle = (TextView)findViewById(R.id.toolbar_title);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -73,7 +73,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
             @Override
             public void onPageSelected(int position) {
-                mToolbarTitle.setText(tabNames.get(position));
+//                mToolbarTitle.setText(tabNames.get(position));
             }
 
             @Override
@@ -84,7 +84,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
     }
 
     protected void setupTabNames(){
-        tabNames.add("Overview");
+        tabNames.add("General");
         tabNames.add("Culture");
         tabNames.add("Currency");
     }
@@ -154,14 +154,14 @@ public class ViewDestinationActivity extends ActionBarActivity {
         @Override
         public CharSequence getPageTitle(int position) {
             Locale l = Locale.getDefault();
-            switch (position) {
-                case 0:
-                    return "General";
-                case 1:
-                    return "Culture";
-                case 2:
-                    return "Currency";
-            }
+//            switch (position) {
+//                case 0:
+//                    return "Overview";
+//                case 1:
+//                    return "Overview";
+//                case 2:
+//                    return "Overview";
+//            }
             return null;
         }
     }
