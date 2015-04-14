@@ -11,7 +11,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.CustomTabContainer;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
@@ -177,16 +180,9 @@ public class ViewDestinationActivity extends ActionBarActivity {
      * A placeholder fragment containing a simple view.
      */
     public static class OverviewGeneralFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
+
         private static final String ARG_SECTION_NUMBER = "section_number";
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
         public static OverviewGeneralFragment newInstance(int sectionNumber) {
             OverviewGeneralFragment fragment = new OverviewGeneralFragment();
             Bundle args = new Bundle();
@@ -202,7 +198,21 @@ public class ViewDestinationActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_overview_general, container, false);
+            populateGeneralOverview(rootView);
             return rootView;
+        }
+
+        public void populateGeneralOverview(View rootView){
+            DestinationInformation destinationInformation = ViewDestinationActivity.getInstance().mDestinationInformation;
+            ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
+            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageOverview()).resize(1200,1200).into(generalImage);
+            TextView locationText = (TextView)rootView.findViewById(R.id.destination_content);
+            locationText.setText(destinationInformation.getLocation());
+            TextView climateText = (TextView)rootView.findViewById(R.id.destination_content2);
+            climateText.setText(destinationInformation.getClimate());
+            TextView governmentText = (TextView)rootView.findViewById(R.id.destination_content3);
+            governmentText.setText(destinationInformation.getTypeOfGovernment());
+
         }
     }
 
