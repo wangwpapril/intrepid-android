@@ -152,7 +152,13 @@ public class ViewDestinationActivity extends ActionBarActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return OverviewGeneralFragment.newInstance(position + 1);
+            if (position == 0) {
+                return OverviewGeneralFragment.newInstance(position + 1);
+            }else if (position == 1){
+                return OverviewCultureFragment.newInstance(position + 1);
+            }else {
+                return OverviewGeneralFragment.newInstance(position + 1);
+            }
         }
 
         @Override
@@ -215,5 +221,43 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
         }
     }
+
+    public static class OverviewCultureFragment extends Fragment {
+
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        public static OverviewCultureFragment newInstance(int sectionNumber) {
+            OverviewCultureFragment fragment = new OverviewCultureFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        public OverviewCultureFragment() {
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_overview_culture, container, false);
+            populateCultureOverview(rootView);
+            return rootView;
+        }
+
+        public void populateCultureOverview(View rootView){
+            DestinationInformation destinationInformation = ViewDestinationActivity.getInstance().mDestinationInformation;
+            ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
+            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageCulture()).resize(1200,1200).into(generalImage);
+            TextView locationText = (TextView)rootView.findViewById(R.id.destination_content);
+            locationText.setText(destinationInformation.getCulturalNorms());
+            TextView climateText = (TextView)rootView.findViewById(R.id.destination_content2);
+            climateText.setText(destinationInformation.getEthnicMakeup());
+            TextView governmentText = (TextView)rootView.findViewById(R.id.destination_content3);
+            governmentText.setText(destinationInformation.getLanguageInfo());
+
+        }
+    }
+
 
 }
