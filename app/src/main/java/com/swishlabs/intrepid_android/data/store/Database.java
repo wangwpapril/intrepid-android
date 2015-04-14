@@ -45,13 +45,14 @@ public class Database {
             db.execSQL(createTripsTable);
 
             String createHealthConditionTable = "CREATE TABLE " + TABLE_HEALTH_CONDITION + "("
-                    + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_COUNTRY_ID + " TEXT,"
+                    + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + KEY_CONDITION_ID + " TEXT,"
                     + KEY_CONDITION_NAME + " TEXT,"
+                    + KEY_COUNTRY_ID + " TEXT,"
+                    + KEY_GENERAL_IMAGE_URI + " TEXT,"
                     + KEY_CONDITION_DESCRIPTION + " TEXT,"
                     + KEY_CONDITION_SYMPTOMS + " TEXT,"
-                    + KEY_CONDITION_PREVENTION + " TEXT,"
-                    + KEY_GENERAL_IMAGE_URI + " TEXT" + ")";
+                    + KEY_CONDITION_PREVENTION + " TEXT"+ ")";
             db.execSQL(createHealthConditionTable);
         }
         @Override

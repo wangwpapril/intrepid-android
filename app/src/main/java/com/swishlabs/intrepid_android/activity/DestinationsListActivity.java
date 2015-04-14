@@ -20,6 +20,7 @@ import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallba
 import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 import com.swishlabs.intrepid_android.data.api.model.HealthCondition;
+import com.swishlabs.intrepid_android.data.api.model.HealthConditionDis;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
@@ -215,13 +216,13 @@ public class DestinationsListActivity extends BaseActivity {
 
         int indexId = Integer.parseInt(index);
         ContentValues values = new ContentValues();
-        values.put(Database.KEY_COUNTRY_ID,id);
         values.put(Database.KEY_CONDITION_ID,index);
-        values.put(Database.KEY_CONDITION_DESCRIPTION,healthConditionList.get(indexId).content.description);
         values.put(Database.KEY_CONDITION_NAME,healthConditionList.get(indexId).name);
+        values.put(Database.KEY_COUNTRY_ID,id);
+        values.put(Database.KEY_GENERAL_IMAGE_URI,healthConditionList.get(indexId).images.sourceUrl.replace(" ", "%20"));
+        values.put(Database.KEY_CONDITION_DESCRIPTION,healthConditionList.get(indexId).content.description);
         values.put(Database.KEY_CONDITION_SYMPTOMS,healthConditionList.get(indexId).content.symptoms);
         values.put(Database.KEY_CONDITION_PREVENTION,healthConditionList.get(indexId).content.prevention);
-        values.put(Database.KEY_GENERAL_IMAGE_URI,healthConditionList.get(indexId).images.sourceUrl.replace(" ", "%20"));
 
         mDatabase.getDb().insert(Database.TABLE_HEALTH_CONDITION, null, values);
 
