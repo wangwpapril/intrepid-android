@@ -131,7 +131,8 @@ public class DatabaseManager {
                         Database.KEY_CULTURAL_NORMS, Database.KEY_SOURCES, Database.KEY_CURRENCY, Database.KEY_RELIGION,
                         Database.KEY_TIMEZONE, Database.KEY_SAFETY, Database.KEY_GOVERNMENT, Database.KEY_VISAMAP,
                         Database.KEY_ELECTRICITY, Database.KEY_ETHNIC_MAKEUP, Database.KEY_LANGUAGE_INFORMATION, Database.KEY_VISA_REQUIREMENT,
-                        Database.KEY_CLIMATE_INFO, Database.KEY_IMAGE1, Database.KEY_IMAGE2, Database.KEY_IMAGE3}, Database.KEY_DESTINATION_ID + "=?",
+                        Database.KEY_CLIMATE_INFO, Database.KEY_IMAGE_SECURITY, Database.KEY_IMAGE_OVERVIEW, Database.KEY_IMAGE_CULTURE,
+                        Database.KEY_IMAGE_INTRO, Database.KEY_IMAGE_CURRENCY}, Database.KEY_DESTINATION_ID + "=?",
                 new String[]{String.valueOf(destinationId)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
@@ -139,7 +140,7 @@ public class DatabaseManager {
                 cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
                 cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
                 cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18),
-                cursor.getString(19), cursor.getString(20));
+                cursor.getString(19), cursor.getString(20), cursor.getString(21), cursor.getString(22));
 
         // return contact
         database.getDb().close();

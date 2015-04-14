@@ -20,11 +20,9 @@ import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallba
 import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 import com.swishlabs.intrepid_android.data.api.model.HealthCondition;
-import com.swishlabs.intrepid_android.data.api.model.HealthConditionDis;
 import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
-import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 import com.swishlabs.intrepid_android.util.StringUtil;
@@ -220,6 +218,7 @@ public class DestinationsListActivity extends BaseActivity {
 //                    t.start();
                     String encodedURL = general_image_url.replace(" ", "%20");
                             CreateTrip(destinationPosition, encodedURL);
+                    saveDestinationInformation(destination, images);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -239,6 +238,60 @@ public class DestinationsListActivity extends BaseActivity {
                 Enums.ConnMethod.GET,false);
         String ss = null;
         cct.execute(ss);
+    }
+
+    private void saveDestinationInformation(JSONObject destination, JSONObject images) throws JSONException {
+        JSONObject content = destination.getJSONObject("content");
+        String destinationId = destination.getString("id");
+        String communicationsInfrastructure = content.getString("communication_infrastructure");
+        String otherConcerns = content.getString("other_concerns");
+        String development = content.getString("development");
+        String location = content.getString("location");
+        String cultural_norms = content.getString("cultural_norms");
+        String sources = content.getString("sources");
+        String currency = content.getString("currency");
+        String religion = content.getString("religion");
+        String time_zone = content.getString("time_zone");
+        String safety = content.getString("safety");
+        String type_of_government = content.getString("type_of_government");
+        String visa_map_attributions = content.getString("visa_map_attributions");
+        String electricity = content.getString("electricity");
+        String ethnic_makeup = content.getString("ethnic_makeup");
+        String language = content.getString("language");
+        String visa_requirements = content.getString("visa_requirements");
+        String climate = content.getString("climate");
+        String intro_image_url = images.getJSONObject("intro").getString("source_url").replace(" ", "%20");
+        String security_image_url = images.getJSONObject("security").getString("source_url").replace(" ", "%20");
+        String overview_image_url = images.getJSONObject("overview").getString("source_url").replace(" ", "%20");
+        String culture_image_url = images.getJSONObject("culture").getString("source_url").replace(" ", "%20");
+        String currency_image_url = images.getJSONObject("currency").getString("source_url").replace(" ", "%20");
+
+        ContentValues values = new ContentValues();
+        values.put(Database.KEY_DESTINATION_COUNTRY, destinationId);
+        values.put(Database.KEY_COMMUNICATIONS, communicationsInfrastructure);
+        values.put(Database.KEY_OTHER_CONCERNS, otherConcerns);
+        values.put(Database.KEY_DEVELOPMENT, development);
+        values.put(Database.KEY_LOCATION, location);
+        values.put(Database.KEY_CULTURAL_NORMS, cultural_norms);
+        values.put(Database.KEY_SOURCES, sources);
+        values.put(Database.KEY_CURRENCY, currency);
+        values.put(Database.KEY_RELIGION, religion);
+        values.put(Database.KEY_TIMEZONE, time_zone);
+        values.put(Database.KEY_SAFETY, safety);
+        values.put(Database.KEY_GOVERNMENT, type_of_government);
+        values.put(Database.KEY_VISAMAP, visa_map_attributions);
+        values.put(Database.KEY_ELECTRICITY, electricity);
+        values.put(Database.KEY_ETHNIC_MAKEUP, ethnic_makeup);
+        values.put(Database.KEY_LANGUAGE_INFORMATION, language);
+        values.put(Database.KEY_VISA_REQUIREMENT, visa_requirements);
+        values.put(Database.KEY_CLIMATE_INFO, climate);
+        values.put(Database.KEY_IMAGE_SECURITY, security_image_url);
+        values.put(Database.KEY_IMAGE_OVERVIEW, overview_image_url);
+        values.put(Database.KEY_IMAGE_CULTURE, culture_image_url);
+        values.put(Database.KEY_IMAGE_INTRO, intro_image_url);
+        values.put(Database.KEY_IMAGE_CURRENCY, currency_image_url);
+
+        mDatabase.getDb().insert(Database.TABLE_DESTINATION_INFORMATION, null, values);
     }
 
     public boolean isTripUnique(String destinationName){
@@ -290,11 +343,8 @@ public class DestinationsListActivity extends BaseActivity {
         values.put(Database.KEY_GENERAL_IMAGE_URI, generalImageUri);
 
 
-        // Inserting Row
         mDatabase.getDb().insert(Database.TABLE_TRIPS, null, values);
         mDatabase.getDb().close();
-//        Trip trip = getTrip(0);
-//        Log.d("Trip List", "The first trip is to:"+trip.getDestinationName());
 
         Intent intent = new Intent(DestinationsListActivity.this, TripPagesActivity.class);
         intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);

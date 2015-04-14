@@ -57,9 +57,11 @@ public class Database {
     public static final String KEY_LANGUAGE_INFORMATION = "languageInfo";
     public static final String KEY_VISA_REQUIREMENT = "visaRequirement";
     public static final String KEY_CLIMATE_INFO = "climate";
-    public static final String KEY_IMAGE1 = "image1";
-    public static final String KEY_IMAGE2 = "image2";
-    public static final String KEY_IMAGE3 = "image3";
+    public static final String KEY_IMAGE_SECURITY = "image1";
+    public static final String KEY_IMAGE_OVERVIEW = "image2";
+    public static final String KEY_IMAGE_CULTURE = "image3";
+    public static final String KEY_IMAGE_INTRO = "image4";
+    public static final String KEY_IMAGE_CURRENCY = "image5";
 
 
     private DatabaseOpenHelper dbOpenHelper;
@@ -124,9 +126,11 @@ public class Database {
                     + KEY_LANGUAGE_INFORMATION + " TEXT,"
                     + KEY_VISA_REQUIREMENT + " TEXT,"
                     + KEY_CLIMATE_INFO + " TEXT,"
-                    + KEY_IMAGE1 + " TEXT,"
-                    + KEY_IMAGE2 + " TEXT,"
-                    + KEY_IMAGE3 + " TEXT"+ ")";
+                    + KEY_IMAGE_SECURITY + " TEXT,"
+                    + KEY_IMAGE_OVERVIEW + " TEXT,"
+                    + KEY_IMAGE_CULTURE + " TEXT,"
+                    + KEY_IMAGE_INTRO + " TEXT,"
+                    + KEY_IMAGE_CURRENCY + " TEXT"+ ")";
             db.execSQL(createDestinationInfoTable);
 
         }

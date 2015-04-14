@@ -22,13 +22,18 @@ public class DestinationInformation {
     public String mLanguageInfo;
     public String mVisaRequirements;
     public String mClimate;
-    public String mImage1;
-    public String mImage2;
-    public String mImage3;
+
+
+
+    public String mImageSecurity;
+    public String mImageOverview;
+    public String mImageCulture;
+    public String mImageIntro;
+    public String mImageCurrency;
 
     public DestinationInformation(String destinationId, String communicationsInfrastructure, String otherConcerns, String development, String location, String culturalNorms, String sources,
         String currency, String religion, String timeZone, String safety, String typeOfGovernment, String visaMapAttributionUri, String electricity,
-        String ethnicMakeup, String languageInfo, String visaRequirements, String climate, String image1, String image2, String image3){
+        String ethnicMakeup, String languageInfo, String visaRequirements, String climate, String image1, String image2, String image3, String image4, String image5){
         this.mDestinationId = destinationId;
         this.mCommunicationsInfrastructure = communicationsInfrastructure;
         this.mOtherConcerns = otherConcerns;
@@ -47,9 +52,11 @@ public class DestinationInformation {
         this.mLanguageInfo = languageInfo;
         this.mVisaRequirements = visaRequirements;
         this.mClimate = climate;
-        this.mImage1 = image1;
-        this.mImage2 = image2;
-        this.mImage3 = image3;
+        this.mImageSecurity = image1;
+        this.mImageOverview = image2;
+        this.mImageCulture = image3;
+        this.mImageIntro = image4;
+        this.mImageCurrency = image5;
     }
 
     public String getCommunicationsInfrastructure() {
@@ -118,6 +125,26 @@ public class DestinationInformation {
 
     public String getClimate() {
         return mClimate;
+    }
+
+    public String getImageSecurity() {
+        return mImageSecurity;
+    }
+
+    public String getImageOverview() {
+        return mImageOverview;
+    }
+
+    public String getImageCulture() {
+        return mImageCulture;
+    }
+
+    public String getImageIntro() {
+        return mImageIntro;
+    }
+
+    public String getImageCurrency() {
+        return mImageCurrency;
     }
 
 
