@@ -54,7 +54,7 @@ public class CustomTabContainer extends RelativeLayout {
         LinearLayout layout = (LinearLayout)findViewById(R.id.tabLayout);
         tabWidth = this.getWidth()/mTabAmount;
         tabHeight = this.getHeight();
-        LayoutParams selectorParams = new LayoutParams(tabWidth,tabHeight/10);
+        LayoutParams selectorParams = new LayoutParams(tabWidth,tabHeight/12);
         selectorParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         mTabSelector.setLayoutParams(selectorParams);
         mTabSelector.setWidth(tabWidth);
