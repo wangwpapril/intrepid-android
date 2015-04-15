@@ -30,5 +30,6 @@
 
     <string name="settings_title_name">Settings</string>
     <string name="title_activity_view_health">ViewHealthActivity</string>
+    <string name="title_activity_detail_health_con">DetailHealthConActivity</string>
 
 </resources>

@@ -32,7 +32,6 @@
         android:icon="@drawable/logo"
         android:label="Travel Smart"
         android:largeHeap="true"
-
         android:theme="@style/AppTheme" >
         <activity
             android:name=".activity.SplashActivity"
@@ -46,44 +45,50 @@
         </activity>
         <activity
             android:name=".activity.LoginActivity"
-            android:screenOrientation="portrait"
-            android:label="Login" >
+            android:label="Login"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.SignupActivity"
-            android:screenOrientation="portrait"
-            android:label="Signup" >
+            android:label="Signup"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.DestinationsListActivity"
-            android:screenOrientation="portrait"
-            android:label="Trips" >
+            android:label="Trips"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.TripPagesActivity"
-            android:screenOrientation="portrait"
-            android:label="Trips" >
+            android:label="Trips"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.LegalActivity"
-            android:screenOrientation="portrait"
-            android:label="Legal" >
+            android:label="Legal"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.ViewDestinationActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_view_destination" >
+            android:label="@string/title_activity_view_destination"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.SettingsActivity"
-            android:screenOrientation="portrait"
-            android:label="Legal" >
+            android:label="Legal"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.ViewHealthActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_view_health" >
+            android:label="@string/title_activity_view_health"
+            android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".activity.DetailHealthConActivity"
+            android:label="@string/title_activity_detail_health_con"
+            android:screenOrientation="portrait">
+        </activity>
+
     </application>
 
 </manifest>
