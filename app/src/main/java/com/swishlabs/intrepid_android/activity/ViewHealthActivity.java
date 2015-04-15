@@ -1,5 +1,6 @@
 package com.swishlabs.intrepid_android.activity;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -88,8 +89,8 @@ public class ViewHealthActivity extends ActionBarActivity {
         mHealthConList = DatabaseManager.getHealthConArray(mDatabase, countryId);
         mHealthCount = mHealthConList.size();
 
-//        mHealthMedList = DatabaseManager.getHealthMedArray(mDatabase,countryId);
-//        mHealthMedCount = mHealthMedList.size();
+        mHealthMedList = DatabaseManager.getHealthMedArray(mDatabase,countryId);
+        mHealthMedCount = mHealthMedList.size();
 
 //        mToolbarTitle = (TextView)findViewById(R.id.toolbar_title);
 
@@ -258,6 +259,15 @@ public class ViewHealthActivity extends ActionBarActivity {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+/*                            HealthConditionDis hcDis = mHealthConList.get(position);
+                            Intent mIntent = new Intent( instance, DetailHealthConActivity.class);
+                            mIntent.putExtra("name", hcDis.getmConditionName());
+                            mIntent.putExtra("description", hcDis.getmDescription());
+                            mIntent.putExtra("symptoms", hcDis.getmSymptoms());
+                            mIntent.putExtra("prevention", hcDis.getmPrevention());
+                            startActivity(mIntent);
+                            instance.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+*/
                         }
                     });
                     break;
@@ -267,6 +277,12 @@ public class ViewHealthActivity extends ActionBarActivity {
                     mHealthMedListAdapter = new HealthMedListAdapter(
                             mHealthMedList, instance);
                     list.setAdapter(mHealthMedListAdapter);
+                    list.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        }
+                    });
                     break;
 
             }
