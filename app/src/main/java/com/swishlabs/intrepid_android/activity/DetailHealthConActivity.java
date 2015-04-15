@@ -12,10 +12,10 @@ import com.swishlabs.intrepid_android.R;
 
 public class DetailHealthConActivity extends ActionBarActivity {
 
-    private String name, des, symp, prev;
+    private String mName, mDescription, mSymptoms, mPrevention;
 
-    private TextView title, description,symptoms,prevention;
-    private ImageView back;
+    private TextView mTitleTv, mDesTv, mSymTv, mPreTv;
+    private ImageView mBackIv;
 
     public DetailHealthConActivity instance;
     @Override
@@ -23,10 +23,10 @@ public class DetailHealthConActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_health_con);
         instance = this;
-        name = getIntent().getStringExtra("name");
-        des = getIntent().getStringExtra("description");
-        symp = getIntent().getStringExtra("symptoms");
-        prev = getIntent().getStringExtra("prevention");
+        mName = getIntent().getStringExtra("name");
+        mDescription = getIntent().getStringExtra("description");
+        mSymptoms = getIntent().getStringExtra("symptoms");
+        mPrevention = getIntent().getStringExtra("prevention");
 
         initialView();
 
@@ -34,20 +34,20 @@ public class DetailHealthConActivity extends ActionBarActivity {
 
 
     protected void initialView(){
-        title = (TextView) findViewById(R.id.toolbar_title);
-        title.setText(name);
+        mTitleTv = (TextView) findViewById(R.id.toolbar_title);
+        mTitleTv.setText(mName);
 
-        description = (TextView)findViewById(R.id.destination_content);
-        description.setText(des);
+        mDesTv = (TextView)findViewById(R.id.destination_content);
+        mDesTv.setText(mDescription);
 
-        symptoms = (TextView)findViewById(R.id.destination_content2);
-        symptoms.setText(symp);
+        mSymTv = (TextView)findViewById(R.id.destination_content2);
+        mSymTv.setText(mSymptoms);
 
-        prevention = (TextView)findViewById(R.id.destination_content3);
-        prevention.setText(prev);
+        mPreTv = (TextView)findViewById(R.id.destination_content3);
+        mPreTv.setText(mPrevention);
 
-        back = (ImageView)findViewById(R.id.title_back);
-        back.setOnClickListener( new View.OnClickListener() {
+        mBackIv = (ImageView)findViewById(R.id.title_back);
+        mBackIv.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
