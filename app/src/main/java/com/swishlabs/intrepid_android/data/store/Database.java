@@ -20,9 +20,11 @@ public class Database {
     public static final String TABLE_HEALTH_MEDICATION = "healthMedication";
     public static final String TABLE_DESTINATION_INFORMATION = "destinationInformation";
     public static final String TABLE_EMBASSY = "embassy";
+    public static final String TABLE_CURRENCY = "currency";
 
     public static final String KEY_ID = "id";
     public static final String KEY_COUNTRY_ID = "countryId";
+    public static final String KEY_CURRENCY_CODE ="currencyCode";
     public static final String KEY_GENERAL_IMAGE_URI = "imageGeneral";
     public static final String KEY_DESTINATION_COUNTRY = "destinationCountry";
 
@@ -165,6 +167,12 @@ public class Database {
                     + KEY_EMBASSY_TELEPHONE + " TEXT,"
                     + KEY_EMBASSY_DESTINATION_ID + " TEXT"+ ")";
             db.execSQL(createEmbassyTable);
+
+            String createCurrencyTable = "CREATE TABLE " + TABLE_CURRENCY + "("
+                    + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + KEY_CURRENCY_CODE + " TEXT,"
+                    + KEY_GENERAL_IMAGE_URI + " TEXT"+ ")";
+            db.execSQL(createCurrencyTable);
 
         }
         @Override

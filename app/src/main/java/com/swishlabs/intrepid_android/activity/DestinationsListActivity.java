@@ -1,5 +1,6 @@
 package com.swishlabs.intrepid_android.activity;
 
+import android.app.MediaRouteActionProvider;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -18,11 +19,13 @@ import com.swishlabs.intrepid_android.adapter.DestinationsListAdapter;
 import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
+import com.swishlabs.intrepid_android.data.api.model.Currency;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 import com.swishlabs.intrepid_android.data.api.model.HealthCondition;
 import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
+import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 import com.swishlabs.intrepid_android.util.StringUtil;
@@ -32,8 +35,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 
 public class DestinationsListActivity extends BaseActivity {
@@ -47,7 +52,6 @@ public class DestinationsListActivity extends BaseActivity {
 
     private List<HealthCondition> healthConditionList;
     private List<HealthMedicationDis> healthMedicationList;
-
 
     @Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -76,9 +80,25 @@ public class DestinationsListActivity extends BaseActivity {
                     JSONArray array = des.getJSONArray("destinations");
                     int len = array.length();
                     mDestinationList = new ArrayList<Destination>(len);
+                    DatabaseManager.deleteCurrency(mDatabase);
+
                     for (int i =0;i < len; i++){
                         mDestinationList.add(new Destination(array.getJSONObject(i)));
+                        String currencyCode = null;
+                        String currencyUrl = mDestinationList.get(i).imageCurrency.sourceUrl.replace(" ", "%20");
+                        String[] parts = currencyUrl.split("/");
+                        for ( int j =0;j < parts.length; j++) {
+                            if (parts[j].equals("currency")) {
+                                currencyCode = parts[j+1];
+                                break;
+                            }
+                        }
+
+                        saveCurrencyImage(currencyCode,currencyUrl);
                     }
+
+//                    String code = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currencyCode.toString(),"");
+ //                   Currency cc = DatabaseManager.getCurrency(mDatabase,"AFN");
 
                     mDestinationsListAdapter = new DestinationsListAdapter(
                             mDestinationList, context);
@@ -412,6 +432,13 @@ public class DestinationsListActivity extends BaseActivity {
 
         mDatabase.getDb().insert(Database.TABLE_HEALTH_CONDITION, null, values);
 
+    }
+
+    private void saveCurrencyImage(String code, String url){
+        ContentValues values = new ContentValues();
+        values.put(Database.KEY_CURRENCY_CODE, code);
+        values.put(Database.KEY_GENERAL_IMAGE_URI, url);
+        mDatabase.getDb().insert(Database.TABLE_CURRENCY, null, values);
     }
 
     private void CreateTrip(int position, String generalImageUri){

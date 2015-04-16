@@ -3,24 +3,6 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:paddingTop="16dp"
-        android:elevation="4dp"
-        android:transitionName="actionBar">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Overview"
-
-            android:layout_gravity="center"
-            android:textColor="#FFF"
-            android:id="@+id/toolbar_title" />
-    </android.support.v7.widget.Toolbar>
 <ScrollView
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
@@ -30,131 +12,101 @@
         android:id="@+id/content">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="300dp"
             android:id="@+id/overview_image"
-            android:background="@drawable/example_image" />
+            android:src="@drawable/overview_currency" />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/overview_content"
             android:layout_below="@+id/overview_image"
+            android:orientation="horizontal"
             android:padding="16dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/base_currency_icon"
+                android:src="@drawable/example_icon"
+                android:layout_marginLeft="20dp"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center"
+                android:layout_marginLeft="30dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Location"
+                android:text="CAD"
                 android:id="@+id/destination_subtitle"
-                android:layout_alignParentStart="false"
                 android:textStyle="bold"
-                android:layout_toRightOf="@+id/section_icon"
-                android:textColor="#333f48" />
+                android:textColor="#333f48"
+                android:textSize="23sp"
+                />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Mexico is bordered to the north by the states of California, Arizona, New Mexico, and Texas, to the west and south by the Pacific Ocean, to the east by the Gulf of Mexico, and to the southeast by Belize, Guatemala, and the Caribbean Sea. "
+
+            <EditText
                 android:id="@+id/destination_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentStart="false"
-                android:layout_below="@+id/destination_subtitle"
-                android:layout_marginTop="10dp"
-                android:textColor="#333f48" />
-
-            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/section_icon"
-                android:layout_above="@+id/destination_content"
-                android:layout_alignParentEnd="false"
-                android:layout_alignTop="@+id/destination_subtitle"
-                android:src="@drawable/example_icon"
-                android:layout_marginRight="10dp" />
-        </RelativeLayout>
-        <RelativeLayout
+                android:layout_marginStart="60dp"
+                android:hint="number"
+                android:textColorHint="@color/light_gray"
+                android:textColor="#383838"
+                android:textSize="23sp"
+                android:inputType="numberDecimal"
+                android:singleLine="true"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/overview_content2"
+            android:layout_height="wrap_content"
+            android:id="@+id/overview_content1"
             android:layout_below="@+id/overview_content"
+            android:orientation="horizontal"
             android:padding="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Climate"
-                android:id="@+id/destination_subtitle2"
-                android:layout_alignParentStart="false"
-                android:textStyle="bold"
-                android:layout_toRightOf="@+id/section_icon2"
-                android:textColor="#333f48" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Kidnapping for ransom has a long history in Mexico. Kidnap-for-ransom crimes continue to increase in Guadalajara, and the threat is very real throughout Mexico. Most incidents go unreported to police and are handled directly by the victim's family or an intermediary (it is recommended that local authorities be contacted immediately to help resolve any kidnapping matter). Guadalajara has not experienced the same level of 'express' kidnappings common to other Mexican cities.\n\n However, 'virtual' kidnappings have become increasingly common. Extortionists will telephone prospective victims, posing as kidnappers, and demand payment in return for the release of an abducted family member. Virtual kidnapping has evolved to include the scenario where the extortionist poses as an innocent citizen who requests the use of your cell phone to place an emergency call, only to call someone on your contact list and threaten that you have been kidnapped.\n\n The safest practice from the outset is to refuse to let any stranger use your cell phone or, alternatively, to remain beside any stranger while they make an ‘emergency’ call. If you receive a call demanding ransom for the release of a family member, you should be extremely skeptical and should not overreact to the initial claim, as most are baseless. Persons receiving such calls should immediately contact the local police by dialling 066."
-                android:id="@+id/destination_content2"
-                android:layout_centerVertical="true"
-                android:layout_alignParentStart="false"
-                android:layout_below="@+id/destination_subtitle2"
-                android:layout_marginTop="10dp"
-                android:textColor="#333f48" />
-
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/section_icon2"
-                android:layout_above="@+id/destination_content2"
-                android:layout_alignParentEnd="false"
-                android:layout_alignTop="@+id/destination_subtitle2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/base_currency_icon1"
                 android:src="@drawable/example_icon"
-                android:layout_marginRight="10dp" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/overview_content3"
-            android:padding="16dp"
-            android:layout_below="@+id/overview_content2">
+                android:layout_marginLeft="20dp"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center"
+                android:layout_marginStart="30dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Type of Government"
-                android:id="@+id/destination_subtitle3"
-                android:layout_alignParentStart="false"
+                android:text="USD"
+                android:id="@+id/destination_subtitle1"
                 android:textStyle="bold"
-                android:layout_toRightOf="@+id/section_icon3"
-                android:textColor="#333f48" />
+                android:textColor="#333f48"
+                android:textSize="23sp"
+                />
 
-            <TextView
+
+            <EditText
+                android:id="@+id/destination_content1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="On the Iberian Peninsula in Southwestern Europe, between the North Atlantic Ocean and the Mediterranean Sea, and bordering Portugal to the west and France to the north.  The official currency of Spain is the euro. Euros are readily available at banks and currency exchange services.  The necessity of a visa is dependent on nationality. Canadians and Americans in addition to many European nations do not require a visa for tourism to Spain for up to 90 days. Business visits do not require visas. Spain is a member of the Schengen Agreement.  Domestic and international telecommunications are both highly developed. Cellular and internet service is widely available. Spain's international country code is 34.  Spain retains much of its historic architecture. City cores are developed although conditions may be somewhat untidy at times. Tap water is safe for direct consumption, although the water in the east and south may taste heavily of alkaline. Castilian Spanish is the official language, spoken by 74% of residents. Other languages include Catalan, Galician, and Basque.  Spaniards are known for their relaxed and friendly mannerisms. They are very patriotic and loyal to their country. Spaniards often extend physical gestures such as hugs to greet one another. However, avoid this with strangers as it may be a ruse to pickpocket. Tipping is not customary in Spain. "
-                android:id="@+id/destination_content3"
-                android:layout_centerVertical="true"
-                android:layout_alignParentStart="false"
-                android:layout_below="@+id/destination_subtitle3"
-                android:layout_marginTop="10dp"
-                android:textColor="#333f48" />
+                android:layout_marginLeft="60dp"
+                android:hint="number"
+                android:textColorHint="@color/light_gray"
+                android:textColor="#383838"
+                android:textSize="23sp"
+                android:inputType="numberDecimal"
+                android:singleLine="true"
+                />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/section_icon3"
-                android:layout_above="@+id/destination_content3"
-                android:layout_alignParentEnd="false"
-                android:layout_alignTop="@+id/destination_subtitle3"
-                android:src="@drawable/example_icon"
-                android:layout_marginRight="10dp" />
-        </RelativeLayout>
+        </LinearLayout>
+
     </RelativeLayout>
 </ScrollView>
 </LinearLayout>

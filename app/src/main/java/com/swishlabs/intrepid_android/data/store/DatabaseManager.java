@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.swishlabs.intrepid_android.MyApplication;
+import com.swishlabs.intrepid_android.data.api.model.Currency;
 import com.swishlabs.intrepid_android.data.api.model.DestinationInformation;
 import com.swishlabs.intrepid_android.data.api.model.HealthConditionDis;
 import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
@@ -90,6 +91,18 @@ public class DatabaseManager {
 
     }
 
+    public static Currency getCurrency(Database database, String code) {
+        String countQuery = "SELECT * FROM " + Database.TABLE_CURRENCY
+                + " WHERE " + Database.KEY_CURRENCY_CODE  +" = " + code;
+
+        Cursor cursor = database.getDb().rawQuery(countQuery,null);
+        if(cursor != null)
+            cursor.moveToFirst();
+        Currency mCurrency = new Currency( cursor.getString(1), cursor.getString(2));
+        return mCurrency;
+
+    }
+
     public static int getTripCount(Database database, String id) {
         String countQuery = "SELECT  * FROM " + Database.TABLE_TRIPS;
         Cursor cursor = database.getDb().rawQuery(countQuery, null);
@@ -151,6 +164,10 @@ public class DatabaseManager {
     public static void deleteTrip(int id, Database database){
         database.getDb().delete(Database.TABLE_TRIPS, Database.KEY_ID + "=" + id, null);
         database.getDb().close();
+    }
+
+    public static void deleteCurrency(Database database){
+        database.getDb().delete(Database.TABLE_CURRENCY, null, null);
     }
 
 }
