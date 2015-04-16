@@ -281,6 +281,17 @@ public class ViewHealthActivity extends ActionBarActivity {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                            HealthMedicationDis hmDis = mHealthMedList.get(position);
+                            Intent mIntent = new Intent( instance, DetailHealthMedActivity.class);
+                            mIntent.putExtra("name", hmDis.getmMedicationName());
+                            mIntent.putExtra("brand name", hmDis.getmBrandNames());
+                            mIntent.putExtra("description", hmDis.getmDescription());
+                            mIntent.putExtra("side effects", hmDis.getmSideEffects());
+                            mIntent.putExtra("storage", hmDis.getmStorage());
+                            mIntent.putExtra("notes", hmDis.getmNotes());
+                            startActivity(mIntent);
+                            instance.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+
                         }
                     });
                     break;

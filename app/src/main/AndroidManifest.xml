@@ -89,6 +89,11 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name=".activity.DetailHealthMedActivity"
+            android:label="@string/title_activity_detail_health_med"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name=".activity.SecurityActivity"
             android:label="@string/title_activity_security" >
         </activity>
