@@ -1,0 +1,243 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.swishlabs.intrepid_android.activity.DetailHealthConActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:elevation="4dp"
+        android:transitionName="actionBar">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_titlebar_return"
+            android:id="@+id/title_back"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Overview"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:textColor="#FFF"
+            android:id="@+id/toolbar_title" />
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/toolbar">
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/content">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/brand"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Brand Name"
+                    android:id="@+id/brand_name_subtitle"
+                    android:layout_alignParentStart="false"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@+id/brand_name_icon"
+                    android:textColor="#333f48" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/brand_name_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_below="@+id/brand_name_subtitle"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333f48" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/brand_name_icon"
+                    android:layout_above="@+id/brand_name_content"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignTop="@+id/brand_name_subtitle"
+                    android:src="@drawable/example_icon"
+                    android:layout_marginRight="10dp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/brand"
+                android:id="@+id/overview_content"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Description"
+                    android:id="@+id/destination_subtitle"
+                    android:layout_alignParentStart="false"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@+id/section_icon"
+                    android:textColor="#333f48" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/destination_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_below="@+id/destination_subtitle"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333f48" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/section_icon"
+                    android:layout_above="@+id/destination_content"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignTop="@+id/destination_subtitle"
+                    android:src="@drawable/example_icon"
+                    android:layout_marginRight="10dp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/overview_content2"
+                android:layout_below="@+id/overview_content"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Side Effects"
+                    android:id="@+id/destination_subtitle2"
+                    android:layout_alignParentStart="false"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@+id/section_icon2"
+                    android:textColor="#333f48" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/destination_content2"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_below="@+id/destination_subtitle2"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333f48" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/section_icon2"
+                    android:layout_above="@+id/destination_content2"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignTop="@+id/destination_subtitle2"
+                    android:src="@drawable/example_icon"
+                    android:layout_marginRight="10dp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/overview_content3"
+                android:padding="16dp"
+                android:layout_below="@+id/overview_content2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Storage"
+                    android:id="@+id/destination_subtitle3"
+                    android:layout_alignParentStart="false"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@+id/section_icon3"
+                    android:textColor="#333f48" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/destination_content3"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_below="@+id/destination_subtitle3"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333f48" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/section_icon3"
+                    android:layout_above="@+id/destination_content3"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignTop="@+id/destination_subtitle3"
+                    android:src="@drawable/example_icon"
+                    android:layout_marginRight="10dp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/overview_content4"
+                android:padding="16dp"
+                android:layout_below="@+id/overview_content3">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Notes"
+                    android:id="@+id/destination_subtitle4"
+                    android:layout_alignParentStart="false"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@+id/section_icon4"
+                    android:textColor="#333f48" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/destination_content4"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_below="@+id/destination_subtitle4"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333f48" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/section_icon4"
+                    android:layout_above="@+id/destination_content4"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignTop="@+id/destination_subtitle4"
+                    android:src="@drawable/example_icon"
+                    android:layout_marginRight="10dp" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
