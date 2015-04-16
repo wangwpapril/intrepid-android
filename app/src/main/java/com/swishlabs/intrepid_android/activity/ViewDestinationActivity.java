@@ -211,7 +211,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
         public void populateGeneralOverview(View rootView){
             DestinationInformation destinationInformation = ViewDestinationActivity.getInstance().mDestinationInformation;
             ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
-            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageOverview()).resize(1200,1200).into(generalImage);
+            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageOverview()).resize(2400,1750).centerCrop().into(generalImage);
             TextView locationText = (TextView)rootView.findViewById(R.id.destination_content);
             locationText.setText(destinationInformation.getLocation());
             TextView climateText = (TextView)rootView.findViewById(R.id.destination_content2);
@@ -248,7 +248,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
         public void populateCultureOverview(View rootView){
             DestinationInformation destinationInformation = ViewDestinationActivity.getInstance().mDestinationInformation;
             ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
-            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageCulture()).resize(1200,1200).into(generalImage);
+            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageCulture()).resize(2400,1750).centerCrop().into(generalImage);
             TextView locationText = (TextView)rootView.findViewById(R.id.destination_content);
             locationText.setText(destinationInformation.getCulturalNorms());
             TextView climateText = (TextView)rootView.findViewById(R.id.destination_content2);
