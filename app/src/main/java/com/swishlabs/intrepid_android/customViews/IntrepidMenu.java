@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.activity.SecurityActivity;
 import com.swishlabs.intrepid_android.activity.SettingsActivity;
 import com.swishlabs.intrepid_android.activity.TripPagesActivity;
 import com.swishlabs.intrepid_android.activity.ViewDestinationActivity;
@@ -194,6 +195,14 @@ public class IntrepidMenu extends ScrollView {
             @Override
             public void onClick(View view) {
                 Intent mIntent = new Intent(context, ViewDestinationActivity.class);
+                activity.startActivity(mIntent);
+            }
+        });
+        FrameLayout securityButton = (FrameLayout)activity.findViewById(R.id.security_menu_btn);
+        securityButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mIntent = new Intent(context, SecurityActivity.class);
                 activity.startActivity(mIntent);
             }
         });

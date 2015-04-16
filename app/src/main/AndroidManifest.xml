@@ -86,9 +86,12 @@
         <activity
             android:name=".activity.DetailHealthConActivity"
             android:label="@string/title_activity_detail_health_con"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
-
+        <activity
+            android:name=".activity.SecurityActivity"
+            android:label="@string/title_activity_security" >
+        </activity>
     </application>
 
 </manifest>
