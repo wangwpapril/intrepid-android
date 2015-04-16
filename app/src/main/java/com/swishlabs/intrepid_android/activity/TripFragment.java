@@ -23,7 +23,9 @@ import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
+import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.ImageLoader;
+import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -96,7 +98,9 @@ public class TripFragment extends android.support.v4.app.Fragment {
             mCountryImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), mDestinationId);
                     Intent mIntent = new Intent(TripPagesActivity.getInstance(), ViewDestinationActivity.class);
+
                     mIntent.putExtra("destinationId", mDestinationId);
                     startActivity(mIntent);
                 }
@@ -173,6 +177,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
                                    DatabaseManager.deleteTrip(index, db);
                                     Intent mIntent = new Intent(TripPagesActivity.getInstance(),TripPagesActivity.class);
                                     startActivity(mIntent);
+
                                     TripPagesActivity.getInstance().finish();
 
                                 }

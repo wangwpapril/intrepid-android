@@ -21,6 +21,8 @@ import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
 import com.swishlabs.intrepid_android.data.api.model.DestinationInformation;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
+import com.swishlabs.intrepid_android.util.Enums;
+import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -51,7 +53,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadDatabase();
-        mDestinationId = getIntent().getStringExtra("destinationId");
+        mDestinationId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currentCountryId.toString(), null);
         mDestinationInformation = DatabaseManager.getDestinationInformation(mDatabase,mDestinationId);
         setContentView(R.layout.activity_view_destination);
         instance = this;
@@ -212,7 +214,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
         public void populateGeneralOverview(View rootView){
             DestinationInformation destinationInformation = ViewDestinationActivity.getInstance().mDestinationInformation;
             ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
-            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageOverview()).resize(1000,1000).centerCrop().into(generalImage);
+            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageOverview()).resize(1000, 1000).centerCrop().into(generalImage);
             TextView locationText = (TextView)rootView.findViewById(R.id.destination_content);
             locationText.setText(destinationInformation.getLocation());
             TextView climateText = (TextView)rootView.findViewById(R.id.destination_content2);
@@ -249,7 +251,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
         public void populateCultureOverview(View rootView){
             DestinationInformation destinationInformation = ViewDestinationActivity.getInstance().mDestinationInformation;
             ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
-            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageCulture()).resize(1000,1000).centerCrop().into(generalImage);
+            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageCulture()).resize(1000, 1000).centerCrop().into(generalImage);
             TextView locationText = (TextView)rootView.findViewById(R.id.destination_content);
             locationText.setText(destinationInformation.getCulturalNorms());
             TextView climateText = (TextView)rootView.findViewById(R.id.destination_content2);
