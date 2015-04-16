@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:id="@+id/overview_image"
+                />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/overview_content"
+                android:layout_below="@+id/overview_image"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Safety"
+                    android:id="@+id/destination_subtitle"
+                    android:layout_alignParentStart="false"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@+id/section_icon"
+                    android:textColor="#333f48" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/safety_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_below="@+id/destination_subtitle"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333f48" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/section_icon"
+                    android:layout_above="@id/safety_content"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignTop="@+id/destination_subtitle"
+                    android:src="@drawable/example_icon"
+                    android:layout_marginRight="10dp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/overview_content2"
+                android:layout_below="@+id/overview_content"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Other Concerns"
+                    android:id="@+id/destination_subtitle2"
+                    android:layout_alignParentStart="false"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@+id/section_icon2"
+                    android:textColor="#333f48" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Kidnapping for ransom has a long history in Mexico. Kidnap-for-ransom crimes continue to increase in Guadalajara, and the threat is very real throughout Mexico. Most incidents go unreported to police and are handled directly by the victim's family or an intermediary (it is recommended that local authorities be contacted immediately to help resolve any kidnapping matter). Guadalajara has not experienced the same level of 'express' kidnappings common to other Mexican cities.\n\n However, 'virtual' kidnappings have become increasingly common. Extortionists will telephone prospective victims, posing as kidnappers, and demand payment in return for the release of an abducted family member. Virtual kidnapping has evolved to include the scenario where the extortionist poses as an innocent citizen who requests the use of your cell phone to place an emergency call, only to call someone on your contact list and threaten that you have been kidnapped.\n\n The safest practice from the outset is to refuse to let any stranger use your cell phone or, alternatively, to remain beside any stranger while they make an ‘emergency’ call. If you receive a call demanding ransom for the release of a family member, you should be extremely skeptical and should not overreact to the initial claim, as most are baseless. Persons receiving such calls should immediately contact the local police by dialling 066."
+                    android:id="@+id/other_concerns_text"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_below="@+id/destination_subtitle2"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333f48" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/section_icon2"
+                    android:layout_above="@+id/other_concerns_text"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignTop="@id/other_concerns_text"
+                    android:src="@drawable/example_icon"
+                    android:layout_marginRight="10dp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

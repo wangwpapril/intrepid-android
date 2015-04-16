@@ -11,7 +11,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.CustomTabContainer;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
@@ -51,7 +54,7 @@ public class SecurityActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         loadDatabase();
         mDestinationId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currentCountryId.toString(), null);
-//        mDestinationInformation = DatabaseManager.getDestinationInformation(mDatabase, mDestinationId);
+        mDestinationInformation = DatabaseManager.getDestinationInformation(mDatabase, mDestinationId);
         setContentView(R.layout.activity_view_destination);
         instance = this;
         IntrepidMenu.setupMenu(instance, SecurityActivity.this);
@@ -198,14 +201,19 @@ public class SecurityActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_overview_general, container, false);
-            populateGeneralOverview(rootView);
+            View rootView = inflater.inflate(R.layout.fragment_security, container, false);
+            populateSecurityInfo(rootView);
             return rootView;
         }
 
-        public void populateGeneralOverview(View rootView) {
-
-
+        public void populateSecurityInfo(View rootView) {
+            DestinationInformation destinationInformation = SecurityActivity.getInstance().mDestinationInformation;
+            ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
+            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageSecurity()).resize(1000, 1000).centerCrop().into(generalImage);
+            TextView safetyText = (TextView)rootView.findViewById(R.id.safety_content);
+            safetyText.setText(destinationInformation.getSafety());
+            TextView otherConcernsText = (TextView)rootView.findViewById(R.id.other_concerns_text);
+            otherConcernsText.setText(destinationInformation.getOtherConcerns());
         }
     }
 
