@@ -1,15 +1,11 @@
 package com.swishlabs.intrepid_android.activity;
 
 
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -146,6 +142,7 @@ public class LoginActivity extends BaseActivity {
                         SharedPreferenceUtil.setString(Enums.PreferenceKeys.firstname.toString(),user.firstName);
                         SharedPreferenceUtil.setString(Enums.PreferenceKeys.lastname.toString(),user.lastName);
                         SharedPreferenceUtil.setString(Enums.PreferenceKeys.username.toString(),user.userName);
+                        SharedPreferenceUtil.setString(Enums.PreferenceKeys.countryCode.toString(),user.countryCode);
                         SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), true);
 
                         MyApplication.setLoginStatus(true);

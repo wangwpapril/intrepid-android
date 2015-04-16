@@ -164,6 +164,11 @@ public class DestinationsListActivity extends BaseActivity {
                 String countryId;
                 try {
                     destination = new JSONObject(content).getJSONObject("destination");
+                    JSONObject country = destination.getJSONObject("country");
+                    if (country!=null){
+                        String countryCode = country.getString("country_code");
+                        saveEmbassyInformation(mDestinationList.get(destinationPosition).getId(), countryCode);
+                    }
                     countryId = destination.optString("id");
                     SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(),countryId);
                     if(destination.has("health_conditions")) {
@@ -216,6 +221,7 @@ public class DestinationsListActivity extends BaseActivity {
 //                    });
 //
 //                    t.start();
+
                     saveDestinationInformation(destination, images);
                     String encodedURL = general_image_url.replace(" ", "%20");
                             CreateTrip(destinationPosition, encodedURL);
@@ -237,6 +243,39 @@ public class DestinationsListActivity extends BaseActivity {
         ControllerContentTask cct = new ControllerContentTask(
                 Constants.BASE_URL+"destinations/"+destinationId+"?token=" + token, icc,
                 Enums.ConnMethod.GET,false);
+        String ss = null;
+        cct.execute(ss);
+    }
+
+    private void saveEmbassyInformation(String destinationId, String countryCode){
+
+        IControllerContentCallback icc = new IControllerContentCallback() {
+
+            public void handleSuccess(String content){
+
+                JSONObject diplomaticOffices;
+                try {
+                    diplomaticOffices = new JSONObject(content);
+                    diplomaticOffices.getString("");
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            public void handleError(Exception e){
+
+            }
+        };
+
+        String token = null;
+        token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
+        String currentCountryCode = SharedPreferenceUtil.getString(Enums.PreferenceKeys.countryCode.toString(), null);
+        ControllerContentTask cct = new ControllerContentTask(
+                Constants.BASE_URL+"diplomatic-offices/"+countryCode+"?origin_country="+currentCountryCode+"&token=" + token, icc,
+                Enums.ConnMethod.GET,false);
+        String test = Constants.BASE_URL+"diplomatic-offices/"+countryCode+"?origin_country="+currentCountryCode+"&token=" + token;
         String ss = null;
         cct.execute(ss);
     }

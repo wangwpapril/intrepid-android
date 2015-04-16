@@ -83,6 +83,7 @@ public class Enums {
 		token("token"),
 		password("password"),
 		loginStatus("login status"),
+        countryCode("country code"),
 		userId("user id"), ;
 	
 		private final String svalue;
