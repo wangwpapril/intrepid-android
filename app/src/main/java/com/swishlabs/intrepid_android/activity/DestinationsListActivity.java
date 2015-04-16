@@ -43,6 +43,7 @@ public class DestinationsListActivity extends BaseActivity {
 	private List<Destination> mDestinationList;
 	private DestinationsListAdapter mDestinationsListAdapter;
     public static EditText mEditTextSearch;
+    private int mCallbackCount = 0;
 
     private List<HealthCondition> healthConditionList;
     private List<HealthMedicationDis> healthMedicationList;
@@ -247,16 +248,57 @@ public class DestinationsListActivity extends BaseActivity {
         cct.execute(ss);
     }
 
-    private void saveEmbassyInformation(String destinationId, String countryCode){
+    private void saveEmbassyInformation(final String destinationId, String countryCode){
 
         IControllerContentCallback icc = new IControllerContentCallback() {
 
-            public void handleSuccess(String content){
-
+            public void handleSuccess(String content) {
                 JSONObject diplomaticOffices;
                 try {
                     diplomaticOffices = new JSONObject(content);
-                    diplomaticOffices.getString("");
+                    JSONArray diplomaticOfficesList = diplomaticOffices.getJSONArray("diplomatic_office");
+                    for(int i = 0;i < diplomaticOfficesList.length();i++){
+                        JSONObject diplomaticOffice = diplomaticOfficesList.getJSONObject(i);
+                        String id = diplomaticOffice.getString("id");
+                        String country = diplomaticOffice.getString("country");
+                        String name = diplomaticOffice.getString("name");
+                        JSONObject embassyImage = diplomaticOffice.getJSONObject("images").getJSONObject("embassy");
+                        JSONObject embassyContent = diplomaticOffice.getJSONObject("content");
+                        embassyImage.getString("source_url").replace(" ", "%20");
+                        String servicesOffered = embassyContent.getString("services_offered");
+                        String fax = embassyContent.getString("fax");
+                        String source = embassyContent.getString("source");
+                        String website = embassyContent.getString("website");
+                        String email = embassyContent.getString("email");
+                        String address = embassyContent.getString("address");
+                        String hoursOfOperation = embassyContent.getString("hours_of_operation");
+                        String notes = embassyContent.getString("notes");
+                        String telephone = embassyContent.getString("telephone");
+
+                        ContentValues values = new ContentValues();
+                        values.put(Database.KEY_EMBASSY_ID, id);
+                        values.put(Database.KEY_EMBASSY_COUNTRY, country);
+                        values.put(Database.KEY_EMBASSY_NAME, name);
+                        values.put(Database.KEY_EMBASSY_SERVICES_OFFERED, servicesOffered);
+                        values.put(Database.KEY_EMBASSY_FAX, fax);
+                        values.put(Database.KEY_EMBASSY_SOURCE, source);
+                        values.put(Database.KEY_EMBASSY_WEBSITE, website);
+                        values.put(Database.KEY_EMBASSY_EMAIL, email);
+                        values.put(Database.KEY_EMBASSY_ADDRESS, address);
+                        values.put(Database.KEY_EMBASSY_HOURS_OF_OPERATION, hoursOfOperation);
+                        values.put(Database.KEY_EMBASSY_NOTES, notes);
+                        values.put(Database.KEY_EMBASSY_TELEPHONE, telephone);
+                        values.put(Database.KEY_EMBASSY_DESTINATION_ID, destinationId);
+
+                        mDatabase.getDb().insert(Database.TABLE_EMBASSY, null, values);
+                        if (mCallbackCount == 1) {
+                            mDatabase.getDb().close();
+                        }else{
+                            mCallbackCount = mCallbackCount + 1;
+                        }
+
+                    }
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -275,7 +317,7 @@ public class DestinationsListActivity extends BaseActivity {
         ControllerContentTask cct = new ControllerContentTask(
                 Constants.BASE_URL+"diplomatic-offices/"+countryCode+"?origin_country="+currentCountryCode+"&token=" + token, icc,
                 Enums.ConnMethod.GET,false);
-        String test = Constants.BASE_URL+"diplomatic-offices/"+countryCode+"?origin_country="+currentCountryCode+"&token=" + token;
+
         String ss = null;
         cct.execute(ss);
     }
@@ -384,7 +426,11 @@ public class DestinationsListActivity extends BaseActivity {
 
 
         mDatabase.getDb().insert(Database.TABLE_TRIPS, null, values);
-        mDatabase.getDb().close();
+        if (mCallbackCount == 1) {
+            mDatabase.getDb().close();
+        }else{
+            mCallbackCount = mCallbackCount + 1;
+        }
 
         Intent intent = new Intent(DestinationsListActivity.this, TripPagesActivity.class);
         intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);

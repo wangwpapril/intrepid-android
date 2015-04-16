@@ -1,12 +1,5 @@
 package com.swishlabs.intrepid_android.data.api.callback;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
-
 import android.os.AsyncTask;
 import android.os.Handler;
 
@@ -15,6 +8,13 @@ import com.swishlabs.intrepid_android.request.ResultHolder;
 import com.swishlabs.intrepid_android.request.SimpleHttpClient;
 import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.Enums;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ControllerContentTask extends
@@ -96,8 +96,12 @@ public class ControllerContentTask extends
 		super.onPostExecute(result);
 		Common.cancelLoading();
 		if (result.isSuccess()) {
-			icc.handleSuccess(result.getResult());
-		} else {
+            try {
+                icc.handleSuccess(result.getResult());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else {
 			icc.handleError(new Exception(result.getResult()));
 		}
 	}

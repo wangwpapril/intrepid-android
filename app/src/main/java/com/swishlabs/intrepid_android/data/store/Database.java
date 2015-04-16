@@ -19,6 +19,7 @@ public class Database {
     public static final String TABLE_HEALTH_CONDITION = "healthCondition";
     public static final String TABLE_HEALTH_MEDICATION = "healthMedication";
     public static final String TABLE_DESTINATION_INFORMATION = "destinationInformation";
+    public static final String TABLE_EMBASSY = "embassy";
 
     public static final String KEY_ID = "id";
     public static final String KEY_COUNTRY_ID = "countryId";
@@ -62,6 +63,21 @@ public class Database {
     public static final String KEY_IMAGE_CULTURE = "image3";
     public static final String KEY_IMAGE_INTRO = "image4";
     public static final String KEY_IMAGE_CURRENCY = "image5";
+
+    public static final String KEY_EMBASSY_ID = "embassyId";
+    public static final String KEY_EMBASSY_COUNTRY = "embassyCountry";
+    public static final String KEY_EMBASSY_NAME = "embassyName";
+    public static final String KEY_EMBASSY_SERVICES_OFFERED = "embassyServicesOffered";
+    public static final String KEY_EMBASSY_FAX = "embassyFax";
+    public static final String KEY_EMBASSY_SOURCE = "embassySource";
+    public static final String KEY_EMBASSY_WEBSITE = "embassyWebsite";
+    public static final String KEY_EMBASSY_EMAIL = "embassyEmail";
+    public static final String KEY_EMBASSY_ADDRESS = "embassyAddress";
+    public static final String KEY_EMBASSY_HOURS_OF_OPERATION = "embassyHoursOfOperation";
+    public static final String KEY_EMBASSY_NOTES = "embassyNotes";
+    public static final String KEY_EMBASSY_TELEPHONE = "embassyTelephone";
+    public static final String KEY_EMBASSY_DESTINATION_ID = "embassyDestinationId";
+
 
 
     private DatabaseOpenHelper dbOpenHelper;
@@ -132,6 +148,23 @@ public class Database {
                     + KEY_IMAGE_INTRO + " TEXT,"
                     + KEY_IMAGE_CURRENCY + " TEXT"+ ")";
             db.execSQL(createDestinationInfoTable);
+
+            String createEmbassyTable = "CREATE TABLE " + TABLE_EMBASSY + "("
+                    + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + KEY_EMBASSY_ID + " TEXT,"
+                    + KEY_EMBASSY_COUNTRY + " TEXT,"
+                    + KEY_EMBASSY_NAME + " TEXT,"
+                    + KEY_EMBASSY_SERVICES_OFFERED + " TEXT,"
+                    + KEY_EMBASSY_FAX + " TEXT,"
+                    + KEY_EMBASSY_SOURCE + " TEXT,"
+                    + KEY_EMBASSY_WEBSITE + " TEXT,"
+                    + KEY_EMBASSY_EMAIL + " TEXT,"
+                    + KEY_EMBASSY_ADDRESS + " TEXT,"
+                    + KEY_EMBASSY_HOURS_OF_OPERATION + " TEXT,"
+                    + KEY_EMBASSY_NOTES + " TEXT,"
+                    + KEY_EMBASSY_TELEPHONE + " TEXT,"
+                    + KEY_EMBASSY_DESTINATION_ID + " TEXT"+ ")";
+            db.execSQL(createEmbassyTable);
 
         }
         @Override
