@@ -134,6 +134,7 @@ public class Database {
                     + KEY_CULTURAL_NORMS + " TEXT,"
                     + KEY_SOURCES + " TEXT,"
                     + KEY_CURRENCY + " TEXT,"
+                    + KEY_CURRENCY_CODE + " TEXT,"
                     + KEY_RELIGION + " TEXT,"
                     + KEY_TIMEZONE + " TEXT,"
                     + KEY_SAFETY + " TEXT,"

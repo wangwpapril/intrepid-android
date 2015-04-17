@@ -94,6 +94,7 @@ public class DestinationsListActivity extends BaseActivity {
                             }
                         }
 
+                        mDestinationList.get(i).currencyCode = currencyCode;
                         saveCurrencyImage(currencyCode,currencyUrl);
                     }
 
@@ -175,6 +176,7 @@ public class DestinationsListActivity extends BaseActivity {
 
     public void LoadTripFromApi(final int destinationPosition){
         final String destinationId = mDestinationList.get(destinationPosition).getId();
+        final String currencyCode = mDestinationList.get(destinationPosition).getCurrencyCode();
 
         IControllerContentCallback icc = new IControllerContentCallback() {
 
@@ -243,7 +245,7 @@ public class DestinationsListActivity extends BaseActivity {
 //
 //                    t.start();
 
-                    saveDestinationInformation(destination, images);
+                    saveDestinationInformation(destination, images, currencyCode);
                     String encodedURL = general_image_url.replace(" ", "%20");
                             CreateTrip(destinationPosition, encodedURL);
 
@@ -342,7 +344,7 @@ public class DestinationsListActivity extends BaseActivity {
         cct.execute(ss);
     }
 
-    private void saveDestinationInformation(JSONObject destination, JSONObject images) throws JSONException {
+    private void saveDestinationInformation(JSONObject destination, JSONObject images, String currencyCode) throws JSONException {
         JSONObject content = destination.getJSONObject("content");
         String destinationId = destination.getString("id");
         String communicationsInfrastructure = content.getString("communication_infrastructure");
@@ -377,6 +379,7 @@ public class DestinationsListActivity extends BaseActivity {
         values.put(Database.KEY_CULTURAL_NORMS, cultural_norms);
         values.put(Database.KEY_SOURCES, sources);
         values.put(Database.KEY_CURRENCY, currency);
+        values.put(Database.KEY_CURRENCY_CODE, currencyCode);
         values.put(Database.KEY_RELIGION, religion);
         values.put(Database.KEY_TIMEZONE, time_zone);
         values.put(Database.KEY_SAFETY, safety);

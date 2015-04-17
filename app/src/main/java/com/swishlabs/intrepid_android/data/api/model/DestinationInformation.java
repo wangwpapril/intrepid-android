@@ -12,6 +12,7 @@ public class DestinationInformation {
     public String mCulturalNorms;
     public String mSources;
     public String mCurrency;
+    public String mCurrencyCode;
     public String mReligion;
     public String mTimeZone;
     public String mSafety;
@@ -32,7 +33,7 @@ public class DestinationInformation {
     public String mImageCurrency;
 
     public DestinationInformation(String destinationId, String communicationsInfrastructure, String otherConcerns, String development, String location, String culturalNorms, String sources,
-        String currency, String religion, String timeZone, String safety, String typeOfGovernment, String visaMapAttributionUri, String electricity,
+        String currency, String currencyCode, String religion, String timeZone, String safety, String typeOfGovernment, String visaMapAttributionUri, String electricity,
         String ethnicMakeup, String languageInfo, String visaRequirements, String climate, String image1, String image2, String image3, String image4, String image5){
         this.mDestinationId = destinationId;
         this.mCommunicationsInfrastructure = communicationsInfrastructure;
@@ -42,6 +43,7 @@ public class DestinationInformation {
         this.mCulturalNorms = culturalNorms;
         this.mSources = sources;
         this.mCurrency = currency;
+        this.mCurrencyCode = currencyCode;
         this.mReligion = religion;
         this.mTimeZone = timeZone;
         this.mSafety = safety;
@@ -86,6 +88,8 @@ public class DestinationInformation {
     public String getCurrency() {
         return mCurrency;
     }
+
+    public String getCurrencyCode() { return mCurrencyCode; }
 
     public String getReligion() {
         return mReligion;
