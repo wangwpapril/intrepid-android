@@ -20,7 +20,7 @@ public class Database {
     public static final String TABLE_HEALTH_MEDICATION = "healthMedication";
     public static final String TABLE_DESTINATION_INFORMATION = "destinationInformation";
     public static final String TABLE_EMBASSY = "embassy";
-    public static final String TABLE_CURRENCY = "currency";
+    public static final String TABLE_CURRENCY = "currencyTb";
 
     public static final String KEY_ID = "id";
     public static final String KEY_COUNTRY_ID = "countryId";

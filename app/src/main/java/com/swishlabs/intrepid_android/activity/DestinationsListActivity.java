@@ -98,7 +98,7 @@ public class DestinationsListActivity extends BaseActivity {
                     }
 
 //                    String code = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currencyCode.toString(),"");
- //                   Currency cc = DatabaseManager.getCurrency(mDatabase,"AFN");
+//                    Currency cc = DatabaseManager.getCurrency(code , mDatabase);
 
                     mDestinationsListAdapter = new DestinationsListAdapter(
                             mDestinationList, context);
@@ -436,8 +436,9 @@ public class DestinationsListActivity extends BaseActivity {
 
     private void saveCurrencyImage(String code, String url){
         ContentValues values = new ContentValues();
-        values.put(Database.KEY_CURRENCY_CODE, code);
+//        values.put(Database.KEY_CURRENCY_CODE, code);
         values.put(Database.KEY_GENERAL_IMAGE_URI, url);
+        values.put(Database.KEY_CURRENCY_CODE,code);
         mDatabase.getDb().insert(Database.TABLE_CURRENCY, null, values);
     }
 

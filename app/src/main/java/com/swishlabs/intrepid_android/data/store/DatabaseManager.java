@@ -109,9 +109,8 @@ public class DatabaseManager {
                 new String[]{code}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
-        Currency currency = new Currency(cursor.getString(0),cursor.getString(1));
-        database.getDb().close();
-        return currency;
+        Currency currency = new Currency(cursor.getString(1),cursor.getString(2));
+         return currency;
     }
 
     public static int getTripCount(Database database, String id) {
