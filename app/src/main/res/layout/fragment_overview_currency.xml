@@ -20,7 +20,7 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/overview_content"
+            android:id="@+id/base_currency"
             android:layout_below="@+id/overview_image"
             android:orientation="horizontal"
             android:padding="16dp">
@@ -39,8 +39,7 @@
                 android:layout_gravity="center_vertical|center"
                 android:layout_marginLeft="30dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="CAD"
-                android:id="@+id/destination_subtitle"
+                android:id="@+id/base_currency_code"
                 android:textStyle="bold"
                 android:textColor="#333f48"
                 android:textSize="23sp"
@@ -48,12 +47,15 @@
 
 
             <EditText
-                android:id="@+id/destination_content"
+                android:id="@+id/base_currency_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
-                android:hint="number"
-                android:textColorHint="@color/light_gray"
+                android:gravity="center_horizontal"
+                android:ems="10"
+                android:text="1.00"
+                android:numeric="decimal"
+                android:textStyle="bold"
                 android:textColor="#383838"
                 android:textSize="23sp"
                 android:inputType="numberDecimal"
@@ -66,14 +68,14 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/overview_content1"
-            android:layout_below="@+id/overview_content"
+            android:layout_below="@+id/base_currency"
             android:orientation="horizontal"
             android:padding="16dp">
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:id="@+id/base_currency_icon1"
+                android:id="@+id/des_currency_icon"
                 android:src="@drawable/example_icon"
                 android:layout_marginLeft="20dp"
                 />
@@ -84,8 +86,7 @@
                 android:layout_gravity="center_vertical|center"
                 android:layout_marginStart="30dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="USD"
-                android:id="@+id/destination_subtitle1"
+                android:id="@+id/des_currency_code"
                 android:textStyle="bold"
                 android:textColor="#333f48"
                 android:textSize="23sp"
@@ -93,12 +94,15 @@
 
 
             <EditText
-                android:id="@+id/destination_content1"
+                android:id="@+id/des_currency_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
-                android:hint="number"
-                android:textColorHint="@color/light_gray"
+                android:ems="10"
+                android:gravity="center_horizontal"
+                android:text=""
+                android:textStyle="bold"
+                android:numeric="decimal"
                 android:textColor="#383838"
                 android:textSize="23sp"
                 android:inputType="numberDecimal"
