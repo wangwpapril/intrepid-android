@@ -6,11 +6,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,10 +21,12 @@ import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.CustomTabContainer;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
+import com.swishlabs.intrepid_android.data.api.model.Currency;
 import com.swishlabs.intrepid_android.data.api.model.DestinationInformation;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Enums;
+import com.swishlabs.intrepid_android.util.ImageLoader;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 
 import java.util.ArrayList;
@@ -40,6 +45,10 @@ public class ViewDestinationActivity extends ActionBarActivity {
     ViewPager mViewPager;
     String mDestinationId;
     DestinationInformation mDestinationInformation;
+
+    String baseCurrencyCode, desCurrencyCode;
+    Currency baseCurrency, desCurrency;
+
 //    TextView mToolbarTitle;
     CustomTabContainer mTabContainer;
     ArrayList<String> tabNames = new ArrayList<String>();
@@ -55,6 +64,11 @@ public class ViewDestinationActivity extends ActionBarActivity {
         loadDatabase();
         mDestinationId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currentCountryId.toString(), null);
         mDestinationInformation = DatabaseManager.getDestinationInformation(mDatabase,mDestinationId);
+
+        baseCurrencyCode = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currencyCode.toString(),null);
+        baseCurrency = DatabaseManager.getCurrency(baseCurrencyCode,mDatabase);
+        desCurrency = DatabaseManager.getCurrency(mDestinationInformation.getCurrencyCode(),mDatabase);
+
         setContentView(R.layout.activity_view_destination);
         instance = this;
         IntrepidMenu.setupMenu(instance, ViewDestinationActivity.this);
@@ -159,7 +173,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
             }else if (position == 1){
                 return OverviewCultureFragment.newInstance(position + 1);
             }else {
-                return OverviewGeneralFragment.newInstance(position + 1);
+                return OverviewCurrencyFragment.newInstance(position + 1);
                 //TODO change this to a currency fragment
             }
         }
@@ -262,5 +276,111 @@ public class ViewDestinationActivity extends ActionBarActivity {
         }
     }
 
+    public static class OverviewCurrencyFragment extends Fragment {
+
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        protected com.swishlabs.intrepid_android.util.ImageLoader ImageLoader;
+
+        private TextWatcher baseWatcher, desWatcher;
+
+        public static OverviewCurrencyFragment newInstance(int sectionNumber) {
+            OverviewCurrencyFragment fragment = new OverviewCurrencyFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        public OverviewCurrencyFragment() {
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_overview_currency, container, false);
+            populateCultureOverview(rootView);
+            return rootView;
+        }
+
+        public void populateCultureOverview(View rootView){
+
+            if (ImageLoader == null) {
+                ImageLoader = new ImageLoader(ViewDestinationActivity.getInstance(), R.drawable.ic_launcher);
+            }
+
+            TextView baseCurrencyTv = (TextView)rootView.findViewById(R.id.base_currency_code);
+            baseCurrencyTv.setText(ViewDestinationActivity.getInstance().baseCurrency.getCurrencyCode());
+
+            ImageView baseImageIv = (ImageView)rootView.findViewById(R.id.base_currency_icon);
+            baseImageIv.setTag(ViewDestinationActivity.getInstance().baseCurrency.getImageUrl());
+            ImageLoader.DisplayImage(ViewDestinationActivity.getInstance().baseCurrency.getImageUrl(),
+                    ViewDestinationActivity.getInstance(), baseImageIv);
+
+
+            EditText baseValueEt = (EditText)rootView.findViewById(R.id.base_currency_value);
+
+
+            TextView desCurrencyTv = (TextView)rootView.findViewById(R.id.des_currency_code);
+            desCurrencyTv.setText(ViewDestinationActivity.getInstance().desCurrency.getCurrencyCode());
+
+            final ImageView desImageIv = (ImageView)rootView.findViewById(R.id.des_currency_icon);
+            desImageIv.setTag(ViewDestinationActivity.getInstance().desCurrency.getImageUrl());
+            ImageLoader.DisplayImage(ViewDestinationActivity.getInstance().desCurrency.getImageUrl(),
+                    ViewDestinationActivity.getInstance(), desImageIv);
+
+            final EditText desValueEt = (EditText) rootView.findViewById(R.id.des_currency_value);
+            desValueEt.setText(ViewDestinationActivity.getInstance().mDestinationInformation.getCurrencyRate());
+
+            baseWatcher = new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    desValueEt.removeTextChangedListener(desWatcher);
+                    double baseValue = 0, desValue = 0;
+
+                    baseValue = Double.parseDouble(s.toString());
+                    desValue = baseValue * Double.parseDouble(ViewDestinationActivity.getInstance().mDestinationInformation.mCurrencyRate);
+                    desValueEt.setText(String.valueOf(desValue));
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                    desValueEt.addTextChangedListener(desWatcher);
+
+
+                }
+            };
+
+            desWatcher = new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            };
+
+            baseValueEt.addTextChangedListener(baseWatcher);
+            desValueEt.addTextChangedListener(desWatcher );
+
+
+        }
+    }
 
 }
