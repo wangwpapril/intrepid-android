@@ -24,7 +24,8 @@ public class Database {
 
     public static final String KEY_ID = "id";
     public static final String KEY_COUNTRY_ID = "countryId";
-    public static final String KEY_CURRENCY_CODE ="currencyCode";
+    public static final String KEY_CURRENCY_CODE = "currencyCode";
+    public static final String KEY_CURRENCY_RATE = "currencyRate";
     public static final String KEY_GENERAL_IMAGE_URI = "imageGeneral";
     public static final String KEY_DESTINATION_COUNTRY = "destinationCountry";
 
@@ -135,6 +136,7 @@ public class Database {
                     + KEY_SOURCES + " TEXT,"
                     + KEY_CURRENCY + " TEXT,"
                     + KEY_CURRENCY_CODE + " TEXT,"
+                    + KEY_CURRENCY_RATE + " TEXT,"
                     + KEY_RELIGION + " TEXT,"
                     + KEY_TIMEZONE + " TEXT,"
                     + KEY_SAFETY + " TEXT,"

@@ -98,9 +98,6 @@ public class DestinationsListActivity extends BaseActivity {
                         saveCurrencyImage(currencyCode,currencyUrl);
                     }
 
-//                    String code = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currencyCode.toString(),"");
-//                    Currency cc = DatabaseManager.getCurrency(code , mDatabase);
-
                     mDestinationsListAdapter = new DestinationsListAdapter(
                             mDestinationList, context);
                     listView.setAdapter(mDestinationsListAdapter);
@@ -147,7 +144,8 @@ public class DestinationsListActivity extends BaseActivity {
 			public void onItemClick(AdapterView<?> adapter, View view, int position,
 					long arg3) {
                 Log.d("Trip list", "You hit destination:" + position);
-                LoadTripFromApi(position);
+                LoadCurrencyInfo(position);
+//                LoadTripFromApi(position);
 
 			}
 		});
@@ -174,7 +172,47 @@ public class DestinationsListActivity extends BaseActivity {
 
     }
 
-    public void LoadTripFromApi(final int destinationPosition){
+    public void LoadCurrencyInfo(final int destinationPosition){
+        IControllerContentCallback icc = new IControllerContentCallback() {
+
+            public void handleSuccess(String content) {
+                JSONObject currencyInfo;
+                double rate;
+                try {
+                    currencyInfo = new JSONObject(content);
+                    JSONObject ra = currencyInfo.getJSONObject("rates");
+                    String currencyCode = mDestinationList.get(destinationPosition).getCurrencyCode();
+                    rate = currencyInfo.getJSONObject("rates").getDouble(currencyCode);
+
+                    LoadTripFromApi(destinationPosition, String.valueOf(rate));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    LoadTripFromApi(destinationPosition, null);
+                }
+
+            }
+
+            public void handleError(Exception e){
+
+                LoadTripFromApi(destinationPosition, null);
+            }
+        };
+
+        String baseCurrencyCode = null;
+        baseCurrencyCode = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currencyCode.toString(), null);
+        String currencyCode = mDestinationList.get(destinationPosition).getCurrencyCode();
+
+        ControllerContentTask cct = new ControllerContentTask(
+                Constants.CURRENCY_URL+"&base="+baseCurrencyCode+"&symbols="+currencyCode, icc,
+                Enums.ConnMethod.GET,false);
+
+        String ss = null;
+        cct.execute(ss);
+
+    }
+
+    public void LoadTripFromApi(final int destinationPosition, final String rate){
         final String destinationId = mDestinationList.get(destinationPosition).getId();
         final String currencyCode = mDestinationList.get(destinationPosition).getCurrencyCode();
 
@@ -245,7 +283,7 @@ public class DestinationsListActivity extends BaseActivity {
 //
 //                    t.start();
 
-                    saveDestinationInformation(destination, images, currencyCode);
+                    saveDestinationInformation(destination, images, currencyCode, rate);
                     String encodedURL = general_image_url.replace(" ", "%20");
                             CreateTrip(destinationPosition, encodedURL);
 
@@ -344,7 +382,7 @@ public class DestinationsListActivity extends BaseActivity {
         cct.execute(ss);
     }
 
-    private void saveDestinationInformation(JSONObject destination, JSONObject images, String currencyCode) throws JSONException {
+    private void saveDestinationInformation(JSONObject destination, JSONObject images, String currencyCode, String rate) throws JSONException {
         JSONObject content = destination.getJSONObject("content");
         String destinationId = destination.getString("id");
         String communicationsInfrastructure = content.getString("communication_infrastructure");
@@ -380,6 +418,7 @@ public class DestinationsListActivity extends BaseActivity {
         values.put(Database.KEY_SOURCES, sources);
         values.put(Database.KEY_CURRENCY, currency);
         values.put(Database.KEY_CURRENCY_CODE, currencyCode);
+        values.put(Database.KEY_CURRENCY_RATE, rate);
         values.put(Database.KEY_RELIGION, religion);
         values.put(Database.KEY_TIMEZONE, time_zone);
         values.put(Database.KEY_SAFETY, safety);
