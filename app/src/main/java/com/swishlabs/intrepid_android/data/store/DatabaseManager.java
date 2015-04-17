@@ -91,16 +91,27 @@ public class DatabaseManager {
 
     }
 
-    public static Currency getCurrency(Database database, String code) {
-        String countQuery = "SELECT * FROM " + Database.TABLE_CURRENCY
-                + " WHERE " + Database.KEY_CURRENCY_CODE  +" = " + code;
+//    public static Currency getCurrency(Database database, String code) {
+//        String countQuery = "SELECT * FROM " + Database.TABLE_CURRENCY
+//                + " WHERE " + Database.KEY_CURRENCY_CODE  +" = " + code;
+//
+//        Cursor cursor = database.getDb().rawQuery(countQuery,null);
+//        if(cursor != null)
+//            cursor.moveToFirst();
+//        Currency mCurrency = new Currency( cursor.getString(1), cursor.getString(2));
+//        return mCurrency;
+//
+//    }
 
-        Cursor cursor = database.getDb().rawQuery(countQuery,null);
-        if(cursor != null)
+    public static Currency getCurrency(String code, Database database) {
+        Cursor cursor = database.getDb().query(Database.TABLE_CURRENCY, new String[]{Database.KEY_ID,
+                        Database.KEY_CURRENCY_CODE, Database.KEY_GENERAL_IMAGE_URI}, Database.KEY_CURRENCY_CODE + "=?",
+                new String[]{code}, null, null, null, null);
+        if (cursor != null)
             cursor.moveToFirst();
-        Currency mCurrency = new Currency( cursor.getString(1), cursor.getString(2));
-        return mCurrency;
-
+        Currency currency = new Currency(cursor.getString(0),cursor.getString(1));
+        database.getDb().close();
+        return currency;
     }
 
     public static int getTripCount(Database database, String id) {
