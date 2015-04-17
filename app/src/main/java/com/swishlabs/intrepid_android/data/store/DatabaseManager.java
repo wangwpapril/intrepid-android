@@ -166,7 +166,7 @@ public class DatabaseManager {
                 cursor.getString(19), cursor.getString(20), cursor.getString(21), cursor.getString(22), cursor.getString(23), cursor.getString(24));
 
         // return contact
-        database.getDb().close();
+//        database.getDb().close();
         return destinationInformation;
     }
 
