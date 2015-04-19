@@ -318,7 +318,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
                     ViewDestinationActivity.getInstance(), baseImageIv);
 
 
-            EditText baseValueEt = (EditText)rootView.findViewById(R.id.base_currency_value);
+            final EditText baseValueEt = (EditText)rootView.findViewById(R.id.base_currency_value);
 
 
             TextView desCurrencyTv = (TextView)rootView.findViewById(R.id.des_currency_code);
@@ -344,8 +344,14 @@ public class ViewDestinationActivity extends ActionBarActivity {
                     desValueEt.removeTextChangedListener(desWatcher);
                     double baseValue = 0, desValue = 0;
 
-                    baseValue = Double.parseDouble(s.toString());
-                    desValue = baseValue * Double.parseDouble(ViewDestinationActivity.getInstance().mDestinationInformation.mCurrencyRate);
+                    if(s.toString().equals("")) {
+                        baseValue = 0;
+                        desValue = 0;
+                    }else {
+                        baseValue = Double.parseDouble(s.toString());
+                        desValue = baseValue * Double.parseDouble(ViewDestinationActivity.getInstance().mDestinationInformation.mCurrencyRate);
+                    }
+
                     desValueEt.setText(String.valueOf(desValue));
 
                 }
@@ -368,10 +374,24 @@ public class ViewDestinationActivity extends ActionBarActivity {
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
 
+                    baseValueEt.removeTextChangedListener(baseWatcher);
+                    double baseValue = 0, desValue =0;
+
+                    if(s.toString().equals("")) {
+                        baseValue = 0;
+                        desValue = 0;
+                    }else {
+                        desValue = Double.parseDouble(s.toString());
+                        baseValue = desValue / Double.parseDouble(ViewDestinationActivity.getInstance().mDestinationInformation.mCurrencyRate);
+                    }
+
+                    baseValueEt.setText(String.valueOf(baseValue));
                 }
 
                 @Override
                 public void afterTextChanged(Editable s) {
+
+                    baseValueEt.addTextChangedListener(baseWatcher);
 
                 }
             };
