@@ -12,9 +12,6 @@
         android:layout_height="fill_parent"
         android:id="@+id/content">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="400dp"
@@ -22,12 +19,19 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="false"
             android:scaleType="centerCrop" />
+
         <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="16dp"
+            android:layout_below="@+id/overview_image"
+            android:background="@android:color/white">
+
+            <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:id="@+id/overview_content"
-            android:layout_below="@+id/overview_image"
-            android:padding="16dp">
+                android:padding="16dp">
 
             <TextView
                 android:layout_width="wrap_content"

@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="40dip"
-    android:background="@drawable/subnav_bg" >
+    android:background="@drawable/subnav_bg"
+    android:alpha="0.8">
 
     <TextView
         android:id="@+id/btnTab"

@@ -28,7 +28,7 @@
             android:layout_gravity="center"
             android:textColor="#FFF"
             android:id="@+id/toolbar_title"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
     </android.support.v7.widget.Toolbar>
 
     <ScrollView

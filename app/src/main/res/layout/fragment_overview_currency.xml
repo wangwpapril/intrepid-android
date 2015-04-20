@@ -34,13 +34,11 @@
             android:id="@+id/base_currency"
             android:layout_below="@+id/overview_image"
             android:orientation="horizontal"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="16dp">
+                android:padding="16dp">
 
             <ImageView
                 android:layout_width="50dp"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:id="@+id/base_currency_icon"
                 android:src="@drawable/example_icon"
                 android:layout_marginLeft="20dp"
@@ -48,17 +46,18 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_gravity="center_vertical|center"
                 android:layout_marginLeft="30dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/base_currency_code"
-                android:textStyle="bold"
                 android:textColor="#333f48"
                 android:textSize="23sp"
                 android:layout_toRightOf="@+id/base_currency_icon"
                 android:text="CAD"
-                android:layout_alignBottom="@+id/base_currency_icon" />
+                android:layout_alignBottom="@+id/base_currency_icon"
+                android:gravity="center_vertical"
+                android:textStyle="normal" />
 
 
             <EditText
@@ -85,9 +84,7 @@
             android:id="@+id/overview_content1"
             android:layout_below="@+id/base_currency"
             android:orientation="horizontal"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="16dp">
+            android:padding="16dp">
 
             <ImageView
                 android:layout_width="50dp"
@@ -99,17 +96,18 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_gravity="center_vertical|center"
                 android:layout_marginStart="30dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/des_currency_code"
-                android:textStyle="bold"
                 android:textColor="#333f48"
                 android:textSize="23sp"
                 android:layout_toRightOf="@+id/des_currency_icon"
                 android:layout_alignBottom="@+id/des_currency_icon"
-                android:text="USD" />
+                android:text="USD"
+                android:gravity="center_vertical"
+                android:textStyle="normal" />
 
 
             <EditText
