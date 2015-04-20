@@ -103,7 +103,7 @@
                 android:layout_above="@+id/destination_content2"
                 android:layout_alignParentEnd="false"
                 android:layout_alignTop="@+id/destination_subtitle2"
-                android:src="@drawable/example_icon"
+                android:src="@drawable/weather_icon"
                 android:layout_marginRight="10dp" />
         </RelativeLayout>
         <RelativeLayout

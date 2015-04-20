@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Cultural Overview"
+                android:text="Cultural Norms"
                 android:id="@+id/destination_subtitle"
                 android:layout_alignParentStart="false"
                 android:textStyle="bold"
@@ -63,7 +63,7 @@
                 android:layout_above="@+id/destination_content"
                 android:layout_alignParentEnd="false"
                 android:layout_alignTop="@+id/destination_subtitle"
-                android:src="@drawable/example_icon"
+                android:src="@drawable/cultural_icon"
                 android:layout_marginRight="10dp" />
         </RelativeLayout>
         <RelativeLayout
@@ -102,7 +102,7 @@
                 android:layout_above="@+id/destination_content2"
                 android:layout_alignParentEnd="false"
                 android:layout_alignTop="@+id/destination_subtitle2"
-                android:src="@drawable/example_icon"
+                android:src="@drawable/ethnic_icon"
                 android:layout_marginRight="10dp" />
         </RelativeLayout>
         <RelativeLayout
@@ -142,9 +142,49 @@
                 android:layout_above="@+id/destination_content3"
                 android:layout_alignParentEnd="false"
                 android:layout_alignTop="@+id/destination_subtitle3"
-                android:src="@drawable/example_icon"
+                android:src="@drawable/language_icon"
                 android:layout_marginRight="10dp" />
         </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/overview_content4"
+                android:padding="16dp"
+                android:layout_below="@+id/overview_content3">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Religion"
+                    android:id="@+id/destination_subtitle4"
+                    android:layout_alignParentStart="false"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@+id/section_icon4"
+                    android:textColor="#333f48" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/destination_content4"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_below="@+id/destination_subtitle4"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333f48" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/section_icon4"
+                    android:layout_above="@+id/destination_content4"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignTop="@+id/destination_subtitle4"
+                    android:src="@drawable/religion_icon"
+                    android:layout_marginRight="10dp" />
+            </RelativeLayout>
     </RelativeLayout>
     </RelativeLayout>
 </ScrollView>
