@@ -75,7 +75,7 @@
                     android:layout_above="@+id/brand_name_content"
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/brand_name_subtitle"
-                    android:src="@drawable/example_icon"
+                    android:src="@drawable/brand_icon"
                     android:layout_marginRight="10dp" />
             </RelativeLayout>
             <RelativeLayout
@@ -115,7 +115,7 @@
                     android:layout_above="@+id/destination_content"
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/destination_subtitle"
-                    android:src="@drawable/example_icon"
+                    android:src="@drawable/description_icon"
                     android:layout_marginRight="10dp" />
             </RelativeLayout>
             <RelativeLayout
@@ -155,7 +155,7 @@
                     android:layout_above="@+id/destination_content2"
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/destination_subtitle2"
-                    android:src="@drawable/example_icon"
+                    android:src="@drawable/side_effects_icon"
                     android:layout_marginRight="10dp" />
             </RelativeLayout>
             <RelativeLayout
@@ -235,7 +235,7 @@
                     android:layout_above="@+id/destination_content4"
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/destination_subtitle4"
-                    android:src="@drawable/example_icon"
+                    android:src="@drawable/notes_icon"
                     android:layout_marginRight="10dp" />
             </RelativeLayout>
         </RelativeLayout>
