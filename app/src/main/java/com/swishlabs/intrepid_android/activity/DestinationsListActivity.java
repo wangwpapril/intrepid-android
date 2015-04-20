@@ -3,7 +3,6 @@ package com.swishlabs.intrepid_android.activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,7 +22,6 @@ import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 import com.swishlabs.intrepid_android.data.api.model.HealthCondition;
 import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
-import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Enums;
@@ -519,25 +517,15 @@ public class DestinationsListActivity extends BaseActivity {
         }else{
             mCallbackCount = mCallbackCount + 1;
         }
-
-        Intent intent = new Intent(DestinationsListActivity.this, TripPagesActivity.class);
+        SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), destination.getId());
+        Intent intent = new Intent(DestinationsListActivity.this, ViewDestinationActivity.class);
         intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.putExtra("destinationId", destination.getId());
         startActivity(intent);
+
     }
 
-    public Trip getTrip(int id) {
-        Cursor cursor = mDatabase.getDb().query(Database.TABLE_TRIPS, new String[]{Database.KEY_ID,
-                        Database.KEY_DESTINATION_COUNTRY, Database.KEY_COUNTRY_ID, Database.KEY_GENERAL_IMAGE_URI}, Database.KEY_ID + "=?",
-                new String[]{String.valueOf(id)}, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        Trip trip = new Trip(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getString(2), cursor.getString(3));
-        // return contact
-        return trip;
-    }
 	
 
 
