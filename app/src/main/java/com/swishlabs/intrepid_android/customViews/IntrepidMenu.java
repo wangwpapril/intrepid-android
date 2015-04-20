@@ -30,6 +30,9 @@ import com.swishlabs.intrepid_android.activity.ViewHealthActivity;
 
 public class IntrepidMenu extends ScrollView {
 
+    public static final int MENUHEIGHT = 300;
+    public static final int MINHEIGHT = 25;
+    public static final int VELOCITY = 400;
     private int mInitialHeight =0;
     private ImageButton mExpandMenu;
     private int mState = 0;
@@ -101,13 +104,13 @@ public class IntrepidMenu extends ScrollView {
                 Log.e("y", y+"is y");
                 Log.e("delta", mDeltaY+" is deltay");
                 if (mDeltaY < 100 && mDeltaY > -100) {
-                    if (mDeltaY > 0 && this.getHeight()> convertDPtoPixels(300)){
+                    if (mDeltaY > 0 && this.getHeight()> convertDPtoPixels(MENUHEIGHT)){
 
                     }else {
                         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
                                 this.getLayoutParams();
-                        int minHeight =  Math.min(this.getLayoutParams().height + mDeltaY, convertDPtoPixels(300));
-                        params.height = Math.max(minHeight,convertDPtoPixels(25));
+                        int minHeight =  Math.min(this.getLayoutParams().height + mDeltaY, convertDPtoPixels(MENUHEIGHT));
+                        params.height = Math.max(minHeight,convertDPtoPixels(MINHEIGHT));
 
                         this.setLayoutParams(params);
                     }
@@ -120,14 +123,14 @@ public class IntrepidMenu extends ScrollView {
                 velocityTracker.computeCurrentVelocity(1000);
                 int velocityY= (int) velocityTracker.getYVelocity();
                 Log.e("VELOCITY", velocityY+"");
-                if (velocityY > 600) {
+                if (velocityY > VELOCITY) {
                     snapToBottom();
 
 
-                } else if (velocityY < -600) {
+                } else if (velocityY < -VELOCITY) {
                     snapToTop();
                 } else {
-                    if (this.getHeight() < convertDPtoPixels(150)) {
+                    if (this.getHeight() < convertDPtoPixels(MENUHEIGHT/2)) {
                         snapToBottom();
                     }else{
                         snapToTop();
@@ -148,9 +151,9 @@ public class IntrepidMenu extends ScrollView {
 
 
     private void snapToBottom() {
-            int movement = this.getHeight()-convertDPtoPixels(25);
+            int movement = this.getHeight()-convertDPtoPixels(MINHEIGHT);
             TranslateAnimation anim = new TranslateAnimation(0, 0, 0, movement);
-            anim.setDuration(300);
+            anim.setDuration(MENUHEIGHT);
             final ScrollView scroller = this;
             this.startAnimation(anim);
 
@@ -165,7 +168,7 @@ public class IntrepidMenu extends ScrollView {
                 public void onAnimationEnd(Animation animation) {
                     RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
                             scroller.getLayoutParams();
-                    params.height = convertDPtoPixels(25);
+                    params.height = convertDPtoPixels(MINHEIGHT);
                     scroller.setLayoutParams(params);
                     scroller.setDrawingCacheEnabled(false);
                     scroller.clearAnimation();
@@ -184,11 +187,11 @@ public class IntrepidMenu extends ScrollView {
         int initial_position = this.getHeight();
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
                 this.getLayoutParams();
-        params.height = convertDPtoPixels(300);
+        params.height = convertDPtoPixels(MENUHEIGHT);
         this.setLayoutParams(params);
 
-        TranslateAnimation anim = new TranslateAnimation(0, 0, convertDPtoPixels(300)-initial_position, 0);
-        anim.setDuration(300);
+        TranslateAnimation anim = new TranslateAnimation(0, 0, convertDPtoPixels(MENUHEIGHT)-initial_position, 0);
+        anim.setDuration(MENUHEIGHT);
         this.startAnimation(anim);
         mState = 1;
     }

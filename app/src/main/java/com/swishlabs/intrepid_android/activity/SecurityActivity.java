@@ -238,11 +238,11 @@ public class SecurityActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_overview_culture, container, false);
-            populateCultureOverview(rootView);
+            populateEmbassyListFragment(rootView);
             return rootView;
         }
 
-        public void populateCultureOverview(View rootView) {
+        public void populateEmbassyListFragment(View rootView) {
 
 
         }
