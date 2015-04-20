@@ -237,6 +237,14 @@ public class ViewDestinationActivity extends ActionBarActivity {
             climateText.setText(destinationInformation.getClimate());
             TextView governmentText = (TextView)rootView.findViewById(R.id.destination_content3);
             governmentText.setText(destinationInformation.getTypeOfGovernment());
+            TextView visaText = (TextView)rootView.findViewById(R.id.destination_content4);
+            visaText.setText(destinationInformation.getVisaRequirements());
+            TextView communication = (TextView)rootView.findViewById(R.id.destination_content5);
+            communication.setText(destinationInformation.getCommunicationsInfrastructure());
+            TextView electricityText = (TextView)rootView.findViewById(R.id.destination_content6);
+            electricityText.setText(destinationInformation.getElectricity());
+            TextView developmentText = (TextView)rootView.findViewById(R.id.destination_content7);
+            developmentText.setText(destinationInformation.getDevelopment());
 
         }
     }
@@ -268,12 +276,14 @@ public class ViewDestinationActivity extends ActionBarActivity {
             DestinationInformation destinationInformation = ViewDestinationActivity.getInstance().mDestinationInformation;
             ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
             Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageCulture()).resize(1000, 1000).centerCrop().into(generalImage);
-            TextView locationText = (TextView)rootView.findViewById(R.id.destination_content);
-            locationText.setText(destinationInformation.getCulturalNorms());
-            TextView climateText = (TextView)rootView.findViewById(R.id.destination_content2);
-            climateText.setText(destinationInformation.getEthnicMakeup());
-            TextView governmentText = (TextView)rootView.findViewById(R.id.destination_content3);
-            governmentText.setText(destinationInformation.getLanguageInfo());
+            TextView normsText = (TextView)rootView.findViewById(R.id.destination_content);
+            normsText.setText(destinationInformation.getCulturalNorms());
+            TextView ethnicText= (TextView)rootView.findViewById(R.id.destination_content2);
+            ethnicText.setText(destinationInformation.getEthnicMakeup());
+            TextView languageText = (TextView)rootView.findViewById(R.id.destination_content3);
+            languageText.setText(destinationInformation.getLanguageInfo());
+            TextView religionText = (TextView)rootView.findViewById(R.id.destination_content4);
+            religionText.setText(destinationInformation.getReligion());
 
         }
     }
@@ -302,11 +312,11 @@ public class ViewDestinationActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_overview_currency, container, false);
-            populateCultureOverview(rootView);
+            populateCurrencyOverview(rootView);
             return rootView;
         }
 
-        public void populateCultureOverview(View rootView){
+        public void populateCurrencyOverview(View rootView){
 
             if (ImageLoader == null) {
                 ImageLoader = new ImageLoader(ViewDestinationActivity.getInstance(), R.drawable.ic_launcher);
