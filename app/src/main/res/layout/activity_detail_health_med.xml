@@ -195,7 +195,7 @@
                     android:layout_above="@+id/destination_content3"
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/destination_subtitle3"
-                    android:src="@drawable/example_icon"
+                    android:src="@drawable/storage_icon"
                     android:layout_marginRight="10dp" />
             </RelativeLayout>
             <RelativeLayout
