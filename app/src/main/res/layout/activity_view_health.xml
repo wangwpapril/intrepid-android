@@ -63,7 +63,7 @@
         android:textColor="#333f48"
         android:textColorHint="#333f48"
         android:textCursorDrawable="@null"
-        />
+        android:maxLines="1" />
 
 
     <RelativeLayout
