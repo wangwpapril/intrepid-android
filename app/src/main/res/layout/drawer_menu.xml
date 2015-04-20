@@ -318,5 +318,19 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:background="#333f48"
+        android:layout_below="@+id/row3">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:background="@drawable/white_label"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
 </RelativeLayout>
  </com.swishlabs.intrepid_android.customViews.IntrepidMenu>
