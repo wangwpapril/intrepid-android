@@ -4,6 +4,7 @@
     android:layout_height="25dp"
     android:layout_width="fill_parent"
     android:fillViewport="true"
+    android:id="@+id/intrepidMenu"
     android:scrollbars="none"
     android:overScrollMode="never"
     android:layout_alignParentBottom="true"

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
@@ -30,22 +31,29 @@ import com.swishlabs.intrepid_android.activity.ViewHealthActivity;
 public class IntrepidMenu extends ScrollView {
 
     private int mInitialHeight =0;
+    private ImageButton mExpandMenu;
+    private int mState = 0;
 
     public IntrepidMenu(Context context) {
         super(context);
         mInitialHeight = this.getLayoutParams().height;
+
     }
 
     public IntrepidMenu(Context context, AttributeSet attrs) {
         super(context, attrs);
         mInitialHeight = this.getMeasuredHeight();
 
-
     }
 
     public IntrepidMenu (Context context, AttributeSet attrs, int defStyleAttr){
         super(context, attrs, defStyleAttr);
         mInitialHeight = this.getLayoutParams().height;
+
+    }
+
+    public void initialize(){
+
     }
 
     @Override
@@ -168,6 +176,7 @@ public class IntrepidMenu extends ScrollView {
 
                 }
             });
+        mState = 0;
 
     }
 
@@ -181,6 +190,7 @@ public class IntrepidMenu extends ScrollView {
         TranslateAnimation anim = new TranslateAnimation(0, 0, convertDPtoPixels(300)-initial_position, 0);
         anim.setDuration(300);
         this.startAnimation(anim);
+        mState = 1;
     }
 
     private int convertDPtoPixels(int dp){
@@ -189,7 +199,7 @@ public class IntrepidMenu extends ScrollView {
         return pixels;
     }
 
-    public static void setupMenu(final Context context, final Activity activity){
+    public void setupMenu(final Context context, final Activity activity){
         FrameLayout overviewButton = (FrameLayout)activity.findViewById(R.id.overview_menu_btn);
         overviewButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -230,7 +240,17 @@ public class IntrepidMenu extends ScrollView {
                 activity.startActivity(mIntent);
             }
         });
-
+        ImageButton expandMenu = (ImageButton)activity.findViewById(R.id.expand_menu);
+        expandMenu.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mState == 0) {
+                    snapToTop();
+                }else{
+                    snapToBottom();
+                }
+            }
+        });
 
     }
 

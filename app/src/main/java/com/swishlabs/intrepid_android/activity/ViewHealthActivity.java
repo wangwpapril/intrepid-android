@@ -1,21 +1,17 @@
 package com.swishlabs.intrepid_android.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -62,6 +58,8 @@ public class ViewHealthActivity extends ActionBarActivity {
     public static HealthListAdapter mHealthListAdapter;
     public static int index = 0;
 
+    IntrepidMenu mIntrepidMenu;
+
     public static ViewHealthActivity getInstance(){
         return instance;
     }
@@ -80,7 +78,8 @@ public class ViewHealthActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_health);
         instance = this;
-        IntrepidMenu.setupMenu(instance, ViewHealthActivity.this);
+        mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
+        mIntrepidMenu.setupMenu(instance, ViewHealthActivity.this);
         setupTabNames();
         loadDatabase();
 

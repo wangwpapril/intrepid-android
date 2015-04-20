@@ -45,6 +45,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
     ViewPager mViewPager;
     String mDestinationId;
     DestinationInformation mDestinationInformation;
+    IntrepidMenu mIntrepidMenu;
 
     String baseCurrencyCode, desCurrencyCode;
     Currency baseCurrency, desCurrency;
@@ -71,7 +72,8 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
         setContentView(R.layout.activity_view_destination);
         instance = this;
-        IntrepidMenu.setupMenu(instance, ViewDestinationActivity.this);
+        mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
+        mIntrepidMenu.setupMenu(instance, ViewDestinationActivity.this);
         setupTabNames();
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());

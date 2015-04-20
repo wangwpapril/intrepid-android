@@ -41,6 +41,7 @@ public class SecurityActivity extends ActionBarActivity {
     DestinationInformation mDestinationInformation;
     //    TextView mToolbarTitle;
     CustomTabContainer mTabContainer;
+    IntrepidMenu mIntrepidMenu;
     ArrayList<String> tabNames = new ArrayList<String>();
 
     private String[] tabs = {"Security", "Embassies"};
@@ -57,7 +58,8 @@ public class SecurityActivity extends ActionBarActivity {
         mDestinationInformation = DatabaseManager.getDestinationInformation(mDatabase, mDestinationId);
         setContentView(R.layout.activity_view_destination);
         instance = this;
-        IntrepidMenu.setupMenu(instance, SecurityActivity.this);
+        mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
+        mIntrepidMenu.setupMenu(instance, SecurityActivity.this);
         setupTabNames();
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
