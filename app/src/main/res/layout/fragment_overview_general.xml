@@ -6,11 +6,13 @@
 
 <ScrollView
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent">
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/content">
+        android:id="@+id/content"
+        android:background="@android:color/white">
 
         <ImageView
             android:layout_width="wrap_content"
