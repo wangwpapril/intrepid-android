@@ -39,15 +39,13 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/base_currency_icon"
-                android:src="@drawable/example_icon"
-                android:layout_marginLeft="20dp"
-                />
+                android:src="@drawable/example_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical|center"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/base_currency_code"
                 android:textColor="#333f48"
@@ -89,15 +87,12 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/des_currency_icon"
-                android:src="@drawable/example_icon"
-                android:layout_marginLeft="20dp"
-                />
+                android:src="@drawable/example_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical|center"
-                android:layout_marginStart="30dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/des_currency_code"
                 android:textColor="#333f48"
@@ -106,12 +101,13 @@
                 android:layout_alignBottom="@+id/des_currency_icon"
                 android:text="USD"
                 android:gravity="center_vertical"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                android:layout_marginLeft="20dp" />
 
 
             <EditText
                 android:id="@+id/des_currency_value"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:ems="10"
