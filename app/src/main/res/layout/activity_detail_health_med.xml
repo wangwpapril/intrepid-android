@@ -27,7 +27,8 @@
             android:textSize="18sp"
             android:layout_gravity="center"
             android:textColor="#FFF"
-            android:id="@+id/toolbar_title" />
+            android:id="@+id/toolbar_title"
+            android:textStyle="bold" />
     </android.support.v7.widget.Toolbar>
 
     <ScrollView
@@ -37,7 +38,9 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:id="@+id/content">
+            android:id="@+id/content"
+            android:background="@android:color/white"
+            android:padding="16dp">
 
             <RelativeLayout
                 android:layout_width="fill_parent"
