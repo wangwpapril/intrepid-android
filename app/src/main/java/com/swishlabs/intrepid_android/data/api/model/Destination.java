@@ -10,6 +10,7 @@ public class Destination implements Serializable {
 	private static final long serialVersionUID = 8309984110697352775L;
 	public String id;
 	public String name;
+    public String altName;
 	public String type;
     public String generalImage;
     public String currencyCode;
@@ -23,6 +24,7 @@ public class Destination implements Serializable {
 
 		id = obj.getString("id");
 		name = obj.getString("name");
+        altName = obj.optString("alt_name");
 		type = obj.getString("type");
 		
 		if (obj.has("images")) {
