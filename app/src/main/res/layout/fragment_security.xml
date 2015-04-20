@@ -8,100 +8,111 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="@android:color/transparent">
+
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/content"
-            android:background="@android:color/white"
-            android:padding="15dp">
+            android:layout_height="fill_parent">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="300dp"
+                android:layout_width="fill_parent"
+                android:layout_height="400dp"
                 android:id="@+id/overview_image"
-                />
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="false"
+                android:scaleType="centerCrop" />
 
             <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/overview_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/content"
+                android:background="@android:color/white"
+                android:padding="15dp"
                 android:layout_below="@+id/overview_image"
-                android:padding="16dp">
+                android:layout_alignParentBottom="true">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Safety"
-                    android:id="@+id/destination_subtitle"
-                    android:layout_alignParentStart="false"
-                    android:textStyle="bold"
-                    android:layout_toRightOf="@+id/section_icon"
-                    android:textColor="#333f48" />
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/overview_content"
+                    android:padding="16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/safety_content"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentStart="false"
-                    android:layout_below="@+id/destination_subtitle"
-                    android:layout_marginTop="10dp"
-                    android:textColor="#333f48" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Safety"
+                        android:id="@+id/destination_subtitle"
+                        android:layout_alignParentStart="false"
+                        android:textStyle="bold"
+                        android:layout_toRightOf="@+id/section_icon"
+                        android:textColor="#333f48" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/section_icon"
-                    android:layout_above="@id/safety_content"
-                    android:layout_alignParentEnd="false"
-                    android:layout_alignTop="@+id/destination_subtitle"
-                    android:src="@drawable/safety_icon"
-                    android:layout_marginRight="10dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text=""
+                        android:id="@+id/safety_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="false"
+                        android:layout_below="@+id/destination_subtitle"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#333f48" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/section_icon"
+                        android:layout_above="@id/safety_content"
+                        android:layout_alignParentEnd="false"
+                        android:layout_alignTop="@+id/destination_subtitle"
+                        android:src="@drawable/safety_icon"
+                        android:layout_marginRight="10dp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/overview_content2"
+                    android:layout_below="@+id/overview_content"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Other Concerns"
+                        android:id="@+id/destination_subtitle2"
+                        android:layout_alignParentStart="false"
+                        android:textStyle="bold"
+                        android:layout_toRightOf="@+id/section_icon2"
+                        android:textColor="#333f48" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text=""
+                        android:id="@+id/other_concerns_text"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="false"
+                        android:layout_below="@+id/destination_subtitle2"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#333f48"
+                        android:paddingBottom="10dp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/section_icon2"
+                        android:layout_above="@+id/other_concerns_text"
+                        android:layout_alignParentEnd="false"
+                        android:layout_alignTop="@id/destination_subtitle2"
+                        android:src="@drawable/other_concerns_icon"
+                        android:layout_marginRight="10dp" />
+                </RelativeLayout>
+
             </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/overview_content2"
-                android:layout_below="@+id/overview_content"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Other Concerns"
-                    android:id="@+id/destination_subtitle2"
-                    android:layout_alignParentStart="false"
-                    android:textStyle="bold"
-                    android:layout_toRightOf="@+id/section_icon2"
-                    android:textColor="#333f48" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=""
-                    android:id="@+id/other_concerns_text"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentStart="false"
-                    android:layout_below="@+id/destination_subtitle2"
-                    android:layout_marginTop="10dp"
-                    android:textColor="#333f48" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/section_icon2"
-                    android:layout_above="@+id/other_concerns_text"
-                    android:layout_alignParentEnd="false"
-                    android:layout_alignTop="@id/destination_subtitle2"
-                    android:src="@drawable/other_concerns_icon"
-                    android:layout_marginRight="10dp" />
-            </RelativeLayout>
-
         </RelativeLayout>
     </ScrollView>
+
 </LinearLayout>
