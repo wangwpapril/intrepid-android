@@ -12,12 +12,16 @@
         android:layout_height="fill_parent"
         android:id="@+id/content">
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="300dp"
+            android:layout_width="fill_parent"
+            android:layout_height="400dp"
             android:id="@+id/overview_image"
-            />
-
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="false"
+            android:scaleType="centerCrop" />
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -40,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Mexico is bordered to the north by the states of California, Arizona, New Mexico, and Texas, to the west and south by the Pacific Ocean, to the east by the Gulf of Mexico, and to the southeast by Belize, Guatemala, and the Caribbean Sea. "
+                android:text=""
                 android:id="@+id/destination_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentStart="false"
@@ -119,7 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="On the Iberian Peninsula in Southwestern Europe, between the North Atlantic Ocean and the Mediterranean Sea, and bordering Portugal to the west and France to the north.  The official currency of Spain is the euro. Euros are readily available at banks and currency exchange services.  The necessity of a visa is dependent on nationality. Canadians and Americans in addition to many European nations do not require a visa for tourism to Spain for up to 90 days. Business visits do not require visas. Spain is a member of the Schengen Agreement.  Domestic and international telecommunications are both highly developed. Cellular and internet service is widely available. Spain's international country code is 34.  Spain retains much of its historic architecture. City cores are developed although conditions may be somewhat untidy at times. Tap water is safe for direct consumption, although the water in the east and south may taste heavily of alkaline. Castilian Spanish is the official language, spoken by 74% of residents. Other languages include Catalan, Galician, and Basque.  Spaniards are known for their relaxed and friendly mannerisms. They are very patriotic and loyal to their country. Spaniards often extend physical gestures such as hugs to greet one another. However, avoid this with strangers as it may be a ruse to pickpocket. Tipping is not customary in Spain. "
+                android:text=""
                 android:id="@+id/destination_content3"
                 android:layout_centerVertical="true"
                 android:layout_alignParentStart="false"
@@ -137,6 +141,7 @@
                 android:src="@drawable/example_icon"
                 android:layout_marginRight="10dp" />
         </RelativeLayout>
+    </RelativeLayout>
     </RelativeLayout>
 </ScrollView>
 </LinearLayout>

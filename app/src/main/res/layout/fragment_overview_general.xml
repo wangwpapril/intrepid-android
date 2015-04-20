@@ -31,7 +31,6 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:id="@+id/overview_content"
-            android:layout_below="@+id/overview_image"
             android:padding="16dp">
 
             <TextView
