@@ -292,6 +292,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
             return fragment;
         }
 
+
         public OverviewCurrencyFragment() {
         }
 
@@ -330,7 +331,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
                     ViewDestinationActivity.getInstance(), desImageIv);
 
             final EditText desValueEt = (EditText) rootView.findViewById(R.id.des_currency_value);
-            desValueEt.setText(ViewDestinationActivity.getInstance().mDestinationInformation.getCurrencyRate());
+            desValueEt.setText(reFormat(ViewDestinationActivity.getInstance().mDestinationInformation.getCurrencyRate()));
 
             baseWatcher = new TextWatcher() {
                 @Override
@@ -352,7 +353,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
                         desValue = baseValue * Double.parseDouble(ViewDestinationActivity.getInstance().mDestinationInformation.mCurrencyRate);
                     }
 
-                    desValueEt.setText(String.valueOf(desValue));
+                    desValueEt.setText(reFormat(String.valueOf(desValue)));
 
                 }
 
@@ -375,6 +376,31 @@ public class ViewDestinationActivity extends ActionBarActivity {
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                     baseValueEt.removeTextChangedListener(baseWatcher);
+
+/*                    if (s.toString().contains(".")) {
+                        if (s.length() - 1 - s.toString().indexOf(".") > 2) {
+                            s = s.toString().subSequence(0,
+                                    s.toString().indexOf(".") + 3);
+                            desValueEt.setText(s);
+                            desValueEt.setSelection(s.length());
+                        }
+                    }
+                    if (s.toString().trim().substring(0).equals(".")) {
+                        s = "0" + s;
+                        desValueEt.setText(s);
+                        desValueEt.setSelection(2);
+                    }
+
+                    if (s.toString().startsWith("0")
+                            && s.toString().trim().length() > 1) {
+                        if (!s.toString().substring(1, 2).equals(".")) {
+                            desValueEt.setText(s.subSequence(0, 1));
+                            desValueEt.setSelection(1);
+                            return;
+                        }
+                    }*/
+
+
                     double baseValue = 0, desValue =0;
 
                     if(s.toString().equals("")) {
@@ -385,7 +411,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
                         baseValue = desValue / Double.parseDouble(ViewDestinationActivity.getInstance().mDestinationInformation.mCurrencyRate);
                     }
 
-                    baseValueEt.setText(String.valueOf(baseValue));
+                    baseValueEt.setText(reFormat(String.valueOf(baseValue)));
                 }
 
                 @Override
@@ -401,6 +427,31 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
 
         }
+
+        private String reFormat(String input){
+            String result = input;
+
+            if (input.contains(".")) {
+                if (input.length() - 1 - input.indexOf(".") > 2) {
+                    result = input.subSequence(0,
+                            input.toString().indexOf(".") + 3).toString();
+                }
+            }
+            if (input.trim().substring(0).equals(".")) {
+                result = "0" + input;
+            }
+
+            if (input.startsWith("0")
+                    && input.trim().length() > 1) {
+                if (!input.substring(1, 2).equals(".")) {
+                    result= input.subSequence(0,1).toString();
+                }
+            }
+
+            return result;
+
+        }
+
     }
 
 }
