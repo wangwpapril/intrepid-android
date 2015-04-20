@@ -158,7 +158,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Type of Government"
+        android:text="Visa Requirements"
         android:id="@+id/destination_subtitle4"
         android:layout_alignParentStart="false"
         android:textStyle="bold"
@@ -185,7 +185,7 @@
         android:layout_above="@+id/destination_content4"
         android:layout_alignParentEnd="false"
         android:layout_alignTop="@+id/destination_subtitle4"
-        android:src="@drawable/example_icon"
+        android:src="@drawable/visa_icon"
         android:layout_marginRight="10dp" />
         </RelativeLayout>
         <RelativeLayout
@@ -199,7 +199,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Type of Government"
+        android:text="Communication Infrastructure"
         android:id="@+id/destination_subtitle5"
         android:layout_alignParentStart="false"
         android:textStyle="bold"
@@ -226,7 +226,7 @@
         android:layout_above="@+id/destination_content5"
         android:layout_alignParentEnd="false"
         android:layout_alignTop="@+id/destination_subtitle5"
-        android:src="@drawable/example_icon"
+        android:src="@drawable/communication_icon"
         android:layout_marginRight="10dp" />
         </RelativeLayout>
         <RelativeLayout
@@ -240,7 +240,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Type of Government"
+        android:text="Electricity"
         android:id="@+id/destination_subtitle6"
         android:layout_alignParentStart="false"
         android:textStyle="bold"
@@ -267,7 +267,7 @@
         android:layout_above="@+id/destination_content6"
         android:layout_alignParentEnd="false"
         android:layout_alignTop="@+id/destination_subtitle6"
-        android:src="@drawable/example_icon"
+        android:src="@drawable/electricity_icon"
         android:layout_marginRight="10dp" />
         </RelativeLayout>
         <RelativeLayout
@@ -281,7 +281,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Type of Government"
+        android:text="Development"
         android:id="@+id/destination_subtitle7"
         android:layout_alignParentStart="false"
         android:textStyle="bold"
@@ -308,7 +308,7 @@
         android:layout_above="@+id/destination_content7"
         android:layout_alignParentEnd="false"
         android:layout_alignTop="@+id/destination_subtitle7"
-        android:src="@drawable/example_icon"
+        android:src="@drawable/development_icon"
         android:layout_marginRight="10dp" />
         </RelativeLayout>
 
