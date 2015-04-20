@@ -1,5 +1,6 @@
 package com.swishlabs.intrepid_android.activity;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -8,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
@@ -18,7 +20,6 @@ import com.swishlabs.intrepid_android.adapter.DestinationsListAdapter;
 import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
-import com.swishlabs.intrepid_android.data.api.model.Currency;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 import com.swishlabs.intrepid_android.data.api.model.HealthCondition;
 import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
@@ -34,10 +35,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 
 public class DestinationsListActivity extends BaseActivity {
@@ -216,65 +215,66 @@ public class DestinationsListActivity extends BaseActivity {
 
     public void LoadTripFromApi(final int destinationPosition, final String rate){
         final String destinationId = mDestinationList.get(destinationPosition).getId();
-        final String currencyCode = mDestinationList.get(destinationPosition).getCurrencyCode();
+        if (DatabaseManager.isTripUnique(mDatabase, destinationId)) {
+            final String currencyCode = mDestinationList.get(destinationPosition).getCurrencyCode();
 
-        IControllerContentCallback icc = new IControllerContentCallback() {
+            IControllerContentCallback icc = new IControllerContentCallback() {
 
-            public void handleSuccess(String content){
+                public void handleSuccess(String content) {
 
-                JSONObject destination;
-                JSONArray healthCondition, healthMedication;
-                String countryId;
-                try {
-                    destination = new JSONObject(content).getJSONObject("destination");
-                    JSONObject country = destination.getJSONObject("country");
-                    if (country!=null){
-                        String countryCode = country.getString("country_code");
-                        saveEmbassyInformation(mDestinationList.get(destinationPosition).getId(), countryCode);
-                    }
-                    countryId = destination.optString("id");
-                    SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(),countryId);
-                    if(destination.has("health_conditions")) {
-                        healthCondition = destination.getJSONArray("health_conditions");
-                        int len = healthCondition.length();
-                        healthConditionList = new ArrayList<HealthCondition>(len);
+                    JSONObject destination;
+                    JSONArray healthCondition, healthMedication;
+                    String countryId;
+                    try {
+                        destination = new JSONObject(content).getJSONObject("destination");
+                        JSONObject country = destination.getJSONObject("country");
+                        if (country != null) {
+                            String countryCode = country.getString("country_code");
+                            saveEmbassyInformation(mDestinationList.get(destinationPosition).getId(), countryCode);
+                        }
+                        countryId = destination.optString("id");
+                        SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), countryId);
+                        if (destination.has("health_conditions")) {
+                            healthCondition = destination.getJSONArray("health_conditions");
+                            int len = healthCondition.length();
+                            healthConditionList = new ArrayList<HealthCondition>(len);
 
-                        for(int i = 0;i<len;i++){
-                            healthConditionList.add(new HealthCondition(healthCondition.getJSONObject(i)));
-                            CreateHealthCondition(destination.optString("id"), String.valueOf(i));
+                            for (int i = 0; i < len; i++) {
+                                healthConditionList.add(new HealthCondition(healthCondition.getJSONObject(i)));
+                                CreateHealthCondition(destination.optString("id"), String.valueOf(i));
+
+                            }
 
                         }
 
-                    }
+                        if (destination.has("medications")) {
+                            healthMedication = destination.getJSONArray("medications");
+                            int len = healthMedication.length();
+                            healthMedicationList = new ArrayList<HealthMedicationDis>(len);
 
-                    if(destination.has("medications")){
-                        healthMedication = destination.getJSONArray("medications");
-                        int len = healthMedication.length();
-                        healthMedicationList = new ArrayList<HealthMedicationDis>(len);
+                            for (int i = 0; i < len; i++) {
+                                JSONObject temp = healthMedication.getJSONObject(i);
+                                HealthMedicationDis tempMed = new HealthMedicationDis();
+                                tempMed.id = Integer.valueOf(temp.optString("id"));
+                                tempMed.mMedicationName = temp.optString("name");
+                                tempMed.mCountryId = countryId;
+                                tempMed.mBrandNames = temp.getJSONObject("content").optString("brand_names");
+                                tempMed.mDescription = temp.getJSONObject("content").optString("description");
+                                tempMed.mSideEffects = temp.getJSONObject("content").optString("side_effects");
+                                tempMed.mStorage = temp.getJSONObject("content").optString("storage");
+                                tempMed.mNotes = temp.getJSONObject("content").optString("notes");
+                                tempMed.mGeneralImage = temp.getJSONObject("images").getJSONObject("general")
+                                        .getJSONObject("versions").getJSONObject("3x").optString("source_url").replace(" ", "%20");
 
-                        for(int i = 0;i < len;i++){
-                            JSONObject temp = healthMedication.getJSONObject(i);
-                            HealthMedicationDis tempMed = new HealthMedicationDis();
-                            tempMed.id = Integer.valueOf(temp.optString("id"));
-                            tempMed.mMedicationName = temp.optString("name");
-                            tempMed.mCountryId = countryId;
-                            tempMed.mBrandNames = temp.getJSONObject("content").optString("brand_names");
-                            tempMed.mDescription = temp.getJSONObject("content").optString("description");
-                            tempMed.mSideEffects = temp.getJSONObject("content").optString("side_effects");
-                            tempMed.mStorage = temp.getJSONObject("content").optString("storage");
-                            tempMed.mNotes = temp.getJSONObject("content").optString("notes");
-                            tempMed.mGeneralImage = temp.getJSONObject("images").getJSONObject("general")
-                                    .getJSONObject("versions").getJSONObject("3x").optString("source_url").replace(" ", "%20");
+                                healthMedicationList.add(tempMed);
+                                CreateHealthMedication(countryId, String.valueOf(i));
 
-                            healthMedicationList.add(tempMed);
-                            CreateHealthMedication(countryId, String.valueOf(i));
+                            }
 
                         }
 
-                    }
-
-                    JSONObject images = destination.getJSONObject("images");
-                    final String general_image_url = images.getJSONObject("intro").getString("source_url");
+                        JSONObject images = destination.getJSONObject("images");
+                        final String general_image_url = images.getJSONObject("intro").getString("source_url");
 //                    Thread t = new Thread(new Runnable() {
 //                        public void run() {
 //                            Looper.prepare();
@@ -285,29 +285,41 @@ public class DestinationsListActivity extends BaseActivity {
 //
 //                    t.start();
 
-                    saveDestinationInformation(destination, images, currencyCode, rate);
-                    String encodedURL = general_image_url.replace(" ", "%20");
-                            CreateTrip(destinationPosition, encodedURL);
+                        saveDestinationInformation(destination, images, currencyCode, rate);
+                        String encodedURL = general_image_url.replace(" ", "%20");
+                        CreateTrip(destinationPosition, encodedURL);
 
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                 }
 
+                public void handleError(Exception e) {
+
+                }
+            };
+
+            String token = null;
+            token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
+            ControllerContentTask cct = new ControllerContentTask(
+                    Constants.BASE_URL + "destinations/" + destinationId + "?token=" + token, icc,
+                    Enums.ConnMethod.GET, false);
+            String ss = null;
+            cct.execute(ss);
+        }else{
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setMessage("Already added this trip");
+            builder.setTitle("Error");
+            builder.setPositiveButton(android.R.string.ok, null);
+            AlertDialog dialog = builder.create();
+            try {
+                dialog.show();
+            }catch(WindowManager.BadTokenException e){
+                Log.d("createAlerts", "error showing alert");
             }
-
-            public void handleError(Exception e){
-
-            }
-        };
-
-        String token = null;
-        token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
-        ControllerContentTask cct = new ControllerContentTask(
-                Constants.BASE_URL+"destinations/"+destinationId+"?token=" + token, icc,
-                Enums.ConnMethod.GET,false);
-        String ss = null;
-        cct.execute(ss);
+        }
     }
 
     private void saveEmbassyInformation(final String destinationId, String countryCode){
