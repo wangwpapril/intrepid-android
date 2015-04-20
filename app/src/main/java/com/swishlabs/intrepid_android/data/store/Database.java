@@ -24,6 +24,8 @@ public class Database {
 
     public static final String KEY_ID = "id";
     public static final String KEY_COUNTRY_ID = "countryId";
+    public static final String KEY_COUNTRY_NAME = "countryName";
+    public static final String KEY_COUNTRY_CODE = "countryCode";
     public static final String KEY_CURRENCY_CODE = "currencyCode";
     public static final String KEY_CURRENCY_RATE = "currencyRate";
     public static final String KEY_GENERAL_IMAGE_URI = "imageGeneral";
@@ -128,6 +130,8 @@ public class Database {
             String createDestinationInfoTable = "CREATE TABLE " + TABLE_DESTINATION_INFORMATION + "("
                     + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + KEY_DESTINATION_ID + " TEXT,"
+                    + KEY_COUNTRY_NAME + " TEXT,"
+                    + KEY_COUNTRY_CODE + " TEXT,"
                     + KEY_COMMUNICATIONS + " TEXT,"
                     + KEY_OTHER_CONCERNS + " TEXT,"
                     + KEY_DEVELOPMENT + " TEXT,"

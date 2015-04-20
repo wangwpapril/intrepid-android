@@ -1,6 +1,5 @@
 package com.swishlabs.intrepid_android.activity;
 
-import android.app.MediaRouteActionProvider;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -53,10 +52,13 @@ public class DestinationsListActivity extends BaseActivity {
     private List<HealthCondition> healthConditionList;
     private List<HealthMedicationDis> healthMedicationList;
 
+
+
     @Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		this.setContentView(R.layout.destination_list);
+
+        this.setContentView(R.layout.destination_list);
 		initView();
 		
 		if(mDestinationList == null) {
@@ -385,6 +387,8 @@ public class DestinationsListActivity extends BaseActivity {
     private void saveDestinationInformation(JSONObject destination, JSONObject images, String currencyCode, String rate) throws JSONException {
         JSONObject content = destination.getJSONObject("content");
         String destinationId = destination.getString("id");
+        String countryName = destination.getJSONObject("country").getString("name");
+        String countryCode = destination.getJSONObject("country").getString("country_code");
         String communicationsInfrastructure = content.getString("communication_infrastructure");
         String otherConcerns = content.getString("other_concerns");
         String development = content.getString("development");
@@ -410,6 +414,8 @@ public class DestinationsListActivity extends BaseActivity {
 
         ContentValues values = new ContentValues();
         values.put(Database.KEY_DESTINATION_ID, destinationId);
+        values.put(Database.KEY_COUNTRY_NAME, countryName);
+        values.put(Database.KEY_COUNTRY_CODE, countryCode);
         values.put(Database.KEY_COMMUNICATIONS, communicationsInfrastructure);
         values.put(Database.KEY_OTHER_CONCERNS, otherConcerns);
         values.put(Database.KEY_DEVELOPMENT, development);

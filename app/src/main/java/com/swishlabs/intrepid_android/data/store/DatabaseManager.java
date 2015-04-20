@@ -150,7 +150,7 @@ public class DatabaseManager {
 
     public static DestinationInformation getDestinationInformation(Database database, String destinationId){
         Cursor cursor = database.getDb().query(Database.TABLE_DESTINATION_INFORMATION, new String[]{Database.KEY_DESTINATION_ID,
-                        Database.KEY_COMMUNICATIONS, Database.KEY_OTHER_CONCERNS, Database.KEY_DEVELOPMENT, Database.KEY_LOCATION,
+                        Database.KEY_COUNTRY_NAME, Database.KEY_COUNTRY_CODE,Database.KEY_COMMUNICATIONS, Database.KEY_OTHER_CONCERNS, Database.KEY_DEVELOPMENT, Database.KEY_LOCATION,
                         Database.KEY_CULTURAL_NORMS, Database.KEY_SOURCES, Database.KEY_CURRENCY, Database.KEY_CURRENCY_CODE, Database.KEY_CURRENCY_RATE,
                         Database.KEY_RELIGION, Database.KEY_TIMEZONE, Database.KEY_SAFETY, Database.KEY_GOVERNMENT, Database.KEY_VISAMAP,
                         Database.KEY_ELECTRICITY, Database.KEY_ETHNIC_MAKEUP, Database.KEY_LANGUAGE_INFORMATION, Database.KEY_VISA_REQUIREMENT,
@@ -163,7 +163,8 @@ public class DatabaseManager {
                 cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
                 cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
                 cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18),
-                cursor.getString(19), cursor.getString(20), cursor.getString(21), cursor.getString(22), cursor.getString(23), cursor.getString(24));
+                cursor.getString(19), cursor.getString(20), cursor.getString(21), cursor.getString(22), cursor.getString(23), cursor.getString(24),
+                cursor.getString(25), cursor.getString(26));
 
         // return contact
 //        database.getDb().close();
@@ -179,5 +180,6 @@ public class DatabaseManager {
     public static void deleteCurrency(Database database){
         database.getDb().delete(Database.TABLE_CURRENCY, null, null);
     }
+
 
 }
