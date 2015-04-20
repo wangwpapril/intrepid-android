@@ -5,6 +5,8 @@ package com.swishlabs.intrepid_android.data.api.model;
  */
 public class DestinationInformation {
     public String mDestinationId;
+    public String mCountryName;
+    public String mCountryCode;
     public String mCommunicationsInfrastructure;
     public String mOtherConcerns;
     public String mDevelopment;
@@ -33,10 +35,12 @@ public class DestinationInformation {
     public String mImageIntro;
     public String mImageCurrency;
 
-    public DestinationInformation(String destinationId, String communicationsInfrastructure, String otherConcerns, String development, String location, String culturalNorms, String sources,
+    public DestinationInformation(String destinationId, String name, String countryCode, String communicationsInfrastructure, String otherConcerns, String development, String location, String culturalNorms, String sources,
         String currency, String currencyCode, String currencyRate, String religion, String timeZone, String safety, String typeOfGovernment, String visaMapAttributionUri, String electricity,
         String ethnicMakeup, String languageInfo, String visaRequirements, String climate, String image1, String image2, String image3, String image4, String image5){
         this.mDestinationId = destinationId;
+        this.mCountryName = name;
+        this.mCountryCode = countryCode;
         this.mCommunicationsInfrastructure = communicationsInfrastructure;
         this.mOtherConcerns = otherConcerns;
         this.mDevelopment = development;
@@ -62,6 +66,10 @@ public class DestinationInformation {
         this.mImageIntro = image4;
         this.mImageCurrency = image5;
     }
+
+    public String getCountryName() { return mCountryName; }
+
+    public String getCountryCode() { return mCountryCode; }
 
     public String getCommunicationsInfrastructure() {
         return mCommunicationsInfrastructure;
