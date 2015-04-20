@@ -71,7 +71,7 @@
                 android:inputType="numberDecimal"
                 android:singleLine="true"
                 android:layout_toRightOf="@+id/base_currency_code"
-                android:layout_marginLeft="30dp" />
+                android:layout_marginLeft="40dp" />
 
         </RelativeLayout>
 
@@ -109,7 +109,7 @@
                 android:id="@+id/des_currency_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="40dp"
                 android:ems="10"
                 android:gravity="center_horizontal"
                 android:text="2.00"
