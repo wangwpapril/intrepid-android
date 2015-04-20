@@ -38,8 +38,8 @@
             android:layout_width="fill_parent"
             android:id="@+id/tabLayout"
             android:layout_height="fill_parent"
-            android:background="?attr/colorPrimary"
-            android:alpha="0.8"></LinearLayout>
+            android:alpha="0.8"
+            android:background="@drawable/subnav_transparent_bg"></LinearLayout>
         <TextView
             android:layout_width="50dp"
             android:id="@+id/tabSelector"
