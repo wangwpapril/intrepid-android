@@ -12,13 +12,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.adapter.EmbassyListAdapter;
 import com.swishlabs.intrepid_android.customViews.CustomTabContainer;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
 import com.swishlabs.intrepid_android.data.api.model.DestinationInformation;
+import com.swishlabs.intrepid_android.data.api.model.Embassy;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Enums;
@@ -187,6 +190,8 @@ public class SecurityActivity extends ActionBarActivity {
      */
     public static class SecurityFragment extends Fragment {
 
+
+
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         public static SecurityFragment newInstance(int sectionNumber) {
@@ -220,6 +225,8 @@ public class SecurityActivity extends ActionBarActivity {
     }
 
     public static class EmbassyListFragment extends Fragment {
+        public String mDesinationId;
+        public EmbassyListAdapter mEmbassyListAdapter;
 
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -237,14 +244,21 @@ public class SecurityActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_overview_culture, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_embassy_list, container, false);
             populateEmbassyListFragment(rootView);
             return rootView;
         }
 
         public void populateEmbassyListFragment(View rootView) {
-
-
+            DestinationInformation destinationInformation = SecurityActivity.getInstance().mDestinationInformation;
+            mDesinationId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currentCountryId.toString(), null);
+            ArrayList<Embassy> embassyList= DatabaseManager.getEmbassyListArray(SecurityActivity.getInstance().mDatabase, mDesinationId);
+            mEmbassyListAdapter = new EmbassyListAdapter(
+                    embassyList, instance, SecurityActivity.getInstance().mDatabase);
+            ListView listView = (ListView)rootView.findViewById(R.id.list);
+            listView.setAdapter(mEmbassyListAdapter);
+            ImageView embassyImage = (ImageView)rootView.findViewById(R.id.overview_image);
+            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageIntro()).resize(1000, 1000).centerCrop().into(embassyImage);
         }
     }
 }

@@ -7,6 +7,59 @@ public class Embassy {
     public String mId;
     public String mCountry;
     public String mName;
+
+    public String getId() {
+        return mId;
+    }
+
+    public String getCountry() {
+        return mCountry;
+    }
+
+    public String getName() {
+        return mName;
+    }
+
+    public String getServicesOffered() {
+        return mServicesOffered;
+    }
+
+    public String getFax() {
+        return mFax;
+    }
+
+    public String getSource() {
+        return mSource;
+    }
+
+    public String getWebsite() {
+        return mWebsite;
+    }
+
+    public String getEmail() {
+        return mEmail;
+    }
+
+    public String getAddress() {
+        return mAddress;
+    }
+
+    public String getHoursofOperation() {
+        return mHoursofOperation;
+    }
+
+    public String getNotes() {
+        return mNotes;
+    }
+
+    public String getTelephone() {
+        return mTelephone;
+    }
+
+    public String getDestinationId() {
+        return mDestinationId;
+    }
+
     public String mServicesOffered;
     public String mFax;
     public String mSource;
@@ -33,6 +86,10 @@ public class Embassy {
         this.mNotes = notes;
         this.mTelephone = telephone;
         this.mDestinationId = destinationId;
+    }
+
+    public Embassy(String country){
+        this.mCountry = country;
     }
     //id, country, name, servicesOffered, fax, source, website, email, address, hoursOfOperation, notes, telephone
 }

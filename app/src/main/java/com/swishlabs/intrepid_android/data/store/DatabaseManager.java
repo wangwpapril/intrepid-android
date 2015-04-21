@@ -7,6 +7,7 @@ import android.database.Cursor;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.data.api.model.Currency;
 import com.swishlabs.intrepid_android.data.api.model.DestinationInformation;
+import com.swishlabs.intrepid_android.data.api.model.Embassy;
 import com.swishlabs.intrepid_android.data.api.model.HealthConditionDis;
 import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
@@ -146,6 +147,24 @@ public class DatabaseManager {
             }
         }
         return tripList;
+    }
+
+    public static ArrayList<Embassy> getEmbassyListArray(Database database, String countryId){
+        ArrayList<Embassy> embassyList= new ArrayList<>();
+        Cursor cursor = database.getDb().rawQuery("SELECT * FROM "+Database.TABLE_EMBASSY+" WHERE "+Database.KEY_EMBASSY_DESTINATION_ID+"=?" ,
+                new String [] {countryId});
+//        Cursor  cursor = database.getDb().rawQuery("SELECT * FROM " + Database.TABLE_TRIPS + " WHERE "+Database.KEY_EMBASSY_DESTINATION_ID+" = "+'"'+countryId+'"', null);
+
+        if (cursor .moveToFirst()) {
+
+            while (cursor.isAfterLast() == false) {
+                Embassy embassy = new Embassy(cursor.getString(3));
+
+                embassyList.add(embassy);
+                cursor.moveToNext();
+            }
+        }
+        return embassyList;
     }
 
     public static boolean isTripUnique(Database database, String destinationId){

@@ -97,6 +97,10 @@
             android:name=".activity.SecurityActivity"
             android:label="@string/title_activity_security" >
         </activity>
+        <activity
+            android:name=".activity.ViewEmbassyActivity"
+            android:label="@string/title_activity_view_embassy" >
+        </activity>
     </application>
 
 </manifest>
