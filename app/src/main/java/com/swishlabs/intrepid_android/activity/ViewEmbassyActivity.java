@@ -1,18 +1,38 @@
 package com.swishlabs.intrepid_android.activity;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.data.api.model.Embassy;
+import com.swishlabs.intrepid_android.data.store.Database;
+import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 
 public class ViewEmbassyActivity extends ActionBarActivity {
+
+    protected Embassy mEmbassy;
+    public DatabaseManager mDatabaseManager;
+    public Database mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_embassy);
+        loadDatabase();
+        getEmbassyInfo();
+    }
+
+    public void loadDatabase() {
+        mDatabaseManager = new DatabaseManager(this.getBaseContext());
+        mDatabase = mDatabaseManager.openDatabase("Intrepid.db");
+    }
+
+    protected void getEmbassyInfo(){
+        Bundle extras = getIntent().getExtras();
+        String embassyId = extras.getString("embassyId");
+        DatabaseManager.getEmbassy(embassyId, mDatabase);
     }
 
 

@@ -158,13 +158,29 @@ public class DatabaseManager {
         if (cursor .moveToFirst()) {
 
             while (cursor.isAfterLast() == false) {
-                Embassy embassy = new Embassy(cursor.getString(3));
+                Embassy embassy = new Embassy(cursor.getString(3), cursor.getString(0));
 
                 embassyList.add(embassy);
                 cursor.moveToNext();
             }
         }
         return embassyList;
+    }
+
+
+    public static Embassy getEmbassy(String id, Database database) {
+        Cursor cursor = database.getDb().query(Database.TABLE_EMBASSY, new String[]{Database.KEY_ID,
+                        Database.KEY_EMBASSY_COUNTRY, Database.KEY_EMBASSY_NAME, Database.KEY_EMBASSY_SERVICES_OFFERED, Database.KEY_EMBASSY_FAX,
+                        Database.KEY_EMBASSY_SOURCE, Database.KEY_EMBASSY_WEBSITE, Database.KEY_EMBASSY_EMAIL, Database.KEY_EMBASSY_ADDRESS,
+                        Database.KEY_EMBASSY_HOURS_OF_OPERATION, Database.KEY_EMBASSY_NOTES, Database.KEY_EMBASSY_TELEPHONE,
+                        Database.KEY_EMBASSY_DESTINATION_ID}, Database.KEY_ID + "=?",
+                new String[]{id}, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+        Embassy embassy = new Embassy(cursor.getString(0), cursor.getString(1), cursor.getString(2),
+                cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
+                cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12));
+        return embassy;
     }
 
     public static boolean isTripUnique(Database database, String destinationId){
@@ -198,8 +214,6 @@ public class DatabaseManager {
                 cursor.getString(19), cursor.getString(20), cursor.getString(21), cursor.getString(22), cursor.getString(23), cursor.getString(24),
                 cursor.getString(25), cursor.getString(26));
 
-        // return contact
-//        database.getDb().close();
         return destinationInformation;
     }
 

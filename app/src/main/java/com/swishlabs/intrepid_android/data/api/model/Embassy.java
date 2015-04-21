@@ -88,7 +88,8 @@ public class Embassy {
         this.mDestinationId = destinationId;
     }
 
-    public Embassy(String country){
+    public Embassy(String country, String id){
+        this.mId = id;
         this.mCountry = country;
     }
     //id, country, name, servicesOffered, fax, source, website, email, address, hoursOfOperation, notes, telephone
