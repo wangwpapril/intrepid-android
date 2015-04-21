@@ -34,5 +34,6 @@
     <string name="title_activity_security">SecurityActivity</string>
     <string name="title_activity_detail_health_med">DetailHealthMedActivity</string>
     <string name="title_activity_view_embassy">ViewEmbassyActivity</string>
+    <string name="title_activity_weather">WeatherActivity</string>
 
 </resources>

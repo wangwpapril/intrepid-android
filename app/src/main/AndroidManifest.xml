@@ -102,6 +102,12 @@
             android:name=".activity.ViewEmbassyActivity"
             android:label="@string/title_activity_view_embassy" >
         </activity>
+        <activity
+            android:name=".activity.WeatherActivity"
+            android:label="@string/title_activity_weather"
+            android:screenOrientation="portrait" >
+        </activity>
+
     </application>
 
 </manifest>
