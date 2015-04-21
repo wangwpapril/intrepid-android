@@ -82,6 +82,7 @@ public class Database {
     public static final String KEY_EMBASSY_NOTES = "embassyNotes";
     public static final String KEY_EMBASSY_TELEPHONE = "embassyTelephone";
     public static final String KEY_EMBASSY_DESTINATION_ID = "embassyDestinationId";
+    public static final String KEY_EMBASSY_IMAGE = "embassyImage";
 
 
 
@@ -172,7 +173,8 @@ public class Database {
                     + KEY_EMBASSY_HOURS_OF_OPERATION + " TEXT,"
                     + KEY_EMBASSY_NOTES + " TEXT,"
                     + KEY_EMBASSY_TELEPHONE + " TEXT,"
-                    + KEY_EMBASSY_DESTINATION_ID + " TEXT"+ ")";
+                    + KEY_EMBASSY_DESTINATION_ID + " TEXT,"
+                    + KEY_EMBASSY_IMAGE + " TEXT"+ ")";
             db.execSQL(createEmbassyTable);
 
             String createCurrencyTable = "CREATE TABLE " + TABLE_CURRENCY + "("

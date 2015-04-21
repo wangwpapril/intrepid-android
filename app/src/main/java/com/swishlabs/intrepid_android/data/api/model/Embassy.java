@@ -60,6 +60,10 @@ public class Embassy {
         return mDestinationId;
     }
 
+    public String getImage() {
+        return mImage;
+    }
+
     public String mServicesOffered;
     public String mFax;
     public String mSource;
@@ -70,9 +74,10 @@ public class Embassy {
     public String mNotes;
     public String mTelephone;
     public String mDestinationId;
+    public String mImage;
 
     public Embassy(String id, String country, String name, String servicesOffered, String fax, String source,
-        String website, String email, String address, String hoursofOperation, String notes, String telephone, String destinationId) {
+        String website, String email, String address, String hoursofOperation, String notes, String telephone, String destinationId, String image) {
         this.mId = id;
         this.mCountry = country;
         this.mName = name;
@@ -86,11 +91,13 @@ public class Embassy {
         this.mNotes = notes;
         this.mTelephone = telephone;
         this.mDestinationId = destinationId;
+        this.mImage = image;
     }
 
-    public Embassy(String country, String id){
+    public Embassy(String country, String id, String image){
         this.mId = id;
         this.mCountry = country;
+        this.mImage = image;
     }
     //id, country, name, servicesOffered, fax, source, website, email, address, hoursOfOperation, notes, telephone
 }

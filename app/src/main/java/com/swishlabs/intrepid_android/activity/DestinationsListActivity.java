@@ -334,9 +334,9 @@ public class DestinationsListActivity extends BaseActivity {
                         String id = diplomaticOffice.getString("id");
                         String country = diplomaticOffice.getString("country");
                         String name = diplomaticOffice.getString("name");
-                        JSONObject embassyImage = diplomaticOffice.getJSONObject("images").getJSONObject("embassy");
                         JSONObject embassyContent = diplomaticOffice.getJSONObject("content");
-                        embassyImage.getString("source_url").replace(" ", "%20");
+                        JSONObject embassyImage = diplomaticOffice.getJSONObject("images").getJSONObject("embassy");
+                        String formattedEmbassyImage = embassyImage.getString("source_url").replace(" ", "%20");
                         String servicesOffered = embassyContent.getString("services_offered");
                         String fax = embassyContent.getString("fax");
                         String source = embassyContent.getString("source");
@@ -361,6 +361,7 @@ public class DestinationsListActivity extends BaseActivity {
                         values.put(Database.KEY_EMBASSY_NOTES, notes);
                         values.put(Database.KEY_EMBASSY_TELEPHONE, telephone);
                         values.put(Database.KEY_EMBASSY_DESTINATION_ID, destinationId);
+                        values.put(Database.KEY_EMBASSY_IMAGE, formattedEmbassyImage);
 
                         mDatabase.getDb().insert(Database.TABLE_EMBASSY, null, values);
                         if (mCallbackCount == 1) {

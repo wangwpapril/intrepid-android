@@ -159,7 +159,7 @@ public class DatabaseManager {
 
             while (cursor.isAfterLast() == false) {
 
-                Embassy embassy = new Embassy(cursor.getString(3), cursor.getString(0));
+                Embassy embassy = new Embassy(cursor.getString(3), cursor.getString(0), cursor.getString(14));
 
                 embassyList.add(embassy);
                 cursor.moveToNext();
@@ -174,13 +174,13 @@ public class DatabaseManager {
                         Database.KEY_EMBASSY_COUNTRY, Database.KEY_EMBASSY_NAME, Database.KEY_EMBASSY_SERVICES_OFFERED, Database.KEY_EMBASSY_FAX,
                         Database.KEY_EMBASSY_SOURCE, Database.KEY_EMBASSY_WEBSITE, Database.KEY_EMBASSY_EMAIL, Database.KEY_EMBASSY_ADDRESS,
                         Database.KEY_EMBASSY_HOURS_OF_OPERATION, Database.KEY_EMBASSY_NOTES, Database.KEY_EMBASSY_TELEPHONE,
-                        Database.KEY_EMBASSY_DESTINATION_ID}, Database.KEY_ID + "=?",
+                        Database.KEY_EMBASSY_DESTINATION_ID, Database.KEY_EMBASSY_IMAGE}, Database.KEY_ID + "=?",
                 new String[]{id}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
         Embassy embassy = new Embassy(cursor.getString(0), cursor.getString(1), cursor.getString(2),
                 cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
-                cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12));
+                cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13));
         return embassy;
     }
 

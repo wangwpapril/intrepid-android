@@ -262,7 +262,9 @@ public class SecurityActivity extends ActionBarActivity {
             ListView listView = (ListView)rootView.findViewById(R.id.list);
             listView.setAdapter(mEmbassyListAdapter);
             ImageView embassyImage = (ImageView)rootView.findViewById(R.id.overview_image);
-            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageIntro()).resize(1000, 1000).centerCrop().into(embassyImage);
+            if (embassyList.size()>0) {
+                Picasso.with(ViewDestinationActivity.getInstance()).load(embassyList.get(0).getImage()).resize(1000, 1000).centerCrop().into(embassyImage);
+            }
         }
 
         public void setupListClickListener(View rootView){
