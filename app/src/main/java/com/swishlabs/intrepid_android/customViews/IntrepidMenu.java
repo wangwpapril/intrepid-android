@@ -32,7 +32,7 @@ public class IntrepidMenu extends ScrollView {
 
     public static final int MENUHEIGHT = 328;
     public static final int MINHEIGHT = 35;
-    public static final int VELOCITY = 300;
+    public static final int VELOCITY = 150;
     private int mInitialHeight =0;
     private ImageButton mExpandMenu;
     public int mState = 0;
