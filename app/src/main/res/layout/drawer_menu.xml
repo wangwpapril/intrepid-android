@@ -34,7 +34,7 @@
     android:weightSum="3"
     android:baselineAligned="true">
     <FrameLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:id="@+id/overview_menu_btn"
@@ -57,13 +57,13 @@
             android:layout_gravity="center_horizontal|bottom"
             android:gravity="center"
             android:id="@+id/overview_text_menu"
-            android:textSize="13sp"
+            android:textSize="15sp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp" />
     </FrameLayout>
 
     <FrameLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:id="@+id/health_menu_btn"
@@ -86,13 +86,13 @@
             android:gravity="center"
             android:layout_gravity="center_horizontal|bottom"
             android:id="@+id/health_text_menu"
-            android:textSize="13sp"
+            android:textSize="15sp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp" />
     </FrameLayout>
 
     <FrameLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:id="@+id/security_menu_btn"
@@ -115,7 +115,7 @@
             android:gravity="center"
             android:layout_gravity="center_horizontal|bottom"
             android:id="@+id/security_text_menu"
-            android:textSize="13sp"
+            android:textSize="15sp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp" />
     </FrameLayout>
@@ -132,7 +132,7 @@
         android:weightSum="3"
         android:baselineAligned="true">
         <FrameLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:textAlignment="center"
@@ -155,12 +155,12 @@
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|bottom"
                 android:id="@+id/weather_text_menu"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp" />
         </FrameLayout>
         <FrameLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:textAlignment="center"
@@ -185,7 +185,7 @@
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|bottom"
                 android:id="@+id/alerts_text_menu"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp" />
         </FrameLayout>
@@ -193,7 +193,7 @@
 
 
         <FrameLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_weight="1.0"
             android:layout_height="match_parent"
             android:id="@+id/insurance_menu_btn"
@@ -209,14 +209,14 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:text="ACE"
+                android:text="Insurance"
                 android:textColor="@color/white"
                 android:textAlignment="center"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|bottom"
                 android:gravity="center"
                 android:id="@+id/insurance_text_menu"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp" />
         </FrameLayout>
@@ -232,7 +232,7 @@
         android:weightSum="3"
         android:baselineAligned="true">
         <FrameLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:textAlignment="center"
@@ -255,13 +255,13 @@
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|bottom"
                 android:id="@+id/assistance_menu_text"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp" />
         </FrameLayout>
 
         <FrameLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:id="@+id/trips_menu_btn"
@@ -284,13 +284,13 @@
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|bottom"
                 android:id="@+id/trips_menu_text"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp" />
         </FrameLayout>
 
         <FrameLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:id="@+id/settings_menu_btn"
@@ -313,7 +313,7 @@
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|bottom"
                 android:id="@+id/settings_menu_text"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp" />
         </FrameLayout>
