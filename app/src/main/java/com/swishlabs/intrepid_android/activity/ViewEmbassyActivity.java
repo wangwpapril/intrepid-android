@@ -1,7 +1,10 @@
 package com.swishlabs.intrepid_android.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -49,7 +52,8 @@ public class ViewEmbassyActivity extends ActionBarActivity {
         TextView address = (TextView)findViewById(R.id.embassy_address);
         address.setText(mEmbassy.getAddress());
         TextView phone = (TextView)findViewById(R.id.contact_phone);
-        phone.setText("Phone: " + mEmbassy.getTelephone());
+        phone.setText(Html.fromHtml("Phone: <u><font color=blue>"+ mEmbassy.getTelephone()+"</u></style>"));
+//        phone.setText("Phone: " + mEmbassy.getTelephone());
         TextView fax = (TextView)findViewById(R.id.contact_fax);
         fax.setText("Fax: " + mEmbassy.getFax());
         TextView email = (TextView)findViewById(R.id.contact_email);
@@ -70,6 +74,19 @@ public class ViewEmbassyActivity extends ActionBarActivity {
         }else {
             services.setText(mEmbassy.getServicesOffered());
         }
+        setClickListeners(phone);
+    }
+
+    protected void setClickListeners(TextView phone){
+        phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String phoneNumber = mEmbassy.getTelephone();
+                Intent call = new Intent(Intent.ACTION_DIAL);
+                call.setData(Uri.parse("tel:" + phoneNumber));
+                startActivity(call);
+            }
+        });
     }
 
 
