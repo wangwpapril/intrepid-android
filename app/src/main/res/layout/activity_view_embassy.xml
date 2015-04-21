@@ -266,7 +266,7 @@
                         android:layout_above="@id/services_text"
                         android:layout_alignParentEnd="false"
                         android:layout_alignTop="@+id/services_subtitle"
-                        android:src="@drawable/embassy_icon"
+                        android:src="@drawable/development_icon"
                         android:layout_marginRight="10dp" />
                 </RelativeLayout>
             </RelativeLayout>
