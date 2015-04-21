@@ -49,7 +49,7 @@ public class SecurityActivity extends ActionBarActivity {
     IntrepidMenu mIntrepidMenu;
     ArrayList<String> tabNames = new ArrayList<String>();
 
-    private String[] tabs = {"Security", "Embassies"};
+    private String[] tabs = {"Security", "Embassy"};
 
     public static SecurityActivity getInstance() {
         return instance;
