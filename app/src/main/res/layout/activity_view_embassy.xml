@@ -40,14 +40,14 @@
             android:background="@android:color/transparent">
             <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/content"
                 android:background="@android:color/white"
                 android:padding="16dp">
 
                 <RelativeLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="wrap_content"
                     android:id="@+id/brand"
                     android:padding="16dp">
 
@@ -86,9 +86,9 @@
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/brand"
-                    android:id="@+id/overview_content"
+                    android:id="@+id/contact"
                     android:padding="16dp">
 
                     <TextView
@@ -96,7 +96,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Contact Information"
-                        android:id="@+id/destination_subtitle"
+                        android:id="@+id/contact_subtitle"
                         android:layout_alignParentStart="false"
                         android:textStyle="bold"
                         android:layout_toRightOf="@+id/section_icon"
@@ -110,7 +110,7 @@
                         android:id="@+id/contact_phone"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="false"
-                        android:layout_below="@+id/destination_subtitle"
+                        android:layout_below="@+id/contact_subtitle"
                         android:layout_marginTop="10dp"
                         android:textColor="#333f48" />
 
@@ -145,15 +145,15 @@
                         android:id="@+id/section_icon"
                         android:layout_above="@id/contact_phone"
                         android:layout_alignParentEnd="false"
-                        android:layout_alignTop="@+id/destination_subtitle"
+                        android:layout_alignTop="@+id/contact_subtitle"
                         android:src="@drawable/communication_icon"
                         android:layout_marginRight="10dp" />
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/overview_content2"
-                    android:layout_below="@+id/overview_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/hours"
+                    android:layout_below="@+id/contact"
                     android:padding="16dp">
 
                     <TextView
@@ -161,7 +161,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Hours of Operation"
-                        android:id="@+id/destination_subtitle2"
+                        android:id="@+id/hours_subtitle"
                         android:layout_alignParentStart="false"
                         android:textStyle="bold"
                         android:layout_toRightOf="@+id/section_icon2"
@@ -175,7 +175,7 @@
                         android:id="@+id/embassy_hours"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="false"
-                        android:layout_below="@+id/destination_subtitle2"
+                        android:layout_below="@+id/hours_subtitle"
                         android:layout_marginTop="10dp"
                         android:textColor="#333f48" />
 
@@ -185,8 +185,88 @@
                         android:id="@+id/section_icon2"
                         android:layout_above="@id/embassy_hours"
                         android:layout_alignParentEnd="false"
-                        android:layout_alignTop="@+id/destination_subtitle2"
+                        android:layout_alignTop="@+id/hours_subtitle"
                         android:src="@drawable/government_icon"
+                        android:layout_marginRight="10dp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/notes"
+                    android:layout_below="@+id/hours"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Notes"
+                        android:id="@+id/notes_subtitle"
+                        android:layout_alignParentStart="false"
+                        android:textStyle="bold"
+                        android:layout_toRightOf="@+id/notes_icon"
+                        android:textColor="#333f48" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text=""
+                        android:id="@+id/notes_text"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="false"
+                        android:layout_below="@+id/notes_subtitle"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#333f48" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/notes_icon"
+                        android:layout_above="@id/notes_text"
+                        android:layout_alignParentEnd="false"
+                        android:layout_alignTop="@+id/notes_subtitle"
+                        android:src="@drawable/example_icon"
+                        android:layout_marginRight="10dp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/services"
+                    android:layout_below="@+id/notes"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Services"
+                        android:id="@+id/services_subtitle"
+                        android:layout_alignParentStart="false"
+                        android:textStyle="bold"
+                        android:layout_toRightOf="@+id/services_icon"
+                        android:textColor="#333f48" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text=""
+                        android:id="@+id/services_text"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="false"
+                        android:layout_below="@+id/services_subtitle"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#333f48" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/services_icon"
+                        android:layout_above="@id/services_text"
+                        android:layout_alignParentEnd="false"
+                        android:layout_alignTop="@+id/services_subtitle"
+                        android:src="@drawable/embassy_icon"
                         android:layout_marginRight="10dp" />
                 </RelativeLayout>
             </RelativeLayout>
