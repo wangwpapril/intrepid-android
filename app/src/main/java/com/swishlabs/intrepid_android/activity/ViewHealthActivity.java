@@ -149,6 +149,8 @@ public class ViewHealthActivity extends ActionBarActivity {
 
             @Override
             public void onPageScrollStateChanged(int state) {
+                if(mIntrepidMenu.mState == 1)
+                    mIntrepidMenu.snapToBottom();
 
             }
         });

@@ -35,7 +35,7 @@ public class IntrepidMenu extends ScrollView {
     public static final int VELOCITY = 300;
     private int mInitialHeight =0;
     private ImageButton mExpandMenu;
-    private int mState = 0;
+    public int mState = 0;
 
     public IntrepidMenu(Context context) {
         super(context);
@@ -150,7 +150,7 @@ public class IntrepidMenu extends ScrollView {
     }
 
 
-    private void snapToBottom() {
+    public void snapToBottom() {
             int movement = this.getHeight()-convertDPtoPixels(MINHEIGHT);
             TranslateAnimation anim = new TranslateAnimation(0, 0, 0, movement);
             anim.setDuration(MENUHEIGHT);
@@ -183,7 +183,7 @@ public class IntrepidMenu extends ScrollView {
 
     }
 
-    private void snapToTop(){
+    public void snapToTop(){
         int initial_position = this.getHeight();
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
                 this.getLayoutParams();
