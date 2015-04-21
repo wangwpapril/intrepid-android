@@ -31,7 +31,8 @@
     android:layout_width="fill_parent"
     android:layout_below="@+id/expand_menu"
     android:background="#333f48"
-    android:weightSum="3">
+    android:weightSum="3"
+    android:baselineAligned="true">
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_weight="1"
@@ -125,7 +126,8 @@
         android:layout_width="fill_parent"
         android:layout_below="@id/row1"
         android:background="#333f48"
-        android:weightSum="3">
+        android:weightSum="3"
+        android:baselineAligned="true">
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_weight="1"
@@ -221,7 +223,8 @@
         android:layout_below="@id/row2"
         android:layout_width="fill_parent"
         android:background="#333f48"
-        android:weightSum="3">
+        android:weightSum="3"
+        android:baselineAligned="true">
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_weight="1"
