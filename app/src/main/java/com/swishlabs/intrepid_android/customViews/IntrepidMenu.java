@@ -30,9 +30,9 @@ import com.swishlabs.intrepid_android.activity.ViewHealthActivity;
 
 public class IntrepidMenu extends ScrollView {
 
-    public static final int MENUHEIGHT = 300;
-    public static final int MINHEIGHT = 25;
-    public static final int VELOCITY = 400;
+    public static final int MENUHEIGHT = 330;
+    public static final int MINHEIGHT = 35;
+    public static final int VELOCITY = 300;
     private int mInitialHeight =0;
     private ImageButton mExpandMenu;
     private int mState = 0;
