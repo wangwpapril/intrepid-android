@@ -158,6 +158,7 @@ public class DatabaseManager {
         if (cursor .moveToFirst()) {
 
             while (cursor.isAfterLast() == false) {
+
                 Embassy embassy = new Embassy(cursor.getString(3), cursor.getString(0));
 
                 embassyList.add(embassy);
