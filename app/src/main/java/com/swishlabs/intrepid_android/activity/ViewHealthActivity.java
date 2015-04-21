@@ -19,6 +19,7 @@ import android.widget.ListView;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.adapter.HealthListAdapter;
 import com.swishlabs.intrepid_android.adapter.HealthMedListAdapter;
+import com.swishlabs.intrepid_android.customViews.ClearEditText;
 import com.swishlabs.intrepid_android.customViews.CustomTabContainer;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
 import com.swishlabs.intrepid_android.data.api.model.HealthConditionDis;
@@ -36,7 +37,7 @@ public class ViewHealthActivity extends ActionBarActivity {
 
     SectionsPagerAdapter mSectionsPagerAdapter;
     public static ViewHealthActivity instance;
-    public static EditText mEditTextSearch;
+    public static ClearEditText mEditTextSearch;
 
     public Database mDatabase;
     public DatabaseManager mDatabaseManager;
@@ -102,7 +103,7 @@ public class ViewHealthActivity extends ActionBarActivity {
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        mEditTextSearch = (EditText) findViewById(R.id.search_ed);
+        mEditTextSearch = (ClearEditText) findViewById(R.id.search_ed);
         mEditTextSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
