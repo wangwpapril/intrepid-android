@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
@@ -43,7 +46,30 @@ public class ViewEmbassyActivity extends ActionBarActivity {
     }
 
     protected void populateEmbassyInfo(){
-
+        TextView address = (TextView)findViewById(R.id.embassy_address);
+        address.setText(mEmbassy.getAddress());
+        TextView phone = (TextView)findViewById(R.id.contact_phone);
+        phone.setText("Phone: " + mEmbassy.getTelephone());
+        TextView fax = (TextView)findViewById(R.id.contact_fax);
+        fax.setText("Fax: " + mEmbassy.getFax());
+        TextView email = (TextView)findViewById(R.id.contact_email);
+        email.setText("E-mail: " + mEmbassy.getEmail());
+        TextView hours = (TextView)findViewById(R.id.embassy_hours);
+        hours.setText(mEmbassy.getHoursofOperation());
+        TextView notes = (TextView)findViewById(R.id.notes_text);
+        if (mEmbassy.getNotes().isEmpty()){
+            RelativeLayout notesBox = (RelativeLayout)findViewById(R.id.notes);
+            notesBox.setVisibility(View.INVISIBLE);
+        }else {
+            notes.setText(mEmbassy.getNotes());
+        }
+        TextView services = (TextView)findViewById(R.id.services_text);
+        if (mEmbassy.getServicesOffered().isEmpty()){
+            RelativeLayout servicesBox = (RelativeLayout)findViewById(R.id.services);
+            servicesBox.setVisibility(View.INVISIBLE);
+        }else {
+            services.setText(mEmbassy.getServicesOffered());
+        }
     }
 
 
