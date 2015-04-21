@@ -16,6 +16,7 @@ import android.widget.ListView;
 
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.adapter.DestinationsListAdapter;
+import com.swishlabs.intrepid_android.customViews.ClearEditText;
 import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
@@ -43,7 +44,7 @@ public class DestinationsListActivity extends BaseActivity {
 	private ListView listView;
 	private List<Destination> mDestinationList;
 	private DestinationsListAdapter mDestinationsListAdapter;
-    public static EditText mEditTextSearch;
+    public static ClearEditText mEditTextSearch;
     private int mCallbackCount = 0;
 
     private List<HealthCondition> healthConditionList;
@@ -149,7 +150,7 @@ public class DestinationsListActivity extends BaseActivity {
 			}
 		});
 
-        mEditTextSearch = (EditText) findViewById(R.id.search_ed);
+        mEditTextSearch = (ClearEditText) findViewById(R.id.search_ed);
         mEditTextSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

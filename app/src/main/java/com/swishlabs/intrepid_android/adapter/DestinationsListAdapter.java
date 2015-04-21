@@ -113,9 +113,11 @@ public class DestinationsListAdapter extends MyBaseAdapter {
                 {
                     Destination tmpData = datas_clone.get(i);
                     String name = tmpData.name;
+                    String altName = tmpData.altName;
                     name = name.toLowerCase(Locale.getDefault());
+                    altName = altName.toLowerCase(Locale.getDefault());
 
-                    if (name.contains(constraint))
+                    if (name.contains(constraint)||altName.contains(constraint))
                         filteredDatas.add(tmpData);
                 }
                 results.count = filteredDatas.size();
