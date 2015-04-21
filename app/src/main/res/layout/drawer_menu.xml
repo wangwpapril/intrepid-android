@@ -25,39 +25,49 @@
         android:baselineAlignBottom="true"
         android:background="@android:color/transparent"
         android:scaleType="fitXY" />
-<LinearLayout
+
+    <ImageButton
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:id="@+id/imageButton"
+        android:layout_below="@+id/expand_menu"
+        android:background="#333f48" />
+
+    <LinearLayout
     android:layout_height="90dp"
     android:id="@+id/row1"
     android:layout_width="fill_parent"
-    android:layout_below="@+id/expand_menu"
-    android:background="#333f48"
+    android:layout_below="@+id/imageButton"
     android:weightSum="3"
-    android:baselineAligned="true">
+    android:baselineAligned="true"
+    android:background="#ecececec">
     <FrameLayout
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:id="@+id/overview_menu_btn"
         android:background="#333f48"
-        android:textAlignment="center">
+        android:textAlignment="center"
+        android:layout_marginRight="0.2dp"
+        android:layout_marginTop="0.2dp">
 
         <ImageView
             android:layout_width="fill_parent"
             android:src="@drawable/overview_ic"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="15dp" />
+            android:layout_marginBottom="10dp" />
 
         <TextView
             android:layout_width="match_parent"
-            android:textColor="@color/white"
+            android:textColor="#DFE4E7"
             android:text="Overview"
             android:textAlignment="center"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|bottom"
             android:gravity="center"
             android:id="@+id/overview_text_menu"
-            android:textSize="15sp"
+            android:textSize="17sp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp" />
     </FrameLayout>
@@ -68,25 +78,26 @@
         android:layout_height="match_parent"
         android:id="@+id/health_menu_btn"
         android:background="#333f48"
-        android:textAlignment="center">
+        android:textAlignment="center"
+        android:layout_marginTop="0.2dp">
 
         <ImageView
             android:layout_width="fill_parent"
             android:src="@drawable/health_ic"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="15dp" />
+            android:layout_marginBottom="10dp" />
 
         <TextView
             android:layout_width="match_parent"
-            android:textColor="@color/white"
+            android:textColor="#DFE4E7"
             android:text="Health"
             android:textAlignment="center"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_gravity="center_horizontal|bottom"
             android:id="@+id/health_text_menu"
-            android:textSize="15sp"
+            android:textSize="17sp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp" />
     </FrameLayout>
@@ -97,25 +108,27 @@
         android:layout_height="match_parent"
         android:id="@+id/security_menu_btn"
         android:background="#333f48"
-        android:textAlignment="center">
+        android:textAlignment="center"
+        android:layout_marginLeft="0.2dp"
+        android:layout_marginTop="0.2dp">
 
         <ImageView
             android:layout_width="fill_parent"
             android:src="@drawable/security_ic"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="15dp" />
+            android:layout_marginBottom="10dp" />
 
         <TextView
             android:layout_width="match_parent"
-            android:textColor="@color/white"
+            android:textColor="#DFE4E7"
             android:text="Security"
             android:textAlignment="center"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_gravity="center_horizontal|bottom"
             android:id="@+id/security_text_menu"
-            android:textSize="15sp"
+            android:textSize="17sp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp" />
     </FrameLayout>
@@ -128,9 +141,9 @@
         android:id="@+id/row2"
         android:layout_width="fill_parent"
         android:layout_below="@id/row1"
-        android:background="#333f48"
         android:weightSum="3"
-        android:baselineAligned="true">
+        android:baselineAligned="true"
+        android:background="#ecececec">
         <FrameLayout
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -138,24 +151,25 @@
             android:textAlignment="center"
             android:background="#333f48"
             android:id="@+id/weather_menu_btn"
-            >
+            android:layout_marginTop="0.2dp"
+            android:layout_marginRight="0.2dp">
 
             <ImageView
                 android:layout_width="fill_parent"
                 android:src="@drawable/weather_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="15dp" />
+                android:layout_marginBottom="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:textColor="@color/white"
+                android:textColor="#DFE4E7"
                 android:text="Weather"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|bottom"
                 android:id="@+id/weather_text_menu"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp" />
         </FrameLayout>
@@ -167,25 +181,25 @@
             android:background="#333f48"
 
             android:id="@+id/alerts_menu_btn"
-            >
+            android:layout_marginTop="0.2dp">
 
             <ImageView
                 android:layout_width="fill_parent"
                 android:src="@drawable/alerts_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="15dp" />
+                android:layout_marginBottom="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:textColor="@color/white"
+                android:textColor="#DFE4E7"
                 android:text="Alerts"
                 android:textAlignment="center"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|bottom"
                 android:id="@+id/alerts_text_menu"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp" />
         </FrameLayout>
@@ -198,25 +212,27 @@
             android:layout_height="match_parent"
             android:id="@+id/insurance_menu_btn"
             android:background="#333f48"
-            android:textAlignment="center">
+            android:textAlignment="center"
+            android:layout_marginTop="0.2dp"
+            android:layout_marginLeft="0.2dp">
 
             <ImageView
                 android:layout_width="fill_parent"
                 android:src="@drawable/ace_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="15dp" />
+                android:layout_marginBottom="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:text="Insurance"
-                android:textColor="@color/white"
+                android:textColor="#DFE4E7"
                 android:textAlignment="center"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|bottom"
                 android:gravity="center"
                 android:id="@+id/insurance_text_menu"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp" />
         </FrameLayout>
@@ -228,34 +244,37 @@
         android:id="@+id/row3"
         android:layout_below="@id/row2"
         android:layout_width="fill_parent"
-        android:background="#333f48"
         android:weightSum="3"
-        android:baselineAligned="true">
+        android:baselineAligned="true"
+        android:background="#ecececec">
         <FrameLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:textAlignment="center"
             android:id="@+id/assistance_menu_btn"
-            android:background="#333f48">
+            android:background="#333f48"
+            android:layout_marginTop="0.2dp"
+            android:layout_marginRight="0.2dp"
+            android:layout_marginBottom="0.2dp">
 
             <ImageView
                 android:layout_width="fill_parent"
                 android:src="@drawable/assistance_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="15dp" />
+                android:layout_marginBottom="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:textColor="@color/white"
+                android:textColor="#DFE4E7"
                 android:text="Assistance"
                 android:textAlignment="center"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|bottom"
                 android:id="@+id/assistance_menu_text"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp" />
         </FrameLayout>
@@ -266,25 +285,27 @@
             android:layout_height="match_parent"
             android:id="@+id/trips_menu_btn"
             android:background="#333f48"
-            android:textAlignment="center">
+            android:textAlignment="center"
+            android:layout_marginTop="0.2dp"
+            android:layout_marginBottom="0.2dp">
 
             <ImageView
                 android:layout_width="fill_parent"
                 android:src="@drawable/trips_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="15dp" />
+                android:layout_marginBottom="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:textColor="@color/white"
+                android:textColor="#DFE4E7"
                 android:text="Trips"
                 android:textAlignment="center"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|bottom"
                 android:id="@+id/trips_menu_text"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp" />
         </FrameLayout>
@@ -295,25 +316,28 @@
             android:layout_height="match_parent"
             android:id="@+id/settings_menu_btn"
             android:background="#333f48"
-            android:textAlignment="center">
+            android:textAlignment="center"
+            android:layout_marginTop="0.2dp"
+            android:layout_marginLeft="0.2dp"
+            android:layout_marginBottom="0.2dp">
 
             <ImageView
                 android:layout_width="fill_parent"
                 android:src="@drawable/settings_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="15dp" />
+                android:layout_marginBottom="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:textColor="@color/white"
+                android:textColor="#DFE4E7"
                 android:text="Settings"
                 android:textAlignment="center"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|bottom"
                 android:id="@+id/settings_menu_text"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp" />
         </FrameLayout>
