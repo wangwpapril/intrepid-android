@@ -243,6 +243,14 @@ public class IntrepidMenu extends ScrollView {
                 activity.startActivity(mIntent);
             }
         });
+//        FrameLayout weatherButton = (FrameLayout)activity.findViewById(R.id.weather_menu_btn);
+//        weatherButton.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent mIntent = new Intent(context, ViewWeatherActivity.class);
+//                activity.startActivity(mIntent);
+//            }
+//        });
         ImageButton expandMenu = (ImageButton)activity.findViewById(R.id.expand_menu);
         expandMenu.setOnClickListener(new OnClickListener() {
             @Override
