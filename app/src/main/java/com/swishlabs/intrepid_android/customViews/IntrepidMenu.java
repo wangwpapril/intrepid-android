@@ -21,6 +21,7 @@ import com.swishlabs.intrepid_android.activity.SettingsActivity;
 import com.swishlabs.intrepid_android.activity.TripPagesActivity;
 import com.swishlabs.intrepid_android.activity.ViewDestinationActivity;
 import com.swishlabs.intrepid_android.activity.ViewHealthActivity;
+import com.swishlabs.intrepid_android.activity.ViewWeatherActivity;
 
 /**
  * Created by ryanracioppo on 2015-04-09.
@@ -243,14 +244,14 @@ public class IntrepidMenu extends ScrollView {
                 activity.startActivity(mIntent);
             }
         });
-//        FrameLayout weatherButton = (FrameLayout)activity.findViewById(R.id.weather_menu_btn);
-//        weatherButton.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent mIntent = new Intent(context, ViewWeatherActivity.class);
-//                activity.startActivity(mIntent);
-//            }
-//        });
+        FrameLayout weatherButton = (FrameLayout)activity.findViewById(R.id.weather_menu_btn);
+        weatherButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mIntent = new Intent(context, ViewWeatherActivity.class);
+                activity.startActivity(mIntent);
+            }
+        });
         ImageButton expandMenu = (ImageButton)activity.findViewById(R.id.expand_menu);
         expandMenu.setOnClickListener(new OnClickListener() {
             @Override
