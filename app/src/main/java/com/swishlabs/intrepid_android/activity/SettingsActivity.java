@@ -100,8 +100,7 @@ public class SettingsActivity extends BaseActivity {
 	
 	@Override
 	protected void initTitle() {
-        tvTitleName = (TextView) findViewById(R.id.title_name);
-        tvTitleName.setText(getResources().getString(R.string.settings_title_name));
+
 	}
 
 	@Override

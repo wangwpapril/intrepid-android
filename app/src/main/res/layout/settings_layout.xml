@@ -23,15 +23,6 @@
         android:id="@+id/toolbar_title" />
     </android.support.v7.widget.Toolbar>
 
-    <include
-    android:layout_width="fill_parent"
-    android:layout_height="@dimen/custom_title_height"
-    layout="@layout/custom_title"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:id="@+id/include" />
-
 
     <RelativeLayout
                 android:id="@+id/inputLayout"
@@ -41,7 +32,7 @@
                 android:orientation="vertical"
                 android:layout_centerHorizontal="true"
                 android:gravity="center_horizontal"
-                android:layout_below="@+id/include"
+                android:layout_below="@+id/toolbar"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp">
