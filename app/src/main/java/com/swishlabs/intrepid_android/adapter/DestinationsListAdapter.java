@@ -44,7 +44,9 @@ public class DestinationsListAdapter extends MyBaseAdapter {
 
 	@Override
 	public long getItemId(int position) {
-		return position;
+
+		return datas.get(position).getIndex();
+
 	}
 
 	@Override

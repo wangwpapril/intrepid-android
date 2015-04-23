@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class Destination implements Serializable {
 
 	private static final long serialVersionUID = 8309984110697352775L;
+    public int index = 0;
 	public String id;
 	public String name;
     public String altName;
@@ -62,6 +63,8 @@ public class Destination implements Serializable {
     public String getId(){
         return id;
     }
+
+    public int getIndex() { return index; }
 
     public String getGeneralImage(){
         return generalImage;

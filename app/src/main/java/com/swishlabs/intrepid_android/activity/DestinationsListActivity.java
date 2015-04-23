@@ -83,7 +83,9 @@ public class DestinationsListActivity extends BaseActivity {
                     DatabaseManager.deleteCurrency(mDatabase);
 
                     for (int i =0;i < len; i++){
-                        mDestinationList.add(new Destination(array.getJSONObject(i)));
+                        Destination dest = new Destination(array.getJSONObject(i));
+                        dest.index = i;
+                        mDestinationList.add(dest);
                         String currencyCode = null;
 //                        String currencyUrl = mDestinationList.get(i).imageCurrency.sourceUrl.replace(" ", "%20");
                         String currencyUrl = mDestinationList.get(i).imageCurrency.sourceUrl;
@@ -150,11 +152,13 @@ public class DestinationsListActivity extends BaseActivity {
 			public void onItemClick(AdapterView<?> adapter, View view, int position,
 					long arg3) {
                 Log.d("Trip list", "You hit destination:" + position);
-                LoadCurrencyInfo(position);
+                Log.d("Trip list", "You hit destination list index:" + arg3);
+                LoadCurrencyInfo((int) arg3);
 //                LoadTripFromApi(position);
 
 			}
 		});
+
 
         mEditTextSearch = (ClearEditText) findViewById(R.id.search_ed);
         mEditTextSearch.addTextChangedListener(new TextWatcher() {
