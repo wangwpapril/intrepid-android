@@ -19,6 +19,7 @@ import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.activity.SecurityActivity;
 import com.swishlabs.intrepid_android.activity.SettingsActivity;
 import com.swishlabs.intrepid_android.activity.TripPagesActivity;
+import com.swishlabs.intrepid_android.activity.ViewAlertActivity;
 import com.swishlabs.intrepid_android.activity.ViewDestinationActivity;
 import com.swishlabs.intrepid_android.activity.ViewHealthActivity;
 import com.swishlabs.intrepid_android.activity.ViewWeatherActivity;
@@ -249,6 +250,14 @@ public class IntrepidMenu extends ScrollView {
             @Override
             public void onClick(View v) {
                 Intent mIntent = new Intent(context, ViewWeatherActivity.class);
+                activity.startActivity(mIntent);
+            }
+        });
+        FrameLayout alertButton = (FrameLayout)activity.findViewById(R.id.alerts_menu_btn);
+        alertButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mIntent = new Intent(context, ViewAlertActivity.class);
                 activity.startActivity(mIntent);
             }
         });
