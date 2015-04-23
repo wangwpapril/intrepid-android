@@ -85,17 +85,23 @@ public class DestinationsListActivity extends BaseActivity {
                     for (int i =0;i < len; i++){
                         mDestinationList.add(new Destination(array.getJSONObject(i)));
                         String currencyCode = null;
-                        String currencyUrl = mDestinationList.get(i).imageCurrency.sourceUrl.replace(" ", "%20");
-                        String[] parts = currencyUrl.split("/");
-                        for ( int j =0;j < parts.length; j++) {
-                            if (parts[j].equals("currency")) {
-                                currencyCode = parts[j+1];
-                                break;
+//                        String currencyUrl = mDestinationList.get(i).imageCurrency.sourceUrl.replace(" ", "%20");
+                        String currencyUrl = mDestinationList.get(i).imageCurrency.sourceUrl;
+                        if(currencyUrl != null) {
+                            String[] parts = currencyUrl.replace(" ", "%20").split("/");
+                            for (int j = 0; j < parts.length; j++) {
+                                if (parts[j].equals("currency")) {
+                                    currencyCode = parts[j + 1];
+                                    break;
+                                }
                             }
                         }
 
+                        if(currencyCode == null)
+                            currencyCode = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currencyCode.toString(), null);
+
                         mDestinationList.get(i).currencyCode = currencyCode;
-                        saveCurrencyImage(currencyCode,currencyUrl);
+                        saveCurrencyImage(currencyCode, currencyUrl);
                     }
 
                     mDestinationsListAdapter = new DestinationsListAdapter(
@@ -199,8 +205,7 @@ public class DestinationsListActivity extends BaseActivity {
             }
         };
 
-        String baseCurrencyCode = null;
-        baseCurrencyCode = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currencyCode.toString(), null);
+        String baseCurrencyCode = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currencyCode.toString(), null);
         String currencyCode = mDestinationList.get(destinationPosition).getCurrencyCode();
 
         ControllerContentTask cct = new ControllerContentTask(
@@ -422,7 +427,10 @@ public class DestinationsListActivity extends BaseActivity {
         String security_image_url = images.getJSONObject("security").getString("source_url").replace(" ", "%20");
         String overview_image_url = images.getJSONObject("overview").getString("source_url").replace(" ", "%20");
         String culture_image_url = images.getJSONObject("culture").getString("source_url").replace(" ", "%20");
-        String currency_image_url = images.getJSONObject("currency").getString("source_url").replace(" ", "%20");
+        String currency_image_url = null;
+        if(images.has("currency")) {
+            currency_image_url = images.getJSONObject("currency").getString("source_url").replace(" ", "%20");
+        }
 
         ContentValues values = new ContentValues();
         values.put(Database.KEY_DESTINATION_ID, destinationId);
@@ -496,7 +504,6 @@ public class DestinationsListActivity extends BaseActivity {
 
     private void saveCurrencyImage(String code, String url){
         ContentValues values = new ContentValues();
-//        values.put(Database.KEY_CURRENCY_CODE, code);
         values.put(Database.KEY_GENERAL_IMAGE_URI, url);
         values.put(Database.KEY_CURRENCY_CODE,code);
         mDatabase.getDb().insert(Database.TABLE_CURRENCY, null, values);
