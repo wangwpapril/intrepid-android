@@ -24,10 +24,25 @@
             android:id="@+id/toolbar_title" />
     </android.support.v7.widget.Toolbar>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/empty_list"
+        android:layout_below="@+id/toolbar"
+        android:text="No recent alerts"
+        android:textColor="#333f48"
+        android:textStyle="bold"
+        android:textSize="23sp"
+        android:gravity="center_horizontal|center_vertical"
+        android:visibility="gone"
+        />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
+        android:divider="@color/common_list_divider"
+        android:dividerHeight="@dimen/common_list_divider_height"
         android:id="@+id/alerts_list">
         </ListView>
 

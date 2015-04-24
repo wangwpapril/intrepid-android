@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:background="#FFF"
+    android:padding="10dp"
+    android:orientation="vertical" >
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/title_alert">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/category_title_alert"
+            android:textSize="18sp"
+            android:textColor="#333f48"
+            android:text="Category:"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/category_content_alert"
+            android:textSize="18sp"
+            android:textColor="#333f48"
+            android:text="Category Name"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/category_title_alert"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/valid_title_alert"
+            android:textSize="18sp"
+            android:textColor="#333f48"
+            android:text="Valid:"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/category_title_alert"
+            android:layout_alignStart="@+id/category_title_alert"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/valid_content_alert"
+            android:textSize="18sp"
+            android:textColor="#333f48"
+            android:text="From date"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/valid_title_alert"
+            android:layout_below="@+id/category_content_alert"
+            android:layout_alignStart="@+id/category_content_alert"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/content_alert"
+        android:textSize="18sp"
+        android:textColor="#333f48"
+        android:text="From date"
+        android:layout_marginTop="15dp"
+        android:layout_alignStart="@+id/title_alert"
+        android:layout_below="@+id/title_alert"/>
+
+
+</RelativeLayout>
