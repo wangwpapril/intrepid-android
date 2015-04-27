@@ -110,7 +110,11 @@
         <activity
             android:name=".activity.ViewAlertActivity"
             android:label="@string/title_activity_view_alert"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.AssistanceActivity"
+            android:label="@string/title_activity_assistance" >
         </activity>
     </application>
 
