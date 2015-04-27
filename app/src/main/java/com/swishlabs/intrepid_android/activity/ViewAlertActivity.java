@@ -94,7 +94,7 @@ public class ViewAlertActivity extends ActionBarActivity {
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
-                        Alert mAlert = new Alert(cate, desc, start, end);
+                        Alert mAlert = new Alert(mDestinationInformation.getCountryCode(),cate, desc, start, end);
                         mAlertList.add(mAlert);
                     }
 
