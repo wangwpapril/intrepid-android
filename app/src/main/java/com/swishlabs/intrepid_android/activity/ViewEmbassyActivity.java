@@ -1,16 +1,14 @@
 package com.swishlabs.intrepid_android.activity;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
+import android.text.util.Linkify;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
@@ -95,30 +93,32 @@ public class ViewEmbassyActivity extends ActionBarActivity {
     }
 
     protected void setClickListeners(TextView phone, TextView email){
-        phone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String phoneNumber = mEmbassy.getTelephone();
-                Intent call = new Intent(Intent.ACTION_DIAL);
-                call.setData(Uri.parse("tel:" + phoneNumber));
-                startActivity(call);
-            }
-        });
-        email.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_SEND);
-                i.setType("message/rfc822");
-                i.putExtra(Intent.EXTRA_EMAIL, new String[]{mEmbassy.getEmail()});
-                i.putExtra(Intent.EXTRA_SUBJECT, "");
-                i.putExtra(Intent.EXTRA_TEXT   , "");
-                try {
-                    startActivity(Intent.createChooser(i, "Send E-mail"));
-                } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(ViewEmbassyActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        Linkify.addLinks(phone, Linkify.PHONE_NUMBERS);
+        Linkify.addLinks(email, Linkify.EMAIL_ADDRESSES);
+//        phone.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String phoneNumber = mEmbassy.getTelephone();
+//                Intent call = new Intent(Intent.ACTION_DIAL);
+//                call.setData(Uri.parse("tel:" + phoneNumber));
+//                startActivity(call);
+//            }
+//        });
+//        email.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(Intent.ACTION_SEND);
+//                i.setType("message/rfc822");
+//                i.putExtra(Intent.EXTRA_EMAIL, new String[]{mEmbassy.getEmail()});
+//                i.putExtra(Intent.EXTRA_SUBJECT, "");
+//                i.putExtra(Intent.EXTRA_TEXT   , "");
+//                try {
+//                    startActivity(Intent.createChooser(i, "Send E-mail"));
+//                } catch (android.content.ActivityNotFoundException ex) {
+//                    Toast.makeText(ViewEmbassyActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
     }
 
 
