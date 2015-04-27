@@ -58,7 +58,8 @@ public class ViewEmbassyActivity extends ActionBarActivity {
         TextView fax = (TextView)findViewById(R.id.contact_fax);
         fax.setText("Fax: " + mEmbassy.getFax());
         TextView email = (TextView)findViewById(R.id.contact_email);
-        email.setText(Html.fromHtml("Email: <u><font color=blue>"+ mEmbassy.getEmail()+"</u></style>"));
+        String formattedEmails = formatEmails();
+        email.setText(Html.fromHtml("Email: <u><font color=blue>"+ formattedEmails+"</u></style>"));
         TextView hours = (TextView)findViewById(R.id.embassy_hours);
         hours.setText(mEmbassy.getHoursofOperation());
         TextView notes = (TextView)findViewById(R.id.notes_text);
@@ -83,8 +84,14 @@ public class ViewEmbassyActivity extends ActionBarActivity {
 //                ViewGroup.LayoutParams.WRAP_CONTENT);
 //        params.addRule(RelativeLayout.BELOW, R.id.below_id);
         String rawPhones = mEmbassy.getTelephone();
-        String formattedPhones = rawPhones.replace(", ", "\r\n");
+        String formattedPhones = rawPhones.replace(", ", "\r\n").replace("; ", "\r\n");
         return formattedPhones;
+    }
+
+    protected String formatEmails(){
+        String rawEmails = mEmbassy.getEmail();
+        String formattedEmails = rawEmails.replace(", ", "\r\n").replace("; ", "\r\n");
+        return formattedEmails;
     }
 
     protected void setClickListeners(TextView phone, TextView email){
