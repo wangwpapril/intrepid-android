@@ -11,6 +11,7 @@ import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
 public class AssistanceActivity extends ActionBarActivity {
 
     IntrepidMenu mIntrepidMenu;
+    String googleMapKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
