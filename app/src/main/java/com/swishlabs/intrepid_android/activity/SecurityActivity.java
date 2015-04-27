@@ -257,6 +257,7 @@ public class SecurityActivity extends ActionBarActivity {
             DestinationInformation destinationInformation = SecurityActivity.getInstance().mDestinationInformation;
             mDesinationId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currentCountryId.toString(), null);
             embassyList= DatabaseManager.getEmbassyListArray(SecurityActivity.getInstance().mDatabase, mDesinationId);
+
             mEmbassyListAdapter = new EmbassyListAdapter(
                     embassyList, instance, SecurityActivity.getInstance().mDatabase);
             ListView listView = (ListView)rootView.findViewById(R.id.list);
@@ -264,6 +265,10 @@ public class SecurityActivity extends ActionBarActivity {
             ImageView embassyImage = (ImageView)rootView.findViewById(R.id.overview_image);
             if (embassyList.size()>0) {
                 Picasso.with(ViewDestinationActivity.getInstance()).load(embassyList.get(0).getImage()).resize(1000, 1000).centerCrop().into(embassyImage);
+            }else{
+                Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageIntro()).resize(1000, 1000).centerCrop().into(embassyImage);
+                TextView emptyEmbassyList = (TextView)rootView.findViewById(R.id.emptyEmbassyList);
+                emptyEmbassyList.setVisibility(View.VISIBLE);
             }
         }
 
