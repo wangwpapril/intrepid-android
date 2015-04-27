@@ -6,13 +6,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
 
 public class AssistanceActivity extends ActionBarActivity {
+
+    IntrepidMenu mIntrepidMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assistance);
+        mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
+        mIntrepidMenu.setupMenu(this, AssistanceActivity.this);
     }
 
 
