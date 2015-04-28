@@ -37,5 +37,7 @@
     <string name="title_activity_view_weather">ViewWeatherActivity</string>
     <string name="title_activity_view_alert">ViewAlertActivity</string>
     <string name="title_activity_assistance">AssistanceActivity</string>
+    <string name="title_activity_ace_insurance">AceInsuranceActivity</string>
+    <string name="title_activity_view_ace">ViewAceActivity</string>
 
 </resources>
