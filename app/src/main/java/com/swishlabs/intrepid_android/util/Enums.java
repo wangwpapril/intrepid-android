@@ -85,6 +85,7 @@ public class Enums {
 		loginStatus("login status"),
         countryCode("country code"),
         currencyCode("currency code"),
+        virtualWalletPdf("virtual wallet pdf"),
 		userId("user id") ;
 	
 		private final String svalue;

@@ -121,7 +121,17 @@ public class LoginActivity extends BaseActivity {
                     }else if(jsonObj.has("user")) {
                         userObj = jsonObj.getJSONObject("user");
                         user = new User(userObj);
-                    }else {
+                        String virtualWalletPdf = null;
+                        if(userObj.has("company")){
+                            Object temp = userObj.getJSONObject("company").get("content");
+                            if(temp instanceof JSONObject){
+                                virtualWalletPdf = ((JSONObject) temp).optString("virtual_wallet_pdf");
+                            }
+                        }
+
+                        SharedPreferenceUtil.setString(Enums.PreferenceKeys.virtualWalletPdf.toString(), virtualWalletPdf);
+
+                     }else {
                         StringUtil.showAlertDialog(getResources().getString(R.string.login_title_name), getResources().getString(R.string.login_failed), context);
                         return;
                     }

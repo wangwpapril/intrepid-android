@@ -45,8 +45,13 @@ public class Company implements Serializable {
 		updatedAt = obj.getString("updated_at");
 		
 		if (obj.has("parent")) {
-			JSONObject pa = obj.getJSONObject("parent");
-			parent = new Parent(pa);
+            Object temp = obj.get("parent");
+            if(temp instanceof JSONObject) {
+                JSONObject pa = obj.getJSONObject("parent");
+                parent = new Parent(pa);
+            }else {
+                parent = new Parent(null);
+            }
 		}
 		
 		if (obj.has("assistance_providers")) {
