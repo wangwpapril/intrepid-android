@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.swishlabs.intrepid_android.MyApplication;
+import com.swishlabs.intrepid_android.data.api.model.Alert;
 import com.swishlabs.intrepid_android.data.api.model.Currency;
 import com.swishlabs.intrepid_android.data.api.model.DestinationInformation;
 import com.swishlabs.intrepid_android.data.api.model.Embassy;
@@ -216,6 +217,24 @@ public class DatabaseManager {
                 cursor.getString(25), cursor.getString(26));
 
         return destinationInformation;
+    }
+
+    public static ArrayList<Alert> getAlertList(Database database, String countryCode){
+        ArrayList<Alert> alertList = new ArrayList<>();
+        Cursor cursor = database.getDb().query(Database.TABLE_ALERT, new String[]{Database.KEY_COUNTRY_CODE,
+        Database.KEY_ALERT_CATEGORY, Database.KEY_ALERT_DESCRIPTION, Database.KEY_ALERT_STARTDATE, Database.KEY_ALERT_ENDDATE},
+                Database.KEY_COUNTRY_CODE + "=?", new String[]{countryCode}, null,null,null,null);
+        if (cursor.moveToFirst()) {
+            while (cursor.isAfterLast() == false) {
+
+                Alert alert = new Alert(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+
+                alertList.add(alert);
+                cursor.moveToNext();
+            }
+        }
+        return alertList;
+
     }
 
 

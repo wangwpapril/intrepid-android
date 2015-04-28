@@ -21,6 +21,7 @@ public class Database {
     public static final String TABLE_DESTINATION_INFORMATION = "destinationInformation";
     public static final String TABLE_EMBASSY = "embassy";
     public static final String TABLE_CURRENCY = "currencyTb";
+    public static final String TABLE_ALERT = "alert";
 
     public static final String KEY_ID = "id";
     public static final String KEY_COUNTRY_ID = "countryId";
@@ -83,6 +84,11 @@ public class Database {
     public static final String KEY_EMBASSY_TELEPHONE = "embassyTelephone";
     public static final String KEY_EMBASSY_DESTINATION_ID = "embassyDestinationId";
     public static final String KEY_EMBASSY_IMAGE = "embassyImage";
+
+    public static final String KEY_ALERT_CATEGORY = "alertCategory";
+    public static final String KEY_ALERT_DESCRIPTION = "alertDescription";
+    public static final String KEY_ALERT_STARTDATE = "alertStartDate";
+    public static final String KEY_ALERT_ENDDATE = "alertEndDate";
 
 
 
@@ -182,6 +188,15 @@ public class Database {
                     + KEY_CURRENCY_CODE + " TEXT,"
                     + KEY_GENERAL_IMAGE_URI + " TEXT"+ ")";
             db.execSQL(createCurrencyTable);
+
+            String createAlertTable = "CREATE TABLE " + TABLE_ALERT + "("
+                    + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + KEY_COUNTRY_CODE + " TEXT,"
+                    + KEY_ALERT_CATEGORY + " TEXT,"
+                    + KEY_ALERT_DESCRIPTION + " TEXT,"
+                    + KEY_ALERT_STARTDATE + " TEXT,"
+                    + KEY_ALERT_ENDDATE + " TEXT"+ ")";
+            db.execSQL(createAlertTable);
 
         }
         @Override

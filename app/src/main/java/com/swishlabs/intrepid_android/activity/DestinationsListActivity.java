@@ -15,10 +15,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.adapter.AlertListAdapter;
 import com.swishlabs.intrepid_android.adapter.DestinationsListAdapter;
 import com.swishlabs.intrepid_android.customViews.ClearEditText;
 import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
+import com.swishlabs.intrepid_android.data.api.model.Alert;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 import com.swishlabs.intrepid_android.data.api.model.HealthCondition;
@@ -33,6 +35,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -49,6 +53,7 @@ public class DestinationsListActivity extends BaseActivity {
 
     private List<HealthCondition> healthConditionList;
     private List<HealthMedicationDis> healthMedicationList;
+    private List<Alert> mAlertList;
 
 
 
@@ -239,6 +244,7 @@ public class DestinationsListActivity extends BaseActivity {
                         if (country != null) {
                             String countryCode = country.getString("country_code");
                             saveEmbassyInformation(mDestinationList.get(destinationPosition).getId(), countryCode);
+                            fetchAlerts(countryCode);
                         }
                         countryId = destination.optString("id");
                         SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), countryId);
@@ -376,7 +382,7 @@ public class DestinationsListActivity extends BaseActivity {
 
                         mDatabase.getDb().insert(Database.TABLE_EMBASSY, null, values);
                         if (mCallbackCount == 1) {
-                            mDatabase.getDb().close();
+//                            mDatabase.getDb().close();
                         }else{
                             mCallbackCount = mCallbackCount + 1;
                         }
@@ -540,10 +546,76 @@ public class DestinationsListActivity extends BaseActivity {
 
     }
 
-	
+    private void fetchAlerts(final String countrycode) {
+
+        IControllerContentCallback icc = new IControllerContentCallback() {
+
+            public void handleSuccess(String content) {
+                JSONArray alertArray;
+                try {
+                    alertArray = new JSONObject(content).getJSONArray("content");
+                    int len = alertArray.length();
+                    mAlertList = new ArrayList<Alert>(len);
+                    SimpleDateFormat to = new SimpleDateFormat("MMM d, yyyy");
+                    SimpleDateFormat from = new SimpleDateFormat("MM/dd/yyyy");
+
+                    for(int i = 0; i < len; i++){
+                        JSONObject alertObj = alertArray.getJSONObject(i);
+                        String cate = alertObj.optString("category");
+                        String desc = alertObj.optString("description");
+                        String start = alertObj.optString("start");
+                        String end = alertObj.optString("end");
+                        try {
+                            start = to.format(from.parse(start));
+                            end = to.format(from.parse(end));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        Alert mAlert = new Alert(countrycode,cate, desc, start, end);
+                        mAlertList.add(mAlert);
+
+                        saveAlert(i);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            public void handleError(Exception e){
+
+            }
+        };
+
+        String token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
+
+        ControllerContentTask cct = new ControllerContentTask(
+                Constants.BASE_URL+"alerts/"+countrycode+"?token="+token, icc,
+                Enums.ConnMethod.GET,false);
+
+        String ss = null;
+        cct.execute(ss);
 
 
-	@Override
+    }
+
+    private void saveAlert(int index){
+        ContentValues values = new ContentValues();
+        values.put(Database.KEY_COUNTRY_CODE, mAlertList.get(index).getCountryCode());
+        values.put(Database.KEY_ALERT_CATEGORY, mAlertList.get(index).getCategory());
+        values.put(Database.KEY_ALERT_DESCRIPTION, mAlertList.get(index).getDescription());
+        values.put(Database.KEY_ALERT_STARTDATE, mAlertList.get(index).getStartDate());
+        values.put(Database.KEY_ALERT_ENDDATE, mAlertList.get(index).getEndDate());
+        mDatabase.getDb().insert(Database.TABLE_ALERT, null, values);
+
+    }
+
+
+
+
+
+
+    @Override
 	protected void initTitle(){
 	}
 
