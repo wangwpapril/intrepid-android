@@ -145,8 +145,9 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".activity.temdeletep"
-            android:label="@string/title_activity_temdeletep" >
+            android:name=".activity.ViewVMPdfActivity"
+            android:label="@string/title_activity_view_vmpdf"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

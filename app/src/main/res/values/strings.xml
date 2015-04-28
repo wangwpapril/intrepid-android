@@ -40,5 +40,6 @@
     <string name="title_activity_temdeletep">Map</string>
     <string name="title_activity_ace_insurance">AceInsuranceActivity</string>
     <string name="title_activity_view_ace">ViewAceActivity</string>
+    <string name="title_activity_view_vmpdf">ViewVMPdfActivity</string>
 
 </resources>
