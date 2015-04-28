@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.activity.AceInsuranceActivity;
 import com.swishlabs.intrepid_android.activity.AssistanceActivity;
 import com.swishlabs.intrepid_android.activity.SecurityActivity;
 import com.swishlabs.intrepid_android.activity.SettingsActivity;
@@ -267,6 +268,14 @@ public class IntrepidMenu extends ScrollView {
             @Override
             public void onClick(View v) {
                 Intent mIntent = new Intent(context, AssistanceActivity.class);
+                activity.startActivity(mIntent);
+            }
+        });
+        FrameLayout aceButton = (FrameLayout)activity.findViewById(R.id.insurance_menu_btn);
+        aceButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mIntent = new Intent(context, AceInsuranceActivity.class);
                 activity.startActivity(mIntent);
             }
         });
