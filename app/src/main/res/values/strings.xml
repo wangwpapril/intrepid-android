@@ -37,5 +37,6 @@
     <string name="title_activity_view_weather">ViewWeatherActivity</string>
     <string name="title_activity_view_alert">ViewAlertActivity</string>
     <string name="title_activity_assistance">AssistanceActivity</string>
+    <string name="title_activity_temdeletep">Map</string>
 
 </resources>
