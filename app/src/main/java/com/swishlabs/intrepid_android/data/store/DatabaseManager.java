@@ -247,5 +247,9 @@ public class DatabaseManager {
         database.getDb().delete(Database.TABLE_CURRENCY, null, null);
     }
 
+    public static void deleteAlert(String countrycode, Database database){
+        database.getDb().delete(Database.TABLE_ALERT, Database.KEY_COUNTRY_CODE + "=" + countrycode, null);
+    }
+
 
 }
