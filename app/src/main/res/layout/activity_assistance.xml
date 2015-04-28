@@ -24,11 +24,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <MapView
-        android:layout_height="60dp"
-        android:layout_width="match_parent"
-        />
-
     <include
         android:layout_width="match_parent"
         android:layout_height="25dp"
