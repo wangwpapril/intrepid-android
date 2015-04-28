@@ -74,6 +74,15 @@ public class AssistanceActivity extends FragmentActivity {
         Criteria criteria = new Criteria();
 
         Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+        //The following code gets the next best location if the current location is unavaiable through standard API
+        if (location == null) {
+            Criteria criteriaTest = new Criteria();
+            criteriaTest.setAccuracy(Criteria.ACCURACY_COARSE);
+            // Finds a provider that matches the criteria
+            String provider = locationManager.getBestProvider(criteria, true);
+            // Use the provider to get the last known location
+            location = locationManager.getLastKnownLocation(provider);
+        }
         return location;
     }
 }
