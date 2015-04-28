@@ -26,6 +26,10 @@
         android:smallScreens="true"
         android:xlargeScreens="true" />
 
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -33,6 +37,9 @@
         android:label="Travel Smart"
         android:largeHeap="true"
         android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDZCU2car4EAwmOSgGf1N0aqK-j5c6bAak"/>
         <activity
             android:name=".activity.SplashActivity"
             android:label="Welcome"
