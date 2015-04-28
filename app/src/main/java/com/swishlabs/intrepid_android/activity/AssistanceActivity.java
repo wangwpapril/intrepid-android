@@ -51,22 +51,24 @@ public class AssistanceActivity extends FragmentActivity {
     }
 
     private void setUpMap() {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+
         Location currentLocation = getCurrentLocation();
         if (currentLocation != null)
         {
+            mMap.addMarker(new MarkerOptions().position(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude())).title("Marker"));
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                    new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), 13));
+                    new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), 9));
 
             CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()))      // Sets the center of the map to location user
-                    .zoom(17)                   // Sets the zoom
+                    .zoom(13)                   // Sets the zoom
                     .bearing(90)                // Sets the orientation of the camera to east
                     .tilt(40)                   // Sets the tilt of the camera to 30 degrees
                     .build();                   // Creates a CameraPosition from the builder
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
         }
+
     }
 
     private Location getCurrentLocation(){

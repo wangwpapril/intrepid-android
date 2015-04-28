@@ -9,20 +9,45 @@
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 tools:context="com.swishlabs.intrepid_android.activity.AssistanceActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:elevation="4dp"
+        android:transitionName="actionBar">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Emergency Assistance"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:textColor="#FFF"
+            android:id="@+id/toolbar_title" />
+    </android.support.v7.widget.Toolbar>
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="300dp"
               android:id="@+id/map"
+              android:layout_below="@id/toolbar"
               tools:context="com.swishlabs.intrepid_android.activity.AssistanceActivity"
               android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
 
-    <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:text="@string/callIntrepidAssistance"
+        android:id="@+id/callIntrepidAssistance"
+        android:layout_below="@id/map"
+        android:textColor="#DFDFDF"
+        android:background="#EE5555"/>
+
 
     <include
         android:layout_width="match_parent"
