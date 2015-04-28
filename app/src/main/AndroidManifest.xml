@@ -28,7 +28,9 @@
 
     <uses-feature
         android:glEsVersion="0x00020000"
-        android:required="true"/>
+        android:required="true" />
+
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
         android:name=".MyApplication"
@@ -39,7 +41,8 @@
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDZCU2car4EAwmOSgGf1N0aqK-j5c6bAak"/>
+            android:value="AIzaSyDZCU2car4EAwmOSgGf1N0aqK-j5c6bAak" />
+
         <activity
             android:name=".activity.SplashActivity"
             android:label="Welcome"
@@ -132,6 +135,18 @@
         <activity
             android:name=".activity.AssistanceActivity"
             android:label="@string/title_activity_assistance" >
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".activity.temdeletep"
+            android:label="@string/title_activity_temdeletep" >
         </activity>
     </application>
 
