@@ -120,6 +120,16 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name=".activity.AceInsuranceActivity"
+            android:label="@string/title_activity_ace_insurance"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.ViewAceActivity"
+            android:label="@string/title_activity_view_ace"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name=".activity.AssistanceActivity"
             android:label="@string/title_activity_assistance" >
         </activity>
