@@ -6,6 +6,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -15,6 +16,17 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
+import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
+import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
+import com.swishlabs.intrepid_android.data.api.model.Constants;
+import com.swishlabs.intrepid_android.data.api.model.User;
+import com.swishlabs.intrepid_android.util.Enums;
+import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
+import com.swishlabs.intrepid_android.util.StringUtil;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class AssistanceActivity extends FragmentActivity {
 
@@ -87,4 +99,64 @@ public class AssistanceActivity extends FragmentActivity {
         }
         return location;
     }
+
+    private void sendCoordinatesToIntrepid(double longitude, double latitude){
+
+            IControllerContentCallback icc = new IControllerContentCallback() {
+                public void handleSuccess(String content){
+
+                    JSONObject jsonObj = null, coordObj = null;
+                    User user = null;
+                    Log.d("signUp user", content);
+
+                    try {
+                        jsonObj = new JSONObject(content);
+                        if(jsonObj.has("error")) {
+                            JSONArray errorMessage = jsonObj.getJSONObject("error").getJSONArray("message");
+                            String message = String.valueOf((Object) errorMessage.get(0));
+                            StringUtil.showAlertDialog("Error", message, AssistanceActivity.this);
+
+                        }else if(jsonObj.has("coordinates")) {
+                            //success
+                        }else {
+                            StringUtil.showAlertDialog("Error", "Could not send your coordinates to Intrepid API", AssistanceActivity.this);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+                public void handleError(Exception e){
+                    StringUtil.showAlertDialog("Error", "Could not send your coordinates to Intrepid API", AssistanceActivity.this);
+
+
+                }
+            };
+            String userId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null);
+            ControllerContentTask cct = new ControllerContentTask(
+                    Constants.BASE_URL+"/users/"+userId+"/coordinates/", icc,
+                    Enums.ConnMethod.POST,false);
+
+            JSONObject coordinatesDetails = new JSONObject();
+            JSONArray roles = null;
+            roles = new JSONArray().put("end_user");
+            try {
+                coordinatesDetails.put("latitude", latitude);
+                coordinatesDetails.put("longitude", longitude);
+            } catch (JSONException e1) {
+                e1.printStackTrace();
+            }
+
+            JSONObject coordinate = new JSONObject();
+            try {
+                coordinate.put("coordinate", coordinate);
+            } catch (JSONException e1) {
+                e1.printStackTrace();
+            }
+
+            cct.execute(coordinate.toString());
+            Log.d("coordinate data",coordinate.toString());
+
+        }
 }
