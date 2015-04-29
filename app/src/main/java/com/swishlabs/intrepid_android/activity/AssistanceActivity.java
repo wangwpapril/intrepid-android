@@ -139,8 +139,6 @@ public class AssistanceActivity extends FragmentActivity {
                     Enums.ConnMethod.POST,false);
 
             JSONObject coordinatesDetails = new JSONObject();
-            JSONArray roles = null;
-            roles = new JSONArray().put("end_user");
             try {
                 coordinatesDetails.put("latitude", latitude);
                 coordinatesDetails.put("longitude", longitude);
@@ -150,7 +148,7 @@ public class AssistanceActivity extends FragmentActivity {
 
             JSONObject coordinate = new JSONObject();
             try {
-                coordinate.put("coordinate", coordinate);
+                coordinate.put("coordinate", coordinatesDetails);
             } catch (JSONException e1) {
                 e1.printStackTrace();
             }
