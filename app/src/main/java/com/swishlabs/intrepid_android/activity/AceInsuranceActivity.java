@@ -18,7 +18,7 @@ public class AceInsuranceActivity extends ActionBarActivity implements View.OnCl
     IntrepidMenu mIntrepidMenu;
     Button aceViewBt, pdfViewBt;
     public static AceInsuranceActivity instance;
-    private String mVMPdf;
+    private String mVMPdfUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +32,8 @@ public class AceInsuranceActivity extends ActionBarActivity implements View.OnCl
         pdfViewBt = (Button) findViewById(R.id.butPdf);
         pdfViewBt.setOnClickListener(this);
 
-        mVMPdf = SharedPreferenceUtil.getString(Enums.PreferenceKeys.virtualWalletPdf.toString(), null);
-        if(mVMPdf == null){
+        mVMPdfUrl = SharedPreferenceUtil.getString(Enums.PreferenceKeys.virtualWalletPdf.toString(), null);
+        if(mVMPdfUrl == null){
             pdfViewBt.setVisibility(View.INVISIBLE);
         }
     }
@@ -46,6 +46,9 @@ public class AceInsuranceActivity extends ActionBarActivity implements View.OnCl
             instance.startActivity(mIntent);
 
         } else if (v == pdfViewBt) {
+            Intent mIntent = new Intent(instance, ViewVMPdfActivity.class);
+            mIntent.putExtra("link", mVMPdfUrl);
+            instance.startActivity(mIntent);
 
         }
     }
