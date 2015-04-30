@@ -4,11 +4,14 @@ package com.swishlabs.intrepid_android.customViews;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.swishlabs.intrepid_android.R;
 
@@ -22,6 +25,7 @@ public class IndicatorLinearLayout extends LinearLayout {
     private Context context;
     private int selectedIndex;
     private ViewPager mViewPager;
+    private int totalNum;
 
     public IndicatorLinearLayout(Context context) {
         super(context);
@@ -37,6 +41,7 @@ public class IndicatorLinearLayout extends LinearLayout {
     	this.removeAllViews();
         this.selectedIndex = selectedIndex;
         this.mViewPager = viewPager;
+        this.totalNum = count;
 
         for (int i = 0; i < count; i++) {
             ImageView point = new ImageView(context);
@@ -53,7 +58,6 @@ public class IndicatorLinearLayout extends LinearLayout {
                 @Override
                 public void onClick(View v) {
                     int index = (int) v.getTag();
-                    indicator(index);
                     mViewPager.setCurrentItem(index);
                 }
             });
@@ -72,22 +76,52 @@ public class IndicatorLinearLayout extends LinearLayout {
         invalidate();
     }
 
-/*    @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-        return false;
-    }*/
+    private VelocityTracker mVelocityTracker;
 
-/*    @Override
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
-        return false;
-    }*/
+        if (mVelocityTracker == null) {
+            mVelocityTracker = VelocityTracker.obtain();
+        }
+        mVelocityTracker.addMovement(event);
+        final int action = event.getAction();
+        final float x = event.getRawX();
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
 
-/*    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        onTouchEvent(ev);
-//        return super.dispatchTouchEvent(ev);
-        return false;
-    }*/
+
+                // Remember where the motion event started
+
+                break;
+            case MotionEvent.ACTION_MOVE:
+
+                break;
+            case MotionEvent.ACTION_UP:
+                final VelocityTracker velocityTracker = mVelocityTracker;
+                velocityTracker.computeCurrentVelocity(1000);
+                int velocityX= (int) velocityTracker.getXVelocity();
+                if (velocityX > 150) {
+                    if(selectedIndex < totalNum-1) {
+                        mViewPager.setCurrentItem(selectedIndex+1);
+                    }
+
+                } else if (velocityX < -150) {
+                    if(selectedIndex > 0) {
+                        mViewPager.setCurrentItem(selectedIndex-1);
+                    }
+                }
+
+                if (mVelocityTracker != null) {
+                    mVelocityTracker.recycle();
+                    mVelocityTracker = null;
+                }
+
+                break;
+            case MotionEvent.ACTION_CANCEL:
+
+        }
+        return true;
+    }
 
 
 }
