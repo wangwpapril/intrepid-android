@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
@@ -207,76 +208,67 @@ public class IntrepidMenu extends ScrollView {
     }
 
     public void setupMenu(final Context context, final Activity activity){
-        FrameLayout overviewButton = (FrameLayout)activity.findViewById(R.id.overview_menu_btn);
+        final FrameLayout overviewButton = (FrameLayout)activity.findViewById(R.id.overview_menu_btn);
         overviewButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mIntent = new Intent(context, ViewDestinationActivity.class);
-                activity.startActivity(mIntent);
+                animateButton(overviewButton, context, ViewDestinationActivity.class, activity);
             }
         });
-        FrameLayout securityButton = (FrameLayout)activity.findViewById(R.id.security_menu_btn);
+        final FrameLayout securityButton = (FrameLayout)activity.findViewById(R.id.security_menu_btn);
         securityButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mIntent = new Intent(context, SecurityActivity.class);
-                activity.startActivity(mIntent);
+                animateButton(securityButton, context, SecurityActivity.class, activity);
             }
         });
-        FrameLayout settingsButton = (FrameLayout)activity.findViewById(R.id.settings_menu_btn);
+        final FrameLayout settingsButton = (FrameLayout)activity.findViewById(R.id.settings_menu_btn);
         settingsButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mIntent = new Intent(context, SettingsActivity.class);
-                activity.startActivity(mIntent);
+                animateButton(settingsButton, context, SettingsActivity.class, activity);
             }
         });
-        FrameLayout tripsButton = (FrameLayout)activity.findViewById(R.id.trips_menu_btn);
+        final FrameLayout tripsButton = (FrameLayout)activity.findViewById(R.id.trips_menu_btn);
         tripsButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mIntent = new Intent(context, TripPagesActivity.class);
-                activity.startActivity(mIntent);
+                animateButton(tripsButton, context, TripPagesActivity.class, activity);
             }
         });
-        FrameLayout healthButton = (FrameLayout)activity.findViewById(R.id.health_menu_btn);
+        final FrameLayout healthButton = (FrameLayout)activity.findViewById(R.id.health_menu_btn);
         healthButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mIntent = new Intent(context, ViewHealthActivity.class);
-                activity.startActivity(mIntent);
+                animateButton(healthButton, context, ViewHealthActivity.class, activity);
             }
         });
-        FrameLayout weatherButton = (FrameLayout)activity.findViewById(R.id.weather_menu_btn);
+        final FrameLayout weatherButton = (FrameLayout)activity.findViewById(R.id.weather_menu_btn);
         weatherButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mIntent = new Intent(context, ViewWeatherActivity.class);
-                activity.startActivity(mIntent);
+                animateButton(weatherButton, context, ViewWeatherActivity.class, activity);
             }
         });
-        FrameLayout alertButton = (FrameLayout)activity.findViewById(R.id.alerts_menu_btn);
+        final FrameLayout alertButton = (FrameLayout)activity.findViewById(R.id.alerts_menu_btn);
         alertButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mIntent = new Intent(context, ViewAlertActivity.class);
-                activity.startActivity(mIntent);
+                animateButton(alertButton, context, ViewAlertActivity.class, activity);
             }
         });
-        FrameLayout assistanceButton = (FrameLayout)activity.findViewById(R.id.assistance_menu_btn);
+        final FrameLayout assistanceButton = (FrameLayout)activity.findViewById(R.id.assistance_menu_btn);
         assistanceButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mIntent = new Intent(context, AssistanceActivity.class);
-                activity.startActivity(mIntent);
+                animateButton(assistanceButton, context, AssistanceActivity.class, activity);
             }
         });
-        FrameLayout aceButton = (FrameLayout)activity.findViewById(R.id.insurance_menu_btn);
+        final FrameLayout aceButton = (FrameLayout)activity.findViewById(R.id.insurance_menu_btn);
         aceButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mIntent = new Intent(context, AceInsuranceActivity.class);
-                activity.startActivity(mIntent);
+                animateButton(aceButton, context, AceInsuranceActivity.class, activity);
             }
         });
         ImageButton expandMenu = (ImageButton)activity.findViewById(R.id.expand_menu);
@@ -293,5 +285,46 @@ public class IntrepidMenu extends ScrollView {
 
     }
 
+    protected void animateButton(final FrameLayout button, final Context context, final Class className, final Activity activity){
+        AlphaAnimation anim = new AlphaAnimation(1, 0.5F);
+        anim.setDuration(250);
+        button.startAnimation(anim);
+        anim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                AlphaAnimation anim2 = new AlphaAnimation(0.5F, 1);
+                anim2.setDuration(150);
+                button.startAnimation(anim2);
+                anim2.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        Intent mIntent = new Intent(context, className);
+                        activity.startActivity(mIntent);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+    }
 
 }
