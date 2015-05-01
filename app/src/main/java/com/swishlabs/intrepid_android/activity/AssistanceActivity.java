@@ -97,6 +97,7 @@ public class AssistanceActivity extends FragmentActivity {
             // Use the provider to get the last known location
             location = locationManager.getLastKnownLocation(provider);
         }
+        sendCoordinatesToIntrepid(location.getLongitude(), location.getLatitude());
         return location;
     }
 
