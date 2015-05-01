@@ -79,6 +79,8 @@ public class AssistanceActivity extends FragmentActivity {
                     .build();                   // Creates a CameraPosition from the builder
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
+        }else{
+            StringUtil.showAlertDialog("Error", "Could not retrieve your coordinates", AssistanceActivity.this);
         }
 
     }
