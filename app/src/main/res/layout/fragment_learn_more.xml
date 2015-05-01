@@ -18,7 +18,7 @@
         android:layout_marginTop="10dp"
         android:id="@+id/learnMoreContent"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="17sp"
         android:gravity="top|center_horizontal"
         android:layout_below="@id/learnMoreImage"
         android:paddingLeft="10dp"

@@ -209,6 +209,10 @@ public class LoginActivity extends BaseActivity {
             Intent mIntent = new Intent(LoginActivity.this, LegalActivity.class);
             startActivity(mIntent);
 
+        } else if (v == learnMore){
+            Intent mIntent = new Intent(LoginActivity.this, LearnMoreActivity.class);
+            startActivity(mIntent);
+
         }
 
     }
