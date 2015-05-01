@@ -298,7 +298,7 @@ public class IntrepidMenu extends ScrollView {
             @Override
             public void onAnimationEnd(Animation animation) {
                 AlphaAnimation anim2 = new AlphaAnimation(0.5F, 1);
-                anim2.setDuration(150);
+                anim2.setDuration(250);
                 button.startAnimation(anim2);
                 anim2.setAnimationListener(new Animation.AnimationListener() {
                     @Override
