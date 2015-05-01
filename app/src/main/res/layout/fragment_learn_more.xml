@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.swishlabs.intrepid_android.activity.LearnMoreActivity$PlaceholderFragment">
+
+    <ImageView
+        android:layout_width="310dp"
+        android:layout_height="430dp"
+        android:id="@+id/learnMoreImage"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/learnMoreContent"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:gravity="top|center_horizontal"
+        android:layout_below="@id/learnMoreImage"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        />
+
+</RelativeLayout>

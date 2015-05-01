@@ -42,5 +42,6 @@
     <string name="title_activity_view_ace">ViewAceActivity</string>
     <string name="title_activity_view_vmpdf">ViewVMPdfActivity</string>
     <string name="callIntrepidAssistance">Call Intrepid Assistance</string>
+    <string name="title_activity_learn_more">LearnMoreActivity</string>
 
 </resources>
