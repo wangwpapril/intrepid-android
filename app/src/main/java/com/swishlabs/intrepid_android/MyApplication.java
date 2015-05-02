@@ -70,9 +70,9 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
         SharedPreferenceUtil.setString(Enums.PreferenceKeys.currencyCode.toString(), "");
         SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), false);
         MyApplication.setLoginStatus(false);
+        activity.finish();
         Intent mIntent = new Intent(activity, SplashActivity.class);
         startActivity(mIntent);
-        activity.finish();
     }
 	
 	public DeviceInfoHelper getDeviceInfoHelper(){

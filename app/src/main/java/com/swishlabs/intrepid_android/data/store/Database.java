@@ -31,6 +31,7 @@ public class Database {
     public static final String KEY_CURRENCY_RATE = "currencyRate";
     public static final String KEY_GENERAL_IMAGE_URI = "imageGeneral";
     public static final String KEY_DESTINATION_COUNTRY = "destinationCountry";
+    public static final String KEY_TRIP_USER_ID = "userId";
 
     public static final String KEY_CONDITION_ID = "healthConditionId";
     public static final String KEY_CONDITION_NAME = "healthConditionName";
@@ -106,6 +107,7 @@ public class Database {
                     + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + KEY_DESTINATION_COUNTRY + " TEXT,"
                     + KEY_GENERAL_IMAGE_URI + " TEXT,"
+                    + KEY_TRIP_USER_ID + " TEXT,"
                     + KEY_COUNTRY_ID + " TEXT"+ ")";
             db = sqLiteDatabase;
             db.execSQL(createTripsTable);

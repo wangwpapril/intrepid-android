@@ -14,6 +14,8 @@ import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
+import com.swishlabs.intrepid_android.util.Enums;
+import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 
 import java.util.List;
 
@@ -56,7 +58,7 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
 
         mTripPagesActivity = this;
         loadDatabase();
-        mTripList = DatabaseManager.getTripArray(mDatabase);
+        mTripList = DatabaseManager.getTripArray(mDatabase, SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null));
         mTripCount = mTripList.size();
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
