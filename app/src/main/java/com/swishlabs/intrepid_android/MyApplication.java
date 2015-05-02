@@ -18,6 +18,9 @@ import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.Logger;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -89,6 +92,23 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
         ControllerContentTask cct = new ControllerContentTask(
                 Constants.BASE_URL + "users/logout", icc,
                 Enums.ConnMethod.POST, false);
+        JSONObject user = new JSONObject();
+        try {
+            user.put("id", Enums.PreferenceKeys.userId.toString());
+        } catch (JSONException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+
+        JSONObject logout = new JSONObject();
+        try {
+            logout.put("user", user);
+        } catch (JSONException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+
+        cct.execute(logout.toString());
     }
 	
 	public DeviceInfoHelper getDeviceInfoHelper(){
