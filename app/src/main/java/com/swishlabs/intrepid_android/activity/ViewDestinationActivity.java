@@ -85,7 +85,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle(null);
+        toolbar.setTitle("");
 
 
     }

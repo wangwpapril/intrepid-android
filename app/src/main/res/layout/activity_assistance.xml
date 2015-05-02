@@ -39,14 +39,7 @@
               android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:text="@string/callIntrepidAssistance"
-        android:id="@+id/callIntrepidAssistance"
-        android:layout_below="@id/map"
-        android:textColor="#DFDFDF"
-        android:background="#EE5555"/>
+
 
 
     <include
@@ -56,6 +49,15 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true">
     </include>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:text="@string/callIntrepidAssistance"
+        android:id="@+id/callIntrepidAssistance"
+        android:layout_below="@id/map"
+        android:textColor="#DFDFDF"
+        android:background="#EE5555"/>
 
 </RelativeLayout>
 
