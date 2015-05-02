@@ -2,10 +2,15 @@ package com.swishlabs.intrepid_android;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
+import com.swishlabs.intrepid_android.activity.LoginActivity;
 import com.swishlabs.intrepid_android.data.ServiceManager;
+import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
+import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
+import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.DeviceInfoHelper;
@@ -56,6 +61,35 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
 				
 		System.exit(0);		
 	}
+
+    public void logout(final Activity activity){
+        IControllerContentCallback icc = new IControllerContentCallback() {
+            public void handleSuccess(String content) {
+                SharedPreferenceUtil.setString(Enums.PreferenceKeys.userId.toString(), "");
+                SharedPreferenceUtil.setString(Enums.PreferenceKeys.token.toString(), "");
+                SharedPreferenceUtil.setString(Enums.PreferenceKeys.email.toString(), "");
+                SharedPreferenceUtil.setString(Enums.PreferenceKeys.firstname.toString(), "");
+                SharedPreferenceUtil.setString(Enums.PreferenceKeys.lastname.toString(), "");
+                SharedPreferenceUtil.setString(Enums.PreferenceKeys.username.toString(), "");
+                SharedPreferenceUtil.setString(Enums.PreferenceKeys.countryCode.toString(), "");
+                SharedPreferenceUtil.setString(Enums.PreferenceKeys.currencyCode.toString(), "");
+                SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), false);
+                MyApplication.setLoginStatus(false);
+                Intent mIntent = new Intent(activity.getBaseContext(), LoginActivity.class);
+                startActivity(mIntent);
+                activity.finish();
+            }
+
+            @Override
+            public void handleError(Exception e) {
+
+            }
+        };
+
+        ControllerContentTask cct = new ControllerContentTask(
+                Constants.BASE_URL + "users/logout", icc,
+                Enums.ConnMethod.POST, false);
+    }
 	
 	public DeviceInfoHelper getDeviceInfoHelper(){
 		if(deviceInfoHelper == null)
