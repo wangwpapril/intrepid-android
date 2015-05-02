@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
-import com.swishlabs.intrepid_android.activity.LoginActivity;
+import com.swishlabs.intrepid_android.activity.SplashActivity;
 import com.swishlabs.intrepid_android.data.ServiceManager;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
@@ -70,7 +70,7 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
         SharedPreferenceUtil.setString(Enums.PreferenceKeys.currencyCode.toString(), "");
         SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), false);
         MyApplication.setLoginStatus(false);
-        Intent mIntent = new Intent(activity.getBaseContext(), LoginActivity.class);
+        Intent mIntent = new Intent(activity, SplashActivity.class);
         startActivity(mIntent);
         activity.finish();
     }
