@@ -1,5 +1,6 @@
 package com.swishlabs.intrepid_android.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -156,7 +157,21 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-            MyApplication.getInstance().logout(ViewDestinationActivity.this);
+
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.userId.toString(), "");
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.token.toString(), "");
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.email.toString(), "");
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.firstname.toString(), "");
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.lastname.toString(), "");
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.username.toString(), "");
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.countryCode.toString(), "");
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.currencyCode.toString(), "");
+            SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), false);
+            MyApplication.setLoginStatus(false);
+            Intent mIntent = new Intent(this, LoginActivity.class);
+            startActivity(mIntent);
+            this.finish();
+
             return true;
         }
 
