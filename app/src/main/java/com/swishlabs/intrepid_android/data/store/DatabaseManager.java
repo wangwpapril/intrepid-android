@@ -142,10 +142,6 @@ public class DatabaseManager {
             while (cursor.isAfterLast() == false) {
 //                (int id, String destinationName, String destinationId, String generalImage)
                 String string0 = cursor.getString(0);
-                String test1 = cursor.getString(1);
-                String test2 = cursor.getString(2);
-                String test3 = cursor.getString(3);
-                String test4 = cursor.getString(4);
                 Trip trip = new Trip(Integer.valueOf(string0),cursor.getString(1), cursor.getString(4), cursor.getString(2));
                 tripList.add(trip);
                 cursor.moveToNext();
