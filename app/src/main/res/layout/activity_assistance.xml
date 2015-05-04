@@ -9,6 +9,8 @@
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 tools:context="com.swishlabs.intrepid_android.activity.AssistanceActivity">
+
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -29,12 +31,17 @@
             android:id="@+id/toolbar_title" />
     </android.support.v7.widget.Toolbar>
 
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/toolbar"
+        android:id="@+id/content">
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="300dp"
               android:id="@+id/map"
-              android:layout_below="@id/toolbar"
               tools:context="com.swishlabs.intrepid_android.activity.AssistanceActivity"
               android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
@@ -42,13 +49,7 @@
 
 
 
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        layout="@layout/drawer_menu"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true">
-    </include>
+
 
     <Button
         android:layout_width="fill_parent"
@@ -58,6 +59,16 @@
         android:layout_below="@id/map"
         android:textColor="#DFDFDF"
         android:background="#EE5555"/>
+
+    </RelativeLayout>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        layout="@layout/drawer_menu"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true">
+    </include>
 
 </RelativeLayout>
 
