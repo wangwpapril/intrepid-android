@@ -161,13 +161,15 @@ public class SettingsActivity extends BaseActivity {
 
         SharedPreferenceUtil.setString(Enums.PreferenceKeys.userId.toString(), "");
         SharedPreferenceUtil.setString(Enums.PreferenceKeys.token.toString(), "");
-        SharedPreferenceUtil.setString(Enums.PreferenceKeys.email.toString(),"");
-        SharedPreferenceUtil.setString(Enums.PreferenceKeys.firstname.toString(),"");
-        SharedPreferenceUtil.setString(Enums.PreferenceKeys.lastname.toString(),"");
-        SharedPreferenceUtil.setString(Enums.PreferenceKeys.username.toString(),"");
+        SharedPreferenceUtil.setString(Enums.PreferenceKeys.email.toString(), "");
+        SharedPreferenceUtil.setString(Enums.PreferenceKeys.firstname.toString(), "");
+        SharedPreferenceUtil.setString(Enums.PreferenceKeys.lastname.toString(), "");
+        SharedPreferenceUtil.setString(Enums.PreferenceKeys.username.toString(), "");
+        SharedPreferenceUtil.setString(Enums.PreferenceKeys.countryCode.toString(), "");
+        SharedPreferenceUtil.setString(Enums.PreferenceKeys.currencyCode.toString(), "");
         SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), false);
-
         MyApplication.setLoginStatus(false);
+
 
         Intent mIntent = new Intent(SettingsActivity.this, LoginActivity.class);
         startActivity(mIntent);
