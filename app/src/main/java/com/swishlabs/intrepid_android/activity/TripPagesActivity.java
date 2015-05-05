@@ -69,11 +69,11 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+                mIndicator.updatePageIndicator(position, positionOffset);
             }
 
             @Override
             public void onPageSelected(int position) {
-                mIndicator.indicator(position);
 
             }
 
