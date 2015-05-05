@@ -81,15 +81,8 @@ public class IndicatorLinearLayout extends LinearLayout {
         ImageView currentPoint = points.get(currentPage);
         ImageView nextPoint = points.get(nextSelectedIndex);
         if (positionOffset!=0) {
-
             currentPoint.setAlpha(1.0F - Math.abs(positionOffset * 0.7F));
-            LayoutParams params = (LayoutParams) currentPoint.getLayoutParams();
-            params.width = currentPoint.getWidth() + (int)(0 + positionOffset*5);
-            currentPoint.setLayoutParams(params);
             nextPoint.setAlpha(0.3F + Math.abs(positionOffset * 0.7F));
-            params = (LayoutParams) nextPoint.getLayoutParams();
-            params.width = nextPoint.getWidth() + (int)(0 + positionOffset*5);
-            nextPoint.setLayoutParams(params);
         }
         this.selectedIndex = nextSelectedIndex;
 
