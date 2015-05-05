@@ -71,15 +71,25 @@ public class IndicatorLinearLayout extends LinearLayout {
     }
 
     public void updatePageIndicator(int currentPage, float positionOffset) {
+
         int nextSelectedIndex = currentPage;
         if (positionOffset > 0) {
             nextSelectedIndex = currentPage + 1;
         }else if (positionOffset < 0){
             nextSelectedIndex = currentPage - 1;
         }
+        ImageView currentPoint = points.get(currentPage);
+        ImageView nextPoint = points.get(nextSelectedIndex);
         if (positionOffset!=0) {
-            points.get(currentPage).setAlpha(1.0F - Math.abs(positionOffset * 0.7F));
-            points.get(nextSelectedIndex).setAlpha(0.3F + Math.abs(positionOffset * 0.7F));
+
+            currentPoint.setAlpha(1.0F - Math.abs(positionOffset * 0.7F));
+            LayoutParams params = (LayoutParams) currentPoint.getLayoutParams();
+            params.width = currentPoint.getWidth() + (int)(0 + positionOffset*5);
+            currentPoint.setLayoutParams(params);
+            nextPoint.setAlpha(0.3F + Math.abs(positionOffset * 0.7F));
+            params = (LayoutParams) nextPoint.getLayoutParams();
+            params.width = nextPoint.getWidth() + (int)(0 + positionOffset*5);
+            nextPoint.setLayoutParams(params);
         }
         this.selectedIndex = nextSelectedIndex;
 

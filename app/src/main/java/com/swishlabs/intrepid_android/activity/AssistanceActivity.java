@@ -138,9 +138,10 @@ public class AssistanceActivity extends FragmentActivity {
 
                 }
             };
+            String token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
             String userId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null);
             ControllerContentTask cct = new ControllerContentTask(
-                    Constants.BASE_URL+"/users/"+userId+"/coordinates/", icc,
+                    Constants.BASE_URL+"/users/"+userId+"/coordinates?token="+token, icc,
                     Enums.ConnMethod.POST,false);
 
             JSONObject coordinatesDetails = new JSONObject();

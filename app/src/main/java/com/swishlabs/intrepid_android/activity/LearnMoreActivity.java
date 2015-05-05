@@ -69,7 +69,7 @@ public class LearnMoreActivity extends ActionBarActivity {
         });
 
         mIndicator = (IndicatorLinearLayout) findViewById(R.id.indicator);
-        mIndicator.initPoints(5, 0, mViewPager);
+        mIndicator.initPoints(mLearnMoreContent.size(), 0, mViewPager);
 
         mCloseIv = (ImageView) findViewById(R.id.cancel);
         mCloseIv.setOnClickListener(new View.OnClickListener() {
