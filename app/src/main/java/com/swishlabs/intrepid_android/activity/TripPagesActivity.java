@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.customViews.IndicatorLinearLayout;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
@@ -39,6 +40,7 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
+    IndicatorLinearLayout mIndicator;
 
     public Database getDatabase(){
         return mDatabase;
@@ -63,6 +65,26 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mSectionsPagerAdapter = new SectionsPagerAdapter(mViewPager);
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                mIndicator.updatePageIndicator(position, positionOffset);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        mIndicator = (IndicatorLinearLayout) findViewById(R.id.indicator);
+        mIndicator.initPoints(mTripCount+1, 0, mViewPager);
 
     }
 
