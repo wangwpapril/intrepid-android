@@ -1,7 +1,9 @@
 package com.swishlabs.intrepid_android.activity;
 
 import android.content.Context;
+import android.location.Address;
 import android.location.Criteria;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -27,6 +29,10 @@ import com.swishlabs.intrepid_android.util.StringUtil;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 public class AssistanceActivity extends FragmentActivity {
 
@@ -145,9 +151,28 @@ public class AssistanceActivity extends FragmentActivity {
                     Enums.ConnMethod.POST,false);
 
             JSONObject coordinatesDetails = new JSONObject();
-            try {
+        String country = getApplicationContext().getResources().getConfiguration().locale.getCountry();
+        String cityName = "Not Found";
+        Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
+        try
+        {
+            List<Address> addresses = gcd.getFromLocation(latitude, longitude, 1);
+            if (addresses.size() > 0)
+            {
+                cityName = addresses.get(0).getLocality();
+                // you should also try with addresses.get(0).toSring();
+                System.out.println(cityName);
+            }
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        try {
                 coordinatesDetails.put("latitude", latitude);
                 coordinatesDetails.put("longitude", longitude);
+                coordinatesDetails.put("country", country);
+                coordinatesDetails.put("city", cityName);
             } catch (JSONException e1) {
                 e1.printStackTrace();
             }
@@ -158,9 +183,9 @@ public class AssistanceActivity extends FragmentActivity {
             } catch (JSONException e1) {
                 e1.printStackTrace();
             }
-
-            cct.execute(coordinate.toString());
             Log.d("coordinate data",coordinate.toString());
+            cct.execute(coordinate.toString());
+
 
         }
 }
