@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -68,6 +69,9 @@ public class SecurityActivity extends ActionBarActivity {
         setupTabNames();
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("");
 
 
         // Set up the ViewPager with the sections adapter.
@@ -126,6 +130,7 @@ public class SecurityActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_view_destination, menu);
+        getSupportActionBar().setTitle("");
         return true;
     }
 

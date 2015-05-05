@@ -47,7 +47,7 @@ public class DatabaseManager {
 
     public static ArrayList<HealthConditionDis> getHealthConArray(Database database, String id){
 
-        ArrayList<HealthConditionDis> conList = new ArrayList<>();
+        ArrayList<HealthConditionDis> conList = new ArrayList<HealthConditionDis>();
 
         String countQuery = "SELECT * FROM " + Database.TABLE_HEALTH_CONDITION
                 + " WHERE " + Database.KEY_COUNTRY_ID  +" = " + id;
@@ -71,7 +71,7 @@ public class DatabaseManager {
 
     public static ArrayList<HealthMedicationDis> getHealthMedArray(Database database, String id){
 
-        ArrayList<HealthMedicationDis> medList = new ArrayList<>();
+        ArrayList<HealthMedicationDis> medList = new ArrayList<HealthMedicationDis>();
 
         String countQuery = "SELECT * FROM " + Database.TABLE_HEALTH_MEDICATION
                 + " WHERE " + Database.KEY_COUNTRY_ID  +" = " + id;
@@ -133,16 +133,16 @@ public class DatabaseManager {
         return trip;
     }
 
-    public static ArrayList<Trip> getTripArray(Database database){
-        ArrayList<Trip> tripList= new ArrayList<>();
-        Cursor  cursor = database.getDb().rawQuery("select * from " + Database.TABLE_TRIPS, null);
+    public static ArrayList<Trip> getTripArray(Database database, String user_Id){
+        ArrayList<Trip> tripList= new ArrayList<Trip>();
+        Cursor  cursor = database.getDb().rawQuery("select * from " + Database.TABLE_TRIPS + " WHERE " + Database.KEY_TRIP_USER_ID + " = "+user_Id, null);
 
         if (cursor .moveToFirst()) {
 
             while (cursor.isAfterLast() == false) {
 //                (int id, String destinationName, String destinationId, String generalImage)
                 String string0 = cursor.getString(0);
-                Trip trip = new Trip(Integer.valueOf(string0),cursor.getString(1), cursor.getString(3), cursor.getString(2));
+                Trip trip = new Trip(Integer.valueOf(string0),cursor.getString(1), cursor.getString(4), cursor.getString(2));
                 tripList.add(trip);
                 cursor.moveToNext();
             }
@@ -151,7 +151,7 @@ public class DatabaseManager {
     }
 
     public static ArrayList<Embassy> getEmbassyListArray(Database database, String countryId){
-        ArrayList<Embassy> embassyList= new ArrayList<>();
+        ArrayList<Embassy> embassyList= new ArrayList<Embassy>();
         Cursor cursor = database.getDb().rawQuery("SELECT * FROM "+Database.TABLE_EMBASSY+" WHERE "+Database.KEY_EMBASSY_DESTINATION_ID+"=?" ,
                 new String [] {countryId});
 //        Cursor  cursor = database.getDb().rawQuery("SELECT * FROM " + Database.TABLE_TRIPS + " WHERE "+Database.KEY_EMBASSY_DESTINATION_ID+" = "+'"'+countryId+'"', null);
@@ -220,7 +220,7 @@ public class DatabaseManager {
     }
 
     public static ArrayList<Alert> getAlertList(Database database, String countryCode){
-        ArrayList<Alert> alertList = new ArrayList<>();
+        ArrayList<Alert> alertList = new ArrayList<Alert>();
         Cursor cursor = database.getDb().query(Database.TABLE_ALERT, new String[]{Database.KEY_COUNTRY_CODE,
         Database.KEY_ALERT_CATEGORY, Database.KEY_ALERT_DESCRIPTION, Database.KEY_ALERT_STARTDATE, Database.KEY_ALERT_ENDDATE},
                 Database.KEY_COUNTRY_CODE + "=?", new String[]{countryCode}, null,null,null,null);

@@ -4,15 +4,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -54,13 +50,13 @@ public class LearnMoreActivity extends ActionBarActivity {
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+                mIndicator.updatePageIndicator(position, positionOffset);
             }
 
             @Override
             public void onPageSelected(int position) {
 
-                mIndicator.indicator(position);
+
 
 //                TextView t = (TextView)mViewPager.getChildAt(position).findViewById(R.id.learnMoreContent);
   //              t.setText("test");
@@ -85,7 +81,7 @@ public class LearnMoreActivity extends ActionBarActivity {
     }
 
     private void initContent() {
-        mLearnMoreContent = new ArrayList<>();
+        mLearnMoreContent = new ArrayList<LearnMoreContent>();
         int resId;
         String des;
 

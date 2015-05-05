@@ -2,6 +2,7 @@ package com.swishlabs.intrepid_android.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.util.Linkify;
 import android.view.Menu;
@@ -31,6 +32,9 @@ public class ViewEmbassyActivity extends ActionBarActivity {
         loadDatabase();
         getEmbassyInfo();
         populateEmbassyInfo();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle(null);
         instance = this;
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
         mIntrepidMenu.setupMenu(instance, ViewEmbassyActivity.this);

@@ -11,11 +11,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import com.swishlabs.intrepid_android.R;
-import com.swishlabs.intrepid_android.adapter.AlertListAdapter;
 import com.swishlabs.intrepid_android.adapter.DestinationsListAdapter;
 import com.swishlabs.intrepid_android.customViews.ClearEditText;
 import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
@@ -529,6 +527,7 @@ public class DestinationsListActivity extends BaseActivity {
         values.put(Database.KEY_DESTINATION_COUNTRY, destination.getCountry());
         values.put(Database.KEY_COUNTRY_ID, destination.getId());
         values.put(Database.KEY_GENERAL_IMAGE_URI, generalImageUri);
+        values.put(Database.KEY_TRIP_USER_ID, SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null));
 
 
         mDatabase.getDb().insert(Database.TABLE_TRIPS, null, values);

@@ -2,9 +2,11 @@ package com.swishlabs.intrepid_android;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
+import com.swishlabs.intrepid_android.activity.SplashActivity;
 import com.swishlabs.intrepid_android.data.ServiceManager;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
@@ -56,6 +58,22 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
 				
 		System.exit(0);		
 	}
+
+    public void logout(final Activity activity){
+        SharedPreferenceUtil.setString(Enums.PreferenceKeys.userId.toString(), "");
+        SharedPreferenceUtil.setString(Enums.PreferenceKeys.token.toString(), "");
+        SharedPreferenceUtil.setString(Enums.PreferenceKeys.email.toString(), "");
+        SharedPreferenceUtil.setString(Enums.PreferenceKeys.firstname.toString(), "");
+        SharedPreferenceUtil.setString(Enums.PreferenceKeys.lastname.toString(), "");
+        SharedPreferenceUtil.setString(Enums.PreferenceKeys.username.toString(), "");
+        SharedPreferenceUtil.setString(Enums.PreferenceKeys.countryCode.toString(), "");
+        SharedPreferenceUtil.setString(Enums.PreferenceKeys.currencyCode.toString(), "");
+        SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), false);
+        MyApplication.setLoginStatus(false);
+        activity.finish();
+        Intent mIntent = new Intent(activity, SplashActivity.class);
+        startActivity(mIntent);
+    }
 	
 	public DeviceInfoHelper getDeviceInfoHelper(){
 		if(deviceInfoHelper == null)

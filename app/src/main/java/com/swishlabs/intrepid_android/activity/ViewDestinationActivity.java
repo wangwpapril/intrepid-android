@@ -1,11 +1,13 @@
 package com.swishlabs.intrepid_android.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -18,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.CustomTabContainer;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
@@ -82,6 +85,9 @@ public class ViewDestinationActivity extends ActionBarActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("");
 
 
     }
@@ -150,7 +156,22 @@ public class ViewDestinationActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.userId.toString(), "");
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.token.toString(), "");
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.email.toString(), "");
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.firstname.toString(), "");
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.lastname.toString(), "");
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.username.toString(), "");
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.countryCode.toString(), "");
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.currencyCode.toString(), "");
+            SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), false);
+            MyApplication.setLoginStatus(false);
+            Intent mIntent = new Intent(this, LoginActivity.class);
+            startActivity(mIntent);
+            this.finish();
+
             return true;
         }
 

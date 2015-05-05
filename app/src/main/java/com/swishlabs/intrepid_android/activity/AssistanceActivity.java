@@ -79,6 +79,8 @@ public class AssistanceActivity extends FragmentActivity {
                     .build();                   // Creates a CameraPosition from the builder
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
+        }else{
+            StringUtil.showAlertDialog("Error", "Could not retrieve your coordinates", AssistanceActivity.this);
         }
 
     }
@@ -96,6 +98,9 @@ public class AssistanceActivity extends FragmentActivity {
             String provider = locationManager.getBestProvider(criteria, true);
             // Use the provider to get the last known location
             location = locationManager.getLastKnownLocation(provider);
+        }
+        if (location!=null) {
+            sendCoordinatesToIntrepid(location.getLongitude(), location.getLatitude());
         }
         return location;
     }

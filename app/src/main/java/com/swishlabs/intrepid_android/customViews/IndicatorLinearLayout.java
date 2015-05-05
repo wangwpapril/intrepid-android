@@ -46,10 +46,11 @@ public class IndicatorLinearLayout extends LinearLayout {
         for (int i = 0; i < count; i++) {
             ImageView point = new ImageView(context);
             point.setImageResource(R.drawable.home_indirector_point);
+            point.setSelected(true);
             if (i == selectedIndex) {
-                point.setSelected(true);
+                point.setAlpha(1.0F);
             } else {
-                point.setSelected(false);
+                point.setAlpha(0.3F);
             }
             point.setTag(i);
 
@@ -69,58 +70,19 @@ public class IndicatorLinearLayout extends LinearLayout {
         invalidate();
     }
 
-    public void indicator(int nextSelectedIndex) {
-        points.get(selectedIndex).setSelected(false);
-        points.get(nextSelectedIndex).setSelected(true);
+    public void updatePageIndicator(int currentPage, float positionOffset) {
+        int nextSelectedIndex = currentPage;
+        if (positionOffset > 0) {
+            nextSelectedIndex = currentPage + 1;
+        }else if (positionOffset < 0){
+            nextSelectedIndex = currentPage - 1;
+        }
+        if (positionOffset!=0) {
+            points.get(currentPage).setAlpha(1.0F - Math.abs(positionOffset * 0.7F));
+            points.get(nextSelectedIndex).setAlpha(0.3F + Math.abs(positionOffset * 0.7F));
+        }
         this.selectedIndex = nextSelectedIndex;
-        invalidate();
-    }
 
-    private VelocityTracker mVelocityTracker;
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        if (mVelocityTracker == null) {
-            mVelocityTracker = VelocityTracker.obtain();
-        }
-        mVelocityTracker.addMovement(event);
-        final int action = event.getAction();
-        final float x = event.getRawX();
-        switch (action) {
-            case MotionEvent.ACTION_DOWN:
-
-
-                // Remember where the motion event started
-
-                break;
-            case MotionEvent.ACTION_MOVE:
-
-                break;
-            case MotionEvent.ACTION_UP:
-                final VelocityTracker velocityTracker = mVelocityTracker;
-                velocityTracker.computeCurrentVelocity(1000);
-                int velocityX= (int) velocityTracker.getXVelocity();
-                if (velocityX > 150) {
-                    if(selectedIndex < totalNum-1) {
-                        mViewPager.setCurrentItem(selectedIndex+1);
-                    }
-
-                } else if (velocityX < -150) {
-                    if(selectedIndex > 0) {
-                        mViewPager.setCurrentItem(selectedIndex-1);
-                    }
-                }
-
-                if (mVelocityTracker != null) {
-                    mVelocityTracker.recycle();
-                    mVelocityTracker = null;
-                }
-
-                break;
-            case MotionEvent.ACTION_CANCEL:
-
-        }
-        return true;
     }
 
 

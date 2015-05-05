@@ -70,6 +70,11 @@ public class LoginActivity extends BaseActivity {
 	@Override
 	protected void initTitle(){
 	}
+
+    protected void getAssistanceProvider(Object obj){
+//        JSONObject jsonData = (JSONObject)obj;
+//        String test = "";
+    }
 	
 
 	@Override
@@ -124,8 +129,10 @@ public class LoginActivity extends BaseActivity {
                         String virtualWalletPdf = null;
                         if(userObj.has("company")){
                             Object temp = userObj.getJSONObject("company").get("content");
+                            getAssistanceProvider(temp);
                             if(temp instanceof JSONObject){
                                 virtualWalletPdf = ((JSONObject) temp).optString("virtual_wallet_pdf");
+
                             }
                         }
 
@@ -216,4 +223,6 @@ public class LoginActivity extends BaseActivity {
         }
 
     }
+
+
 }
