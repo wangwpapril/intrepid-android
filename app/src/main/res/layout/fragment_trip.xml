@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tripName"
-            android:text="Trip Name"
+            android:text="A New Trip"
             android:gravity="center"
             android:layout_alignParentBottom="false"
             android:layout_alignParentStart="true"
