@@ -18,6 +18,7 @@ import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallba
 import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.User;
 import com.swishlabs.intrepid_android.data.store.beans.UserTable;
+import com.swishlabs.intrepid_android.util.AndroidLocationServices;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 import com.swishlabs.intrepid_android.util.StringUtil;
@@ -164,6 +165,7 @@ public class LoginActivity extends BaseActivity {
                         SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), true);
 
                         MyApplication.setLoginStatus(true);
+
 
                         Intent mIntent = new Intent(LoginActivity.this, TripPagesActivity.class);
                         startActivity(mIntent);

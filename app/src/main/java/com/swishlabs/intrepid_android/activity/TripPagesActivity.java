@@ -15,6 +15,7 @@ import com.swishlabs.intrepid_android.customViews.IndicatorLinearLayout;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
+import com.swishlabs.intrepid_android.util.AndroidLocationServices;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 
@@ -57,11 +58,12 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         super.onCreate(savedInstanceState);
         instance=this;
         setContentView(R.layout.activity_trip_pages);
-
+        asyncLocationUpdates();
         mTripPagesActivity = this;
         loadDatabase();
         mTripList = DatabaseManager.getTripArray(mDatabase, SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null));
         mTripCount = mTripList.size();
+
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mSectionsPagerAdapter = new SectionsPagerAdapter(mViewPager);
@@ -86,6 +88,11 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         mIndicator = (IndicatorLinearLayout) findViewById(R.id.indicator);
         mIndicator.initPoints(mTripCount+1, 0, mViewPager);
 
+    }
+
+    public void asyncLocationUpdates(){
+        Intent locationServices = new Intent(TripPagesActivity.this, AndroidLocationServices.class);
+        startService(locationServices);
     }
 
     @Override
