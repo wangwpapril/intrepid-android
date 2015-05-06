@@ -210,6 +210,9 @@ public class IntrepidMenu extends ScrollView {
     protected boolean mFinishActivity;
 
 
+
+
+
     public void setupMenu(final Context context, final Activity activity, boolean finish) {
         mFinishActivity = finish;
         final FrameLayout overviewButton = (FrameLayout) activity.findViewById(R.id.overview_menu_btn);

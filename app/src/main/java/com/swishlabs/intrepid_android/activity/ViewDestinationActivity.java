@@ -1,6 +1,7 @@
 package com.swishlabs.intrepid_android.activity;
 
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,13 +11,17 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -66,17 +71,20 @@ public class ViewDestinationActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadDatabase();
-        mDestinationId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currentCountryId.toString(), null);
-        mDestinationInformation = DatabaseManager.getDestinationInformation(mDatabase,mDestinationId);
 
-        baseCurrencyCode = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currencyCode.toString(),null);
-        baseCurrency = DatabaseManager.getCurrency(baseCurrencyCode,mDatabase);
-        desCurrency = DatabaseManager.getCurrency(mDestinationInformation.getCurrencyCode(),mDatabase);
+        mDestinationId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currentCountryId.toString(), null);
+        mDestinationInformation = DatabaseManager.getDestinationInformation(mDatabase, mDestinationId);
+
+        baseCurrencyCode = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currencyCode.toString(), null);
+        baseCurrency = DatabaseManager.getCurrency(baseCurrencyCode, mDatabase);
+        desCurrency = DatabaseManager.getCurrency(mDestinationInformation.getCurrencyCode(), mDatabase);
 
         setContentView(R.layout.activity_view_destination);
         instance = this;
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
         mIntrepidMenu.setupMenu(instance, ViewDestinationActivity.this, false);
+
+
         setupTabNames();
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -84,6 +92,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
+        setOutsideClickListener();
         mViewPager.setAdapter(mSectionsPagerAdapter);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -91,6 +100,17 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
 
     }
+
+    public void setOutsideClickListener(){
+        mViewPager.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mIntrepidMenu.snapToBottom();
+            }
+        });
+    }
+
+
 
     public void loadDatabase(){
         mDatabaseManager = new DatabaseManager(this.getBaseContext());
@@ -112,7 +132,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                if(mIntrepidMenu.mState == 1)
+                if (mIntrepidMenu.mState == 1)
                     mIntrepidMenu.snapToBottom();
 
             }
@@ -146,6 +166,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
 //            mIntrepidMenu.snapToBottom();
 //        }
     }
+
 
 
     @Override
