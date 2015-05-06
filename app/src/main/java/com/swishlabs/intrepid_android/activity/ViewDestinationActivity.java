@@ -142,9 +142,9 @@ public class ViewDestinationActivity extends ActionBarActivity {
     @Override
     public void onResume(){
         super.onResume();
-        if (mIntrepidMenu!=null){
-            mIntrepidMenu.snapToBottom();
-        }
+//        if (mIntrepidMenu!=null){
+//            mIntrepidMenu.snapToBottom();
+//        }
     }
 
 
