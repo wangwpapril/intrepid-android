@@ -127,10 +127,12 @@ public class AssistanceActivity extends FragmentActivity {
                             String message = String.valueOf((Object) errorMessage.get(0));
                             StringUtil.showAlertDialog("Error", message, AssistanceActivity.this);
 
-                        }else if(jsonObj.has("coordinates")) {
+                        }else if(jsonObj.has("coordinate")) {
                             //success
+                            return;
                         }else {
-                            StringUtil.showAlertDialog("Error", "Could not send your coordinates to Intrepid API", AssistanceActivity.this);
+//                            StringUtil.showAlertDialog("Error", "Could not send your coordinates to Intrepid API", AssistanceActivity.this);
+                            return;
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -139,15 +141,16 @@ public class AssistanceActivity extends FragmentActivity {
                 }
 
                 public void handleError(Exception e){
-                    StringUtil.showAlertDialog("Error", "Could not send your coordinates to Intrepid API", AssistanceActivity.this);
+//                    StringUtil.showAlertDialog("Error", "Could not send your coordinates to Intrepid API", AssistanceActivity.this);
 
+                    return;
 
                 }
             };
             String token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
             String userId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null);
             ControllerContentTask cct = new ControllerContentTask(
-                    Constants.BASE_URL+"/users/"+userId+"/coordinates?token="+token, icc,
+                    Constants.BASE_URL+"users/"+userId+"/coordinates?token="+token, icc,
                     Enums.ConnMethod.POST,false);
 
             JSONObject coordinatesDetails = new JSONObject();
@@ -169,10 +172,11 @@ public class AssistanceActivity extends FragmentActivity {
         }
 
         try {
-                coordinatesDetails.put("latitude", String.valueOf(latitude));
-                coordinatesDetails.put("longitude", String.valueOf(longitude));
-                coordinatesDetails.put("country", country);
-                coordinatesDetails.put("city", cityName);
+            coordinatesDetails.put("city", cityName);
+            coordinatesDetails.put("country", country);
+            coordinatesDetails.put("latitude", String.valueOf(latitude));
+            coordinatesDetails.put("longitude", String.valueOf(longitude));
+
             } catch (JSONException e1) {
                 e1.printStackTrace();
             }
