@@ -151,7 +151,7 @@ public class AssistanceActivity extends FragmentActivity {
                     Enums.ConnMethod.POST,false);
 
             JSONObject coordinatesDetails = new JSONObject();
-        String country = getApplicationContext().getResources().getConfiguration().locale.getCountry();
+        String country = getApplicationContext().getResources().getConfiguration().locale.getDisplayCountry();
         String cityName = "Not Found";
         Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
         try
@@ -169,8 +169,8 @@ public class AssistanceActivity extends FragmentActivity {
         }
 
         try {
-                coordinatesDetails.put("latitude", latitude);
-                coordinatesDetails.put("longitude", longitude);
+                coordinatesDetails.put("latitude", String.valueOf(latitude));
+                coordinatesDetails.put("longitude", String.valueOf(longitude));
                 coordinatesDetails.put("country", country);
                 coordinatesDetails.put("city", cityName);
             } catch (JSONException e1) {
