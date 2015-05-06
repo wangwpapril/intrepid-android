@@ -26,17 +26,25 @@
 
     <RelativeLayout
                 android:id="@+id/inputLayout"
-                android:layout_width="260dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-        android:paddingTop="10dip"
                 android:orientation="vertical"
                 android:layout_centerHorizontal="true"
                 android:gravity="center_horizontal"
                 android:layout_below="@+id/toolbar"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp">
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp">
 
+
+          <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/firstNameText"
+                android:layout_marginTop="20dp"
+                android:text="First Name:"
+                android:textColor="@color/white"
+                android:textSize="17sp"/>
 
         <EditText
             android:id="@+id/firstNameEditText"
@@ -44,6 +52,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/firstNameText"
+            android:layout_alignParentEnd="true"
             android:ems="10"
             android:gravity="left"
             android:hint="FIRST NAME"
@@ -52,10 +62,9 @@
             android:textSize="17sp"
             android:background="#00000000"
             android:inputType="text"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="35dp"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="20dp">
+            android:layout_marginRight="0dp">
 
         </EditText>
 
@@ -67,17 +76,31 @@
             android:layout_alignParentStart="false"
             android:layout_alignParentEnd="false"
             android:background="@color/gray"
-            android:layout_alignParentLeft="false"
-            android:layout_marginLeft="20dp"
+            android:layout_alignStart="@+id/firstNameEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/firstNameEditText"
-            android:layout_marginRight="20dp" />
+            android:layout_marginRight="0dp" />
 
-        <EditText
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lastNameText"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/firstNameText"
+                android:text="Last Name:"
+                android:textColor="@color/white"
+                android:textSize="17sp"/>
+
+
+            <EditText
             android:id="@+id/lastNameEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+                android:layout_toEndOf="@+id/lastNameText"
+                android:layout_below="@+id/firstNameEditText"
             android:ems="10"
             android:gravity="left"
             android:textColorHint="@color/white"
@@ -87,10 +110,9 @@
             android:background="#00000000"
             android:inputType="text"
             android:layout_alignParentLeft="false"
-            android:layout_marginLeft="20dp"
+            android:layout_alignStart="@+id/firstNameEditText"
             android:layout_alignParentTop="false"
-            android:layout_below="@+id/firstNameEditText"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="0dp"
             android:layout_marginTop="20dp">
 
         </EditText>
@@ -102,20 +124,32 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:background="@color/gray"
-            android:layout_alignParentLeft="false"
-            android:layout_marginLeft="20dp"
+            android:layout_alignStart="@+id/lastNameEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/lastNameEditText"
-            android:layout_marginRight="20dp" />
+            android:layout_marginRight="0dp" />
 
 
-        <EditText
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/emailText"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/lastNameText"
+                android:text="Email:"
+                android:textColor="@color/white"
+                android:textSize="17sp"/>
+
+
+            <EditText
             android:id="@+id/emailEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:ems="10"
+                android:layout_below="@+id/lastNameEditText"
+                android:layout_alignStart="@+id/lastNameEditText"
+            android:ems="20"
             android:gravity="left"
             android:hint="EMAIL"
             android:textColorHint="@color/white"
@@ -123,11 +157,9 @@
             android:textSize="17sp"
             android:background="#00000000"
             android:inputType="textEmailAddress"
-            android:layout_alignParentLeft="false"
-            android:layout_marginLeft="20dp"
+            android:layout_toEndOf="@+id/emailText"
             android:layout_alignParentTop="false"
-            android:layout_below="@+id/lastNameEditText"
-            android:layout_marginRight="20dp">
+             android:layout_marginRight="0dp">
 
         </EditText>
 
@@ -137,12 +169,20 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:background="@color/gray"
-            android:layout_alignParentLeft="false"
-            android:layout_marginLeft="20dp"
+            android:layout_alignStart="@+id/emailEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/emailEditText"
-            android:layout_marginRight="20dp" />
+            android:layout_marginRight="0dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/userNameText"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/emailText"
+            android:text="Username:"
+            android:textColor="@color/white"
+            android:textSize="17sp"/>
 
 
         <EditText
@@ -150,6 +190,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_toEndOf="@+id/userNameText"
             android:layout_marginTop="20dp"
             android:ems="10"
             android:gravity="left"
@@ -160,10 +201,10 @@
             android:background="#00000000"
             android:inputType="text"
             android:layout_alignParentLeft="false"
-            android:layout_marginLeft="20dp"
+            android:layout_alignStart="@+id/emailEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/emailEditText"
-            android:layout_marginRight="20dp">
+            android:layout_marginRight="0dp">
 
         </EditText>
         <TextView
@@ -173,10 +214,21 @@
             android:layout_weight="1"
             android:background="@color/gray"
             android:layout_alignParentLeft="false"
-            android:layout_marginLeft="20dp"
+            android:layout_alignStart="@+id/userNameEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/userNameEditText"
-            android:layout_marginRight="20dp" />
+            android:layout_marginRight="0dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/oldPasswordText"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/userNameText"
+            android:text="Old Password:"
+            android:textColor="@color/white"
+            android:textSize="17sp"/>
 
 
         <EditText
@@ -185,19 +237,20 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/oldPasswordText"
             android:ems="10"
             android:gravity="left"
-            android:hint="OLD PASSWORD"
+            android:hint="(Optional)"
             android:textColorHint="@color/white"
             android:textSize="17sp"
             android:textColor="@color/white"
             android:background="#00000000"
             android:inputType="textPassword"
             android:layout_alignParentLeft="false"
-            android:layout_marginLeft="20dp"
+            android:layout_alignStart="@+id/userNameEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/userNameEditText"
-            android:layout_marginRight="20dp">
+            android:layout_marginRight="0dp">
 
         </EditText>
         <TextView
@@ -207,10 +260,21 @@
             android:layout_weight="1"
             android:background="@color/gray"
             android:layout_alignParentLeft="false"
-            android:layout_marginLeft="20dp"
+            android:layout_alignStart="@+id/oldPasswordEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/oldPasswordEditText"
-            android:layout_marginRight="20dp" />
+            android:layout_marginRight="0dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/newPasswordText"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/oldPasswordText"
+            android:text="New Password:"
+            android:textColor="@color/white"
+            android:textSize="17sp"/>
+
 
         <EditText
             android:id="@+id/newPasswordEditText"
@@ -218,19 +282,20 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/newPasswordText"
             android:ems="10"
             android:gravity="left"
-            android:hint="NEW PASSWORD"
+            android:hint="(Optional)"
             android:textColorHint="@color/white"
             android:textSize="17sp"
             android:textColor="@color/white"
             android:background="#00000000"
             android:inputType="textPassword"
             android:layout_alignParentLeft="false"
-            android:layout_marginLeft="20dp"
+            android:layout_alignStart="@+id/oldPasswordEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/oldPasswordEditText"
-            android:layout_marginRight="20dp">
+            android:layout_marginRight="0dp">
 
         </EditText>
         <TextView
@@ -240,10 +305,10 @@
             android:layout_weight="1"
             android:background="@color/gray"
             android:layout_alignParentLeft="false"
-            android:layout_marginLeft="20dp"
+            android:layout_alignStart="@+id/newPasswordEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/newPasswordEditText"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="0dp"
             android:textSize="17sp" />
 
        </RelativeLayout>
