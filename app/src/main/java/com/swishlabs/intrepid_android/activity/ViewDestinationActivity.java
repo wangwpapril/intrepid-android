@@ -92,7 +92,6 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        setOutsideClickListener();
         mViewPager.setAdapter(mSectionsPagerAdapter);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -101,14 +100,6 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
     }
 
-    public void setOutsideClickListener(){
-        mViewPager.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mIntrepidMenu.snapToBottom();
-            }
-        });
-    }
 
 
 
