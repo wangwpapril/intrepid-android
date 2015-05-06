@@ -183,7 +183,6 @@ public class AssistanceActivity extends FragmentActivity {
             } catch (JSONException e1) {
                 e1.printStackTrace();
             }
-            Log.d("coordinate data",coordinate.toString());
             cct.execute(coordinate.toString());
 
 
