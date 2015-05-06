@@ -104,7 +104,12 @@ public class AssistanceActivity extends FragmentActivity {
             String provider = locationManager.getBestProvider(criteria, true);
             // Use the provider to get the last known location
             location = locationManager.getLastKnownLocation(provider);
+
+            if(location == null){
+                location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            }
         }
+
         if (location!=null) {
             sendCoordinatesToIntrepid(location.getLongitude(), location.getLatitude());
         }
