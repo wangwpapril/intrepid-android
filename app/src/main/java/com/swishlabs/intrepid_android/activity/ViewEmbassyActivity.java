@@ -37,7 +37,7 @@ public class ViewEmbassyActivity extends ActionBarActivity {
         toolbar.setTitle(null);
         instance = this;
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
-        mIntrepidMenu.setupMenu(instance, ViewEmbassyActivity.this);
+        mIntrepidMenu.setupMenu(instance, ViewEmbassyActivity.this, true);
     }
 
     public void loadDatabase() {

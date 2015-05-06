@@ -207,83 +207,89 @@ public class IntrepidMenu extends ScrollView {
         return pixels;
     }
 
-    public void setupMenu(final Context context, final Activity activity){
-        final FrameLayout overviewButton = (FrameLayout)activity.findViewById(R.id.overview_menu_btn);
+    protected boolean mFinishActivity;
+
+
+    public void setupMenu(final Context context, final Activity activity, boolean finish) {
+        mFinishActivity = finish;
+        final FrameLayout overviewButton = (FrameLayout) activity.findViewById(R.id.overview_menu_btn);
         overviewButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 animateButton(overviewButton, context, ViewDestinationActivity.class, activity);
             }
         });
-        final FrameLayout securityButton = (FrameLayout)activity.findViewById(R.id.security_menu_btn);
+        final FrameLayout securityButton = (FrameLayout) activity.findViewById(R.id.security_menu_btn);
         securityButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 animateButton(securityButton, context, SecurityActivity.class, activity);
             }
         });
-        final FrameLayout settingsButton = (FrameLayout)activity.findViewById(R.id.settings_menu_btn);
+        final FrameLayout settingsButton = (FrameLayout) activity.findViewById(R.id.settings_menu_btn);
         settingsButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 animateButton(settingsButton, context, SettingsActivity.class, activity);
             }
         });
-        final FrameLayout tripsButton = (FrameLayout)activity.findViewById(R.id.trips_menu_btn);
+        final FrameLayout tripsButton = (FrameLayout) activity.findViewById(R.id.trips_menu_btn);
         tripsButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 animateButton(tripsButton, context, TripPagesActivity.class, activity);
             }
         });
-        final FrameLayout healthButton = (FrameLayout)activity.findViewById(R.id.health_menu_btn);
+        final FrameLayout healthButton = (FrameLayout) activity.findViewById(R.id.health_menu_btn);
         healthButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 animateButton(healthButton, context, ViewHealthActivity.class, activity);
             }
         });
-        final FrameLayout weatherButton = (FrameLayout)activity.findViewById(R.id.weather_menu_btn);
+        final FrameLayout weatherButton = (FrameLayout) activity.findViewById(R.id.weather_menu_btn);
         weatherButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 animateButton(weatherButton, context, ViewWeatherActivity.class, activity);
             }
         });
-        final FrameLayout alertButton = (FrameLayout)activity.findViewById(R.id.alerts_menu_btn);
+        final FrameLayout alertButton = (FrameLayout) activity.findViewById(R.id.alerts_menu_btn);
         alertButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 animateButton(alertButton, context, ViewAlertActivity.class, activity);
             }
         });
-        final FrameLayout assistanceButton = (FrameLayout)activity.findViewById(R.id.assistance_menu_btn);
+        final FrameLayout assistanceButton = (FrameLayout) activity.findViewById(R.id.assistance_menu_btn);
         assistanceButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 animateButton(assistanceButton, context, AssistanceActivity.class, activity);
             }
         });
-        final FrameLayout aceButton = (FrameLayout)activity.findViewById(R.id.insurance_menu_btn);
+        final FrameLayout aceButton = (FrameLayout) activity.findViewById(R.id.insurance_menu_btn);
         aceButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 animateButton(aceButton, context, AceInsuranceActivity.class, activity);
             }
         });
-        ImageButton expandMenu = (ImageButton)activity.findViewById(R.id.expand_menu);
+        ImageButton expandMenu = (ImageButton) activity.findViewById(R.id.expand_menu);
         expandMenu.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (mState == 0) {
                     snapToTop();
-                }else{
+                } else {
                     snapToBottom();
                 }
             }
         });
 
+
     }
+
 
     protected void animateButton(final FrameLayout button, final Context context, final Class className, final Activity activity){
         AlphaAnimation anim = new AlphaAnimation(1, 0.5F);
@@ -310,6 +316,9 @@ public class IntrepidMenu extends ScrollView {
                     public void onAnimationEnd(Animation animation) {
                         Intent mIntent = new Intent(context, className);
                         activity.startActivity(mIntent);
+                        if (mFinishActivity) {
+                            activity.finish();
+                        }
                     }
 
                     @Override

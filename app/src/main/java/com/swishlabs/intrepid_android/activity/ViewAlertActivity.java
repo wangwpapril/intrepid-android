@@ -47,7 +47,7 @@ public class ViewAlertActivity extends ActionBarActivity {
 
         setContentView(R.layout.activity_view_alert);
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
-        mIntrepidMenu.setupMenu(instance,instance);
+        mIntrepidMenu.setupMenu(instance,instance,true);
 
         mAlertListLv = (ListView) findViewById(R.id.alerts_list);
 

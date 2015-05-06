@@ -76,7 +76,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
         setContentView(R.layout.activity_view_destination);
         instance = this;
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
-        mIntrepidMenu.setupMenu(instance, ViewDestinationActivity.this);
+        mIntrepidMenu.setupMenu(instance, ViewDestinationActivity.this, false);
         setupTabNames();
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -139,6 +139,13 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        if (mIntrepidMenu!=null){
+            mIntrepidMenu.snapToBottom();
+        }
+    }
 
 
     @Override

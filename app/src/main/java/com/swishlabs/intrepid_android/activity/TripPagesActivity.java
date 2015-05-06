@@ -58,7 +58,7 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         super.onCreate(savedInstanceState);
         instance=this;
         setContentView(R.layout.activity_trip_pages);
-        asyncLocationUpdates();
+
         mTripPagesActivity = this;
         loadDatabase();
         mTripList = DatabaseManager.getTripArray(mDatabase, SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null));
@@ -90,10 +90,7 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
 
     }
 
-    public void asyncLocationUpdates(){
-        Intent locationServices = new Intent(TripPagesActivity.this, AndroidLocationServices.class);
-        startService(locationServices);
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

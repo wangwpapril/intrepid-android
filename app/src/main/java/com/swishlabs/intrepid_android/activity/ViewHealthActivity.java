@@ -80,7 +80,7 @@ public class ViewHealthActivity extends ActionBarActivity {
         setContentView(R.layout.activity_view_health);
         instance = this;
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
-        mIntrepidMenu.setupMenu(instance, ViewHealthActivity.this);
+        mIntrepidMenu.setupMenu(instance, ViewHealthActivity.this, true);
         setupTabNames();
         loadDatabase();
 

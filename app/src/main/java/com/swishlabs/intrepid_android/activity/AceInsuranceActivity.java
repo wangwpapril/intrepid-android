@@ -26,7 +26,7 @@ public class AceInsuranceActivity extends ActionBarActivity implements View.OnCl
         instance = this;
         setContentView(R.layout.activity_ace_insurance);
         mIntrepidMenu = (IntrepidMenu) findViewById(R.id.intrepidMenu);
-        mIntrepidMenu.setupMenu(this, this);
+        mIntrepidMenu.setupMenu(this, this, true);
         aceViewBt = (Button) findViewById(R.id.butAceView);
         aceViewBt.setOnClickListener(this);
         pdfViewBt = (Button) findViewById(R.id.butPdf);

@@ -19,7 +19,9 @@ public class ServiceManager {
 /*    public static NetworkService getNetworkService() {
         return networkService;
     }
-*/    
+
+
+*/
     public static DatabaseManager getDatabaseManager() {
         return databaseManager;
     }

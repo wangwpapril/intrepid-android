@@ -65,7 +65,7 @@ public class SecurityActivity extends ActionBarActivity {
         setContentView(R.layout.activity_view_destination);
         instance = this;
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
-        mIntrepidMenu.setupMenu(instance, SecurityActivity.this);
+        mIntrepidMenu.setupMenu(instance, SecurityActivity.this, true);
         setupTabNames();
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());

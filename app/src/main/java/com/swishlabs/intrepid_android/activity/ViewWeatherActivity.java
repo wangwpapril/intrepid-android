@@ -62,7 +62,7 @@ public class ViewWeatherActivity extends ActionBarActivity {
 
         instance = this;
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
-        mIntrepidMenu.setupMenu(instance,instance);
+        mIntrepidMenu.setupMenu(instance,instance, true);
     }
 
     public static Location getLocation(Activity context) {

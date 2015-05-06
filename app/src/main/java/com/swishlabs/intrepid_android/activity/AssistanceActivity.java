@@ -46,7 +46,7 @@ public class AssistanceActivity extends FragmentActivity {
         setContentView(R.layout.activity_assistance);
         setUpMapIfNeeded();
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
-        mIntrepidMenu.setupMenu(this, AssistanceActivity.this);
+        mIntrepidMenu.setupMenu(this, AssistanceActivity.this, true);
     }
 
     @Override
