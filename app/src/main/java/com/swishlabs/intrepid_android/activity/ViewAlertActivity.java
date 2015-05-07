@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.adapter.AlertListAdapter;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
@@ -37,6 +38,7 @@ public class ViewAlertActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyApplication.getInstance().addActivity(this);
         instance = this;
         Common.context = this;
         loadDatabase();

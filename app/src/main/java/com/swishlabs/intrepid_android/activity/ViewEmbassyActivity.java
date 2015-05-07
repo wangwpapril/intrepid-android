@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
 import com.swishlabs.intrepid_android.data.api.model.Embassy;
@@ -28,6 +29,7 @@ public class ViewEmbassyActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyApplication.getInstance().addActivity(this);
         setContentView(R.layout.activity_view_embassy);
         loadDatabase();
         getEmbassyInfo();

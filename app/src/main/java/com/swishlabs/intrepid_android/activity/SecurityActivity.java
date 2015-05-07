@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.adapter.EmbassyListAdapter;
 import com.swishlabs.intrepid_android.customViews.CustomTabContainer;
@@ -59,6 +60,7 @@ public class SecurityActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyApplication.getInstance().addActivity(this);
         loadDatabase();
         mDestinationId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currentCountryId.toString(), null);
         mDestinationInformation = DatabaseManager.getDestinationInformation(mDatabase, mDestinationId);

@@ -12,6 +12,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
+import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 
 public class ViewVMPdfActivity extends ActionBarActivity implements View.OnClickListener {
@@ -25,6 +26,7 @@ public class ViewVMPdfActivity extends ActionBarActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyApplication.getInstance().addActivity(this);
         instance = this;
         setContentView(R.layout.activity_view_vmpdf);
         mUrl = getIntent().getStringExtra("link");

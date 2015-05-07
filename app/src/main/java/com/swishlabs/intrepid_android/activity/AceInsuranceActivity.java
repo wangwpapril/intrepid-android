@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
 import com.swishlabs.intrepid_android.util.Enums;
@@ -24,6 +25,7 @@ public class AceInsuranceActivity extends ActionBarActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         instance = this;
+        MyApplication.getInstance().addActivity(this);
         setContentView(R.layout.activity_ace_insurance);
         mIntrepidMenu = (IntrepidMenu) findViewById(R.id.intrepidMenu);
         mIntrepidMenu.setupMenu(this, this, true);

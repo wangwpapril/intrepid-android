@@ -63,6 +63,7 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyApplication.getInstance().addActivity(this);
         instance=this;
         setContentView(R.layout.activity_trip_pages);
 
