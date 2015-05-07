@@ -149,7 +149,7 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
 		instance=this;
 		mLock=new Object();
 		ServiceManager.init(this);
-		asyncLocationUpdates();
+//		asyncLocationUpdates();
 		intentHashMap=new HashMap<String, Object>();
 		loginStatus = SharedPreferenceUtil.getBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), false);
 		activityList = new ArrayList<Activity>();

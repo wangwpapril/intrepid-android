@@ -15,6 +15,7 @@ import com.swishlabs.intrepid_android.customViews.IndicatorLinearLayout;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
+import com.swishlabs.intrepid_android.services.LocationService;
 import com.swishlabs.intrepid_android.util.AndroidLocationServices;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
@@ -59,6 +60,8 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         instance=this;
         setContentView(R.layout.activity_trip_pages);
 
+//        startLocationService();
+
         mTripPagesActivity = this;
         loadDatabase();
         mTripList = DatabaseManager.getTripArray(mDatabase, SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null));
@@ -91,6 +94,11 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
     }
 
 
+    public void startLocationService(){
+        Intent locationIntent = new Intent(this, LocationService.class);
+        startService(locationIntent);
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -148,8 +148,14 @@
         <activity
             android:name=".activity.LearnMoreActivity"
             android:label="@string/title_activity_learn_more"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
+
+        <service
+            android:name=".services.LocationService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>
