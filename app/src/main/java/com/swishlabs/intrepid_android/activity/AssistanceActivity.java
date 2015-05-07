@@ -160,7 +160,7 @@ public class AssistanceActivity extends FragmentActivity {
 
             JSONObject coordinatesDetails = new JSONObject();
         String country = getApplicationContext().getResources().getConfiguration().locale.getDisplayCountry();
-        String cityName = "Not Found";
+        String cityName = null;
         Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
         try
         {
@@ -169,11 +169,18 @@ public class AssistanceActivity extends FragmentActivity {
             {
                 cityName = addresses.get(0).getLocality();
                 // you should also try with addresses.get(0).toSring();
+                if(cityName == null){
+                    cityName = addresses.get(0).getSubLocality();
+                }
                 System.out.println(cityName);
             }
         } catch (IOException e)
         {
             e.printStackTrace();
+        }
+
+        if(cityName == null){
+            cityName = "Not Found";
         }
 
         try {
