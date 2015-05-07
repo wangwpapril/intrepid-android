@@ -34,6 +34,7 @@ import java.util.logging.LogRecord;
 
 public class LocationService extends Service {
     private static final int MESSAGE_AUTO_SEND_LOCATION = 1;
+    public static final String ACTION_REPORT_POSITION = "Report Position";
     private static final long INTERVAL = 2700000;
 
     private Timer mTimer = new Timer();
@@ -54,12 +55,31 @@ public class LocationService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        
-        initTimer();
+        Log.e("onStartCommand,startId=", String.valueOf(startId));
 
-        token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
+        if(token == null)
+            token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
+        if(userId == null)
+            userId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null);
 
-        userId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null);
+        if(token == null || userId == null)
+            return super.onStartCommand(intent,flags,startId);
+
+        if (intent != null) {
+            String action = intent.getAction();
+
+            if(action != null) {
+                Log.e("action=", action);
+                if(ACTION_REPORT_POSITION.equals(action)){
+                    final Location mLocation = getCurrentLocation();
+                    if(mLocation != null){
+                        sendCoordinatesToIntrepid(mLocation.getLongitude(), mLocation.getLatitude());
+                    }
+
+                }
+            }
+        }
+//        initTimer();
 
         return super.onStartCommand(intent, flags, startId);
 
@@ -101,7 +121,7 @@ public class LocationService extends Service {
         Criteria criteria = new Criteria();
 
         Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
-        //The following code gets the next best location if the current location is unavaiable through standard API
+        //The following code gets the next best location if the current location is unavailable through standard API
         if (location == null) {
             Criteria criteriaTest = new Criteria();
             criteriaTest.setAccuracy(Criteria.ACCURACY_COARSE);
@@ -115,11 +135,8 @@ public class LocationService extends Service {
             }
 
         }
- //       if (location!=null) {
-//            Log.e("Location is not null", "Sending");
- //           sendCoordinatesToIntrepid(location.getLongitude(), location.getLatitude());
-   //     }
-        return location;
+
+         return location;
     }
 
     private void sendCoordinatesToIntrepid(double longitude, double latitude){
@@ -128,21 +145,18 @@ public class LocationService extends Service {
             public void handleSuccess(String content){
 
                 JSONObject jsonObj = null;
-                Log.d("signUp user", content);
+                Log.d("Location", content);
 
                 try {
                     jsonObj = new JSONObject(content);
                     if(jsonObj.has("error")) {
-                        JSONArray errorMessage = jsonObj.getJSONObject("error").getJSONArray("message");
-                        String message = String.valueOf((Object) errorMessage.get(0));
- //                       StringUtil.showAlertDialog("Error", message, AssistanceActivity.this);
-
+                        return;
                     }else if(jsonObj.has("coordinate")) {
                         //success
                         Log.e("Location sending:", "Success!");
                         return;
                     }else {
-//                            StringUtil.showAlertDialog("Error", "Could not send your coordinates to Intrepid API", AssistanceActivity.this);
+
                         return;
                     }
                 } catch (JSONException e) {
@@ -152,8 +166,6 @@ public class LocationService extends Service {
             }
 
             public void handleError(Exception e){
-//                    StringUtil.showAlertDialog("Error", "Could not send your coordinates to Intrepid API", AssistanceActivity.this);
-
                 return;
 
             }
@@ -193,7 +205,6 @@ public class LocationService extends Service {
         if(country == null){
             country = "Not Found";
         }
-
 
         try {
             coordinatesDetails.put("city", cityName);

@@ -1,5 +1,7 @@
 package com.swishlabs.intrepid_android.activity;
 
+import android.app.AlarmManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -33,6 +35,7 @@ import com.swishlabs.intrepid_android.data.api.model.Currency;
 import com.swishlabs.intrepid_android.data.api.model.DestinationInformation;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
+import com.swishlabs.intrepid_android.services.LocationService;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.ImageLoader;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
@@ -187,6 +190,10 @@ public class ViewDestinationActivity extends ActionBarActivity {
             SharedPreferenceUtil.setString(Enums.PreferenceKeys.currencyCode.toString(), "");
             SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), false);
             MyApplication.setLoginStatus(false);
+
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            alarmManager.cancel(TripPagesActivity.pendingIntent);
+
             Intent mIntent = new Intent(this, LoginActivity.class);
             startActivity(mIntent);
             this.finish();
