@@ -123,9 +123,8 @@ public class AssistanceActivity extends FragmentActivity {
             IControllerContentCallback icc = new IControllerContentCallback() {
                 public void handleSuccess(String content){
 
-                    JSONObject jsonObj = null, coordObj = null;
-                    User user = null;
-                    Log.d("signUp user", content);
+                    JSONObject jsonObj = null;
+                    Log.d("Assistance", content);
 
                     try {
                         jsonObj = new JSONObject(content);
@@ -185,6 +184,10 @@ public class AssistanceActivity extends FragmentActivity {
             cityName = "Not Found";
         }
 
+        if(country == null){
+            country = "Not Found";
+        }
+
         try {
             coordinatesDetails.put("city", cityName);
             coordinatesDetails.put("country", country);
@@ -205,4 +208,15 @@ public class AssistanceActivity extends FragmentActivity {
 
 
         }
+
+    @Override
+    public void onBackPressed(){
+        if(mIntrepidMenu.mState == 1){
+            mIntrepidMenu.snapToBottom();
+            return;
+        }
+        super.onBackPressed();
+
+    }
+
 }
