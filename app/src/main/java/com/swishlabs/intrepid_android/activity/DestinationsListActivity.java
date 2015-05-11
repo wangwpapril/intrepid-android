@@ -541,6 +541,7 @@ public class DestinationsListActivity extends BaseActivity {
         intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("destinationId", destination.getId());
+        intent.putExtra("firstTimeFlag","1");
         startActivity(intent);
 
     }
