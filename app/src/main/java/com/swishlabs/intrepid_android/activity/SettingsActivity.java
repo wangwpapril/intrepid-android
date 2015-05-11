@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
 import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
@@ -51,6 +52,7 @@ public class SettingsActivity extends BaseActivity {
 	private EditText etNewPassword;
 	private Button btnUpdate;
 	private TextView signOut;
+    private IntrepidMenu mIntrepidMenu;
 	
 	private String firstName = null;
 	private String lastName = null;
@@ -99,6 +101,9 @@ public class SettingsActivity extends BaseActivity {
 		signOut = (TextView) findViewById(R.id.sign_out);
 		signOut.setOnClickListener(this);
 		signOut.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+
+        mIntrepidMenu = (IntrepidMenu) findViewById(R.id.intrepidMenu);
+        mIntrepidMenu.setupMenu(this, this, true);
 
 	}
 	
@@ -310,9 +315,18 @@ public class SettingsActivity extends BaseActivity {
 		}
 		
 		cct.execute(update.toString());
-        Log.d("updateProfile data",update.toString());
+        Log.d("updateProfile data", update.toString());
 
 	}
-	
+
+    @Override
+    public void onBackPressed(){
+        if(mIntrepidMenu.mState == 1){
+            mIntrepidMenu.snapToBottom();
+            return;
+        }
+        super.onBackPressed();
+
+    }
 
 }

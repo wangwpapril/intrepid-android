@@ -349,4 +349,13 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/butUpdate"
         android:linksClickable="false" />
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        layout="@layout/drawer_menu"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true">
+    </include>
+
 </RelativeLayout>
