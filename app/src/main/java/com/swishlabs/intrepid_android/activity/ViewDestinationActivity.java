@@ -195,6 +195,8 @@ public class ViewDestinationActivity extends ActionBarActivity {
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             alarmManager.cancel(TripPagesActivity.pendingIntent);
 
+            mDatabaseManager.deleteDatabase("Intrepid.db");
+
             Intent mIntent = new Intent(this, LoginActivity.class);
             startActivity(mIntent);
             this.finish();
@@ -513,6 +515,16 @@ public class ViewDestinationActivity extends ActionBarActivity {
             return result;
 
         }
+
+    }
+
+    @Override
+    public void onBackPressed(){
+        if(mIntrepidMenu.mState == 1){
+            mIntrepidMenu.snapToBottom();
+            return;
+        }
+        super.onBackPressed();
 
     }
 

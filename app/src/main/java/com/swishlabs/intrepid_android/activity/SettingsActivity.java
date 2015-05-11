@@ -177,6 +177,8 @@ public class SettingsActivity extends BaseActivity {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(TripPagesActivity.pendingIntent);
 
+        mDatabaseManager.deleteDatabase("Intrepid.db");
+
         Intent mIntent = new Intent(SettingsActivity.this, LoginActivity.class);
         startActivity(mIntent);
         SettingsActivity.this.finish();

@@ -37,6 +37,12 @@ public class DatabaseManager {
         }
     }
 
+    public void deleteDatabase(String name){
+        if(dbCache.containsKey(name)){
+            context.deleteDatabase(name);
+        }
+    }
+
     public static int getHealthConCount(Database database, String id){
         String countQuery = "SELECT * FROM " + Database.TABLE_HEALTH_CONDITION
                 + " WHERE " + Database.KEY_COUNTRY_ID  +" = " + id;
