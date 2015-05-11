@@ -251,5 +251,14 @@ public class DatabaseManager {
         database.getDb().delete(Database.TABLE_ALERT, Database.KEY_COUNTRY_CODE + "=" + countrycode, null);
     }
 
+    public static void deleteAllAlerts(Database database){
+        database.getDb().delete(Database.TABLE_ALERT, null, null);
+    }
+
+    public static void deleteAllTrips(Database database){
+        database.getDb().delete(Database.TABLE_TRIPS, null, null);
+    }
+
+
 
 }
