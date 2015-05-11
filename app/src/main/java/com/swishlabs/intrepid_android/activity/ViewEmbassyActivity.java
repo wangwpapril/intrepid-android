@@ -149,4 +149,15 @@ public class ViewEmbassyActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed(){
+        if(mIntrepidMenu.mState == 1){
+            mIntrepidMenu.snapToBottom();
+            return;
+        }
+        super.onBackPressed();
+
+    }
+
 }

@@ -292,4 +292,15 @@ public class SecurityActivity extends ActionBarActivity {
             });
         }
     }
+
+    @Override
+    public void onBackPressed(){
+        if(mIntrepidMenu.mState == 1){
+            mIntrepidMenu.snapToBottom();
+            return;
+        }
+        super.onBackPressed();
+
+    }
+
 }

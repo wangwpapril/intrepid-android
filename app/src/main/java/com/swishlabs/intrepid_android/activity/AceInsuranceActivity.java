@@ -54,4 +54,15 @@ public class AceInsuranceActivity extends ActionBarActivity implements View.OnCl
 
         }
     }
+
+    @Override
+    public void onBackPressed(){
+        if(mIntrepidMenu.mState == 1){
+            mIntrepidMenu.snapToBottom();
+            return;
+        }
+        super.onBackPressed();
+
+    }
+
 }

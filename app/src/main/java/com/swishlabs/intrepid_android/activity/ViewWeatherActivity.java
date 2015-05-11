@@ -139,5 +139,14 @@ public class ViewWeatherActivity extends ActionBarActivity {
         return super.onKeyDown(keyCode,event);
     }
 
+    @Override
+    public void onBackPressed(){
+        if(mIntrepidMenu.mState == 1){
+            mIntrepidMenu.snapToBottom();
+            return;
+        }
+        super.onBackPressed();
+
+    }
 
 }
