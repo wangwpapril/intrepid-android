@@ -64,7 +64,7 @@ public class SecurityActivity extends ActionBarActivity {
         loadDatabase();
         mDestinationId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currentCountryId.toString(), null);
         mDestinationInformation = DatabaseManager.getDestinationInformation(mDatabase, mDestinationId);
-        setContentView(R.layout.activity_view_destination);
+        setContentView(R.layout.activity_view_security);
         instance = this;
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
         mIntrepidMenu.setupMenu(instance, SecurityActivity.this, true);
@@ -109,8 +109,8 @@ public class SecurityActivity extends ActionBarActivity {
     }
 
     protected void setupTabNames() {
-        tabNames.add("Security");
-        tabNames.add("Embassies");
+        tabNames.add("SAFETY");
+        tabNames.add("EMBASSY");
     }
 
     @Override

@@ -8,6 +8,7 @@ import android.text.util.Linkify;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,7 +24,6 @@ public class ViewEmbassyActivity extends ActionBarActivity {
     protected Embassy mEmbassy;
     public DatabaseManager mDatabaseManager;
     public Database mDatabase;
-    IntrepidMenu mIntrepidMenu;
     ViewEmbassyActivity instance;
 
     @Override
@@ -38,8 +38,6 @@ public class ViewEmbassyActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(null);
         instance = this;
-        mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
-        mIntrepidMenu.setupMenu(instance, ViewEmbassyActivity.this, true);
     }
 
     public void loadDatabase() {
@@ -81,6 +79,14 @@ public class ViewEmbassyActivity extends ActionBarActivity {
             services.setText(mEmbassy.getServicesOffered());
         }
         setClickListeners(phone, email);
+
+        ImageView backIv = (ImageView) findViewById(R.id.title_back);
+        backIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     protected String formatPhoneNumbers(){
@@ -150,14 +156,5 @@ public class ViewEmbassyActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onBackPressed(){
-        if(mIntrepidMenu.mState == 1){
-            mIntrepidMenu.snapToBottom();
-            return;
-        }
-        super.onBackPressed();
-
-    }
 
 }
