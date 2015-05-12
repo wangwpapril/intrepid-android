@@ -41,7 +41,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".activity.SplashActivity"
-            android:label="Welcome"
+            android:label="Travel Smart"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
