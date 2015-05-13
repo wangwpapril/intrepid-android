@@ -106,6 +106,7 @@ public class ViewAceActivity extends ActionBarActivity implements View.OnClickLi
         if(v == backViewIv){
 
             onBackPressed();
+            this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
         }
     }
 }

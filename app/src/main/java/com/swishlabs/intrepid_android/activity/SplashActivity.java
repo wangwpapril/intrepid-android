@@ -44,6 +44,7 @@ public class SplashActivity extends Activity {
 					mIntent = new Intent(SplashActivity.this,LoginActivity.class);
 				}
 				startActivity(mIntent);
+				SplashActivity.this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 				SplashActivity.this.finish();
 			}
 		},2000);	

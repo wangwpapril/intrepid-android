@@ -78,6 +78,7 @@ public class LearnMoreActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+                instance.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
         });
     }

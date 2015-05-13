@@ -43,6 +43,7 @@ public class AssistanceActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("Assi","onCreate");
         super.onCreate(savedInstanceState);
         MyApplication.getInstance().addActivity(this);
         setContentView(R.layout.activity_assistance);
@@ -53,11 +54,13 @@ public class AssistanceActivity extends FragmentActivity {
 
     @Override
     protected void onResume() {
+        Log.d("Assi","onResume");
         super.onResume();
         setUpMapIfNeeded();
     }
 
     private void setUpMapIfNeeded() {
+        Log.d("Assi","setUpMapIfNeeded");
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
@@ -67,10 +70,13 @@ public class AssistanceActivity extends FragmentActivity {
             if (mMap != null) {
                 setUpMap();
             }
+        }else {
+ //           setUpMap();
         }
     }
 
     private void setUpMap() {
+        Log.d("Assi","setUpMap");
 
         Location currentLocation = getCurrentLocation();
         if (currentLocation != null)
@@ -94,6 +100,8 @@ public class AssistanceActivity extends FragmentActivity {
     }
 
     private Location getCurrentLocation(){
+        Log.d("Assi","getCurrentLocation");
+
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
 
@@ -119,6 +127,7 @@ public class AssistanceActivity extends FragmentActivity {
     }
 
     private void sendCoordinatesToIntrepid(double longitude, double latitude){
+        Log.d("Assi","sendCoord");
 
             IControllerContentCallback icc = new IControllerContentCallback() {
                 public void handleSuccess(String content){
@@ -216,7 +225,7 @@ public class AssistanceActivity extends FragmentActivity {
             return;
         }
         super.onBackPressed();
-
+        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
     }
 
 }

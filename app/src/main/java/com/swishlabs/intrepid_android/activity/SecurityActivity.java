@@ -300,7 +300,7 @@ public class SecurityActivity extends ActionBarActivity {
             return;
         }
         super.onBackPressed();
-
+        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
     }
 
 }

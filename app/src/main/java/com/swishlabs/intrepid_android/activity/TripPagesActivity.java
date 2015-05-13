@@ -173,4 +173,11 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
 
     }
 
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+
+    }
+
 }

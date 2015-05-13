@@ -58,6 +58,7 @@ public class DestinationsListActivity extends BaseActivity {
     @Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         this.setContentView(R.layout.destination_list);
 		initView();
@@ -624,6 +625,11 @@ public class DestinationsListActivity extends BaseActivity {
 	}
 
 
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
+    }
 
 }

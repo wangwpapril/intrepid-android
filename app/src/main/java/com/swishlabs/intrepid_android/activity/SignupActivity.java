@@ -214,7 +214,9 @@ public class SignupActivity extends BaseActivity {
 			Intent i = new Intent();
 			i.setClass(context, LegalActivity.class);
 			context.startActivity(i);
+			this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 		} else if (v == ivTitleBack) {
+			this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 			context.finish();
 		}
 

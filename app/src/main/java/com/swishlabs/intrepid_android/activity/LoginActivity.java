@@ -213,14 +213,17 @@ public class LoginActivity extends BaseActivity {
         } else if (v == signUp) {
             Intent mIntent = new Intent(LoginActivity.this, SignupActivity.class);
             startActivity(mIntent);
+            this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         } else if (v == termsOfUseBtn) {
             Intent mIntent = new Intent(LoginActivity.this, LegalActivity.class);
             startActivity(mIntent);
+            this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         } else if (v == learnMore){
             Intent mIntent = new Intent(LoginActivity.this, LearnMoreActivity.class);
             startActivity(mIntent);
+            this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         }
 

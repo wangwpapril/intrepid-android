@@ -359,6 +359,7 @@ public class IntrepidMenu extends ScrollView {
                     public void onAnimationEnd(Animation animation) {
                         Intent mIntent = new Intent(context, className);
                         activity.startActivity(mIntent);
+                        activity.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
                         if (mFinishActivity) {
                             activity.finish();
                         }

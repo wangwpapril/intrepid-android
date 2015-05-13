@@ -96,6 +96,7 @@ public class ViewVMPdfActivity extends ActionBarActivity implements View.OnClick
     public void onClick(View v) {
         if(v == backViewIv){
             onBackPressed();
+            this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
         }
     }
 }

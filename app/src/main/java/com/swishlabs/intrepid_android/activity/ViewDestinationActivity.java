@@ -73,6 +73,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
         MyApplication.getInstance().addActivity(this);
         loadDatabase();
 
@@ -530,7 +531,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
             return;
         }
         super.onBackPressed();
-
+        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
     }
 
 
