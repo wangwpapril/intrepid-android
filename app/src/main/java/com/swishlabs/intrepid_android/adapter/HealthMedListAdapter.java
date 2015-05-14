@@ -51,7 +51,7 @@ public class HealthMedListAdapter extends BaseAdapter {
 
 	@Override
 	public long getItemId(int position) {
-		return position;
+		return datas.get(position).getId();
 	}
 
 	@Override

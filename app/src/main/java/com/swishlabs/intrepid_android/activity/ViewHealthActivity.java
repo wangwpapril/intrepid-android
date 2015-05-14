@@ -263,7 +263,7 @@ public class ViewHealthActivity extends ActionBarActivity {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                            HealthConditionDis hcDis = mHealthConList.get(position);
+                            HealthConditionDis hcDis = mHealthConList.get((int)id);
                             Intent mIntent = new Intent( instance, DetailHealthConActivity.class);
                             mIntent.putExtra("name", hcDis.getmConditionName());
                             mIntent.putExtra("description", hcDis.getmDescription());
@@ -285,7 +285,7 @@ public class ViewHealthActivity extends ActionBarActivity {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                            HealthMedicationDis hmDis = mHealthMedList.get(position);
+                            HealthMedicationDis hmDis = mHealthMedList.get((int)id);
                             Intent mIntent = new Intent( instance, DetailHealthMedActivity.class);
                             mIntent.putExtra("name", hmDis.getmMedicationName());
                             mIntent.putExtra("brand name", hmDis.getmBrandNames());
