@@ -224,7 +224,7 @@ public class IntrepidMenu extends ScrollView {
         });
 
         if(context instanceof ViewDestinationActivity){
-            overviewButton.setAlpha(0.5f);
+            overviewButton.setAlpha(0.65f);
         }
 
         final FrameLayout securityButton = (FrameLayout) activity.findViewById(R.id.security_menu_btn);
@@ -236,7 +236,7 @@ public class IntrepidMenu extends ScrollView {
         });
 
         if(context instanceof SecurityActivity){
-            securityButton.setAlpha(0.5f);
+            securityButton.setAlpha(0.65f);
         }
 
         final FrameLayout settingsButton = (FrameLayout) activity.findViewById(R.id.settings_menu_btn);
@@ -248,7 +248,7 @@ public class IntrepidMenu extends ScrollView {
         });
 
         if(context instanceof SettingsActivity){
-            settingsButton.setAlpha(0.5f);
+            settingsButton.setAlpha(0.65f);
         }
 
         final FrameLayout tripsButton = (FrameLayout) activity.findViewById(R.id.trips_menu_btn);
@@ -267,7 +267,7 @@ public class IntrepidMenu extends ScrollView {
         });
 
         if(context instanceof ViewHealthActivity){
-            healthButton.setAlpha(0.5f);
+            healthButton.setAlpha(0.65f);
         }
 
         final FrameLayout weatherButton = (FrameLayout) activity.findViewById(R.id.weather_menu_btn);
@@ -279,7 +279,7 @@ public class IntrepidMenu extends ScrollView {
         });
 
         if(context instanceof ViewWeatherActivity){
-            weatherButton.setAlpha(0.5f);
+            weatherButton.setAlpha(0.65f);
         }
 
         final FrameLayout alertButton = (FrameLayout) activity.findViewById(R.id.alerts_menu_btn);
@@ -291,7 +291,7 @@ public class IntrepidMenu extends ScrollView {
         });
 
         if(context instanceof ViewAlertActivity){
-            alertButton.setAlpha(0.5f);
+            alertButton.setAlpha(0.65f);
         }
 
         final FrameLayout assistanceButton = (FrameLayout) activity.findViewById(R.id.assistance_menu_btn);
@@ -303,7 +303,7 @@ public class IntrepidMenu extends ScrollView {
         });
 
         if(context instanceof AssistanceActivity){
-            assistanceButton.setAlpha(0.5f);
+            assistanceButton.setAlpha(0.65f);
         }
 
         final FrameLayout aceButton = (FrameLayout) activity.findViewById(R.id.insurance_menu_btn);
@@ -315,7 +315,7 @@ public class IntrepidMenu extends ScrollView {
         });
 
         if(context instanceof AceInsuranceActivity){
-            aceButton.setAlpha(0.5f);
+            aceButton.setAlpha(0.65f);
         }
 
         ImageButton expandMenu = (ImageButton) activity.findViewById(R.id.expand_menu);
