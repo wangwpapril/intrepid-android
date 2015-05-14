@@ -80,7 +80,7 @@
                 android:layout_alignTop="@+id/destination_subtitle"
                 android:src="@drawable/cultural_icon"
                 android:layout_marginRight="10dp"
-                android:layout_alignBottom="@+id/destination_subtitle" />
+                android:layout_below="@+id/section_divider" />
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -171,7 +171,6 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentStart="false"
                 android:layout_below="@+id/section_divider"
-                android:layout_marginTop="10dp"
                 android:textColor="#333f48" />
 
             <ImageView
