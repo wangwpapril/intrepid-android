@@ -7,6 +7,7 @@ import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URI;
 import java.net.URL;
 import java.util.Stack;
 
@@ -38,8 +39,17 @@ public class ImageLoader {
             imageView.setImageResource(stub_id);
             return;
         }
-		String Url=null;		
-		Url = url.replaceAll(" ", "%20");
+		String Url=null, temp=null;
+		temp = url.replaceAll(" ", "%20");
+
+		try {
+			URI uri = new URI(temp);
+			Url = uri.toASCIIString();
+		}catch (Exception ex) {
+			ex.printStackTrace();
+
+		}
+
 		imageView.setTag(Url);
 
         Bitmap bm = Image.getInstance().get(Url);
