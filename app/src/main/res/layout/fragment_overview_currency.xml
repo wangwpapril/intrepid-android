@@ -79,7 +79,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="1dp"
-                    android:id="@+id/imageView"
+                    android:id="@+id/currency_selector"
                     android:layout_alignParentBottom="true"
                     android:layout_below="@+id/base_currency_value"
                     android:layout_alignLeft="@+id/base_currency_value"
@@ -107,7 +107,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:id="@+id/imageView3"
+                android:id="@+id/currency_selector"
                 android:layout_alignParentBottom="true"
                 android:layout_below="@+id/des_currency_value"
                 android:layout_alignLeft="@+id/des_currency_value"
