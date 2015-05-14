@@ -49,7 +49,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/brand"
-                    android:padding="16dp">
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="16dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -60,7 +62,8 @@
                         android:layout_alignParentStart="false"
                         android:textStyle="bold"
                         android:layout_toRightOf="@+id/brand_name_icon"
-                        android:textColor="#333f48" />
+                        android:textColor="#333f48"
+                        android:layout_alignParentEnd="true" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -70,15 +73,23 @@
                         android:id="@+id/embassy_address"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="false"
-                        android:layout_below="@+id/brand_name_subtitle"
-                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/section_divider"
                         android:textColor="#333f48" />
-
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:id="@+id/section_divider"
+                        android:layout_below="@+id/brand_name_subtitle"
+                        android:layout_alignLeft="@+id/brand_name_icon"
+                        android:layout_alignRight="@+id/brand_name_subtitle"
+                        android:background="#EDEDED"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp" />
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/brand_name_icon"
-                        android:layout_above="@id/embassy_address"
+                        android:layout_above="@+id/section_divider"
                         android:layout_alignParentEnd="false"
                         android:layout_alignTop="@+id/brand_name_subtitle"
                         android:src="@drawable/embassy_icon"
@@ -100,8 +111,18 @@
                         android:layout_alignParentStart="false"
                         android:textStyle="bold"
                         android:layout_toRightOf="@+id/section_icon"
-                        android:textColor="#333f48" />
-
+                        android:textColor="#333f48"
+                        android:layout_alignParentEnd="true" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:id="@+id/section_divider"
+                        android:layout_below="@+id/contact_subtitle"
+                        android:layout_alignLeft="@+id/section_icon"
+                        android:layout_alignRight="@+id/contact_subtitle"
+                        android:background="#EDEDED"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -110,8 +131,7 @@
                         android:id="@+id/contact_phone"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="false"
-                        android:layout_below="@+id/contact_subtitle"
-                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/section_divider"
                         android:textColor="#333f48" />
 
                     <TextView
@@ -143,7 +163,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/section_icon"
-                        android:layout_above="@id/contact_phone"
+                        android:layout_above="@+id/section_divider"
                         android:layout_alignParentEnd="false"
                         android:layout_alignTop="@+id/contact_subtitle"
                         android:src="@drawable/communication_icon"
@@ -155,7 +175,16 @@
                     android:id="@+id/hours"
                     android:layout_below="@+id/contact"
                     android:padding="16dp">
-
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:id="@+id/section_divider"
+                        android:layout_below="@+id/hours_subtitle"
+                        android:layout_alignLeft="@+id/section_icon2"
+                        android:layout_alignRight="@+id/hours_subtitle"
+                        android:background="#EDEDED"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -165,7 +194,8 @@
                         android:layout_alignParentStart="false"
                         android:textStyle="bold"
                         android:layout_toRightOf="@+id/section_icon2"
-                        android:textColor="#333f48" />
+                        android:textColor="#333f48"
+                        android:layout_alignParentEnd="true" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -175,15 +205,14 @@
                         android:id="@+id/embassy_hours"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="false"
-                        android:layout_below="@+id/hours_subtitle"
-                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/section_divider"
                         android:textColor="#333f48" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/section_icon2"
-                        android:layout_above="@id/embassy_hours"
+                        android:layout_above="@+id/section_divider"
                         android:layout_alignParentEnd="false"
                         android:layout_alignTop="@+id/hours_subtitle"
                         android:src="@drawable/government_icon"
@@ -195,7 +224,16 @@
                     android:id="@+id/notes"
                     android:layout_below="@+id/hours"
                     android:padding="16dp">
-
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:id="@+id/section_divider"
+                        android:layout_below="@+id/notes_subtitle"
+                        android:layout_alignLeft="@+id/notes_icon"
+                        android:layout_alignRight="@+id/notes_subtitle"
+                        android:background="#EDEDED"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -205,7 +243,8 @@
                         android:layout_alignParentStart="false"
                         android:textStyle="bold"
                         android:layout_toRightOf="@+id/notes_icon"
-                        android:textColor="#333f48" />
+                        android:textColor="#333f48"
+                        android:layout_alignParentEnd="true" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -215,15 +254,14 @@
                         android:id="@+id/notes_text"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="false"
-                        android:layout_below="@+id/notes_subtitle"
-                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/section_divider"
                         android:textColor="#333f48" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/notes_icon"
-                        android:layout_above="@id/notes_text"
+                        android:layout_above="@+id/section_divider"
                         android:layout_alignParentEnd="false"
                         android:layout_alignTop="@+id/notes_subtitle"
                         android:src="@drawable/example_icon"
@@ -235,7 +273,16 @@
                     android:id="@+id/services"
                     android:layout_below="@+id/notes"
                     android:padding="16dp">
-
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:id="@+id/section_divider"
+                        android:layout_below="@+id/services_subtitle"
+                        android:layout_alignLeft="@+id/services_icon"
+                        android:layout_alignRight="@+id/services_subtitle"
+                        android:background="#EDEDED"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -245,7 +292,8 @@
                         android:layout_alignParentStart="false"
                         android:textStyle="bold"
                         android:layout_toRightOf="@+id/services_icon"
-                        android:textColor="#333f48" />
+                        android:textColor="#333f48"
+                        android:layout_alignParentEnd="true" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -255,8 +303,7 @@
                         android:id="@+id/services_text"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="false"
-                        android:layout_below="@+id/services_subtitle"
-                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/section_divider"
                         android:textColor="#333f48" />
 
                     <ImageView
