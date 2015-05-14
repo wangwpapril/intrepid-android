@@ -57,8 +57,8 @@
         android:text="@string/callIntrepidAssistance"
         android:id="@+id/callIntrepidAssistance"
         android:layout_below="@id/map"
-        android:textColor="#DFDFDF"
-        android:background="#EE5555"/>
+        android:textColor="#FFF"
+        android:background="#d7503e" />
 
     </RelativeLayout>
 

@@ -5,7 +5,8 @@
               android:layout_height="match_parent">
 <ScrollView
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="#fff">
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -39,7 +40,9 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/base_currency_icon"
-                android:src="@drawable/example_icon" />
+                android:src="@drawable/empty_square"
+                android:background="@drawable/empty_square"
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -73,7 +76,17 @@
                 android:layout_toRightOf="@+id/base_currency_code"
                 android:layout_marginLeft="40dp" />
 
-        </RelativeLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:id="@+id/imageView"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/base_currency_value"
+                    android:layout_alignLeft="@+id/base_currency_value"
+                    android:layout_alignRight="@+id/base_currency_value"
+                    android:background="#DBDBDB" />
+
+            </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -87,7 +100,19 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/des_currency_icon"
-                android:src="@drawable/example_icon" />
+                android:src="@drawable/empty_square"
+                android:background="@drawable/empty_square"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:id="@+id/imageView3"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/des_currency_value"
+                android:layout_alignLeft="@+id/des_currency_value"
+                android:layout_alignRight="@+id/des_currency_value"
+                android:background="#DBDBDB" />
 
             <TextView
                 android:layout_width="wrap_content"
