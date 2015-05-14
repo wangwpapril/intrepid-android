@@ -39,7 +39,7 @@ public class EmbassyListAdapter extends MyBaseAdapter {
 
     protected void init(){
         if (ImageLoader == null) {
-            ImageLoader = new com.swishlabs.intrepid_android.util.ImageLoader(context, R.drawable.ic_launcher);
+            ImageLoader = new com.swishlabs.intrepid_android.util.ImageLoader(context, R.drawable.empty_square);
         }
         String baseCurrencyCode = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currencyCode.toString(), null);
         tempCurrency = DatabaseManager.getCurrency(baseCurrencyCode, mDatabase);

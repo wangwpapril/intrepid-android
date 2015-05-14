@@ -17,7 +17,7 @@ public abstract class MyBaseAdapter extends BaseAdapter {
 	protected void init(){
 		layoutInflater = LayoutInflater.from(context);
 		if (ImageLoader == null) {
-			ImageLoader = new ImageLoader(context, R.drawable.ic_launcher);
+			ImageLoader = new ImageLoader(context, R.drawable.empty_square);
 		}
 	}
 }
