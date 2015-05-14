@@ -54,11 +54,14 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="60dp"
-        android:text="@string/callIntrepidAssistance"
+        android:text="Call Intrepid Assistance"
         android:id="@+id/callIntrepidAssistance"
         android:layout_below="@id/map"
         android:textColor="#FFF"
-        android:background="#d7503e" />
+        android:textAllCaps="false"
+        android:background="#d7503e"
+        android:textSize="16sp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </RelativeLayout>
 
