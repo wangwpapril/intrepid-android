@@ -34,7 +34,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/overview_content"
-                    android:padding="16dp">
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="16dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -45,8 +47,18 @@
                         android:layout_alignParentStart="false"
                         android:textStyle="bold"
                         android:layout_toRightOf="@+id/section_icon"
-                        android:textColor="#333f48" />
-
+                        android:textColor="#333f48"
+                        android:layout_alignParentEnd="true" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:id="@+id/section_divider"
+                        android:layout_below="@+id/destination_subtitle"
+                        android:layout_alignLeft="@+id/section_icon"
+                        android:layout_alignRight="@+id/destination_subtitle"
+                        android:background="#EDEDED"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -55,15 +67,14 @@
                         android:id="@+id/safety_content"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="false"
-                        android:layout_below="@+id/destination_subtitle"
-                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/section_divider"
                         android:textColor="#333f48" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/section_icon"
-                        android:layout_above="@id/safety_content"
+                        android:layout_above="@+id/section_divider"
                         android:layout_alignParentEnd="false"
                         android:layout_alignTop="@+id/destination_subtitle"
                         android:src="@drawable/safety_icon"
@@ -85,8 +96,18 @@
                         android:layout_alignParentStart="false"
                         android:textStyle="bold"
                         android:layout_toRightOf="@+id/section_icon2"
-                        android:textColor="#333f48" />
-
+                        android:textColor="#333f48"
+                        android:layout_alignParentEnd="true" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:id="@+id/section_divider"
+                        android:layout_below="@+id/destination_subtitle2"
+                        android:layout_alignLeft="@+id/section_icon2"
+                        android:layout_alignRight="@+id/destination_subtitle2"
+                        android:background="#EDEDED"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -95,8 +116,7 @@
                         android:id="@+id/other_concerns_text"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="false"
-                        android:layout_below="@+id/destination_subtitle2"
-                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/section_divider"
                         android:textColor="#333f48"
                         android:paddingBottom="10dp" />
 
@@ -104,7 +124,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/section_icon2"
-                        android:layout_above="@+id/other_concerns_text"
+                        android:layout_above="@+id/section_divider"
                         android:layout_alignParentEnd="false"
                         android:layout_alignTop="@id/destination_subtitle2"
                         android:src="@drawable/other_concerns_icon"

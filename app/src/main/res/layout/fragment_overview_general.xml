@@ -370,7 +370,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/section_icon7"
-        android:layout_above="@+id/destination_content7"
+        android:layout_above="@+id/section_divider"
         android:layout_alignParentEnd="false"
         android:layout_alignTop="@+id/destination_subtitle7"
         android:src="@drawable/development_icon"
