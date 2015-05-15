@@ -383,7 +383,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
         public void populateCurrencyOverview(View rootView){
 
             if (ImageLoader == null) {
-                ImageLoader = new ImageLoader(ViewDestinationActivity.getInstance(), R.drawable.ic_launcher);
+                ImageLoader = new ImageLoader(ViewDestinationActivity.getInstance(), R.drawable.empty_square);
             }
 
             TextView baseCurrencyTv = (TextView)rootView.findViewById(R.id.base_currency_code);

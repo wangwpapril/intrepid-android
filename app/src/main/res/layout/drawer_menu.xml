@@ -30,10 +30,9 @@
         android:layout_width="wrap_content"
         android:src="@drawable/arrow_up"
         android:id="@+id/intrepidMenuArrow"
-        android:layout_alignBottom="@id/expand_menu"
-        android:layout_alignRight="@id/expand_menu"
-        android:layout_marginRight="5dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp" />
 
     <ImageButton
         android:layout_width="fill_parent"
