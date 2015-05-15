@@ -394,9 +394,23 @@ public class ViewDestinationActivity extends ActionBarActivity {
             ImageLoader.DisplayImage(ViewDestinationActivity.getInstance().baseCurrency.getImageUrl(),
                     ViewDestinationActivity.getInstance(), baseImageIv);
 
+            final ImageView baseSelector = (ImageView) rootView.findViewById(R.id.currency_selector);
+            final ImageView desSelector = (ImageView) rootView.findViewById(R.id.currency_selector2);
+
 
             final EditText baseValueEt = (EditText)rootView.findViewById(R.id.base_currency_value);
 
+            baseValueEt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if(hasFocus){
+                        baseSelector.setVisibility(View.INVISIBLE);
+                    }else {
+
+                        baseSelector.setVisibility(View.VISIBLE);
+                    }
+                }
+            });
 
             TextView desCurrencyTv = (TextView)rootView.findViewById(R.id.des_currency_code);
             desCurrencyTv.setText(ViewDestinationActivity.getInstance().desCurrency.getCurrencyCode());
@@ -408,6 +422,20 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
             final EditText desValueEt = (EditText) rootView.findViewById(R.id.des_currency_value);
             desValueEt.setText(reFormat(ViewDestinationActivity.getInstance().mDestinationInformation.getCurrencyRate()));
+
+            desValueEt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if(hasFocus){
+
+                        desSelector.setVisibility(View.INVISIBLE);
+                    } else {
+
+                        desSelector.setVisibility(View.VISIBLE);
+                    }
+
+                }
+            });
 
             baseWatcher = new TextWatcher() {
                 @Override
