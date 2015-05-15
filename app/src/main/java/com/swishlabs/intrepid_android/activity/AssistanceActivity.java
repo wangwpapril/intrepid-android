@@ -1,14 +1,20 @@
 package com.swishlabs.intrepid_android.activity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,6 +26,7 @@ import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
 import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
+import com.swishlabs.intrepid_android.data.api.model.AssistanceProvider;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.User;
 import com.swishlabs.intrepid_android.util.Enums;
@@ -39,6 +46,8 @@ public class AssistanceActivity extends FragmentActivity {
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
 
     IntrepidMenu mIntrepidMenu;
+    List<AssistanceProvider> mApList;
+    String[] mApNameArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +56,8 @@ public class AssistanceActivity extends FragmentActivity {
         setUpMapIfNeeded();
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
         mIntrepidMenu.setupMenu(this, AssistanceActivity.this, true);
+        mApList = SharedPreferenceUtil.getApList(this);
+        setupCallAssistanceButton();
     }
 
     @Override
@@ -54,6 +65,37 @@ public class AssistanceActivity extends FragmentActivity {
         super.onResume();
         setUpMapIfNeeded();
     }
+
+    private void setupCallAssistanceButton(){
+
+        mApNameArray = new String[mApList.size()];
+        for (int i = 0;i<mApList.size(); i++){
+            mApNameArray[i] = mApList.get(i).getName();
+        }
+
+        Button assistanceButton = (Button)findViewById(R.id.callIntrepidAssistance);
+        assistanceButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(AssistanceActivity.this);
+                builder.setItems(mApNameArray, mDialogListener);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+    }
+
+    protected DialogInterface.OnClickListener mDialogListener =
+            new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    AssistanceProvider apSelected = mApList.get(which);
+                    Intent call = new Intent(Intent.ACTION_DIAL);
+                    call.setData(Uri.parse("tel:" + apSelected.getPhone()));
+                    startActivity(call);
+                }
+            };
 
     private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.

@@ -163,6 +163,7 @@ public class LoginActivity extends BaseActivity {
                         SharedPreferenceUtil.setString(Enums.PreferenceKeys.countryCode.toString(),user.countryCode);
                         SharedPreferenceUtil.setString(Enums.PreferenceKeys.currencyCode.toString(),user.currencyCode);
                         SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), true);
+                        SharedPreferenceUtil.setApList(getApplicationContext(), user.getCompany().getApList());
 
                         MyApplication.setLoginStatus(true);
 

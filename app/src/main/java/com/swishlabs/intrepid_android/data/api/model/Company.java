@@ -18,6 +18,11 @@ public class Company implements Serializable {
 	public Parent parent;
 	public String classes;
 	public String countryCode;
+
+	public List<AssistanceProvider> getApList() {
+		return apList;
+	}
+
 	public List<AssistanceProvider> apList;
 	public String content;
 	public String images;

@@ -3,8 +3,15 @@ package com.swishlabs.intrepid_android.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.swishlabs.intrepid_android.MyApplication;
+import com.swishlabs.intrepid_android.data.api.model.AssistanceProvider;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 public class SharedPreferenceUtil {
 	private static final String SHARED_PREFERENCE_NAME = "travel smart";
@@ -52,4 +59,28 @@ public class SharedPreferenceUtil {
 				SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
 		return sharedPreferences.getBoolean(key, defaultValue);
 	}
+
+	public static void setApList(Context context, List<AssistanceProvider> apList) {
+		SharedPreferences appSharedPrefs = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		Editor prefsEditor = appSharedPrefs.edit();
+		Gson gson = new Gson();
+		String json = gson.toJson(apList);
+		prefsEditor.putString("AssistanceList", json);
+		prefsEditor.commit();
+	}
+
+	public static List<AssistanceProvider> getApList(Context context){
+		SharedPreferences appSharedPrefs = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		Editor prefsEditor = appSharedPrefs.edit();
+		Gson gson = new Gson();
+		String json = appSharedPrefs.getString("AssistanceList", "");
+		Type type = new TypeToken<List<AssistanceProvider>>(){}.getType();
+		List<AssistanceProvider> apList = gson.fromJson(json, type);
+
+		return apList;
+	}
+
+
 }

@@ -9,6 +9,15 @@ public class AssistanceProvider implements Serializable {
 
 	private static final long serialVersionUID = -6491498174329215221L;
 	public String id;
+
+	public String getName() {
+		return name;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
 	public String name;
 	public String phone;
 	public AssistanceProvider(JSONObject obj) throws JSONException {
