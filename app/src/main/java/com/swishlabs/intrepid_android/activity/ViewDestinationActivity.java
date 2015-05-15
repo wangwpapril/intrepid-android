@@ -195,6 +195,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
             SharedPreferenceUtil.setString(Enums.PreferenceKeys.username.toString(), "");
             SharedPreferenceUtil.setString(Enums.PreferenceKeys.countryCode.toString(), "");
             SharedPreferenceUtil.setString(Enums.PreferenceKeys.currencyCode.toString(), "");
+            SharedPreferenceUtil.setApList(this, null);
             SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), false);
             MyApplication.setLoginStatus(false);
 

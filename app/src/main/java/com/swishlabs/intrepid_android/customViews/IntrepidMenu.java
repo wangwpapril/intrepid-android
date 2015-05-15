@@ -68,7 +68,7 @@ public class IntrepidMenu extends ScrollView {
         mArrow = (ImageView)findViewById(R.id.intrepidMenuArrow);
 
     }
-    
+
 
     @Override
     public void onScrollChanged(int x, int y, int oldx, int oldy){
