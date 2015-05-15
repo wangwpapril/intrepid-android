@@ -1,5 +1,8 @@
 package com.swishlabs.intrepid_android.activity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,11 +13,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IndicatorLinearLayout;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
+import com.swishlabs.intrepid_android.services.LocationService;
 import com.swishlabs.intrepid_android.util.AndroidLocationServices;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
@@ -30,6 +35,8 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
     public TripPagesActivity mTripPagesActivity;
     public static TripPagesActivity instance;
     public List<Trip> mTripList;
+
+    public static PendingIntent pendingIntent;
 
     public static TripPagesActivity getInstance(){
         return instance;
@@ -56,8 +63,11 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyApplication.getInstance().addActivity(this);
         instance=this;
         setContentView(R.layout.activity_trip_pages);
+
+        startLocationService();
 
         mTripPagesActivity = this;
         loadDatabase();
@@ -91,6 +101,13 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
     }
 
 
+    public void startLocationService(){
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, LocationService.class);
+        intent.setAction(LocationService.ACTION_REPORT_POSITION);
+        pendingIntent = PendingIntent.getService(this,1,intent,PendingIntent.FLAG_CANCEL_CURRENT);
+        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, 0, 10 * 60 * 1000, pendingIntent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -153,6 +170,13 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
             // number of pages to be able to swipe through
             return mTripCount+1;
         }
+
+    }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
     }
 

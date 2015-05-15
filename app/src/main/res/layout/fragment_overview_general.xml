@@ -31,7 +31,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:id="@+id/overview_content"
-            android:padding="16dp">
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -42,8 +44,18 @@
                 android:layout_alignParentStart="false"
                 android:textStyle="bold"
                 android:layout_toRightOf="@+id/section_icon"
-                android:textColor="#333f48" />
-
+                android:textColor="#333f48"
+                android:layout_alignParentEnd="true" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:id="@+id/section_divider4"
+                android:layout_below="@+id/destination_subtitle"
+                android:layout_alignLeft="@+id/section_icon"
+                android:layout_alignRight="@+id/destination_subtitle"
+                android:background="#EDEDED"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,15 +64,14 @@
                 android:id="@+id/destination_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentStart="false"
-                android:layout_below="@+id/destination_subtitle"
-                android:layout_marginTop="10dp"
+                android:layout_below="@+id/section_divider4"
                 android:textColor="#333f48" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/section_icon"
-                android:layout_above="@+id/destination_content"
+                android:layout_above="@+id/section_divider4"
                 android:layout_alignParentEnd="false"
                 android:layout_alignTop="@+id/destination_subtitle"
                 android:src="@drawable/example_icon"
@@ -82,8 +93,18 @@
                 android:layout_alignParentStart="false"
                 android:textStyle="bold"
                 android:layout_toRightOf="@+id/section_icon2"
-                android:textColor="#333f48" />
-
+                android:textColor="#333f48"
+                android:layout_alignParentEnd="true" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:id="@+id/section_divider5"
+                android:layout_below="@+id/destination_subtitle2"
+                android:layout_alignLeft="@+id/section_icon2"
+                android:layout_alignRight="@+id/destination_subtitle2"
+                android:background="#EDEDED"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -92,15 +113,14 @@
                 android:id="@+id/destination_content2"
                 android:layout_centerVertical="true"
                 android:layout_alignParentStart="false"
-                android:layout_below="@+id/destination_subtitle2"
-                android:layout_marginTop="10dp"
+                android:layout_below="@+id/section_divider5"
                 android:textColor="#333f48" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/section_icon2"
-                android:layout_above="@+id/destination_content2"
+                android:layout_above="@+id/section_divider5"
                 android:layout_alignParentEnd="false"
                 android:layout_alignTop="@+id/destination_subtitle2"
                 android:src="@drawable/weather_icon"
@@ -122,8 +142,18 @@
                 android:layout_alignParentStart="false"
                 android:textStyle="bold"
                 android:layout_toRightOf="@+id/section_icon3"
-                android:textColor="#333f48" />
-
+                android:textColor="#333f48"
+                android:layout_alignParentEnd="true" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:id="@+id/section_divider6"
+                android:layout_below="@+id/destination_subtitle3"
+                android:layout_alignLeft="@+id/section_icon3"
+                android:layout_alignRight="@+id/destination_subtitle3"
+                android:background="#EDEDED"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -132,8 +162,7 @@
                 android:id="@+id/destination_content3"
                 android:layout_centerVertical="true"
                 android:layout_alignParentStart="false"
-                android:layout_below="@+id/destination_subtitle3"
-                android:layout_marginTop="10dp"
+                android:layout_below="@+id/section_divider6"
                 android:textColor="#333f48"
                 android:paddingBottom="15dp" />
 
@@ -141,7 +170,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/section_icon3"
-                android:layout_above="@+id/destination_content3"
+                android:layout_above="@+id/section_divider6"
                 android:layout_alignParentEnd="false"
                 android:layout_alignTop="@+id/destination_subtitle3"
                 android:src="@drawable/government_icon"
@@ -153,7 +182,16 @@
         android:id="@+id/overview_content4"
         android:padding="16dp"
         android:layout_below="@+id/overview_content3">
-
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:id="@+id/section_divider7"
+                android:layout_below="@+id/destination_subtitle4"
+                android:layout_alignLeft="@+id/section_icon4"
+                android:layout_alignRight="@+id/destination_subtitle4"
+                android:background="#EDEDED"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp" />
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -163,7 +201,8 @@
         android:layout_alignParentStart="false"
         android:textStyle="bold"
         android:layout_toRightOf="@+id/section_icon4"
-        android:textColor="#333f48" />
+        android:textColor="#333f48"
+            android:layout_alignParentEnd="true" />
 
         <TextView
         android:layout_width="wrap_content"
@@ -173,16 +212,15 @@
         android:id="@+id/destination_content4"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="false"
-        android:layout_below="@+id/destination_subtitle4"
-        android:layout_marginTop="10dp"
-        android:textColor="#333f48"
+        android:layout_below="@+id/section_divider7"
+            android:textColor="#333f48"
         android:paddingBottom="15dp" />
 
         <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/section_icon4"
-        android:layout_above="@+id/destination_content4"
+        android:layout_above="@+id/section_divider7"
         android:layout_alignParentEnd="false"
         android:layout_alignTop="@+id/destination_subtitle4"
         android:src="@drawable/visa_icon"
@@ -194,7 +232,16 @@
         android:id="@+id/overview_content5"
         android:padding="16dp"
         android:layout_below="@+id/overview_content4">
-
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:id="@+id/section_divider8"
+                android:layout_below="@+id/destination_subtitle5"
+                android:layout_alignLeft="@+id/section_icon5"
+                android:layout_alignRight="@+id/destination_subtitle5"
+                android:background="#EDEDED"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp" />
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -204,7 +251,8 @@
         android:layout_alignParentStart="false"
         android:textStyle="bold"
         android:layout_toRightOf="@+id/section_icon5"
-        android:textColor="#333f48" />
+        android:textColor="#333f48"
+            android:layout_alignParentEnd="true" />
 
         <TextView
         android:layout_width="wrap_content"
@@ -214,16 +262,15 @@
         android:id="@+id/destination_content5"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="false"
-        android:layout_below="@+id/destination_subtitle5"
-        android:layout_marginTop="10dp"
-        android:textColor="#333f48"
+        android:layout_below="@+id/section_divider8"
+            android:textColor="#333f48"
         android:paddingBottom="15dp" />
 
         <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/section_icon5"
-        android:layout_above="@+id/destination_content5"
+        android:layout_above="@+id/section_divider8"
         android:layout_alignParentEnd="false"
         android:layout_alignTop="@+id/destination_subtitle5"
         android:src="@drawable/communication_icon"
@@ -235,7 +282,16 @@
         android:id="@+id/overview_content6"
         android:padding="16dp"
         android:layout_below="@+id/overview_content5">
-
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:id="@+id/section_divider9"
+                android:layout_below="@+id/destination_subtitle6"
+                android:layout_alignLeft="@+id/section_icon6"
+                android:layout_alignRight="@+id/destination_subtitle6"
+                android:background="#EDEDED"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp" />
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -245,7 +301,8 @@
         android:layout_alignParentStart="false"
         android:textStyle="bold"
         android:layout_toRightOf="@+id/section_icon6"
-        android:textColor="#333f48" />
+        android:textColor="#333f48"
+            android:layout_alignParentEnd="true" />
 
         <TextView
         android:layout_width="wrap_content"
@@ -255,16 +312,15 @@
         android:id="@+id/destination_content6"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="false"
-        android:layout_below="@+id/destination_subtitle6"
-        android:layout_marginTop="10dp"
-        android:textColor="#333f48"
+        android:layout_below="@+id/section_divider9"
+            android:textColor="#333f48"
         android:paddingBottom="15dp" />
 
         <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/section_icon6"
-        android:layout_above="@+id/destination_content6"
+        android:layout_above="@+id/section_divider9"
         android:layout_alignParentEnd="false"
         android:layout_alignTop="@+id/destination_subtitle6"
         android:src="@drawable/electricity_icon"
@@ -286,8 +342,18 @@
         android:layout_alignParentStart="false"
         android:textStyle="bold"
         android:layout_toRightOf="@+id/section_icon7"
-        android:textColor="#333f48" />
-
+        android:textColor="#333f48"
+            android:layout_alignParentEnd="true" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:id="@+id/section_divider10"
+                android:layout_below="@+id/destination_subtitle7"
+                android:layout_alignLeft="@+id/section_icon7"
+                android:layout_alignRight="@+id/destination_subtitle7"
+                android:background="#EDEDED"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp" />
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -296,16 +362,15 @@
         android:id="@+id/destination_content7"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="false"
-        android:layout_below="@+id/destination_subtitle7"
-        android:layout_marginTop="10dp"
-        android:textColor="#333f48"
+        android:layout_below="@+id/section_divider10"
+            android:textColor="#333f48"
         android:paddingBottom="15dp" />
 
         <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/section_icon7"
-        android:layout_above="@+id/destination_content7"
+        android:layout_above="@+id/section_divider10"
         android:layout_alignParentEnd="false"
         android:layout_alignTop="@+id/destination_subtitle7"
         android:src="@drawable/development_icon"

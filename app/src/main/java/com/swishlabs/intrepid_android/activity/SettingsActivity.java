@@ -1,6 +1,9 @@
 package com.swishlabs.intrepid_android.activity;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
@@ -19,11 +22,13 @@ import android.widget.TextView;
 
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
 import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Country;
 import com.swishlabs.intrepid_android.data.api.model.User;
+import com.swishlabs.intrepid_android.services.LocationService;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 import com.swishlabs.intrepid_android.util.StringUtil;
@@ -47,6 +52,7 @@ public class SettingsActivity extends BaseActivity {
 	private EditText etNewPassword;
 	private Button btnUpdate;
 	private TextView signOut;
+    private IntrepidMenu mIntrepidMenu;
 	
 	private String firstName = null;
 	private String lastName = null;
@@ -95,6 +101,9 @@ public class SettingsActivity extends BaseActivity {
 		signOut = (TextView) findViewById(R.id.sign_out);
 		signOut.setOnClickListener(this);
 		signOut.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+
+        mIntrepidMenu = (IntrepidMenu) findViewById(R.id.intrepidMenu);
+        mIntrepidMenu.setupMenu(this, this, true);
 
 	}
 	
@@ -170,6 +179,10 @@ public class SettingsActivity extends BaseActivity {
         SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), false);
         MyApplication.setLoginStatus(false);
 
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.cancel(TripPagesActivity.pendingIntent);
+
+        mDatabaseManager.deleteDatabase("Intrepid.db");
 
         Intent mIntent = new Intent(SettingsActivity.this, LoginActivity.class);
         startActivity(mIntent);
@@ -302,9 +315,18 @@ public class SettingsActivity extends BaseActivity {
 		}
 		
 		cct.execute(update.toString());
-        Log.d("updateProfile data",update.toString());
+        Log.d("updateProfile data", update.toString());
 
 	}
-	
+
+    @Override
+    public void onBackPressed(){
+        if(mIntrepidMenu.mState == 1){
+            mIntrepidMenu.snapToBottom();
+            return;
+        }
+        super.onBackPressed();
+        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+    }
 
 }

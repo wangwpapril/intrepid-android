@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 
 public class DetailHealthConActivity extends ActionBarActivity {
@@ -21,6 +22,7 @@ public class DetailHealthConActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyApplication.getInstance().addActivity(this);
         setContentView(R.layout.activity_detail_health_con);
         instance = this;
         mName = getIntent().getStringExtra("name");

@@ -37,6 +37,8 @@ public class Image extends Bean {
     }
 
     public void save(String key, Bitmap content, long time) {
+        if(content == null)
+            return;
         ByteArrayOutputStream baos = new ByteArrayOutputStream(1024);
         content.compress(Bitmap.CompressFormat.PNG, 100, baos);
         String sql = StringUtil.simpleFormat("REPLACE INTO %s (key, content, time) VALUES(?, ?, ?)", tableName);

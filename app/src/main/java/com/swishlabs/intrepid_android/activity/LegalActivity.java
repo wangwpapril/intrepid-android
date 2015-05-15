@@ -81,7 +81,7 @@ public class LegalActivity extends BaseActivity {
     @Override
     public void onClick (View view) {
         if(view == cancel){
-
+            this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             this.finish();
         }
     }

@@ -58,6 +58,7 @@ public class DestinationsListActivity extends BaseActivity {
     @Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
         this.setContentView(R.layout.destination_list);
 		initView();
@@ -541,6 +542,7 @@ public class DestinationsListActivity extends BaseActivity {
         intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("destinationId", destination.getId());
+        intent.putExtra("firstTimeFlag","1");
         startActivity(intent);
 
     }
@@ -623,6 +625,11 @@ public class DestinationsListActivity extends BaseActivity {
 	}
 
 
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
+    }
 
 }

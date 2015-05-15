@@ -44,7 +44,8 @@
                 android:layout_marginTop="20dp"
                 android:text="First Name:"
                 android:textColor="@color/white"
-                android:textSize="17sp"/>
+                android:textSize="17sp"
+              android:layout_marginLeft="15dp" />
 
         <EditText
             android:id="@+id/firstNameEditText"
@@ -62,9 +63,11 @@
             android:textSize="17sp"
             android:background="#00000000"
             android:inputType="text"
-            android:layout_marginLeft="35dp"
+            android:layout_marginLeft="60dp"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="0dp">
+            android:layout_marginRight="35dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_toRightOf="@+id/firstNameText">
 
         </EditText>
 
@@ -79,7 +82,7 @@
             android:layout_alignStart="@+id/firstNameEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/firstNameEditText"
-            android:layout_marginRight="0dp" />
+            android:layout_marginRight="35dp" />
 
 
 
@@ -91,7 +94,8 @@
                 android:layout_below="@+id/firstNameText"
                 android:text="Last Name:"
                 android:textColor="@color/white"
-                android:textSize="17sp"/>
+                android:textSize="17sp"
+                android:layout_marginLeft="15dp" />
 
 
             <EditText
@@ -112,8 +116,9 @@
             android:layout_alignParentLeft="false"
             android:layout_alignStart="@+id/firstNameEditText"
             android:layout_alignParentTop="false"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="20dp"
+                android:textAppearance="?android:attr/textAppearanceMedium">
 
         </EditText>
 
@@ -127,7 +132,7 @@
             android:layout_alignStart="@+id/lastNameEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/lastNameEditText"
-            android:layout_marginRight="0dp" />
+            android:layout_marginRight="35dp" />
 
 
             <TextView
@@ -138,7 +143,8 @@
                 android:layout_below="@+id/lastNameText"
                 android:text="Email:"
                 android:textColor="@color/white"
-                android:textSize="17sp"/>
+                android:textSize="17sp"
+                android:layout_marginLeft="15dp" />
 
 
             <EditText
@@ -159,7 +165,8 @@
             android:inputType="textEmailAddress"
             android:layout_toEndOf="@+id/emailText"
             android:layout_alignParentTop="false"
-             android:layout_marginRight="0dp">
+             android:layout_marginRight="35dp"
+                android:textAppearance="?android:attr/textAppearanceMedium">
 
         </EditText>
 
@@ -172,7 +179,7 @@
             android:layout_alignStart="@+id/emailEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/emailEditText"
-            android:layout_marginRight="0dp" />
+            android:layout_marginRight="35dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -182,7 +189,8 @@
             android:layout_below="@+id/emailText"
             android:text="Username:"
             android:textColor="@color/white"
-            android:textSize="17sp"/>
+            android:textSize="17sp"
+            android:layout_marginLeft="15dp" />
 
 
         <EditText
@@ -204,7 +212,8 @@
             android:layout_alignStart="@+id/emailEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/emailEditText"
-            android:layout_marginRight="0dp">
+            android:layout_marginRight="35dp"
+            android:textAppearance="?android:attr/textAppearanceMedium">
 
         </EditText>
         <TextView
@@ -217,7 +226,7 @@
             android:layout_alignStart="@+id/userNameEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/userNameEditText"
-            android:layout_marginRight="0dp" />
+            android:layout_marginRight="35dp" />
 
 
         <TextView
@@ -228,7 +237,8 @@
             android:layout_below="@+id/userNameText"
             android:text="Old Password:"
             android:textColor="@color/white"
-            android:textSize="17sp"/>
+            android:textSize="17sp"
+            android:layout_marginLeft="15dp" />
 
 
         <EditText
@@ -250,7 +260,8 @@
             android:layout_alignStart="@+id/userNameEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/userNameEditText"
-            android:layout_marginRight="0dp">
+            android:layout_marginRight="35dp"
+            android:textAppearance="?android:attr/textAppearanceMedium">
 
         </EditText>
         <TextView
@@ -263,7 +274,7 @@
             android:layout_alignStart="@+id/oldPasswordEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/oldPasswordEditText"
-            android:layout_marginRight="0dp" />
+            android:layout_marginRight="35dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -273,7 +284,8 @@
             android:layout_below="@+id/oldPasswordText"
             android:text="New Password:"
             android:textColor="@color/white"
-            android:textSize="17sp"/>
+            android:textSize="17sp"
+            android:layout_marginLeft="15dp" />
 
 
         <EditText
@@ -295,7 +307,8 @@
             android:layout_alignStart="@+id/oldPasswordEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/oldPasswordEditText"
-            android:layout_marginRight="0dp">
+            android:layout_marginRight="35dp"
+            android:textAppearance="?android:attr/textAppearanceMedium">
 
         </EditText>
         <TextView
@@ -308,7 +321,7 @@
             android:layout_alignStart="@+id/newPasswordEditText"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/newPasswordEditText"
-            android:layout_marginRight="0dp"
+            android:layout_marginRight="35dp"
             android:textSize="17sp" />
 
        </RelativeLayout>
@@ -330,7 +343,7 @@
         android:adjustViewBounds="true"
         android:layout_below="@+id/inputLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dip"
+        android:layout_marginTop="50dip"
         android:textAlignment="center" />
 
     <TextView
@@ -349,4 +362,13 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/butUpdate"
         android:linksClickable="false" />
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        layout="@layout/drawer_menu"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true">
+    </include>
+
 </RelativeLayout>

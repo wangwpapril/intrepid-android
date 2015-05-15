@@ -102,6 +102,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
                     Intent mIntent = new Intent(TripPagesActivity.getInstance(), ViewDestinationActivity.class);
 
                     mIntent.putExtra("destinationId", mDestinationId);
+                    mIntent.putExtra("firstTimeFlag","1");
                     startActivity(mIntent);
                 }
             });

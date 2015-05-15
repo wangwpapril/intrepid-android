@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IndicatorLinearLayout;
 
@@ -30,6 +31,7 @@ public class LearnMoreActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyApplication.getInstance().addActivity(this);
         instance = this;
 
         initContent();
@@ -76,6 +78,7 @@ public class LearnMoreActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+                instance.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
         });
     }

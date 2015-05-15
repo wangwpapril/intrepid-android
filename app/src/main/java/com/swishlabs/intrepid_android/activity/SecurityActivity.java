@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.adapter.EmbassyListAdapter;
 import com.swishlabs.intrepid_android.customViews.CustomTabContainer;
@@ -59,10 +60,11 @@ public class SecurityActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyApplication.getInstance().addActivity(this);
         loadDatabase();
         mDestinationId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currentCountryId.toString(), null);
         mDestinationInformation = DatabaseManager.getDestinationInformation(mDatabase, mDestinationId);
-        setContentView(R.layout.activity_view_destination);
+        setContentView(R.layout.activity_view_security);
         instance = this;
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
         mIntrepidMenu.setupMenu(instance, SecurityActivity.this, true);
@@ -107,8 +109,8 @@ public class SecurityActivity extends ActionBarActivity {
     }
 
     protected void setupTabNames() {
-        tabNames.add("Security");
-        tabNames.add("Embassies");
+        tabNames.add("SAFETY");
+        tabNames.add("EMBASSY");
     }
 
     @Override
@@ -290,4 +292,15 @@ public class SecurityActivity extends ActionBarActivity {
             });
         }
     }
+
+    @Override
+    public void onBackPressed(){
+        if(mIntrepidMenu.mState == 1){
+            mIntrepidMenu.snapToBottom();
+            return;
+        }
+        super.onBackPressed();
+        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+    }
+
 }

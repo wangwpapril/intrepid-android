@@ -222,6 +222,11 @@ public class IntrepidMenu extends ScrollView {
                 animateButton(overviewButton, context, ViewDestinationActivity.class, activity);
             }
         });
+
+        if(context instanceof ViewDestinationActivity){
+            overviewButton.setAlpha(0.65f);
+        }
+
         final FrameLayout securityButton = (FrameLayout) activity.findViewById(R.id.security_menu_btn);
         securityButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -229,6 +234,11 @@ public class IntrepidMenu extends ScrollView {
                 animateButton(securityButton, context, SecurityActivity.class, activity);
             }
         });
+
+        if(context instanceof SecurityActivity){
+            securityButton.setAlpha(0.65f);
+        }
+
         final FrameLayout settingsButton = (FrameLayout) activity.findViewById(R.id.settings_menu_btn);
         settingsButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -236,6 +246,11 @@ public class IntrepidMenu extends ScrollView {
                 animateButton(settingsButton, context, SettingsActivity.class, activity);
             }
         });
+
+        if(context instanceof SettingsActivity){
+            settingsButton.setAlpha(0.65f);
+        }
+
         final FrameLayout tripsButton = (FrameLayout) activity.findViewById(R.id.trips_menu_btn);
         tripsButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -250,6 +265,11 @@ public class IntrepidMenu extends ScrollView {
                 animateButton(healthButton, context, ViewHealthActivity.class, activity);
             }
         });
+
+        if(context instanceof ViewHealthActivity){
+            healthButton.setAlpha(0.65f);
+        }
+
         final FrameLayout weatherButton = (FrameLayout) activity.findViewById(R.id.weather_menu_btn);
         weatherButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -257,6 +277,11 @@ public class IntrepidMenu extends ScrollView {
                 animateButton(weatherButton, context, ViewWeatherActivity.class, activity);
             }
         });
+
+        if(context instanceof ViewWeatherActivity){
+            weatherButton.setAlpha(0.65f);
+        }
+
         final FrameLayout alertButton = (FrameLayout) activity.findViewById(R.id.alerts_menu_btn);
         alertButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -264,6 +289,11 @@ public class IntrepidMenu extends ScrollView {
                 animateButton(alertButton, context, ViewAlertActivity.class, activity);
             }
         });
+
+        if(context instanceof ViewAlertActivity){
+            alertButton.setAlpha(0.65f);
+        }
+
         final FrameLayout assistanceButton = (FrameLayout) activity.findViewById(R.id.assistance_menu_btn);
         assistanceButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -271,6 +301,11 @@ public class IntrepidMenu extends ScrollView {
                 animateButton(assistanceButton, context, AssistanceActivity.class, activity);
             }
         });
+
+        if(context instanceof AssistanceActivity){
+            assistanceButton.setAlpha(0.65f);
+        }
+
         final FrameLayout aceButton = (FrameLayout) activity.findViewById(R.id.insurance_menu_btn);
         aceButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -278,6 +313,11 @@ public class IntrepidMenu extends ScrollView {
                 animateButton(aceButton, context, AceInsuranceActivity.class, activity);
             }
         });
+
+        if(context instanceof AceInsuranceActivity){
+            aceButton.setAlpha(0.65f);
+        }
+
         ImageButton expandMenu = (ImageButton) activity.findViewById(R.id.expand_menu);
         expandMenu.setOnClickListener(new OnClickListener() {
             @Override
@@ -319,6 +359,7 @@ public class IntrepidMenu extends ScrollView {
                     public void onAnimationEnd(Animation animation) {
                         Intent mIntent = new Intent(context, className);
                         activity.startActivity(mIntent);
+                        activity.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
                         if (mFinishActivity) {
                             activity.finish();
                         }

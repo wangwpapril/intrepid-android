@@ -13,6 +13,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
+import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
 
@@ -26,6 +27,7 @@ public class ViewAceActivity extends ActionBarActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyApplication.getInstance().addActivity(this);
         instance = this;
         setContentView(R.layout.activity_view_ace);
 
@@ -104,6 +106,7 @@ public class ViewAceActivity extends ActionBarActivity implements View.OnClickLi
         if(v == backViewIv){
 
             onBackPressed();
+            this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
         }
     }
 }

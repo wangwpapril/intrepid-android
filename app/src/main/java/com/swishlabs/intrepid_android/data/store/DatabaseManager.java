@@ -37,6 +37,12 @@ public class DatabaseManager {
         }
     }
 
+    public void deleteDatabase(String name){
+        if(dbCache.containsKey(name)){
+            context.deleteDatabase(name);
+        }
+    }
+
     public static int getHealthConCount(Database database, String id){
         String countQuery = "SELECT * FROM " + Database.TABLE_HEALTH_CONDITION
                 + " WHERE " + Database.KEY_COUNTRY_ID  +" = " + id;
@@ -250,6 +256,15 @@ public class DatabaseManager {
     public static void deleteAlert(String countrycode, Database database){
         database.getDb().delete(Database.TABLE_ALERT, Database.KEY_COUNTRY_CODE + "=" + countrycode, null);
     }
+
+    public static void deleteAllAlerts(Database database){
+        database.getDb().delete(Database.TABLE_ALERT, null, null);
+    }
+
+    public static void deleteAllTrips(Database database){
+        database.getDb().delete(Database.TABLE_TRIPS, null, null);
+    }
+
 
 
 }

@@ -22,6 +22,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
 import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
@@ -51,7 +52,9 @@ public class AssistanceActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("Assi","onCreate");
         super.onCreate(savedInstanceState);
+        MyApplication.getInstance().addActivity(this);
         setContentView(R.layout.activity_assistance);
         setUpMapIfNeeded();
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
@@ -62,6 +65,7 @@ public class AssistanceActivity extends FragmentActivity {
 
     @Override
     protected void onResume() {
+        Log.d("Assi","onResume");
         super.onResume();
         setUpMapIfNeeded();
     }
@@ -98,6 +102,7 @@ public class AssistanceActivity extends FragmentActivity {
             };
 
     private void setUpMapIfNeeded() {
+        Log.d("Assi","setUpMapIfNeeded");
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
@@ -107,10 +112,13 @@ public class AssistanceActivity extends FragmentActivity {
             if (mMap != null) {
                 setUpMap();
             }
+        }else {
+ //           setUpMap();
         }
     }
 
     private void setUpMap() {
+        Log.d("Assi","setUpMap");
 
         Location currentLocation = getCurrentLocation();
         if (currentLocation != null)
@@ -134,6 +142,8 @@ public class AssistanceActivity extends FragmentActivity {
     }
 
     private Location getCurrentLocation(){
+        Log.d("Assi","getCurrentLocation");
+
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
 
@@ -159,13 +169,13 @@ public class AssistanceActivity extends FragmentActivity {
     }
 
     private void sendCoordinatesToIntrepid(double longitude, double latitude){
+        Log.d("Assi","sendCoord");
 
             IControllerContentCallback icc = new IControllerContentCallback() {
                 public void handleSuccess(String content){
 
-                    JSONObject jsonObj = null, coordObj = null;
-                    User user = null;
-                    Log.d("signUp user", content);
+                    JSONObject jsonObj = null;
+                    Log.d("Assistance", content);
 
                     try {
                         jsonObj = new JSONObject(content);
@@ -202,7 +212,7 @@ public class AssistanceActivity extends FragmentActivity {
 
             JSONObject coordinatesDetails = new JSONObject();
         String country = getApplicationContext().getResources().getConfiguration().locale.getDisplayCountry();
-        String cityName = "Not Found";
+        String cityName = null;
         Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
         try
         {
@@ -211,11 +221,22 @@ public class AssistanceActivity extends FragmentActivity {
             {
                 cityName = addresses.get(0).getLocality();
                 // you should also try with addresses.get(0).toSring();
+                if(cityName == null){
+                    cityName = addresses.get(0).getSubLocality();
+                }
                 System.out.println(cityName);
             }
         } catch (IOException e)
         {
             e.printStackTrace();
+        }
+
+        if(cityName == null){
+            cityName = "Not Found";
+        }
+
+        if(country == null){
+            country = "Not Found";
         }
 
         try {
@@ -238,4 +259,15 @@ public class AssistanceActivity extends FragmentActivity {
 
 
         }
+
+    @Override
+    public void onBackPressed(){
+        if(mIntrepidMenu.mState == 1){
+            mIntrepidMenu.snapToBottom();
+            return;
+        }
+        super.onBackPressed();
+        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+    }
+
 }

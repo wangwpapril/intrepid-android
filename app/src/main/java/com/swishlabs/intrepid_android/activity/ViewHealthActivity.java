@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.adapter.HealthListAdapter;
 import com.swishlabs.intrepid_android.adapter.HealthMedListAdapter;
@@ -77,6 +78,7 @@ public class ViewHealthActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MyApplication.getInstance().addActivity(this);
         setContentView(R.layout.activity_view_health);
         instance = this;
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
@@ -261,7 +263,7 @@ public class ViewHealthActivity extends ActionBarActivity {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                            HealthConditionDis hcDis = mHealthConList.get(position);
+                            HealthConditionDis hcDis = mHealthConList.get((int)id);
                             Intent mIntent = new Intent( instance, DetailHealthConActivity.class);
                             mIntent.putExtra("name", hcDis.getmConditionName());
                             mIntent.putExtra("description", hcDis.getmDescription());
@@ -283,7 +285,7 @@ public class ViewHealthActivity extends ActionBarActivity {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                            HealthMedicationDis hmDis = mHealthMedList.get(position);
+                            HealthMedicationDis hmDis = mHealthMedList.get((int)id);
                             Intent mIntent = new Intent( instance, DetailHealthMedActivity.class);
                             mIntent.putExtra("name", hmDis.getmMedicationName());
                             mIntent.putExtra("brand name", hmDis.getmBrandNames());
@@ -303,4 +305,15 @@ public class ViewHealthActivity extends ActionBarActivity {
             return rootView;
         }
     }
+
+    @Override
+    public void onBackPressed(){
+        if(mIntrepidMenu.mState == 1){
+            mIntrepidMenu.snapToBottom();
+            return;
+        }
+        super.onBackPressed();
+        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+    }
+
 }

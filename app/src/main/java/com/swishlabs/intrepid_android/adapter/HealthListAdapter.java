@@ -38,7 +38,7 @@ public class HealthListAdapter extends BaseAdapter {
 
     protected void init(){
         if (ImageLoader == null) {
-            ImageLoader = new ImageLoader(context, R.drawable.ic_launcher);
+            ImageLoader = new ImageLoader(context, R.drawable.empty_square);
         }
     }
 	@Override
@@ -53,7 +53,7 @@ public class HealthListAdapter extends BaseAdapter {
 
 	@Override
 	public long getItemId(int position) {
-		return position;
+		return datas.get(position).getId();
 	}
 
 	@Override
