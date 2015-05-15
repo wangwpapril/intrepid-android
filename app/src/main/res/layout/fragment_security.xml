@@ -52,7 +52,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="1dp"
-                        android:id="@+id/section_divider"
+                        android:id="@+id/section_divider30"
                         android:layout_below="@+id/destination_subtitle"
                         android:layout_alignLeft="@+id/section_icon"
                         android:layout_alignRight="@+id/destination_subtitle"
@@ -67,14 +67,14 @@
                         android:id="@+id/safety_content"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="false"
-                        android:layout_below="@+id/section_divider"
+                        android:layout_below="@+id/section_divider30"
                         android:textColor="#333f48" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/section_icon"
-                        android:layout_above="@+id/section_divider"
+                        android:layout_above="@+id/section_divider30"
                         android:layout_alignParentEnd="false"
                         android:layout_alignTop="@+id/destination_subtitle"
                         android:src="@drawable/safety_icon"
@@ -101,7 +101,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="1dp"
-                        android:id="@+id/section_divider"
+                        android:id="@+id/section_divider31"
                         android:layout_below="@+id/destination_subtitle2"
                         android:layout_alignLeft="@+id/section_icon2"
                         android:layout_alignRight="@+id/destination_subtitle2"
@@ -116,7 +116,7 @@
                         android:id="@+id/other_concerns_text"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="false"
-                        android:layout_below="@+id/section_divider"
+                        android:layout_below="@+id/section_divider31"
                         android:textColor="#333f48"
                         android:paddingBottom="10dp" />
 
@@ -124,7 +124,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/section_icon2"
-                        android:layout_above="@+id/section_divider"
+                        android:layout_above="@+id/section_divider31"
                         android:layout_alignParentEnd="false"
                         android:layout_alignTop="@id/destination_subtitle2"
                         android:src="@drawable/other_concerns_icon"
