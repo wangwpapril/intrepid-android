@@ -68,7 +68,7 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         setContentView(R.layout.activity_trip_pages);
 
         startLocationService();
-
+        this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         mTripPagesActivity = this;
         loadDatabase();
         mTripList = DatabaseManager.getTripArray(mDatabase, SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null));
@@ -176,7 +176,7 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
     @Override
     public void onBackPressed(){
         super.onBackPressed();
-        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+        this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
     }
 

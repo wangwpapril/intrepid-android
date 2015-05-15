@@ -58,11 +58,10 @@ public class DestinationsListActivity extends BaseActivity {
     @Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+        this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         this.setContentView(R.layout.destination_list);
 		initView();
-		
 		if(mDestinationList == null) {
 			getTripList();
 		}else{
@@ -628,7 +627,7 @@ public class DestinationsListActivity extends BaseActivity {
     @Override
     public void onBackPressed(){
         super.onBackPressed();
-        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+        this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
     }
 

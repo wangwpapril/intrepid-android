@@ -61,7 +61,7 @@ public class DetailHealthConActivity extends ActionBarActivity {
     @Override
     public void onBackPressed(){
         super.onBackPressed();
-        instance.overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
+        this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
 }
