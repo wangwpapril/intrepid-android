@@ -73,12 +73,12 @@
                         android:id="@+id/embassy_address"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="false"
-                        android:layout_below="@+id/section_divider"
+                        android:layout_below="@+id/section_divider20"
                         android:textColor="#333f48" />
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="1dp"
-                        android:id="@+id/section_divider"
+                        android:id="@+id/section_divider20"
                         android:layout_below="@+id/brand_name_subtitle"
                         android:layout_alignLeft="@+id/brand_name_icon"
                         android:layout_alignRight="@+id/brand_name_subtitle"
@@ -89,7 +89,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/brand_name_icon"
-                        android:layout_above="@+id/section_divider"
+                        android:layout_above="@+id/section_divider20"
                         android:layout_alignParentEnd="false"
                         android:layout_alignTop="@+id/brand_name_subtitle"
                         android:src="@drawable/embassy_icon"
@@ -116,7 +116,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="1dp"
-                        android:id="@+id/section_divider"
+                        android:id="@+id/section_divider21"
                         android:layout_below="@+id/contact_subtitle"
                         android:layout_alignLeft="@+id/section_icon"
                         android:layout_alignRight="@+id/contact_subtitle"
@@ -131,7 +131,7 @@
                         android:id="@+id/contact_phone"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="false"
-                        android:layout_below="@+id/section_divider"
+                        android:layout_below="@+id/section_divider21"
                         android:textColor="#333f48" />
 
                     <TextView
@@ -163,7 +163,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/section_icon"
-                        android:layout_above="@+id/section_divider"
+                        android:layout_above="@+id/section_divider21"
                         android:layout_alignParentEnd="false"
                         android:layout_alignTop="@+id/contact_subtitle"
                         android:src="@drawable/communication_icon"
@@ -178,7 +178,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="1dp"
-                        android:id="@+id/section_divider"
+                        android:id="@+id/section_divider22"
                         android:layout_below="@+id/hours_subtitle"
                         android:layout_alignLeft="@+id/section_icon2"
                         android:layout_alignRight="@+id/hours_subtitle"
@@ -205,14 +205,14 @@
                         android:id="@+id/embassy_hours"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="false"
-                        android:layout_below="@+id/section_divider"
+                        android:layout_below="@+id/section_divider22"
                         android:textColor="#333f48" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/section_icon2"
-                        android:layout_above="@+id/section_divider"
+                        android:layout_above="@+id/section_divider22"
                         android:layout_alignParentEnd="false"
                         android:layout_alignTop="@+id/hours_subtitle"
                         android:src="@drawable/government_icon"
@@ -227,7 +227,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="1dp"
-                        android:id="@+id/section_divider"
+                        android:id="@+id/section_divider23"
                         android:layout_below="@+id/notes_subtitle"
                         android:layout_alignLeft="@+id/notes_icon"
                         android:layout_alignRight="@+id/notes_subtitle"
@@ -254,14 +254,14 @@
                         android:id="@+id/notes_text"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="false"
-                        android:layout_below="@+id/section_divider"
+                        android:layout_below="@+id/section_divider23"
                         android:textColor="#333f48" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/notes_icon"
-                        android:layout_above="@+id/section_divider"
+                        android:layout_above="@+id/section_divider23"
                         android:layout_alignParentEnd="false"
                         android:layout_alignTop="@+id/notes_subtitle"
                         android:src="@drawable/example_icon"
@@ -276,7 +276,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="1dp"
-                        android:id="@+id/section_divider"
+                        android:id="@+id/section_divider24"
                         android:layout_below="@+id/services_subtitle"
                         android:layout_alignLeft="@+id/services_icon"
                         android:layout_alignRight="@+id/services_subtitle"
@@ -303,7 +303,7 @@
                         android:id="@+id/services_text"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="false"
-                        android:layout_below="@+id/section_divider"
+                        android:layout_below="@+id/section_divider24"
                         android:textColor="#333f48" />
 
                     <ImageView
@@ -312,7 +312,7 @@
                         android:id="@+id/services_icon"
                         android:layout_above="@id/services_text"
                         android:layout_alignParentEnd="false"
-                        android:layout_alignTop="@+id/services_subtitle"
+                        android:layout_alignTop="@+id/section_divider24"
                         android:src="@drawable/development_icon"
                         android:layout_marginRight="10dp" />
                 </RelativeLayout>
