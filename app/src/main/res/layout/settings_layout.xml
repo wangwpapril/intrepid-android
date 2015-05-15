@@ -33,8 +33,7 @@
                 android:gravity="center_horizontal"
                 android:layout_below="@+id/toolbar"
                 android:layout_marginRight="5dp"
-                android:layout_marginLeft="15dp"
-        android:layout_marginTop="30dp">
+                android:layout_marginLeft="15dp">
 
 
           <TextView
@@ -326,9 +325,9 @@
 
        </RelativeLayout>
 
+
     <Button
         android:id="@+id/butUpdate"
-        android:layout_gravity="center"
         android:text="UPDATE"
         android:textSize="16sp"
         android:textColor="@color/white"
@@ -340,12 +339,10 @@
         android:background="@drawable/login_btn"
         android:longClickable="false"
         android:clickable="true"
-        android:adjustViewBounds="true"
+        android:textAlignment="center"
         android:layout_below="@+id/inputLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dip"
-        android:textAlignment="center" />
-
+        android:layout_marginTop="35dp" />
     <TextView
         android:id="@+id/sign_out"
         android:layout_marginTop="25dip"
