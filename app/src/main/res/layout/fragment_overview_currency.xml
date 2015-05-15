@@ -107,7 +107,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:id="@+id/currency_selector"
+                android:id="@+id/currency_selector2"
                 android:layout_alignParentBottom="true"
                 android:layout_below="@+id/des_currency_value"
                 android:layout_alignLeft="@+id/des_currency_value"
