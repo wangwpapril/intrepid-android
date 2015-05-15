@@ -214,6 +214,7 @@ public class IntrepidMenu extends ScrollView {
                 this.getLayoutParams();
         params.height = convertDPtoPixels(MENUHEIGHT);
         this.setLayoutParams(params);
+        mState = 1;
     }
 
     private int convertDPtoPixels(int dp){
