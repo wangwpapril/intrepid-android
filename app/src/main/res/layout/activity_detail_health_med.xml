@@ -55,7 +55,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="1dp"
-                    android:id="@+id/section_divider"
+                    android:id="@+id/section_divider15"
                     android:layout_below="@+id/brand_name_subtitle"
                     android:layout_alignLeft="@+id/brand_name_icon"
                     android:layout_alignRight="@+id/brand_name_subtitle"
@@ -82,14 +82,14 @@
                     android:id="@+id/brand_name_content"
                     android:layout_centerVertical="true"
                     android:layout_alignParentStart="false"
-                    android:layout_below="@+id/section_divider"
+                    android:layout_below="@+id/section_divider15"
                     android:textColor="#333f48" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/brand_name_icon"
-                    android:layout_above="@+id/section_divider"
+                    android:layout_above="@+id/section_divider15"
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/brand_name_subtitle"
                     android:src="@drawable/brand_icon"
@@ -104,7 +104,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="1dp"
-                    android:id="@+id/section_divider"
+                    android:id="@+id/section_divider16"
                     android:layout_below="@+id/destination_subtitle"
                     android:layout_alignLeft="@+id/section_icon"
                     android:layout_alignRight="@+id/destination_subtitle"
@@ -131,14 +131,14 @@
                     android:id="@+id/destination_content"
                     android:layout_centerVertical="true"
                     android:layout_alignParentStart="false"
-                    android:layout_below="@+id/section_divider"
+                    android:layout_below="@+id/section_divider16"
                     android:textColor="#333f48" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/section_icon"
-                    android:layout_above="@+id/section_divider"
+                    android:layout_above="@+id/section_divider16"
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/destination_subtitle"
                     android:src="@drawable/description_icon"
@@ -153,7 +153,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="1dp"
-                    android:id="@+id/section_divider"
+                    android:id="@+id/section_divider17"
                     android:layout_below="@+id/destination_subtitle2"
                     android:layout_alignLeft="@+id/section_icon2"
                     android:layout_alignRight="@+id/destination_subtitle2"
@@ -170,7 +170,7 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentStart="false"
                     android:textColor="#333f48"
-                    android:layout_below="@+id/section_divider" />
+                    android:layout_below="@+id/section_divider17" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -188,7 +188,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/section_icon2"
-                    android:layout_above="@+id/section_divider"
+                    android:layout_above="@+id/section_divider17"
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/destination_subtitle2"
                     android:src="@drawable/side_effects_icon"
@@ -203,7 +203,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="1dp"
-                    android:id="@+id/section_divider"
+                    android:id="@+id/section_divider18"
                     android:layout_below="@+id/destination_subtitle3"
                     android:layout_alignLeft="@+id/section_icon3"
                     android:layout_alignRight="@+id/destination_subtitle3"
@@ -230,14 +230,14 @@
                     android:id="@+id/destination_content3"
                     android:layout_centerVertical="true"
                     android:layout_alignParentStart="false"
-                    android:layout_below="@+id/section_divider"
+                    android:layout_below="@+id/section_divider18"
                     android:textColor="#333f48" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/section_icon3"
-                    android:layout_above="@+id/section_divider"
+                    android:layout_above="@+id/section_divider18"
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/destination_subtitle3"
                     android:src="@drawable/storage_icon"
@@ -252,7 +252,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="1dp"
-                    android:id="@+id/section_divider"
+                    android:id="@+id/section_divider19"
                     android:layout_below="@+id/destination_subtitle4"
                     android:layout_alignLeft="@+id/section_icon4"
                     android:layout_alignRight="@+id/destination_subtitle4"
@@ -279,14 +279,14 @@
                     android:id="@+id/destination_content4"
                     android:layout_centerVertical="true"
                     android:layout_alignParentStart="false"
-                    android:layout_below="@+id/section_divider"
+                    android:layout_below="@+id/section_divider19"
                     android:textColor="#333f48" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/section_icon4"
-                    android:layout_above="@+id/section_divider"
+                    android:layout_above="@+id/section_divider19"
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/destination_subtitle4"
                     android:src="@drawable/notes_icon"

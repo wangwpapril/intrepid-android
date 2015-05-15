@@ -54,7 +54,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="1dp"
-                    android:id="@+id/section_divider"
+                    android:id="@+id/section_divider1"
                     android:layout_below="@+id/destination_subtitle"
                     android:layout_alignLeft="@+id/section_icon"
                     android:layout_alignRight="@+id/destination_subtitle"
@@ -81,14 +81,14 @@
                     android:id="@+id/destination_content"
                     android:layout_centerVertical="true"
                     android:layout_alignParentStart="false"
-                    android:layout_below="@+id/section_divider"
+                    android:layout_below="@+id/section_divider1"
                     android:textColor="#333f48" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/section_icon"
-                    android:layout_above="@+id/section_divider"
+                    android:layout_above="@+id/section_divider1"
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/destination_subtitle"
                     android:src="@drawable/brand_icon"
@@ -103,7 +103,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="1dp"
-                    android:id="@+id/section_divider"
+                    android:id="@+id/section_divider2"
                     android:layout_below="@+id/destination_subtitle2"
                     android:layout_alignLeft="@+id/section_icon2"
                     android:layout_alignRight="@+id/destination_subtitle2"
@@ -130,14 +130,14 @@
                     android:id="@+id/destination_content2"
                     android:layout_centerVertical="true"
                     android:layout_alignParentStart="false"
-                    android:layout_below="@+id/section_divider"
+                    android:layout_below="@+id/section_divider2"
                     android:textColor="#333f48" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/section_icon2"
-                    android:layout_above="@+id/section_divider"
+                    android:layout_above="@+id/section_divider2"
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/destination_subtitle2"
                     android:src="@drawable/side_effects_icon"
@@ -152,7 +152,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="1dp"
-                    android:id="@+id/section_divider"
+                    android:id="@+id/section_divider3"
                     android:layout_below="@+id/destination_subtitle3"
                     android:layout_alignLeft="@+id/section_icon3"
                     android:layout_alignRight="@+id/destination_subtitle3"
@@ -179,14 +179,14 @@
                     android:id="@+id/destination_content3"
                     android:layout_centerVertical="true"
                     android:layout_alignParentStart="false"
-                    android:layout_below="@+id/section_divider"
+                    android:layout_below="@+id/section_divider3"
                     android:textColor="#333f48" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/section_icon3"
-                    android:layout_above="@+id/section_divider"
+                    android:layout_above="@+id/section_divider3"
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/destination_subtitle3"
                     android:src="@drawable/notes_icon"
