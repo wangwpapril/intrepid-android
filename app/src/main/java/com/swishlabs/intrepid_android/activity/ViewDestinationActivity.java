@@ -159,7 +159,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
     private void openMenu(){
         if("1".equals(getIntent().getStringExtra("firstTimeFlag"))){
             if(mIntrepidMenu.mState == 0){
-                mIntrepidMenu.snapToTop();
+                mIntrepidMenu.appearTop();
             }
         }
     }

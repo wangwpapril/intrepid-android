@@ -209,6 +209,13 @@ public class IntrepidMenu extends ScrollView {
         mState = 1;
     }
 
+    public void appearTop(){
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
+                this.getLayoutParams();
+        params.height = convertDPtoPixels(MENUHEIGHT);
+        this.setLayoutParams(params);
+    }
+
     private int convertDPtoPixels(int dp){
         final float scale = getContext().getResources().getDisplayMetrics().density;
         int pixels = (int) (dp * scale + 0.5f);
