@@ -18,6 +18,7 @@ public class User implements Serializable {
 	public String phone;
 	public String countryCode;
 	public String currencyCode;
+
 	public Company company;
 	public String ipAddress;
 	public String lastIpAddress;
@@ -31,7 +32,10 @@ public class User implements Serializable {
 	public String updatedAt;
 	public String token;
 	public String forgotPasswordToken;
-	
+
+	public Company getCompany() {
+		return company;
+	}
 	
 	public User(JSONObject obj) throws JSONException {
 
