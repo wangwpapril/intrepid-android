@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
@@ -40,6 +41,7 @@ public class IntrepidMenu extends ScrollView {
     public static final int VELOCITY = 150;
     private int mInitialHeight =0;
     private ImageButton mExpandMenu;
+    private ImageView mArrow;
     public int mState = 0;
 
     public IntrepidMenu(Context context) {
@@ -60,9 +62,13 @@ public class IntrepidMenu extends ScrollView {
 
     }
 
-    public void initialize(){
+    @Override
+    public void onFinishInflate(){
+        super.onFinishInflate();
+        mArrow = (ImageView)findViewById(R.id.intrepidMenuArrow);
 
     }
+    
 
     @Override
     public void onScrollChanged(int x, int y, int oldx, int oldy){
@@ -184,6 +190,7 @@ public class IntrepidMenu extends ScrollView {
 
                 }
             });
+        mArrow.setImageDrawable(getResources().getDrawable(R.drawable.arrow_up));
         mState = 0;
 
     }
@@ -198,6 +205,7 @@ public class IntrepidMenu extends ScrollView {
         TranslateAnimation anim = new TranslateAnimation(0, 0, convertDPtoPixels(MENUHEIGHT)-initial_position, 0);
         anim.setDuration(MENUHEIGHT);
         this.startAnimation(anim);
+        mArrow.setImageDrawable(getResources().getDrawable(R.drawable.arrow_down));
         mState = 1;
     }
 
