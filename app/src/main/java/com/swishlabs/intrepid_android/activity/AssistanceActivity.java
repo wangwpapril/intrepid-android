@@ -267,7 +267,7 @@ public class AssistanceActivity extends FragmentActivity {
             return;
         }
         super.onBackPressed();
-        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+        this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
 }

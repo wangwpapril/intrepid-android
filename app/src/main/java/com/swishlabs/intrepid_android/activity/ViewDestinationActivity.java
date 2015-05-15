@@ -73,7 +73,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+        this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         MyApplication.getInstance().addActivity(this);
         loadDatabase();
 
@@ -102,11 +102,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
 
-        if("1".equals(getIntent().getStringExtra("firstTimeFlag"))){
-            if(mIntrepidMenu.mState == 0){
-                mIntrepidMenu.snapToTop();
-            }
-        }
+
 
     }
 
@@ -158,6 +154,14 @@ public class ViewDestinationActivity extends ActionBarActivity {
         setOnPageChangeListener(mViewPager);
 
 
+    }
+
+    private void openMenu(){
+        if("1".equals(getIntent().getStringExtra("firstTimeFlag"))){
+            if(mIntrepidMenu.mState == 0){
+                mIntrepidMenu.appearTop();
+            }
+        }
     }
 
     @Override
@@ -283,6 +287,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_overview_general, container, false);
             populateGeneralOverview(rootView);
+            ViewDestinationActivity.getInstance().openMenu();
             return rootView;
         }
 
@@ -560,7 +565,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
             return;
         }
         super.onBackPressed();
-        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+        this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
 
