@@ -113,6 +113,12 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
     }
 
+    public void checkMenuClick(View v) {
+        Log.d("check", "hi");
+        if (v != mIntrepidMenu && v.getParent()!=mIntrepidMenu){
+            mIntrepidMenu.snapToBottom();
+        }
+    }
 
 
 
@@ -229,6 +235,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
 
     /**

@@ -22,7 +22,7 @@
             android:layout_marginTop="40dp"
             android:scaleType="centerCrop"
             android:src="@drawable/add_new_trip"
-            android:background="@drawable/trip_bg" />
+            />
 
         <TextView
             android:layout_width="match_parent"

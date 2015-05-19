@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.customViews.RoundedTransformation;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
@@ -75,6 +77,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trip, container, false);
+
         mTripIndex = getArguments().getInt("id");
         mDestinationId = getArguments().getString("destinationId");
         String destinationName = getArguments().getString("destinationName");
@@ -202,8 +205,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
 
     public void getCountry(String destinationName, String imageURL){
         mCountryName.setText(destinationName);
-        Picasso.with(TripPagesActivity.getInstance()).load(imageURL).resize(1200,1200).into(mCountryImage);
-//        imageLoader.DisplayImage(imageURL, TripPagesActivity.getInstance(), mCountryImage);
+        Picasso.with(TripPagesActivity.getInstance()).load(imageURL).resize(1200, 1200).centerCrop().transform(new RoundedTransformation(50, 4)).into(mCountryImage);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
