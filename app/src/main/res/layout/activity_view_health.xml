@@ -58,7 +58,7 @@
         android:layout_centerHorizontal="true"
         android:background="#e1e1e1"
         android:cursorVisible="true"
-        android:drawableLeft="@drawable/search_title"
+        android:drawableLeft="@drawable/search_icon_blue"
         android:drawablePadding="10dip"
         android:drawableRight="@drawable/exit"
         android:paddingRight="20dip"
