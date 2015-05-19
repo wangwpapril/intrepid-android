@@ -96,8 +96,17 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         });
 
         mIndicator = (IndicatorLinearLayout) findViewById(R.id.indicator);
-        mIndicator.initPoints(mTripCount+1, 0, mViewPager);
+        mIndicator.initPoints(mTripCount+1, SharedPreferenceUtil.getInt(this, Enums.PreferenceKeys.currentPage.toString(), 0), mViewPager);
+        moveToPage();
 
+    }
+
+    private void moveToPage(){
+        int page = SharedPreferenceUtil.getInt(this, Enums.PreferenceKeys.currentPage.toString(), 0);
+        if (page > 0){
+            mViewPager.setCurrentItem(page);
+            SharedPreferenceUtil.setInt(TripPagesActivity.getInstance(), Enums.PreferenceKeys.currentPage.toString(), 0);
+        }
     }
 
 

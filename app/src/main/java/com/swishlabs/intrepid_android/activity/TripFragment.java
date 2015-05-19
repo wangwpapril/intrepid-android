@@ -99,6 +99,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
                 @Override
                 public void onClick(View v) {
                     SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), mDestinationId);
+                    SharedPreferenceUtil.setInt(TripPagesActivity.getInstance(), Enums.PreferenceKeys.currentPage.toString(), TripPagesActivity.getInstance().mViewPager.getCurrentItem());
                     Intent mIntent = new Intent(TripPagesActivity.getInstance(), ViewDestinationActivity.class);
 
                     mIntent.putExtra("destinationId", mDestinationId);
