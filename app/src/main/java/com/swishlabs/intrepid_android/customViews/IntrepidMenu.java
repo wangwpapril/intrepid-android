@@ -37,7 +37,7 @@ import com.swishlabs.intrepid_android.activity.ViewWeatherActivity;
 public class IntrepidMenu extends ScrollView {
 
     public static final int MENUHEIGHT = 338;
-    public static final int MINHEIGHT = 35;
+    public static final int MINHEIGHT = 25;
     public static final int VELOCITY = 150;
     private int mInitialHeight =0;
     private ImageButton mExpandMenu;
