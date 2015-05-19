@@ -141,7 +141,7 @@ public class DatabaseManager {
 
     public static ArrayList<Trip> getTripArray(Database database, String user_Id){
         ArrayList<Trip> tripList= new ArrayList<Trip>();
-        Cursor  cursor = database.getDb().rawQuery("select * from " + Database.TABLE_TRIPS + " WHERE " + Database.KEY_TRIP_USER_ID + " = "+user_Id, null);
+        Cursor  cursor = database.getDb().rawQuery("select * from " + Database.TABLE_TRIPS + " WHERE " + Database.KEY_TRIP_USER_ID + " = "+user_Id + " ORDER BY "+Database.KEY_DESTINATION_COUNTRY, null);
 
         if (cursor .moveToFirst()) {
 
