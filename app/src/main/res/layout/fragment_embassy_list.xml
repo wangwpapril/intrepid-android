@@ -15,11 +15,10 @@
             android:id="@+id/content">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_height="350dp"
                 android:scaleType="centerCrop"
-                android:id="@+id/overview_image"
-                android:src="@drawable/embassy_icon" />
+                android:id="@+id/overview_image" />
 
             <TextView
                 android:layout_width="wrap_content"

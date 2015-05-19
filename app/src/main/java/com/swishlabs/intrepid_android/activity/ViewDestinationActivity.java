@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -60,6 +61,8 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
     String baseCurrencyCode, desCurrencyCode;
     Currency baseCurrency, desCurrency;
+
+    boolean firstFlag = false;
 
 //    TextView mToolbarTitle;
     CustomTabContainer mTabContainer;
@@ -102,6 +105,10 @@ public class ViewDestinationActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
 
+        if("1".equals(getIntent().getStringExtra("firstTimeFlag"))){
+            firstFlag = true;
+        }
+
 
 
     }
@@ -120,11 +127,15 @@ public class ViewDestinationActivity extends ActionBarActivity {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 mTabContainer.slideScrollIndicator(position, positionOffsetPixels);
-            }
+
+        }
 
             @Override
             public void onPageSelected(int position) {
-//                mToolbarTitle.setText(tabNames.get(position));
+                InputMethodManager imm = (InputMethodManager) instance.getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm.isActive()) {
+                    imm.hideSoftInputFromWindow(mViewPager.getWindowToken(), 0);
+                }
             }
 
             @Override
@@ -157,7 +168,8 @@ public class ViewDestinationActivity extends ActionBarActivity {
     }
 
     private void openMenu(){
-        if("1".equals(getIntent().getStringExtra("firstTimeFlag"))){
+        if(firstFlag){
+            firstFlag = false;
             if(mIntrepidMenu.mState == 0){
                 mIntrepidMenu.appearTop();
             }
@@ -177,7 +189,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_view_destination, menu);
+ //       getMenuInflater().inflate(R.menu.menu_view_destination, menu);
         return true;
     }
 
