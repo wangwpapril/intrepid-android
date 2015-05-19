@@ -74,7 +74,7 @@ public class AssistanceActivity extends FragmentActivity {
 
         mApNameArray = new String[mApList.size()];
         for (int i = 0;i<mApList.size(); i++){
-            mApNameArray[i] = mApList.get(i).getName();
+            mApNameArray[i] = mApList.get(i).getName() +": "+ mApList.get(i).getPhone();
         }
 
         Button assistanceButton = (Button)findViewById(R.id.callIntrepidAssistance);
