@@ -23,6 +23,7 @@ import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 import com.swishlabs.intrepid_android.data.api.model.HealthCondition;
 import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
+import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Enums;
@@ -322,16 +323,20 @@ public class DestinationsListActivity extends BaseActivity {
             String ss = null;
             cct.execute(ss);
         }else{
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setMessage("Already added this trip");
-            builder.setTitle("Error");
-            builder.setPositiveButton(android.R.string.ok, null);
-            AlertDialog dialog = builder.create();
-            try {
-                dialog.show();
-            }catch(WindowManager.BadTokenException e){
-                Log.d("createAlerts", "error showing alert");
+            List<Trip> tripList = DatabaseManager.getTripArray(mDatabase, SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null));
+            for (int i = 0; i<tripList.size(); i++){
+                if (tripList.get(i).getCountryId().equals(destinationId)){
+                    SharedPreferenceUtil.setInt(TripPagesActivity.getInstance(), Enums.PreferenceKeys.currentPage.toString(), i+1);
+                    break;
+                }
             }
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), destinationId);
+            Intent intent = new Intent(DestinationsListActivity.this, ViewDestinationActivity.class);
+            intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.putExtra("destinationId", destinationId);
+            intent.putExtra("firstTimeFlag", "1");
+            startActivity(intent);
         }
     }
 
