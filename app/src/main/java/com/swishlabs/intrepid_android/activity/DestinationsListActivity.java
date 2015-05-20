@@ -453,6 +453,10 @@ public class DestinationsListActivity extends BaseActivity {
         String medical_image_url = images.getJSONObject("medical").getJSONObject("versions").getJSONObject("3x")
                 .getString("source_url").replace(" ", "%20");
 
+        String money = content.getString("currency");
+        String transportation = content.getString("transportation");
+        String holidays = content.getString("holidays");
+
         ContentValues values = new ContentValues();
         values.put(Database.KEY_DESTINATION_ID, destinationId);
         values.put(Database.KEY_COUNTRY_NAME, countryName);
