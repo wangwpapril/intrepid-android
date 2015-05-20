@@ -36,6 +36,7 @@ public class DestinationInformation {
     public String mHealthCare;
     public String mVacciMedical;
     public String mHealthCondition;
+    public String mImageMedical;
 
 
 
@@ -48,7 +49,7 @@ public class DestinationInformation {
     public DestinationInformation(String destinationId, String name, String countryCode, String communicationsInfrastructure, String otherConcerns, String development, String location, String culturalNorms, String sources,
         String currency, String currencyCode, String currencyRate, String religion, String timeZone, String safety, String typeOfGovernment, String visaMapAttributionUri, String electricity,
         String ethnicMakeup, String languageInfo, String visaRequirements, String climate, String image1, String image2, String image3, String image4, String image5, String emergency, String healthcare,
-        String vaccination, String healthcondition, String transportation, String holidays){
+        String vaccination, String healthcondition, String imageMedical, String transportation, String holidays){
         this.mDestinationId = destinationId;
         this.mCountryName = name;
         this.mCountryCode = countryCode;
@@ -80,6 +81,7 @@ public class DestinationInformation {
         this.mHealthCare = healthcare;
         this.mVacciMedical = vaccination;
         this.mHealthCondition = healthcondition;
+        this.mImageMedical = imageMedical;
         this.mTransportation = transportation;
         this.mHolidays = holidays;
     }
@@ -187,6 +189,8 @@ public class DestinationInformation {
     public String getVacciMedical() { return mVacciMedical; }
 
     public String getHealthCondition() { return mHealthCondition; }
+
+    public String getImageMedical() { return mImageMedical; }
 
     public String getTransportation() {
         return mTransportation;
