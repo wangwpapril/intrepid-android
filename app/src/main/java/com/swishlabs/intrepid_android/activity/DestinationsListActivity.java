@@ -452,7 +452,7 @@ public class DestinationsListActivity extends BaseActivity {
         String emergency_numbers = content.getString("emergency_numbers");
         String medical_image_url = images.getJSONObject("medical").getJSONObject("versions").getJSONObject("3x")
                 .getString("source_url").replace(" ", "%20");
-        
+
         String transportation = content.getString("transportation");
         String holidays = content.getString("holidays");
 
@@ -485,6 +485,8 @@ public class DestinationsListActivity extends BaseActivity {
         values.put(Database.KEY_IMAGE_CULTURE, culture_image_url);
         values.put(Database.KEY_IMAGE_INTRO, intro_image_url);
         values.put(Database.KEY_IMAGE_CURRENCY, currency_image_url);
+        values.put(Database.KEY_TRANSPORTATION, transportation);
+        values.put(Database.KEY_HOLIDAYS, holidays);
 
         mDatabase.getDb().insert(Database.TABLE_DESTINATION_INFORMATION, null, values);
     }

@@ -377,6 +377,159 @@
         android:layout_marginRight="10dp" />
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/overview_content8"
+            android:padding="16dp"
+            android:layout_below="@+id/overview_content7">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Money"
+                android:id="@+id/destination_subtitle8"
+                android:layout_alignParentStart="false"
+                android:textStyle="bold"
+                android:layout_toRightOf="@+id/section_icon8"
+                android:textColor="#333f48"
+                android:layout_alignParentEnd="true" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:id="@+id/section_divider11"
+                android:layout_below="@+id/destination_subtitle8"
+                android:layout_alignLeft="@+id/section_icon8"
+                android:layout_alignRight="@+id/destination_subtitle8"
+                android:background="#EDEDED"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:id="@+id/destination_content8"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="false"
+                android:layout_below="@+id/section_divider11"
+                android:textColor="#333f48"
+                android:paddingBottom="15dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/section_icon8"
+                android:layout_above="@+id/section_divider11"
+                android:layout_alignParentEnd="false"
+                android:layout_alignTop="@+id/destination_subtitle8"
+                android:src="@drawable/development_icon"
+                android:layout_marginRight="10dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/overview_content9"
+            android:padding="16dp"
+            android:layout_below="@+id/overview_content8">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Transportation"
+                android:id="@+id/destination_subtitle9"
+                android:layout_alignParentStart="false"
+                android:textStyle="bold"
+                android:layout_toRightOf="@+id/section_icon9"
+                android:textColor="#333f48"
+                android:layout_alignParentEnd="true" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:id="@+id/section_divider12"
+                android:layout_below="@+id/destination_subtitle9"
+                android:layout_alignLeft="@+id/section_icon9"
+                android:layout_alignRight="@+id/destination_subtitle9"
+                android:background="#EDEDED"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:id="@+id/destination_content9"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="false"
+                android:layout_below="@+id/section_divider12"
+                android:textColor="#333f48"
+                android:paddingBottom="15dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/section_icon9"
+                android:layout_above="@+id/section_divider12"
+                android:layout_alignParentEnd="false"
+                android:layout_alignTop="@+id/destination_subtitle9"
+                android:src="@drawable/development_icon"
+                android:layout_marginRight="10dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/overview_content10"
+            android:padding="16dp"
+            android:layout_below="@+id/overview_content9">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Holidays"
+                android:id="@+id/destination_subtitle10"
+                android:layout_alignParentStart="false"
+                android:textStyle="bold"
+                android:layout_toRightOf="@+id/section_icon10"
+                android:textColor="#333f48"
+                android:layout_alignParentEnd="true" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:id="@+id/section_divider13"
+                android:layout_below="@+id/destination_subtitle10"
+                android:layout_alignLeft="@+id/section_icon10"
+                android:layout_alignRight="@+id/destination_subtitle10"
+                android:background="#EDEDED"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:id="@+id/destination_content10"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="false"
+                android:layout_below="@+id/section_divider13"
+                android:textColor="#333f48"
+                android:paddingBottom="15dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/section_icon10"
+                android:layout_above="@+id/section_divider13"
+                android:layout_alignParentEnd="false"
+                android:layout_alignTop="@+id/destination_subtitle10"
+                android:src="@drawable/development_icon"
+                android:layout_marginRight="10dp" />
+        </RelativeLayout>
+
     </RelativeLayout>
     </RelativeLayout>
 </ScrollView>

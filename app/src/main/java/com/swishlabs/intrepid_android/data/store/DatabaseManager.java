@@ -211,7 +211,7 @@ public class DatabaseManager {
                         Database.KEY_RELIGION, Database.KEY_TIMEZONE, Database.KEY_SAFETY, Database.KEY_GOVERNMENT, Database.KEY_VISAMAP,
                         Database.KEY_ELECTRICITY, Database.KEY_ETHNIC_MAKEUP, Database.KEY_LANGUAGE_INFORMATION, Database.KEY_VISA_REQUIREMENT,
                         Database.KEY_CLIMATE_INFO, Database.KEY_IMAGE_SECURITY, Database.KEY_IMAGE_OVERVIEW, Database.KEY_IMAGE_CULTURE,
-                        Database.KEY_IMAGE_INTRO, Database.KEY_IMAGE_CURRENCY}, Database.KEY_DESTINATION_ID + "=?",
+                        Database.KEY_IMAGE_INTRO, Database.KEY_IMAGE_CURRENCY, Database.KEY_TRANSPORTATION, Database.KEY_HOLIDAYS}, Database.KEY_DESTINATION_ID + "=?",
                 new String[]{String.valueOf(destinationId)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
@@ -220,7 +220,11 @@ public class DatabaseManager {
                 cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
                 cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18),
                 cursor.getString(19), cursor.getString(20), cursor.getString(21), cursor.getString(22), cursor.getString(23), cursor.getString(24),
-                cursor.getString(25), cursor.getString(26));
+                cursor.getString(25), cursor.getString(26), cursor.getString(27), cursor.getString(28));
+
+        String test = cursor.getString(27);
+        String test2 = cursor.getString(28);
+        String gg = "test";
 
         return destinationInformation;
     }

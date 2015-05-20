@@ -328,6 +328,12 @@ public class ViewDestinationActivity extends ActionBarActivity {
             electricityText.setText(destinationInformation.getElectricity());
             TextView developmentText = (TextView)rootView.findViewById(R.id.destination_content7);
             developmentText.setText(destinationInformation.getDevelopment());
+            TextView moneyText = (TextView)rootView.findViewById(R.id.destination_content8);
+            moneyText.setText(destinationInformation.getCurrency());
+            TextView transportationText = (TextView)rootView.findViewById(R.id.destination_content9);
+            transportationText.setText(destinationInformation.getTransportation());
+            TextView holidayText = (TextView)rootView.findViewById(R.id.destination_content10);
+            holidayText.setText(destinationInformation.getmHolidays());
 
         }
     }

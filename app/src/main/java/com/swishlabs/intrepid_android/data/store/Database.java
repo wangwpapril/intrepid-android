@@ -70,6 +70,8 @@ public class Database {
     public static final String KEY_IMAGE_CULTURE = "image3";
     public static final String KEY_IMAGE_INTRO = "image4";
     public static final String KEY_IMAGE_CURRENCY = "image5";
+    public static final String KEY_TRANSPORTATION = "transportation";
+    public static final String KEY_HOLIDAYS = "holdays";
 
     public static final String KEY_EMBASSY_ID = "embassyId";
     public static final String KEY_EMBASSY_COUNTRY = "embassyCountry";
@@ -164,7 +166,9 @@ public class Database {
                     + KEY_IMAGE_OVERVIEW + " TEXT,"
                     + KEY_IMAGE_CULTURE + " TEXT,"
                     + KEY_IMAGE_INTRO + " TEXT,"
-                    + KEY_IMAGE_CURRENCY + " TEXT"+ ")";
+                    + KEY_IMAGE_CURRENCY + " TEXT,"
+                    + KEY_TRANSPORTATION + " TEXT,"
+                    + KEY_HOLIDAYS + " TEXT"+ ")";
             db.execSQL(createDestinationInfoTable);
 
             String createEmbassyTable = "CREATE TABLE " + TABLE_EMBASSY + "("
