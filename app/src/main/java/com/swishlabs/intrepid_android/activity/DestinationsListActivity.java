@@ -446,6 +446,8 @@ public class DestinationsListActivity extends BaseActivity {
             currency_image_url = images.getJSONObject("currency").getString("source_url").replace(" ", "%20");
         }
 
+        
+
         ContentValues values = new ContentValues();
         values.put(Database.KEY_DESTINATION_ID, destinationId);
         values.put(Database.KEY_COUNTRY_NAME, countryName);
