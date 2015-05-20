@@ -446,6 +446,13 @@ public class DestinationsListActivity extends BaseActivity {
             currency_image_url = images.getJSONObject("currency").getString("source_url").replace(" ", "%20");
         }
 
+        String health_care_quality = content.getString("health_care_quality");
+        String vaccines_pre_trip_medical = content.getString("vaccinations_and_pre_trip_medical");
+        String health_conditions = content.getString("health_conditions");
+        String emergency_numbers = content.getString("emergency_numbers");
+        String medical_image_url = images.getJSONObject("medical").getJSONObject("versions").getJSONObject("3x")
+                .getString("source_url").replace(" ", "%20");
+
         ContentValues values = new ContentValues();
         values.put(Database.KEY_DESTINATION_ID, destinationId);
         values.put(Database.KEY_COUNTRY_NAME, countryName);
