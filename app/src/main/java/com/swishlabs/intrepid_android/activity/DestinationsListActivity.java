@@ -92,7 +92,7 @@ public class DestinationsListActivity extends BaseActivity {
                         mDestinationList.add(dest);
                         String currencyCode = null;
 //                        String currencyUrl = mDestinationList.get(i).imageCurrency.sourceUrl.replace(" ", "%20");
-                        String currencyUrl = mDestinationList.get(i).imageCurrency.sourceUrl;
+                        String currencyUrl = mDestinationList.get(i).imageCurrency.version3.sourceUrl;
                         if(currencyUrl != null) {
                             String[] parts = currencyUrl.replace(" ", "%20").split("/");
                             for (int j = 0; j < parts.length; j++) {
@@ -446,7 +446,16 @@ public class DestinationsListActivity extends BaseActivity {
             currency_image_url = images.getJSONObject("currency").getString("source_url").replace(" ", "%20");
         }
 
+        String health_care_quality = content.getString("health_care_quality");
+        String vaccines_pre_trip_medical = content.getString("vaccinations_and_pre_trip_medical");
+        String health_conditions = content.getString("health_conditions");
+        String emergency_numbers = content.getString("emergency_numbers");
+        String medical_image_url = images.getJSONObject("medical").getJSONObject("versions").getJSONObject("3x")
+                .getString("source_url").replace(" ", "%20");
         
+        String transportation = content.getString("transportation");
+        String holidays = content.getString("holidays");
+
 
         ContentValues values = new ContentValues();
         values.put(Database.KEY_DESTINATION_ID, destinationId);
