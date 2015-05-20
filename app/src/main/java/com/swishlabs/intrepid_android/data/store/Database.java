@@ -72,6 +72,10 @@ public class Database {
     public static final String KEY_IMAGE_CURRENCY = "image5";
     public static final String KEY_TRANSPORTATION = "transportation";
     public static final String KEY_HOLIDAYS = "holdays";
+    public static final String KEY_EMERGENCY_NUMBER = "emergencynumber";
+    public static final String KEY_HEALTH_CARE = "healthcarequality";
+    public static final String KEY_VACCINATION = "vaccinationspretripmedical";
+    public static final String KEY_HEALTH_CONDITION = "healthconditions";
 
     public static final String KEY_EMBASSY_ID = "embassyId";
     public static final String KEY_EMBASSY_COUNTRY = "embassyCountry";
@@ -167,6 +171,10 @@ public class Database {
                     + KEY_IMAGE_CULTURE + " TEXT,"
                     + KEY_IMAGE_INTRO + " TEXT,"
                     + KEY_IMAGE_CURRENCY + " TEXT,"
+                    + KEY_EMERGENCY_NUMBER + " TEXT,"
+                    + KEY_HEALTH_CARE + " TEXT,"
+                    + KEY_VACCINATION + " TEXT,"
+                    + KEY_HEALTH_CONDITION + " TEXT,"
                     + KEY_TRANSPORTATION + " TEXT,"
                     + KEY_HOLIDAYS + " TEXT"+ ")";
             db.execSQL(createDestinationInfoTable);

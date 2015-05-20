@@ -485,6 +485,10 @@ public class DestinationsListActivity extends BaseActivity {
         values.put(Database.KEY_IMAGE_CULTURE, culture_image_url);
         values.put(Database.KEY_IMAGE_INTRO, intro_image_url);
         values.put(Database.KEY_IMAGE_CURRENCY, currency_image_url);
+        values.put(Database.KEY_EMERGENCY_NUMBER, emergency_numbers);
+        values.put(Database.KEY_HEALTH_CARE, health_care_quality);
+        values.put(Database.KEY_VACCINATION, vaccines_pre_trip_medical);
+        values.put(Database.KEY_HEALTH_CONDITION, health_conditions);
         values.put(Database.KEY_TRANSPORTATION, transportation);
         values.put(Database.KEY_HOLIDAYS, holidays);
 

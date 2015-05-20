@@ -32,6 +32,11 @@ public class DestinationInformation {
     public String mTransportation;
     public String mHolidays;
 
+    public String mEmergencyNumber;
+    public String mHealthCare;
+    public String mVacciMedical;
+    public String mHealthCondition;
+
 
 
     public String mImageSecurity;
@@ -42,8 +47,8 @@ public class DestinationInformation {
 
     public DestinationInformation(String destinationId, String name, String countryCode, String communicationsInfrastructure, String otherConcerns, String development, String location, String culturalNorms, String sources,
         String currency, String currencyCode, String currencyRate, String religion, String timeZone, String safety, String typeOfGovernment, String visaMapAttributionUri, String electricity,
-        String ethnicMakeup, String languageInfo, String visaRequirements, String climate, String image1, String image2, String image3, String image4, String image5, String transportation,
-                                  String holidays){
+        String ethnicMakeup, String languageInfo, String visaRequirements, String climate, String image1, String image2, String image3, String image4, String image5, String emergency, String healthcare,
+        String vaccination, String healthcondition, String transportation, String holidays){
         this.mDestinationId = destinationId;
         this.mCountryName = name;
         this.mCountryCode = countryCode;
@@ -71,6 +76,10 @@ public class DestinationInformation {
         this.mImageCulture = image3;
         this.mImageIntro = image4;
         this.mImageCurrency = image5;
+        this.mEmergencyNumber = emergency;
+        this.mHealthCare = healthcare;
+        this.mVacciMedical = vaccination;
+        this.mHealthCondition = healthcondition;
         this.mTransportation = transportation;
         this.mHolidays = holidays;
     }
@@ -170,6 +179,14 @@ public class DestinationInformation {
     public String getImageCurrency() {
         return mImageCurrency;
     }
+
+    public String getEmergencyNumber() { return mEmergencyNumber; }
+
+    public String getHealthCare() { return mHealthCare; }
+
+    public String getVacciMedical() { return mVacciMedical; }
+
+    public String getHealthCondition() { return mHealthCondition; }
 
     public String getTransportation() {
         return mTransportation;
