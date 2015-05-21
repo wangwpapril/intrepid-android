@@ -450,7 +450,7 @@ public class DestinationsListActivity extends BaseActivity {
         String vaccines_pre_trip_medical = content.getString("vaccinations_and_pre_trip_medical");
         String health_conditions = content.getString("health_conditions");
         String emergency_numbers = content.getString("emergency_numbers");
-        String medical_image_url = images.getJSONObject("medical").getJSONObject("versions").getJSONObject("3x")
+        String medical_image_url = images.getJSONObject("medical").getJSONObject("versions").getJSONObject("2x")
                 .getString("source_url").replace(" ", "%20");
 
         String transportation = content.getString("transportation");
