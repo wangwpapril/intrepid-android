@@ -79,7 +79,7 @@
                 android:id="@+id/section_icon"
                 android:layout_alignParentEnd="false"
                 android:layout_alignTop="@+id/destination_subtitle"
-                android:src="@drawable/cultural_icon"
+                android:src="@drawable/emergency_icon"
                 android:layout_marginRight="10dp"
                 android:layout_below="@+id/section_divider11" />
         </RelativeLayout>
@@ -130,7 +130,7 @@
                 android:layout_above="@+id/section_divider12"
                 android:layout_alignParentEnd="false"
                 android:layout_alignTop="@+id/destination_subtitle2"
-                android:src="@drawable/ethnic_icon"
+                android:src="@drawable/healthcare_icon"
                 android:layout_marginRight="10dp" />
         </RelativeLayout>
         <RelativeLayout
@@ -181,7 +181,7 @@
                 android:layout_above="@+id/section_divider13"
                 android:layout_alignParentEnd="false"
                 android:layout_alignTop="@+id/destination_subtitle3"
-                android:src="@drawable/language_icon"
+                android:src="@drawable/vaccines_icon"
                 android:layout_marginRight="10dp" />
         </RelativeLayout>
             <RelativeLayout
@@ -232,7 +232,7 @@
                     android:layout_above="@+id/section_divider14"
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/destination_subtitle4"
-                    android:src="@drawable/religion_icon"
+                    android:src="@drawable/notes_icon"
                     android:layout_marginRight="10dp" />
             </RelativeLayout>
     </RelativeLayout>

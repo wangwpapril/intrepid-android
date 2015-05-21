@@ -424,7 +424,7 @@
                 android:layout_above="@+id/section_divider11"
                 android:layout_alignParentEnd="false"
                 android:layout_alignTop="@+id/destination_subtitle8"
-                android:src="@drawable/development_icon"
+                android:src="@drawable/money_icon"
                 android:layout_marginRight="10dp" />
         </RelativeLayout>
 
@@ -475,7 +475,7 @@
                 android:layout_above="@+id/section_divider12"
                 android:layout_alignParentEnd="false"
                 android:layout_alignTop="@+id/destination_subtitle9"
-                android:src="@drawable/development_icon"
+                android:src="@drawable/transport_icon"
                 android:layout_marginRight="10dp" />
         </RelativeLayout>
 
@@ -526,7 +526,7 @@
                 android:layout_above="@+id/section_divider13"
                 android:layout_alignParentEnd="false"
                 android:layout_alignTop="@+id/destination_subtitle10"
-                android:src="@drawable/development_icon"
+                android:src="@drawable/holiday_icon"
                 android:layout_marginRight="10dp" />
         </RelativeLayout>
 
