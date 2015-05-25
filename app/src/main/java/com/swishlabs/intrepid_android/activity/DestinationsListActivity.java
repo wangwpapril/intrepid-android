@@ -157,8 +157,8 @@ public class DestinationsListActivity extends BaseActivity {
 					long arg3) {
                 Log.d("Trip list", "You hit destination:" + position);
                 Log.d("Trip list", "You hit destination list index:" + arg3);
-                LoadCurrencyInfo((int) arg3);
-//                LoadTripFromApi(position);
+//                LoadCurrencyInfo((int) arg3);
+                LoadTripFromApi((int) arg3, null);
 
 			}
 		});

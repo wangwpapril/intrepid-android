@@ -32,6 +32,9 @@ import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.CustomTabContainer;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
+import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
+import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
+import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Currency;
 import com.swishlabs.intrepid_android.data.api.model.DestinationInformation;
 import com.swishlabs.intrepid_android.data.store.Database;
@@ -40,6 +43,9 @@ import com.swishlabs.intrepid_android.services.LocationService;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.ImageLoader;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -61,6 +67,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
     String baseCurrencyCode, desCurrencyCode;
     Currency baseCurrency, desCurrency;
+    public static double rate;
 
     boolean firstFlag = false;
 
@@ -87,11 +94,12 @@ public class ViewDestinationActivity extends ActionBarActivity {
         baseCurrency = DatabaseManager.getCurrency(baseCurrencyCode, mDatabase);
         desCurrency = DatabaseManager.getCurrency(mDestinationInformation.getCurrencyCode(), mDatabase);
 
+        LoadCurrencyInfo();
+
         setContentView(R.layout.activity_view_destination);
         instance = this;
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
         mIntrepidMenu.setupMenu(instance, ViewDestinationActivity.this, false);
-
 
         setupTabNames();
 
@@ -125,6 +133,39 @@ public class ViewDestinationActivity extends ActionBarActivity {
     public void loadDatabase(){
         mDatabaseManager = new DatabaseManager(this.getBaseContext());
         mDatabase = mDatabaseManager.openDatabase("Intrepid.db");
+    }
+
+    public void LoadCurrencyInfo(){
+        IControllerContentCallback icc = new IControllerContentCallback() {
+
+            public void handleSuccess(String content) {
+                JSONObject currencyInfo;
+                try {
+                    currencyInfo = new JSONObject(content);
+                    JSONObject ra = currencyInfo.getJSONObject("rates");
+                    String currencyCode = desCurrency.getCurrencyCode();
+                    rate = currencyInfo.getJSONObject("rates").getDouble(currencyCode);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            public void handleError(Exception e){
+           }
+        };
+
+        String baseCurrencyCode = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currencyCode.toString(), null);
+        String currencyCode = desCurrency.getCurrencyCode();
+
+        ControllerContentTask cct = new ControllerContentTask(
+                Constants.CURRENCY_URL+"&base="+baseCurrencyCode+"&symbols="+currencyCode, icc,
+                Enums.ConnMethod.GET,false);
+
+        String ss = null;
+        cct.execute(ss);
+
     }
 
 
@@ -419,6 +460,22 @@ public class ViewDestinationActivity extends ActionBarActivity {
             ImageLoader.DisplayImage(ViewDestinationActivity.getInstance().baseCurrency.getImageUrl(),
                     ViewDestinationActivity.getInstance(), baseImageIv);
 
+            ImageView overview = (ImageView)rootView.findViewById(R.id.overview_image);
+            overview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    InputMethodManager imm = (InputMethodManager) instance.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    if (imm.isActive()) {
+                        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    }
+
+                    if (instance.mIntrepidMenu.mState == 1)
+                        instance.mIntrepidMenu.snapToBottom();
+
+
+                }
+            });
+
             final ImageView baseSelector = (ImageView) rootView.findViewById(R.id.currency_selector);
             final ImageView desSelector = (ImageView) rootView.findViewById(R.id.currency_selector2);
 
@@ -446,7 +503,8 @@ public class ViewDestinationActivity extends ActionBarActivity {
                     ViewDestinationActivity.getInstance(), desImageIv);
 
             final EditText desValueEt = (EditText) rootView.findViewById(R.id.des_currency_value);
-            desValueEt.setText(reFormat(ViewDestinationActivity.getInstance().mDestinationInformation.getCurrencyRate()));
+//            desValueEt.setText(reFormat(ViewDestinationActivity.getInstance().mDestinationInformation.getCurrencyRate()));
+            desValueEt.setText(reFormat(String.valueOf(rate)));
 
             desValueEt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
@@ -479,7 +537,8 @@ public class ViewDestinationActivity extends ActionBarActivity {
                         desValue = 0;
                     }else {
                         baseValue = Double.parseDouble(s.toString());
-                        desValue = baseValue * Double.parseDouble(ViewDestinationActivity.getInstance().mDestinationInformation.mCurrencyRate);
+//                        desValue = baseValue * Double.parseDouble(ViewDestinationActivity.getInstance().mDestinationInformation.mCurrencyRate);
+                        desValue = baseValue * rate;
                     }
 
                     desValueEt.setText(reFormat(String.valueOf(desValue)));
@@ -537,7 +596,8 @@ public class ViewDestinationActivity extends ActionBarActivity {
                         desValue = 0;
                     }else {
                         desValue = Double.parseDouble(s.toString());
-                        baseValue = desValue / Double.parseDouble(ViewDestinationActivity.getInstance().mDestinationInformation.mCurrencyRate);
+//                        baseValue = desValue / Double.parseDouble(ViewDestinationActivity.getInstance().mDestinationInformation.mCurrencyRate);
+                        baseValue = desValue / rate;
                     }
 
                     baseValueEt.setText(reFormat(String.valueOf(baseValue)));
@@ -558,6 +618,9 @@ public class ViewDestinationActivity extends ActionBarActivity {
         }
 
         private String reFormat(String input){
+            double value = Double.valueOf(input);
+            value = (double)(Math.round(value*100)/100.0);
+            input = String.valueOf(value);
             String result = input;
 
             if (input.contains(".")) {
