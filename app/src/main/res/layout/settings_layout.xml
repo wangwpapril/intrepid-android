@@ -364,7 +364,30 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/butUpdate"
         android:linksClickable="false" />
+
 </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/version"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="30dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Version:"
+            android:id="@+id/version_txt"
+            android:textSize="14sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/version_num"
+            android:layout_toEndOf="@id/version_txt"
+            android:textSize="14sp"/>
+    </RelativeLayout>
+
     <include
         android:layout_width="match_parent"
         android:layout_height="25dp"
