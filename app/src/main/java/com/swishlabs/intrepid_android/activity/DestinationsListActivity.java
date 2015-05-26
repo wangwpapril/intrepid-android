@@ -289,15 +289,6 @@ public class DestinationsListActivity extends BaseActivity {
                         JSONObject images = destination.getJSONObject("images");
                         final String general_image_url = images.getJSONObject("intro").getJSONObject("versions").getJSONObject("3x")
                                 .getString("source_url");
-//                    Thread t = new Thread(new Runnable() {
-//                        public void run() {
-//                            Looper.prepare();
-//                            String generalImageUri = SaveImage.saveImageLocally(general_image_url, "tripImage"+destinationId, DestinationsListActivity.this);
-//                            CreateTrip(destinationPosition, generalImageUri);
-//                        }
-//                    });
-//
-//                    t.start();
 
                         saveDestinationInformation(destination, images, currencyCode, rate);
                         String encodedURL = general_image_url.replace(" ", "%20");
