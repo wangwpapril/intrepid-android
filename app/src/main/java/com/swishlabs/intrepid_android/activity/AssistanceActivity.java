@@ -16,6 +16,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -42,7 +45,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class AssistanceActivity extends FragmentActivity {
+public class AssistanceActivity extends FragmentActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
 
@@ -52,11 +55,11 @@ public class AssistanceActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("Assi","onCreate");
+        Log.d("Assi", "onCreate");
         super.onCreate(savedInstanceState);
         MyApplication.getInstance().addActivity(this);
         setContentView(R.layout.activity_assistance);
-        setUpMapIfNeeded();
+        buildGoogleApiClient();
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
         mIntrepidMenu.setupMenu(this, AssistanceActivity.this, true);
         mApList = SharedPreferenceUtil.getApList(this);
@@ -65,8 +68,38 @@ public class AssistanceActivity extends FragmentActivity {
 
     @Override
     protected void onResume() {
-        Log.d("Assi","onResume");
+        Log.d("Assi", "onResume");
         super.onResume();
+
+    }
+
+    GoogleApiClient mGoogleApiClient;
+
+    protected synchronized void buildGoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+        mGoogleApiClient.connect();
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        setUpMapIfNeeded();
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Location Services Failed")
+                .setMessage("Could not access current location. Using last known locaiton").show();
         setUpMapIfNeeded();
     }
 
@@ -147,7 +180,8 @@ public class AssistanceActivity extends FragmentActivity {
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
 
-        Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+        Location location = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
         //The following code gets the next best location if the current location is unavaiable through standard API
         if (location == null) {
             Criteria criteriaTest = new Criteria();
@@ -269,5 +303,7 @@ public class AssistanceActivity extends FragmentActivity {
         super.onBackPressed();
         this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
+
+
 
 }

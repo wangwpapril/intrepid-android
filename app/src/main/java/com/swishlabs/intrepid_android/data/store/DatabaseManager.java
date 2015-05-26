@@ -223,9 +223,6 @@ public class DatabaseManager {
                 cursor.getString(19), cursor.getString(20), cursor.getString(21), cursor.getString(22), cursor.getString(23), cursor.getString(24),
                 cursor.getString(25), cursor.getString(26), cursor.getString(27), cursor.getString(28), cursor.getString(29), cursor.getString(30), cursor.getString(31), cursor.getString(32), cursor.getString(33));
 
-        String test = cursor.getString(27);
-        String test2 = cursor.getString(28);
-        String gg = "test";
 
         return destinationInformation;
     }
