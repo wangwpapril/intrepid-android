@@ -61,7 +61,9 @@ public class ViewWeatherActivity extends ActionBarActivity {
         webView.loadUrl(Constants.WEATHER_URL + "?latitude=" + latitude + "&longitude=" + longitude +
         "&country=" + mDestinationInformation.getCountryName() +
         "&country_code=" + mDestinationInformation.getCountryCode());
-
+        String url = Constants.WEATHER_URL + "?latitude=" + latitude + "&longitude=" + longitude +
+                "&country=" + mDestinationInformation.getCountryName() +
+                "&country_code=" + mDestinationInformation.getCountryCode();
         instance = this;
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
         mIntrepidMenu.setupMenu(instance,instance, true);
@@ -91,6 +93,7 @@ public class ViewWeatherActivity extends ActionBarActivity {
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
 
         int screenDensity = getResources().getDisplayMetrics().densityDpi;
         WebSettings.ZoomDensity zoomDensity = WebSettings.ZoomDensity.MEDIUM;
