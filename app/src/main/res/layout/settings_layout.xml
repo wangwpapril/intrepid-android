@@ -374,13 +374,15 @@
         android:layout_alignParentEnd="false"
         android:layout_marginBottom="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_alignParentStart="false">
+        android:layout_alignParentStart="false"
+        android:layout_toRightOf="@+id/version_txt">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/version_num"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:layout_alignParentStart="false" />
     </RelativeLayout>
 
     <include
