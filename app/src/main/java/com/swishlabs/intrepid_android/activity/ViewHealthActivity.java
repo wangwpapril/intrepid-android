@@ -14,8 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.adapter.HealthListAdapter;
@@ -23,6 +26,7 @@ import com.swishlabs.intrepid_android.adapter.HealthMedListAdapter;
 import com.swishlabs.intrepid_android.customViews.ClearEditText;
 import com.swishlabs.intrepid_android.customViews.CustomTabContainer;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
+import com.swishlabs.intrepid_android.data.api.model.DestinationInformation;
 import com.swishlabs.intrepid_android.data.api.model.HealthConditionDis;
 import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
 import com.swishlabs.intrepid_android.data.store.Database;
@@ -60,6 +64,8 @@ public class ViewHealthActivity extends ActionBarActivity {
     public static HealthListAdapter mHealthListAdapter;
     public static int index = 0;
 
+    public static DestinationInformation mDestinationInformation;
+
     IntrepidMenu mIntrepidMenu;
 
     public static ViewHealthActivity getInstance(){
@@ -91,8 +97,10 @@ public class ViewHealthActivity extends ActionBarActivity {
         mHealthConList = DatabaseManager.getHealthConArray(mDatabase, countryId);
         mHealthCount = mHealthConList.size();
 
-        mHealthMedList = DatabaseManager.getHealthMedArray(mDatabase,countryId);
+        mHealthMedList = DatabaseManager.getHealthMedArray(mDatabase, countryId);
         mHealthMedCount = mHealthMedList.size();
+
+        mDestinationInformation = DatabaseManager.getDestinationInformation(mDatabase, countryId);
 
 //        mToolbarTitle = (TextView)findViewById(R.id.toolbar_title);
 
@@ -122,10 +130,10 @@ public class ViewHealthActivity extends ActionBarActivity {
 //                    String text = mEditTextSearch.getText().toString().toLowerCase(Locale.getDefault());
                 String text = s.toString().toLowerCase(Locale.getDefault());
                 switch (index) {
-                    case 0:
+                    case 1:
                         mHealthListAdapter.getFilter(instance).filter(text);
                         break;
-                    case 1:
+                    case 2:
                         mHealthMedListAdapter.getFilter(instance).filter(text);
                         break;
                 }
@@ -148,6 +156,11 @@ public class ViewHealthActivity extends ActionBarActivity {
             public void onPageSelected(int position) {
 
                 index = position;
+                if(position == 0){
+                    mEditTextSearch.setVisibility(View.GONE);
+                }else {
+                    mEditTextSearch.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -160,6 +173,7 @@ public class ViewHealthActivity extends ActionBarActivity {
     }
 
     protected void setupTabNames(){
+        tabNames.add("PRE-TRIP");
         tabNames.add("CONDITIONS");
         tabNames.add("MEDICATIONS");
     }
@@ -193,13 +207,12 @@ public class ViewHealthActivity extends ActionBarActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            return PlaceholderFragment.newInstance(position);
         }
 
         @Override
         public int getCount() {
-            // Show 2 total pages.
-            return 2;
+             return 3;
         }
 
         @Override
@@ -248,12 +261,26 @@ public class ViewHealthActivity extends ActionBarActivity {
                                  Bundle savedInstanceState) {
             Bundle args = getArguments();
             int index = args.getInt(ARG_SECTION_NUMBER);
-//            final HealthListAdapter mHealthListAdapter;
-  //          final HealthMedListAdapter mHealthMedListAdapter;
-            View rootView = inflater.inflate(R.layout.fragment_view_health, container, false);
+            View rootView = null;
 
             switch (index) {
+                case 0:
+                    rootView = inflater.inflate(R.layout.fragment_health_pretrip, container, false);
+                    ImageView generalImage = (ImageView)rootView.findViewById(R.id.pretrip_image);
+                    Picasso.with(ViewHealthActivity.getInstance()).load(mDestinationInformation.getImageMedical()).resize(1000, 1000).centerCrop().into(generalImage);
+                    TextView emergencyNm = (TextView)rootView.findViewById(R.id.destination_content);
+                    emergencyNm.setText(mDestinationInformation.getEmergencyNumber());
+                    TextView healthCare= (TextView)rootView.findViewById(R.id.destination_content2);
+                    healthCare.setText(mDestinationInformation.getHealthCare());
+                    TextView vpMedical = (TextView)rootView.findViewById(R.id.destination_content3);
+                    vpMedical.setText(mDestinationInformation.getVacciMedical());
+                    TextView healthCondition = (TextView)rootView.findViewById(R.id.destination_content4);
+                    healthCondition.setText(mDestinationInformation.getHealthCondition());
+
+
+                    break;
                 case 1:
+                    rootView = inflater.inflate(R.layout.fragment_view_health, container, false);
                     list = (ListView) rootView.findViewById(R.id.health_list);
 
                     mHealthListAdapter = new HealthListAdapter(
@@ -276,6 +303,7 @@ public class ViewHealthActivity extends ActionBarActivity {
                     });
                     break;
                 case 2:
+                    rootView = inflater.inflate(R.layout.fragment_view_health, container, false);
                     list = (ListView) rootView.findViewById(R.id.health_list);
 
                     mHealthMedListAdapter = new HealthMedListAdapter(

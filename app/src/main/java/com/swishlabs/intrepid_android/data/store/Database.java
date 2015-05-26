@@ -235,10 +235,14 @@ public class Database {
                 }
                 if (null != tables && tables.size() > 0) {
                     for (String table : tables) {
+                        if("sqlite_sequence".equals(table)||"android_metadata".equals(table))
+                            continue;
                         sql = "DROP TABLE IF EXISTS " + table;
                         sqLiteDatabase.execSQL(sql);
                     }
                 }
+
+                onCreate(sqLiteDatabase);
             }
         }
     }

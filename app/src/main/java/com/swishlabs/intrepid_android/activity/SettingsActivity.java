@@ -53,6 +53,7 @@ public class SettingsActivity extends BaseActivity {
 	private Button btnUpdate;
 	private TextView signOut;
     private IntrepidMenu mIntrepidMenu;
+    private TextView versionTv;
 	
 	private String firstName = null;
 	private String lastName = null;
@@ -101,6 +102,8 @@ public class SettingsActivity extends BaseActivity {
 		signOut = (TextView) findViewById(R.id.sign_out);
 		signOut.setOnClickListener(this);
 		signOut.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+        versionTv = (TextView) findViewById(R.id.version_num);
+        versionTv.setText(MyApplication.getInstance().getVersionName());
 
         mIntrepidMenu = (IntrepidMenu) findViewById(R.id.intrepidMenu);
         mIntrepidMenu.setupMenu(this, this, true);

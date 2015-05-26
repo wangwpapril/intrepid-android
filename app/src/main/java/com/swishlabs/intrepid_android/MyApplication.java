@@ -171,6 +171,14 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
             return -1;
         }
 	}
+
+	public String getVersionName() {
+		try {
+			return getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+		} catch (PackageManager.NameNotFoundException e) {
+			return null;
+		}
+	}
 	
 	public void uncaughtException(Thread thread, Throwable ex) {
 		Logger.e(ex);

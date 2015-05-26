@@ -16,7 +16,7 @@
 
             <ImageView
                 android:layout_width="fill_parent"
-                android:layout_height="350dp"
+                android:layout_height="320dp"
                 android:scaleType="centerCrop"
                 android:id="@+id/overview_image" />
 
