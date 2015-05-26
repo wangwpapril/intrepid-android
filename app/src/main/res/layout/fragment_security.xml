@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -90,55 +90,7 @@
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
                     android:paddingBottom="16dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Emergency Numbers"
-                        android:id="@+id/emergency_subtitle"
-                        android:layout_alignParentStart="false"
-                        android:textStyle="bold"
-                        android:layout_toRightOf="@+id/section_icon6"
-                        android:textColor="#333f48"
-                        android:layout_alignParentEnd="true" />
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:id="@+id/section_divider50"
-                        android:layout_below="@+id/emergency_subtitle"
-                        android:layout_alignLeft="@+id/section_icon6"
-                        android:layout_alignRight="@+id/emergency_subtitle"
-                        android:background="#EDEDED"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=""
-                        android:id="@+id/emergency_content"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentStart="false"
-                        android:layout_below="@+id/section_divider50"
-                        android:textColor="#333f48" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/section_icon6"
-                        android:layout_above="@+id/section_divider50"
-                        android:layout_alignParentEnd="false"
-                        android:layout_alignTop="@+id/emergency_subtitle"
-                        android:src="@drawable/safety_icon"
-                        android:layout_marginRight="10dp" />
-
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/overview_content2"
-                    android:layout_below="@+id/overview_content"
-                    android:padding="16dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -180,14 +132,14 @@
                         android:layout_alignTop="@+id/destination_subtitle"
                         android:src="@drawable/safety_icon"
                         android:layout_marginRight="10dp" />
-
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/overview_content3"
-                    android:layout_below="@+id/overview_content2"
+                    android:id="@+id/overview_content2"
+                    android:layout_below="@+id/overview_content"
                     android:padding="16dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -231,6 +183,7 @@
                         android:src="@drawable/other_concerns_icon"
                         android:layout_marginRight="10dp" />
                 </RelativeLayout>
+
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
