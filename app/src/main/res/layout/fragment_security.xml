@@ -64,7 +64,6 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text=""
-                        android:textStyle="bold"
                         android:id="@+id/emergency_num_content"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="false"
