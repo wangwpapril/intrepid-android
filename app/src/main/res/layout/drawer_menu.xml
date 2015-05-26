@@ -158,36 +158,7 @@
             android:layout_height="match_parent"
             android:textAlignment="center"
             android:background="#333f48"
-            android:id="@+id/weather_menu_btn"
-            android:layout_marginTop="0.2dp"
-            android:layout_marginRight="0.2dp">
-
-            <ImageView
-                android:layout_width="fill_parent"
-                android:src="@drawable/weather_ic"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:textColor="#DFE4E7"
-                android:text="Weather"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_gravity="center_horizontal|bottom"
-                android:id="@+id/weather_text_menu"
-                android:textSize="17sp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp" />
-        </FrameLayout>
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:textAlignment="center"
-            android:background="#333f48"
-
+            android:layout_marginRight="0.2dp"
             android:id="@+id/alerts_menu_btn"
             android:layout_marginTop="0.2dp">
 
@@ -211,6 +182,36 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp" />
         </FrameLayout>
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:background="#333f48"
+            android:id="@+id/weather_menu_btn"
+            android:layout_marginTop="0.2dp"
+           >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:src="@drawable/weather_ic"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:textColor="#DFE4E7"
+                android:text="Weather"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal|bottom"
+                android:id="@+id/weather_text_menu"
+                android:textSize="17sp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp" />
+        </FrameLayout>
+
 
 
 
