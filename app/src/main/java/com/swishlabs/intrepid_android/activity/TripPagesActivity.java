@@ -115,7 +115,7 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         Intent intent = new Intent(this, LocationService.class);
         intent.setAction(LocationService.ACTION_REPORT_POSITION);
         pendingIntent = PendingIntent.getService(this,1,intent,PendingIntent.FLAG_CANCEL_CURRENT);
-        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, 0, 10 * 60 * 1000, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, 0, 45 * 60 * 1000, pendingIntent);
     }
 
     @Override

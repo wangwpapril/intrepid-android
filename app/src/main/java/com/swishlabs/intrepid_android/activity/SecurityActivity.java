@@ -230,6 +230,8 @@ public class SecurityActivity extends ActionBarActivity {
             safetyText.setText(destinationInformation.getSafety());
             TextView otherConcernsText = (TextView)rootView.findViewById(R.id.other_concerns_text);
             otherConcernsText.setText(destinationInformation.getOtherConcerns());
+            TextView emergencyNumText = (TextView)rootView.findViewById(R.id.emergency_num_content);
+            emergencyNumText.setText(destinationInformation.getEmergencyNumber());
         }
     }
 
