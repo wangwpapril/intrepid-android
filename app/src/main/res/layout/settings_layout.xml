@@ -341,7 +341,7 @@
         android:paddingLeft="0dp"
         android:paddingRight="0dp"
         android:layout_width="225dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:background="@drawable/login_btn"
         android:longClickable="false"
         android:clickable="true"
@@ -356,7 +356,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="0dp"
         android:text="Sign Out"
-        android:textColor="#ececec"
+        android:textColor="#99cc00"
         android:textSize="18sp"
         android:gravity="center_horizontal"
         android:textAlignment="center"
@@ -377,9 +377,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Version:"
+            android:text="Version: "
             android:id="@+id/version_txt"
-            android:textSize="14sp"/>
+            android:textSize="13sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
