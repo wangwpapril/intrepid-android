@@ -9,6 +9,8 @@ import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -59,12 +61,33 @@ public class AssistanceActivity extends FragmentActivity implements GoogleApiCli
         super.onCreate(savedInstanceState);
         MyApplication.getInstance().addActivity(this);
         setContentView(R.layout.activity_assistance);
-        buildGoogleApiClient();
+        network();
+        if (mNetworkConnectivity) {
+            buildGoogleApiClient();
+        }else{
+            connectionFailAlert();
+            setUpMapIfNeeded();
+        }
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
         mIntrepidMenu.setupMenu(this, AssistanceActivity.this, true);
         mApList = SharedPreferenceUtil.getApList(this);
         setupCallAssistanceButton();
     }
+
+    private ConnectivityManager mConnectivityManager;
+    private boolean mNetworkConnectivity;
+
+    public void network(){
+        mConnectivityManager =
+                (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = mConnectivityManager.getActiveNetworkInfo();
+        mNetworkConnectivity = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+    }
+
+
+
 
     @Override
     protected void onResume() {
@@ -96,11 +119,12 @@ public class AssistanceActivity extends FragmentActivity implements GoogleApiCli
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-        new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Location Services Failed")
-                .setMessage("Could not access current location. Using last known locaiton").show();
+        connectionFailAlert();
         setUpMapIfNeeded();
+    }
+
+    private void connectionFailAlert(){
+        StringUtil.showAlertDialog("Location Services Failed", "Could not access current location. Using last known location", AssistanceActivity.this);
     }
 
     private void setupCallAssistanceButton(){
@@ -163,8 +187,8 @@ public class AssistanceActivity extends FragmentActivity implements GoogleApiCli
             CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()))      // Sets the center of the map to location user
                     .zoom(13)                   // Sets the zoom
-                    .bearing(90)                // Sets the orientation of the camera to east
-                    .tilt(40)                   // Sets the tilt of the camera to 30 degrees
+//                    .bearing(90)                // Sets the orientation of the camera to east
+//                    .tilt(40)                   // Sets the tilt of the camera to 30 degrees
                     .build();                   // Creates a CameraPosition from the builder
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
@@ -179,9 +203,13 @@ public class AssistanceActivity extends FragmentActivity implements GoogleApiCli
 
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
-
-        Location location = LocationServices.FusedLocationApi.getLastLocation(
-                mGoogleApiClient);
+        Location location;
+        if (mGoogleApiClient!=null) {
+            location = LocationServices.FusedLocationApi.getLastLocation(
+                    mGoogleApiClient);
+        }else{
+            location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+        }
         //The following code gets the next best location if the current location is unavaiable through standard API
         if (location == null) {
             Criteria criteriaTest = new Criteria();
