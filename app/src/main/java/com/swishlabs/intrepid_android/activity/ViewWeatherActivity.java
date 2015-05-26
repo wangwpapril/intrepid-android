@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.DisplayMetrics;
@@ -90,7 +91,9 @@ public class ViewWeatherActivity extends ActionBarActivity {
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-        webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        }
 
         int screenDensity = getResources().getDisplayMetrics().densityDpi;
         WebSettings.ZoomDensity zoomDensity = WebSettings.ZoomDensity.MEDIUM;
