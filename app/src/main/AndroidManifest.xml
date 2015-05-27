@@ -103,10 +103,12 @@
         </activity>
         <activity
             android:name=".activity.SecurityActivity"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <activity
             android:name=".activity.ViewEmbassyActivity"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <activity
@@ -131,6 +133,7 @@
         </activity>
         <activity
             android:name=".activity.AssistanceActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_assistance" >
         </activity>
 
