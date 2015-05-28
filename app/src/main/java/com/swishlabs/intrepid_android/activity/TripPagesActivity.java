@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.crashlytics.android.Crashlytics;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IndicatorLinearLayout;
@@ -66,7 +67,6 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         MyApplication.getInstance().addActivity(this);
         instance=this;
         setContentView(R.layout.activity_trip_pages);
-
         startLocationService();
         this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         mTripPagesActivity = this;

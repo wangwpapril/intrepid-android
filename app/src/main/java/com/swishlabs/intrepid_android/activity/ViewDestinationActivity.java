@@ -118,7 +118,6 @@ public class ViewDestinationActivity extends ActionBarActivity {
         }
 
 
-
     }
 
     public void checkMenuClick(View v) {

@@ -56,12 +56,12 @@ public class ViewEmbassyActivity extends ActionBarActivity {
         address.setText(mEmbassy.getAddress());
         TextView phone = (TextView)findViewById(R.id.contact_phone);
         String formattedPhones = formatPhoneNumbers();
-        phone.setText(Html.fromHtml("Phone: <u><font color=blue>"+ formattedPhones+"</u></style>"));
+        phone.setText(Html.fromHtml("Phone: "+ formattedPhones));
         TextView fax = (TextView)findViewById(R.id.contact_fax);
         fax.setText("Fax: " + mEmbassy.getFax());
         TextView email = (TextView)findViewById(R.id.contact_email);
         String formattedEmails = formatEmails();
-        email.setText(Html.fromHtml("Email: <u><font color=blue>"+ formattedEmails+"</u></style>"));
+        email.setText(Html.fromHtml("Email: "+ formattedEmails));
         TextView hours = (TextView)findViewById(R.id.embassy_hours);
         hours.setText(mEmbassy.getHoursofOperation());
         TextView notes = (TextView)findViewById(R.id.notes_text);
@@ -95,13 +95,13 @@ public class ViewEmbassyActivity extends ActionBarActivity {
 //                ViewGroup.LayoutParams.WRAP_CONTENT);
 //        params.addRule(RelativeLayout.BELOW, R.id.below_id);
         String rawPhones = mEmbassy.getTelephone();
-        String formattedPhones = rawPhones.replace(", ", "\r\n").replace("; ", "\r\n");
+        String formattedPhones = rawPhones.replace(", ", "\r\n").replace("; ", ";\r\n");
         return formattedPhones;
     }
 
     protected String formatEmails(){
         String rawEmails = mEmbassy.getEmail();
-        String formattedEmails = rawEmails.replace(", ", "\r\n").replace("; ", "\r\n");
+        String formattedEmails = rawEmails.replace(", ", "\r\n").replace("; ", ";\r\n");
         return formattedEmails;
     }
 
