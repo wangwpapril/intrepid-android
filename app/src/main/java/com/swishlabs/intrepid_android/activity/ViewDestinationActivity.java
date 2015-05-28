@@ -194,9 +194,9 @@ public class ViewDestinationActivity extends ActionBarActivity {
     }
 
     protected void setupTabNames(){
-        tabNames.add("General");
-        tabNames.add("Culture");
-        tabNames.add("Currency");
+        tabNames.add("GENERAL");
+        tabNames.add("CULTURE");
+        tabNames.add("CURRENCY");
     }
 
     @Override
