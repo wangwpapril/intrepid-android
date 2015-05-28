@@ -27,9 +27,10 @@
                 android:id="@+id/emptyEmbassyList"
                 android:text="Embassy information does not apply."
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="#222"
                 android:visibility="invisible"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:textSize="15sp" />
 
             <ListView
                 android:layout_width="fill_parent"
