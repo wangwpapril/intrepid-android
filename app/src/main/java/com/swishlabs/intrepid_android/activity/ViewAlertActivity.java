@@ -40,7 +40,6 @@ public class ViewAlertActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         MyApplication.getInstance().addActivity(this);
         instance = this;
-        Common.context = this;
         loadDatabase();
         mDestinationId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currentCountryId.toString(), null);
         mDestinationInformation = DatabaseManager.getDestinationInformation(mDatabase, mDestinationId);
@@ -49,7 +48,7 @@ public class ViewAlertActivity extends ActionBarActivity {
 
         setContentView(R.layout.activity_view_alert);
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
-        mIntrepidMenu.setupMenu(instance,instance,true);
+        mIntrepidMenu.setupMenu(instance,ViewAlertActivity.this,true);
 
         mAlertListLv = (ListView) findViewById(R.id.alerts_list);
 

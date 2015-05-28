@@ -25,11 +25,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/overview_image"
                 android:id="@+id/emptyEmbassyList"
-                android:text="There are no embassies on record for your home country within this destination"
+                android:text="Embassy information does not apply."
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="#222"
                 android:visibility="invisible"
-                />
+                android:layout_centerHorizontal="true"
+                android:textSize="15sp" />
 
             <ListView
                 android:layout_width="fill_parent"

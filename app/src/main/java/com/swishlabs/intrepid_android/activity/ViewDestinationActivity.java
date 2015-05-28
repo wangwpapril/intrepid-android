@@ -160,7 +160,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
         ControllerContentTask cct = new ControllerContentTask(
                 Constants.CURRENCY_URL+"&base="+baseCurrencyCode+"&symbols="+currencyCode, icc,
-                Enums.ConnMethod.GET,false);
+                Enums.ConnMethod.GET,true);
 
         String ss = null;
         cct.execute(ss);
