@@ -115,9 +115,12 @@ public class DatabaseManager {
         Cursor cursor = database.getDb().query(Database.TABLE_CURRENCY, new String[]{Database.KEY_ID,
                         Database.KEY_CURRENCY_CODE, Database.KEY_GENERAL_IMAGE_URI}, Database.KEY_CURRENCY_CODE + "=?",
                 new String[]{code}, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
-        Currency currency = new Currency(cursor.getString(1),cursor.getString(2));
+        Currency currency;
+        if (cursor.moveToFirst()) {
+            currency = new Currency(cursor.getString(1), cursor.getString(2));
+        }else {
+            currency = new Currency(null,null);
+        }
          return currency;
     }
 
