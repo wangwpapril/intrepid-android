@@ -55,15 +55,15 @@ public class LoginActivity extends BaseActivity {
         emailTextField = (EditText) findViewById(R.id.signinEmailEditText);
         passwordTextField = (EditText) findViewById(R.id.signinPasswordEditText);
 		signUp = (TextView) findViewById(R.id.sign_up);
-        signUp.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+//        signUp.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         signUp.setOnClickListener(this);
 
         learnMore = (TextView) findViewById(R.id.learnMore);
-        learnMore.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+//        learnMore.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         learnMore.setOnClickListener(this);
 
         termsOfUseBtn = (TextView) findViewById(R.id.termsofuse);
-        termsOfUseBtn.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+//        termsOfUseBtn.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         termsOfUseBtn.setOnClickListener(this);
 
         loginBtn.setOnClickListener(this);
