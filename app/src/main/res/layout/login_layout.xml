@@ -9,33 +9,34 @@
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5dip"
-        android:paddingRight="5dip"
-        android:paddingTop="10dip"
-        android:paddingBottom="10dip"
-        android:src="@drawable/ace_logo"
+        android:layout_height="90dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:src="@drawable/intrepid"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="20dip"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="0dp" />
 
     <TextView
         android:id="@+id/travel_smart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/logo"
-        android:paddingTop="0dip"
+        android:layout_marginTop="10dp"
+        android:paddingTop="0dp"
         android:gravity="center_horizontal"
-        android:text="TRAVEL SMART"
+        android:text="Your Personal Travel Navigator"
         android:textColor="@color/white"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <RelativeLayout
         android:id="@+id/inputLayout"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dip"
+        android:layout_marginTop="80dp"
         android:orientation="vertical"
         android:gravity="center_horizontal"
         android:layout_below="@+id/travel_smart"
@@ -61,7 +62,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:padding="10dp">
+            android:paddingBottom="10dp">
 
         </EditText>
         <TextView
@@ -69,11 +70,11 @@
             android:layout_height="2px"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:background="@color/gray"
-            android:layout_alignParentLeft="false"
+            android:layout_alignParentLeft="true"
             android:layout_marginLeft="20dp"
-            android:layout_alignParentTop="false"
+            android:background="@color/gray"
             android:layout_below="@+id/signinEmailEditText"
+            android:layout_alignStart="@+id/signinEmailEditText"
             android:layout_marginRight="20dp" />
 
 
@@ -93,10 +94,10 @@
             android:layout_alignParentLeft="false"
             android:layout_marginLeft="20dp"
             android:layout_alignParentTop="false"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_below="@+id/signinEmailEditText"
             android:layout_marginRight="20dp"
-            android:padding="10dp">
+            android:paddingBottom="10dp">
 
         </EditText>
         <TextView
@@ -105,8 +106,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:background="@color/gray"
-            android:layout_alignParentLeft="false"
-            android:layout_alignParentTop="false"
+            android:layout_alignParentLeft="true"
             android:layout_below="@+id/signinPasswordEditText"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp" />
@@ -178,7 +178,7 @@
         android:textSize="15sp"
         android:layout_below="@+id/inputLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dip"
+        android:layout_marginTop="30dp"
         android:textAlignment="center" />
 
 </RelativeLayout>
