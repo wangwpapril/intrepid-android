@@ -147,7 +147,6 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		Fabric.with(this, new Crashlytics());
 		Log.i(TAG, "Application onCreate()");
 		instance=this;
 		mLock=new Object();
@@ -159,6 +158,7 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
 		
 		Thread.setDefaultUncaughtExceptionHandler(this);
 	    loadDatabase();
+		Fabric.with(this, new Crashlytics());
 	}
 
     public void loadDatabase(){
