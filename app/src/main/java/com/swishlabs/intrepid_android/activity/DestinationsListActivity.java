@@ -179,7 +179,10 @@ public class DestinationsListActivity extends BaseActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String text = mEditTextSearch.getText().toString().toLowerCase(Locale.getDefault());
-                mDestinationsListAdapter.getFilter(context).filter(text);
+                if (mDestinationsListAdapter!=null) {
+                    mDestinationsListAdapter.getFilter(context).filter(text);
+                }
+
 
             }
         });
