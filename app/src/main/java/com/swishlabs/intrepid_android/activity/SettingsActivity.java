@@ -103,7 +103,7 @@ public class SettingsActivity extends BaseActivity {
         btnUpdate.setOnClickListener(this);
 		signOut = (TextView) findViewById(R.id.sign_out);
 		signOut.setOnClickListener(this);
-		signOut.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+//		signOut.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         versionTv = (TextView) findViewById(R.id.version_num);
         versionTv.setText(MyApplication.getInstance().getVersionName());
 
