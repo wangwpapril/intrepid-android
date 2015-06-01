@@ -53,6 +53,8 @@ public class ViewEmbassyActivity extends ActionBarActivity {
     }
 
     protected void populateEmbassyInfo(){
+        TextView title = (TextView) findViewById(R.id.toolbar_title);
+        title.setText(mEmbassy.getName());
         TextView address = (TextView)findViewById(R.id.embassy_address);
         address.setText(mEmbassy.getAddress());
         TextView phone = (TextView)findViewById(R.id.contact_phone);
