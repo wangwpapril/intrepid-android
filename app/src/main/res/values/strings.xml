@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Travel_Smart</string>
+    <string name="app_name">Navigator</string>
     <string name="network_wifi_connected">Wi-Fi is available</string>
     <string name="network_mobile_connected">The network is available</string>
     <string name="network_disconnected">The network is unreachable.</string>
