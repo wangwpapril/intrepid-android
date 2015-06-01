@@ -46,6 +46,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
     Database mDatabase;
     TextView mCountryName;
     ImageView mCountryImage;
+    ImageView mClickableSpace;
     protected ImageLoader imageLoader;
 
     private OnFragmentInteractionListener mListener;
@@ -104,13 +105,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
             mCountryImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), mDestinationId);
-                    SharedPreferenceUtil.setInt(TripPagesActivity.getInstance(), Enums.PreferenceKeys.currentPage.toString(), TripPagesActivity.getInstance().mViewPager.getCurrentItem());
-                    Intent mIntent = new Intent(TripPagesActivity.getInstance(), ViewDestinationActivity.class);
-
-                    mIntent.putExtra("destinationId", mDestinationId);
-                    mIntent.putExtra("firstTimeFlag","1");
-                    startActivity(mIntent);
+                    tripClick();
                 }
             });
         }
@@ -118,16 +113,40 @@ public class TripFragment extends android.support.v4.app.Fragment {
         return view;
     }
 
+    private void tripClick(){
+        SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), mDestinationId);
+        SharedPreferenceUtil.setInt(TripPagesActivity.getInstance(), Enums.PreferenceKeys.currentPage.toString(), TripPagesActivity.getInstance().mViewPager.getCurrentItem());
+        Intent mIntent = new Intent(TripPagesActivity.getInstance(), ViewDestinationActivity.class);
+
+        mIntent.putExtra("destinationId", mDestinationId);
+        mIntent.putExtra("firstTimeFlag","1");
+        startActivity(mIntent);
+    }
+
     private void setupSwipe(View view, ImageView countryImage, int index){
         final GestureDetector detector = new GestureDetector(new UpSwipeGestureListener(view, countryImage, index));
+        final GestureDetector singleTapDetector = new GestureDetector(new SingleTapConfirm());
         mCountryImage.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(final View view, final MotionEvent event) {
                 Log.d("Event:", String.valueOf(event.getX()));
-                detector.onTouchEvent(event);
-                return true;
+                if (singleTapDetector.onTouchEvent(event)) {
+                    tripClick();
+                    return true;
+                }else {
+                    detector.onTouchEvent(event);
+                    return true;
+                }
             }
         });
+    }
+
+    private class SingleTapConfirm extends GestureDetector.SimpleOnGestureListener {
+
+        @Override
+        public boolean onSingleTapUp(MotionEvent event) {
+            return true;
+        }
     }
 
     private static final int SWIPE_MIN_DISTANCE = 120;

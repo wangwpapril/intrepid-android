@@ -158,6 +158,7 @@ public class MyApplication extends Application implements UncaughtExceptionHandl
 		
 		Thread.setDefaultUncaughtExceptionHandler(this);
 	    loadDatabase();
+
 		Fabric.with(this, new Crashlytics());
 	}
 

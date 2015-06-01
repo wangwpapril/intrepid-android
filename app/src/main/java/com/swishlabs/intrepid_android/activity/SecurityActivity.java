@@ -225,7 +225,7 @@ public class SecurityActivity extends ActionBarActivity {
         public void populateSecurityInfo(View rootView) {
             DestinationInformation destinationInformation = SecurityActivity.getInstance().mDestinationInformation;
             ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
-            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageSecurity()).resize(1000, 1000).centerCrop().into(generalImage);
+            Picasso.with(SecurityActivity.getInstance()).load(destinationInformation.getImageSecurity()).resize(1000, 1000).centerCrop().into(generalImage);
             TextView safetyText = (TextView)rootView.findViewById(R.id.safety_content);
             safetyText.setText(destinationInformation.getSafety());
             TextView otherConcernsText = (TextView)rootView.findViewById(R.id.other_concerns_text);
@@ -273,9 +273,9 @@ public class SecurityActivity extends ActionBarActivity {
             listView.setAdapter(mEmbassyListAdapter);
             ImageView embassyImage = (ImageView)rootView.findViewById(R.id.overview_image);
             if (embassyList.size()>0) {
-                Picasso.with(ViewDestinationActivity.getInstance()).load(embassyList.get(0).getImage()).resize(1000, 1000).centerCrop().into(embassyImage);
+                Picasso.with(SecurityActivity.getInstance()).load(embassyList.get(0).getImage()).resize(1000, 1000).centerCrop().into(embassyImage);
             }else{
-                Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageIntro()).resize(1000, 1000).centerCrop().into(embassyImage);
+                Picasso.with(SecurityActivity.getInstance()).load(destinationInformation.getImageIntro()).resize(1000, 1000).centerCrop().into(embassyImage);
                 TextView emptyEmbassyList = (TextView)rootView.findViewById(R.id.emptyEmbassyList);
                 emptyEmbassyList.setVisibility(View.VISIBLE);
             }
