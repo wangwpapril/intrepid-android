@@ -53,6 +53,7 @@
         android:layout_alignParentTop="false"
         android:layout_below="@+id/termsofuse"
         android:layout_marginTop="10dp"
+        android:scrollbars="none"
         android:padding="16dp">
 
         <TextView
@@ -60,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="17sp" />
     </ScrollView>
 
 </RelativeLayout>
