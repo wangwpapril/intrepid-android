@@ -30,8 +30,8 @@
 
         <ImageView
             android:id="@+id/cancel"
-            android:layout_width="20dip"
-            android:layout_height="20dip"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_gravity="end|bottom"
             android:scaleType="center"
             android:background="@drawable/close"
