@@ -10,14 +10,15 @@
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:paddingTop="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:elevation="4dp"
         android:transitionName="actionBar">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Settings"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="#fff"
         android:layout_gravity="center"
         android:id="@+id/toolbar_title" />
@@ -332,11 +333,12 @@
     android:id="@+id/buttonsection"
     android:layout_below="@+id/inputLayout"
     android:layout_centerHorizontal="true"
+    android:layout_marginTop="10dp"
     android:layout_height="wrap_content">
     <Button
         android:id="@+id/butUpdate"
-        android:text="Update"
-        android:textSize="16sp"
+        android:text="UPDATE"
+        android:textSize="20sp"
         android:textColor="@color/white"
         android:paddingLeft="0dp"
         android:paddingRight="0dp"
@@ -356,8 +358,8 @@
         android:layout_height="wrap_content"
         android:paddingTop="0dp"
         android:text="Sign Out"
-        android:textColor="#99cc00"
-        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         android:gravity="center_horizontal"
         android:textAlignment="center"
         android:clickable="true"
