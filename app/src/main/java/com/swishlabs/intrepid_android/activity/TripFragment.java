@@ -196,7 +196,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             TranslateAnimation anim = new TranslateAnimation(0, 0, 0, -2000);
-                            anim.setDuration(1000);
+                            anim.setDuration(800);
                             anim.setAnimationListener(new Animation.AnimationListener() {
                                 @Override
                                 public void onAnimationStart(Animation animation) {

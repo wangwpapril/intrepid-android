@@ -63,6 +63,7 @@ public class DestinationsListActivity extends BaseActivity {
 
         this.setContentView(R.layout.destination_list);
 		initView();
+
 		if(mDestinationList == null) {
 			getTripList();
 		}else{
@@ -179,7 +180,7 @@ public class DestinationsListActivity extends BaseActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String text = mEditTextSearch.getText().toString().toLowerCase(Locale.getDefault());
-                if (mDestinationsListAdapter!=null) {
+                if (mDestinationsListAdapter!=null && !mDestinationsListAdapter.isEmpty()) {
                     mDestinationsListAdapter.getFilter(context).filter(text);
                 }
 

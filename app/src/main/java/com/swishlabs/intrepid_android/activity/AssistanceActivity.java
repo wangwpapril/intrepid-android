@@ -169,6 +169,8 @@ public class AssistanceActivity extends FragmentActivity implements GoogleApiCli
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
                 setUpMap();
+            }else{
+                StringUtil.showAlertDialog("Could Not Load Map", "Please install Google Maps on your phone.", AssistanceActivity.this);
             }
         }else {
  //           setUpMap();
