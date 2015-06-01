@@ -6,8 +6,8 @@
     tools:context="com.swishlabs.intrepid_android.activity.LearnMoreActivity">
 
     <ImageView
-        android:layout_width="300dp"
-        android:layout_height="400dp"
+        android:layout_width="320dp"
+        android:layout_height="450dp"
         android:id="@+id/learnMoreImage"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
@@ -15,7 +15,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:id="@+id/learnMoreContent"
         android:textColor="@color/white"
         android:textSize="15sp"
