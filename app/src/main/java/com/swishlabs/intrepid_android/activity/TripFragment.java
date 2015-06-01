@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -73,11 +74,13 @@ public class TripFragment extends android.support.v4.app.Fragment {
         imageLoader = new ImageLoader(TripPagesActivity.getInstance(),  R.drawable.abc_item_background_holo_light);
     }
 
+    RelativeLayout mContainer;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trip, container, false);
-
+        mContainer = (RelativeLayout)view.findViewById(R.id.container);
         mTripIndex = getArguments().getInt("id");
         mDestinationId = getArguments().getString("destinationId");
         String destinationName = getArguments().getString("destinationName");
@@ -117,9 +120,10 @@ public class TripFragment extends android.support.v4.app.Fragment {
 
     private void setupSwipe(View view, ImageView countryImage, int index){
         final GestureDetector detector = new GestureDetector(new UpSwipeGestureListener(view, countryImage, index));
-        view.setOnTouchListener(new View.OnTouchListener() {
+        mCountryImage.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(final View view, final MotionEvent event) {
+                Log.d("Event:", String.valueOf(event.getX()));
                 detector.onTouchEvent(event);
                 return true;
             }
@@ -144,13 +148,16 @@ public class TripFragment extends android.support.v4.app.Fragment {
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                                float velocityY) {
+            Log.d("velocityY: ", String.valueOf(velocityY));
+            Log.d("e1.getY():", String.valueOf(e1.getY()));
+            Log.d("e2.getY():", String.valueOf(e2.getY()));
             try {
                 if (Math.abs(e1.getX() - e2.getX()) > SWIPE_MAX_OFF_PATH){
                     return false;
                 }
                 // right to left swipe
                 if (e1.getY() - e2.getY() > SWIPE_MIN_DISTANCE
-                        && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                        && Math.abs(velocityY) > SWIPE_THRESHOLD_VELOCITY) {
                     onUpSwipe(mCountryImage, mIndex);
                 }
             } catch (Exception e) {
