@@ -65,6 +65,9 @@ public class ViewEmbassyActivity extends ActionBarActivity {
         TextView email = (TextView)findViewById(R.id.contact_email);
         String formattedEmails = formatEmails();
         email.setText(Html.fromHtml("Email: "+ formattedEmails));
+        TextView website = (TextView) findViewById(R.id.contact_website);
+        String formattedWebsite = formatWebsite();
+        website.setText(Html.fromHtml("Website: "+ formattedWebsite));
         TextView hours = (TextView)findViewById(R.id.embassy_hours);
         hours.setText(mEmbassy.getHoursofOperation());
         TextView notes = (TextView)findViewById(R.id.notes_text);
@@ -81,7 +84,7 @@ public class ViewEmbassyActivity extends ActionBarActivity {
         }else {
             services.setText(mEmbassy.getServicesOffered());
         }
-        setClickListeners(phone, email);
+        setClickListeners(phone, email, website);
 
         ImageView backIv = (ImageView) findViewById(R.id.title_back);
         backIv.setOnClickListener(new View.OnClickListener() {
@@ -108,15 +111,22 @@ public class ViewEmbassyActivity extends ActionBarActivity {
         return formattedEmails;
     }
 
+
     @Override
     protected void onResume(){
         super.onResume();
         Analytics.with(this).screen(null, "Embassy Detail");
     }
+    protected String formatWebsite(){
+        String rawWebsite = mEmbassy.getWebsite();
+        String formattedWebsite = rawWebsite.replace(", ", "\r\n").replace("; ", ";\r\n");
+        return formattedWebsite;
+    }
 
-    protected void setClickListeners(TextView phone, TextView email){
+    protected void setClickListeners(TextView phone, TextView email, TextView website){
         Linkify.addLinks(phone, Linkify.PHONE_NUMBERS);
         Linkify.addLinks(email, Linkify.EMAIL_ADDRESSES);
+        Linkify.addLinks(website, Linkify.WEB_URLS);
 //        phone.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
