@@ -37,12 +37,12 @@
         android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo"
-        android:label="Travel Smart"
+        android:label="Navigator"
         android:largeHeap="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".activity.SplashActivity"
-            android:label="Travel Smart"
+            android:label="Navigator"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
