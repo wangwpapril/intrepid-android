@@ -35,7 +35,7 @@ public class AceInsuranceActivity extends ActionBarActivity implements View.OnCl
         pdfViewBt.setOnClickListener(this);
 
         mVMPdfUrl = SharedPreferenceUtil.getString(Enums.PreferenceKeys.virtualWalletPdf.toString(), null);
-        if(mVMPdfUrl == null){
+        if(mVMPdfUrl == ""){
             pdfViewBt.setVisibility(View.INVISIBLE);
         }
     }
