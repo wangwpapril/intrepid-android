@@ -10,9 +10,17 @@
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:paddingTop="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:elevation="4dp"
         android:transitionName="actionBar">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_titlebar_return"
+            android:id="@+id/title_back"
+            />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -308,11 +316,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/butSignUp"
         android:paddingTop="0dp"
-        android:paddingLeft="60dip"
-        android:paddingRight="60dip"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
         android:text="By registering for or using any portion of the Services, I accept the"
-        android:textColor="@color/white"
-        android:textSize="12sp"
+        android:textColor="@color/light_gray"
+        android:textSize="15sp"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_marginLeft="20dip"
         android:layout_marginRight="20dip"
@@ -326,7 +334,7 @@
         android:layout_height="wrap_content"
         android:text="Terms of Use"
         android:textColor="@color/white"
-        android:textSize="13sp"
+        android:textSize="16sp"
         android:gravity="center_horizontal"
         android:textAlignment="center"
         android:layout_gravity="center_horizontal"
