@@ -180,6 +180,7 @@ public class LoginActivity extends BaseActivity {
                         SharedPreferenceUtil.setString(Enums.PreferenceKeys.currencyCode.toString(),user.currencyCode);
                         SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), true);
                         SharedPreferenceUtil.setApList(getApplicationContext(), user.getCompany().getApList());
+                        SharedPreferenceUtil.setString(Enums.PreferenceKeys.instructionalText.toString(), user.getCompany().getInstructionalText());
                         Analytics.with(LoginActivity.this).identify(user.id, new Traits().putEmail(user.email), null);
 
                         MyApplication.setLoginStatus(true);

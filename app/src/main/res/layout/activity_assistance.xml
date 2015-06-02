@@ -64,6 +64,14 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentStart="false" />
 
+        <TextView
+            android:layout_width="fill_parent"
+            android:id="@+id/instructionalText"
+            android:padding="16dp"
+            android:textColor="#222"
+            android:layout_below="@id/callIntrepidAssistance"
+            android:layout_height="wrap_content" />
+
     </RelativeLayout>
 
     <include

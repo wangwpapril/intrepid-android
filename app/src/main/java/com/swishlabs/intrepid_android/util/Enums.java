@@ -88,7 +88,8 @@ public class Enums {
         virtualWalletPdf("virtual wallet pdf"),
         assistanceList("assistance list"),
 		currentPage("current page"),
-		userId("user id") ;
+		userId("user id"),
+		instructionalText("instructional text");
 	
 		private final String svalue;
 

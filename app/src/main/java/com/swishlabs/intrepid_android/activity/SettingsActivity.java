@@ -197,6 +197,7 @@ public class SettingsActivity extends BaseActivity {
         SharedPreferenceUtil.setString(Enums.PreferenceKeys.username.toString(), "");
         SharedPreferenceUtil.setString(Enums.PreferenceKeys.countryCode.toString(), "");
         SharedPreferenceUtil.setString(Enums.PreferenceKeys.currencyCode.toString(), "");
+        SharedPreferenceUtil.setString(Enums.PreferenceKeys.instructionalText.toString(), "");
         SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), false);
         SharedPreferenceUtil.setApList(getApplicationContext(), null);
         MyApplication.setLoginStatus(false);

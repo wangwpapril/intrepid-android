@@ -22,16 +22,26 @@ public class Company implements Serializable {
 	public List<AssistanceProvider> getApList() {
 		return apList;
 	}
+	public String getInstructionalText(){
+		return instructionalText;
+	}
 
 	public List<AssistanceProvider> apList;
 	public String content;
+
+
+
+
 	public String images;
 	public String localeCode;
 	public String createdAt;
 	public String updatedAt;
+	public String instructionalText;
 	public Company(JSONObject obj) throws JSONException {
 
-        if(obj == null){
+
+
+		if(obj == null){
             parent = new Parent(null);
             apList = null;
             return;
@@ -44,6 +54,7 @@ public class Company implements Serializable {
 		classes = obj.getString("class");
 		countryCode = obj.getString("country_code");
 		content = obj.getString("content");
+		instructionalText = obj.getJSONObject("content").getString("instructional_text");
 		images = obj.getString("images");
 		localeCode = obj.getString("locale_code");
 		createdAt = obj.getString("created_at");
@@ -58,6 +69,8 @@ public class Company implements Serializable {
                 parent = new Parent(null);
             }
 		}
+
+
 		
 		if (obj.has("assistance_providers")) {
 			JSONArray array = obj.getJSONArray("assistance_providers");

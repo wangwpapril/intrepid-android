@@ -17,6 +17,7 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.common.ConnectionResult;
@@ -75,6 +76,12 @@ public class AssistanceActivity extends FragmentActivity implements GoogleApiCli
         mIntrepidMenu.setupMenu(this, AssistanceActivity.this, true);
         mApList = SharedPreferenceUtil.getApList(this);
         setupCallAssistanceButton();
+        TextView instructionalTextView = (TextView)findViewById(R.id.instructionalText);
+        String instructions = SharedPreferenceUtil.getString(Enums.PreferenceKeys.instructionalText.toString(), null);
+        instructions = instructions.replace("1.", "\n1.");
+        instructions = instructions.replace("2.", "\n2.");
+        instructionalTextView.setText(instructions);
+
     }
 
     private ConnectivityManager mConnectivityManager;
