@@ -68,7 +68,8 @@
         android:textColorHint="#333f48"
         android:textCursorDrawable="@null"
         android:visibility="gone"
-        android:maxLines="1" />
+        android:maxLines="1"
+        android:imeOptions="actionDone"/>
 
 
     <RelativeLayout
