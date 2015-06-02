@@ -53,14 +53,14 @@
 
     <Button
         android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:text="Contact ACE Assistance"
+        android:layout_height="80dp"
+        android:text="Call Intrepid Assistance"
         android:id="@+id/callIntrepidAssistance"
         android:layout_below="@id/map"
         android:textColor="#FFF"
         android:textAllCaps="false"
-        android:background="#84bd00"
-        android:textSize="16sp"
+        android:background="#eb4f40"
+        android:textSize="20sp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentStart="false" />
 
