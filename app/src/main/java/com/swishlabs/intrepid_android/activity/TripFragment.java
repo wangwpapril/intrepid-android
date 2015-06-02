@@ -123,7 +123,6 @@ public class TripFragment extends android.support.v4.app.Fragment {
         Common.sendDirectTracking(TripPagesActivity.getInstance(), "View Trip", "My Trips", mDestinationName, -1);
         TripPagesActivity.getInstance().network();
         if (TripPagesActivity.getInstance().getNetworkConnectivity()){
-            Common.showLoading("Loading");
             DataDownloader downloader = new DataDownloader();
             downloader.initializeDownload(TripPagesActivity.getInstance(), null, null, mDestinationId, TripPagesActivity.getInstance());
         }else {

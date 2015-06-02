@@ -131,7 +131,6 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
     }
 
     public void redirectToTripOverview(String destinationId){
-        Common.cancelLoading();
         SharedPreferenceUtil.setInt(TripPagesActivity.getInstance(), Enums.PreferenceKeys.currentPage.toString(), mViewPager.getCurrentItem());
         Intent intent = new Intent(TripPagesActivity.this, ViewDestinationActivity.class);
         intent.putExtra("destinationId", destinationId);
