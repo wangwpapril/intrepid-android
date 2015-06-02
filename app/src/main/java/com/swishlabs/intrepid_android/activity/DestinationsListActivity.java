@@ -163,7 +163,8 @@ public class DestinationsListActivity extends BaseActivity {
 //                LoadCurrencyInfo((int) arg3);
 //                LoadTripFromApi((int) arg3, null);
                 DataDownloader downloader = new DataDownloader();
-                downloader.initializeDownload(DestinationsListActivity.this, mDestinationList.get(position), DestinationsListActivity.this, null, null);
+                downloader.initializeDownload(DestinationsListActivity.this, mDestinationList.get((int) arg3), DestinationsListActivity.this, null, null);
+
 
             }
         });
