@@ -4,6 +4,8 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -41,6 +43,22 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
 
     public static TripPagesActivity getInstance(){
         return instance;
+    }
+
+    private ConnectivityManager mConnectivityManager;
+    private boolean mNetworkConnectivity;
+
+    public boolean getNetworkConnectivity(){
+        return mNetworkConnectivity;
+    }
+
+    public void network(){
+        mConnectivityManager =
+                (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = mConnectivityManager.getActiveNetworkInfo();
+        mNetworkConnectivity = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
     }
 
     SectionsPagerAdapter mSectionsPagerAdapter;
@@ -99,6 +117,13 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         mIndicator.initPoints(mTripCount+1, SharedPreferenceUtil.getInt(this, Enums.PreferenceKeys.currentPage.toString(), 0), mViewPager);
         moveToPage();
 
+    }
+
+    public void redirectToTripOverview(String destinationId){
+        SharedPreferenceUtil.setInt(TripPagesActivity.getInstance(), Enums.PreferenceKeys.currentPage.toString(), mViewPager.getCurrentItem());
+        Intent intent = new Intent(TripPagesActivity.this, ViewDestinationActivity.class);
+        intent.putExtra("destinationId", destinationId);
+        startActivity(intent);
     }
 
     private void moveToPage(){

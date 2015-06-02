@@ -26,6 +26,7 @@ import com.swishlabs.intrepid_android.customViews.RoundedTransformation;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
+import com.swishlabs.intrepid_android.util.DataDownloader;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.ImageLoader;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
@@ -46,7 +47,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
     Database mDatabase;
     TextView mCountryName;
     ImageView mCountryImage;
-    ImageView mClickableSpace;
+
     protected ImageLoader imageLoader;
 
     private OnFragmentInteractionListener mListener;
@@ -113,14 +114,22 @@ public class TripFragment extends android.support.v4.app.Fragment {
         return view;
     }
 
-    private void tripClick(){
-        SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), mDestinationId);
-        SharedPreferenceUtil.setInt(TripPagesActivity.getInstance(), Enums.PreferenceKeys.currentPage.toString(), TripPagesActivity.getInstance().mViewPager.getCurrentItem());
-        Intent mIntent = new Intent(TripPagesActivity.getInstance(), ViewDestinationActivity.class);
 
-        mIntent.putExtra("destinationId", mDestinationId);
-        mIntent.putExtra("firstTimeFlag","1");
-        startActivity(mIntent);
+
+    private void tripClick(){
+        TripPagesActivity.getInstance().network();
+        if (TripPagesActivity.getInstance().getNetworkConnectivity()){
+            DataDownloader downloader = new DataDownloader();
+            downloader.initializeDownload(TripPagesActivity.getInstance(), null, null, mDestinationId, TripPagesActivity.getInstance());
+        }else {
+            SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), mDestinationId);
+            SharedPreferenceUtil.setInt(TripPagesActivity.getInstance(), Enums.PreferenceKeys.currentPage.toString(), TripPagesActivity.getInstance().mViewPager.getCurrentItem());
+            Intent mIntent = new Intent(TripPagesActivity.getInstance(), ViewDestinationActivity.class);
+
+            mIntent.putExtra("destinationId", mDestinationId);
+            mIntent.putExtra("firstTimeFlag", "1");
+            startActivity(mIntent);
+        }
     }
 
     private void setupSwipe(View view, ImageView countryImage, int index){
