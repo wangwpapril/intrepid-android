@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 
+import com.swishlabs.intrepid_android.activity.DestinationsListActivity;
 import com.swishlabs.intrepid_android.activity.TripPagesActivity;
 import com.swishlabs.intrepid_android.activity.ViewDestinationActivity;
 import com.swishlabs.intrepid_android.adapter.DestinationsListAdapter;
@@ -45,13 +46,19 @@ public class DataDownloader {
     private List<HealthMedicationDis> healthMedicationList;
     private List<Alert> mAlertList;
 
+    public DestinationsListActivity mActivity;
     public DatabaseManager mDatabaseManager;
     public Database mDatabase;
     public Context mContext;
+    public Destination mDestination;
+    public boolean mIsDestinationNew;
 
-    public void initializeDownload(Context context, Destination destination){
+    public void initializeDownload(Context context, Destination destination, DestinationsListActivity activity, boolean isDestinationNew){
         mContext =context;
-        LoadTripFromApi(2, null);
+        mActivity = activity;
+        mDestination = destination;
+        mIsDestinationNew = isDestinationNew;
+        LoadTripFromApi(0, null);
 
     }
 
@@ -60,11 +67,11 @@ public class DataDownloader {
         mDatabase = mDatabaseManager.openDatabase("Intrepid.db");
     }
 
-    public void LoadTripFromApi(final int destinationPosition, final String rate){
+    public void LoadTripFromApi(int test, final String rate){
         loadDatabase();
-        final String destinationId = mDestinationList.get(destinationPosition).getId();
+        final String destinationId = mDestination.getId();
         if (DatabaseManager.isTripUnique(mDatabase, destinationId)) {
-            final String currencyCode = mDestinationList.get(destinationPosition).getCurrencyCode();
+            final String currencyCode = mDestination.getCurrencyCode();
 
             IControllerContentCallback icc = new IControllerContentCallback() {
 
@@ -78,7 +85,7 @@ public class DataDownloader {
                         JSONObject country = destination.getJSONObject("country");
                         if (country != null) {
                             String countryCode = country.getString("country_code");
-                            saveEmbassyInformation(mDestinationList.get(destinationPosition).getId(), countryCode);
+                            saveEmbassyInformation(mDestination.getId(), countryCode);
                             fetchAlerts(countryCode);
                         }
                         countryId = destination.optString("id");
@@ -128,7 +135,7 @@ public class DataDownloader {
 
                         saveDestinationInformation(destination, images, currencyCode, rate);
                         String encodedURL = general_image_url.replace(" ", "%20");
-                        CreateTrip(destinationPosition, encodedURL);
+                        CreateTrip(0, encodedURL);
 
 
                     } catch (JSONException e) {
@@ -158,12 +165,13 @@ public class DataDownloader {
                 }
             }
             SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), destinationId);
-//            Intent intent = new Intent(DestinationsListActivity.this, ViewDestinationActivity.class);
+            mActivity.redirectToTripOverview(destinationId);
+//            Intent intent = new Intent(mActivity, ViewDestinationActivity.class);
 //            intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
 //            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);
 //            intent.putExtra("destinationId", destinationId);
 //            intent.putExtra("firstTimeFlag", "1");
-//            startActivity(intent);
+//            mActivity.startActivity(intent);
         }
     }
 
@@ -362,7 +370,7 @@ public class DataDownloader {
     }
 
     private void CreateTrip(int position, String generalImageUri){
-        Destination destination = mDestinationList.get(position);
+        Destination destination = mDestination;
 //        Trip trip = new Trip(destination.getCountry());
 
 
@@ -380,6 +388,7 @@ public class DataDownloader {
             mCallbackCount = mCallbackCount + 1;
         }
         SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), destination.getId());
+        mActivity.redirectToTripOverview(destination.getId());
 //        Intent intent = new Intent(DestinationsListActivity.this, ViewDestinationActivity.class);
 //        intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
 //        intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);

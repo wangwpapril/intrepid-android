@@ -26,6 +26,7 @@ import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
+import com.swishlabs.intrepid_android.util.DataDownloader;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 import com.swishlabs.intrepid_android.util.StringUtil;
@@ -159,7 +160,9 @@ public class DestinationsListActivity extends BaseActivity {
                 Log.d("Trip list", "You hit destination:" + position);
                 Log.d("Trip list", "You hit destination list index:" + arg3);
 //                LoadCurrencyInfo((int) arg3);
-                LoadTripFromApi((int) arg3, null);
+//                LoadTripFromApi((int) arg3, null);
+                DataDownloader downloader = new DataDownloader();
+                downloader.initializeDownload(DestinationsListActivity.this, mDestinationList.get(position), DestinationsListActivity.this, true);
 
 			}
 		});
@@ -180,7 +183,7 @@ public class DestinationsListActivity extends BaseActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String text = mEditTextSearch.getText().toString().toLowerCase(Locale.getDefault());
-                if (mDestinationsListAdapter!=null && !mDestinationsListAdapter.isEmpty()) {
+                if (mDestinationsListAdapter != null && !mDestinationsListAdapter.isEmpty()) {
                     mDestinationsListAdapter.getFilter(context).filter(text);
                 }
 
@@ -190,344 +193,19 @@ public class DestinationsListActivity extends BaseActivity {
 
     }
 
-    public void LoadCurrencyInfo(final int destinationPosition){
-        IControllerContentCallback icc = new IControllerContentCallback() {
-
-            public void handleSuccess(String content) {
-                JSONObject currencyInfo;
-                double rate;
-                try {
-                    currencyInfo = new JSONObject(content);
-                    JSONObject ra = currencyInfo.getJSONObject("rates");
-                    String currencyCode = mDestinationList.get(destinationPosition).getCurrencyCode();
-                    rate = currencyInfo.getJSONObject("rates").getDouble(currencyCode);
-
-                    LoadTripFromApi(destinationPosition, String.valueOf(rate));
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    LoadTripFromApi(destinationPosition, null);
-                }
-
-            }
-
-            public void handleError(Exception e){
-
-                LoadTripFromApi(destinationPosition, null);
-            }
-        };
-
-        String baseCurrencyCode = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currencyCode.toString(), null);
-        String currencyCode = mDestinationList.get(destinationPosition).getCurrencyCode();
-
-        ControllerContentTask cct = new ControllerContentTask(
-                Constants.CURRENCY_URL+"&base="+baseCurrencyCode+"&symbols="+currencyCode, icc,
-                Enums.ConnMethod.GET,false);
-
-        String ss = null;
-        cct.execute(ss);
-
+    public void redirectToTripOverview(String destinationId){
+        Intent intent = new Intent(DestinationsListActivity.this, ViewDestinationActivity.class);
+        intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.putExtra("destinationId", destinationId);
+        intent.putExtra("firstTimeFlag","1");
+        startActivity(intent);
     }
 
-    public void LoadTripFromApi(final int destinationPosition, final String rate){
-        final String destinationId = mDestinationList.get(destinationPosition).getId();
-        if (DatabaseManager.isTripUnique(mDatabase, destinationId)) {
-            final String currencyCode = mDestinationList.get(destinationPosition).getCurrencyCode();
-
-            IControllerContentCallback icc = new IControllerContentCallback() {
-
-                public void handleSuccess(String content) {
-
-                    JSONObject destination;
-                    JSONArray healthCondition, healthMedication;
-                    String countryId;
-                    try {
-                        destination = new JSONObject(content).getJSONObject("destination");
-                        JSONObject country = destination.getJSONObject("country");
-                        if (country != null) {
-                            String countryCode = country.getString("country_code");
-                            saveEmbassyInformation(mDestinationList.get(destinationPosition).getId(), countryCode);
-                            fetchAlerts(countryCode);
-                        }
-                        countryId = destination.optString("id");
-                        SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), countryId);
-                        if (destination.has("health_conditions")) {
-                            healthCondition = destination.getJSONArray("health_conditions");
-                            int len = healthCondition.length();
-                            healthConditionList = new ArrayList<HealthCondition>(len);
-
-                            for (int i = 0; i < len; i++) {
-                                healthConditionList.add(new HealthCondition(healthCondition.getJSONObject(i)));
-                                CreateHealthCondition(destination.optString("id"), String.valueOf(i));
-
-                            }
-
-                        }
-
-                        if (destination.has("medications")) {
-                            healthMedication = destination.getJSONArray("medications");
-                            int len = healthMedication.length();
-                            healthMedicationList = new ArrayList<HealthMedicationDis>(len);
-
-                            for (int i = 0; i < len; i++) {
-                                JSONObject temp = healthMedication.getJSONObject(i);
-                                HealthMedicationDis tempMed = new HealthMedicationDis();
-                                tempMed.id = Integer.valueOf(temp.optString("id"));
-                                tempMed.mMedicationName = temp.optString("name");
-                                tempMed.mCountryId = countryId;
-                                tempMed.mBrandNames = temp.getJSONObject("content").optString("brand_names");
-                                tempMed.mDescription = temp.getJSONObject("content").optString("description");
-                                tempMed.mSideEffects = temp.getJSONObject("content").optString("side_effects");
-                                tempMed.mStorage = temp.getJSONObject("content").optString("storage");
-                                tempMed.mNotes = temp.getJSONObject("content").optString("notes");
-                                tempMed.mGeneralImage = temp.getJSONObject("images").getJSONObject("general")
-                                        .getJSONObject("versions").getJSONObject("3x").optString("source_url").replace(" ", "%20");
-
-                                healthMedicationList.add(tempMed);
-                                CreateHealthMedication(countryId, String.valueOf(i));
-
-                            }
-
-                        }
-
-                        JSONObject images = destination.getJSONObject("images");
-                        final String general_image_url = images.getJSONObject("intro").getJSONObject("versions").getJSONObject("3x")
-                                .getString("source_url");
-
-                        saveDestinationInformation(destination, images, currencyCode, rate);
-                        String encodedURL = general_image_url.replace(" ", "%20");
-                        CreateTrip(destinationPosition, encodedURL);
 
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-
-                public void handleError(Exception e) {
-
-                }
-            };
-
-            String token = null;
-            token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
-            ControllerContentTask cct = new ControllerContentTask(
-                    Constants.BASE_URL + "destinations/" + destinationId + "?token=" + token, icc,
-                    Enums.ConnMethod.GET, false);
-            String ss = null;
-            cct.execute(ss);
-        }else{
-            List<Trip> tripList = DatabaseManager.getTripArray(mDatabase, SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null));
-            for (int i = 0; i<tripList.size(); i++){
-                if (tripList.get(i).getCountryId().equals(destinationId)){
-                    SharedPreferenceUtil.setInt(TripPagesActivity.getInstance(), Enums.PreferenceKeys.currentPage.toString(), i+1);
-                    break;
-                }
-            }
-            SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), destinationId);
-            Intent intent = new Intent(DestinationsListActivity.this, ViewDestinationActivity.class);
-            intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);
-            intent.putExtra("destinationId", destinationId);
-            intent.putExtra("firstTimeFlag", "1");
-            startActivity(intent);
-        }
-    }
-
-    private void saveEmbassyInformation(final String destinationId, String countryCode){
-
-        IControllerContentCallback icc = new IControllerContentCallback() {
-
-            public void handleSuccess(String content) {
-                JSONObject diplomaticOffices;
-                try {
-                    diplomaticOffices = new JSONObject(content);
-                    JSONArray diplomaticOfficesList = diplomaticOffices.getJSONArray("diplomatic_office");
-                    for(int i = 0;i < diplomaticOfficesList.length();i++){
-                        JSONObject diplomaticOffice = diplomaticOfficesList.getJSONObject(i);
-                        String id = diplomaticOffice.getString("id");
-                        String country = diplomaticOffice.getString("country");
-                        String name = diplomaticOffice.getString("name");
-                        JSONObject embassyContent = diplomaticOffice.getJSONObject("content");
-                        JSONObject embassyImage = diplomaticOffice.getJSONObject("images").getJSONObject("embassy");
-                        String formattedEmbassyImage = embassyImage.getString("source_url").replace(" ", "%20");
-                        String servicesOffered = embassyContent.getString("services_offered");
-                        String fax = embassyContent.getString("fax");
-                        String source = embassyContent.getString("source");
-                        String website = embassyContent.getString("website");
-                        String email = embassyContent.getString("email");
-                        String address = embassyContent.getString("address");
-                        String hoursOfOperation = embassyContent.getString("hours_of_operation");
-                        String notes = embassyContent.getString("notes");
-                        String telephone = embassyContent.getString("telephone");
-
-                        ContentValues values = new ContentValues();
-                        values.put(Database.KEY_EMBASSY_ID, id);
-                        values.put(Database.KEY_EMBASSY_COUNTRY, country);
-                        values.put(Database.KEY_EMBASSY_NAME, name);
-                        values.put(Database.KEY_EMBASSY_SERVICES_OFFERED, servicesOffered);
-                        values.put(Database.KEY_EMBASSY_FAX, fax);
-                        values.put(Database.KEY_EMBASSY_SOURCE, source);
-                        values.put(Database.KEY_EMBASSY_WEBSITE, website);
-                        values.put(Database.KEY_EMBASSY_EMAIL, email);
-                        values.put(Database.KEY_EMBASSY_ADDRESS, address);
-                        values.put(Database.KEY_EMBASSY_HOURS_OF_OPERATION, hoursOfOperation);
-                        values.put(Database.KEY_EMBASSY_NOTES, notes);
-                        values.put(Database.KEY_EMBASSY_TELEPHONE, telephone);
-                        values.put(Database.KEY_EMBASSY_DESTINATION_ID, destinationId);
-                        values.put(Database.KEY_EMBASSY_IMAGE, formattedEmbassyImage);
-
-                        mDatabase.getDb().insert(Database.TABLE_EMBASSY, null, values);
-                        if (mCallbackCount == 1) {
-//                            mDatabase.getDb().close();
-                        }else{
-                            mCallbackCount = mCallbackCount + 1;
-                        }
-
-                    }
 
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-            public void handleError(Exception e){
-
-            }
-        };
-
-        String token = null;
-        token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
-        String currentCountryCode = SharedPreferenceUtil.getString(Enums.PreferenceKeys.countryCode.toString(), null);
-        ControllerContentTask cct = new ControllerContentTask(
-                Constants.BASE_URL+"diplomatic-offices/"+countryCode+"?origin_country="+currentCountryCode+"&token=" + token, icc,
-                Enums.ConnMethod.GET,false);
-
-        String ss = null;
-        cct.execute(ss);
-    }
-
-    private void saveDestinationInformation(JSONObject destination, JSONObject images, String currencyCode, String rate) throws JSONException {
-        JSONObject content = destination.getJSONObject("content");
-        String destinationId = destination.getString("id");
-        String countryName = destination.getJSONObject("country").getString("name");
-        String countryCode = destination.getJSONObject("country").getString("country_code");
-        String communicationsInfrastructure = content.getString("communication_infrastructure");
-        String otherConcerns = content.getString("other_concerns");
-        String development = content.getString("development");
-        String location = content.getString("location");
-        String cultural_norms = content.getString("cultural_norms");
-        String sources = content.getString("sources");
-        String currency = content.getString("currency");
-        String religion = content.getString("religion");
-        String time_zone = content.getString("time_zone");
-        String safety = content.getString("safety");
-        String type_of_government = content.getString("type_of_government");
-        String visa_map_attributions = content.getString("visa_map_attributions");
-        String electricity = content.getString("electricity");
-        String ethnic_makeup = content.getString("ethnic_makeup");
-        String language = content.getString("language");
-        String visa_requirements = content.getString("visa_requirements");
-        String climate = content.getString("climate");
-        String intro_image_url = images.getJSONObject("intro").getString("source_url").replace(" ", "%20");
-        String security_image_url = images.getJSONObject("security").getString("source_url").replace(" ", "%20");
-        String overview_image_url = images.getJSONObject("overview").getString("source_url").replace(" ", "%20");
-        String culture_image_url = images.getJSONObject("culture").getString("source_url").replace(" ", "%20");
-        String currency_image_url = null;
-        if(images.has("currency")) {
-            currency_image_url = images.getJSONObject("currency").getString("source_url").replace(" ", "%20");
-        }
-
-        String health_care_quality = content.getString("health_care_quality");
-        String vaccines_pre_trip_medical = content.getString("vaccinations_and_pre_trip_medical");
-        String health_conditions = content.getString("health_conditions");
-        String emergency_numbers = content.getString("emergency_numbers");
-        String medical_image_url = images.getJSONObject("medical").getJSONObject("versions").getJSONObject("2x")
-                .getString("source_url").replace(" ", "%20");
-
-        String transportation = content.getString("transportation");
-        String holidays = content.getString("holidays");
-
-
-        ContentValues values = new ContentValues();
-        values.put(Database.KEY_DESTINATION_ID, destinationId);
-        values.put(Database.KEY_COUNTRY_NAME, countryName);
-        values.put(Database.KEY_COUNTRY_CODE, countryCode);
-        values.put(Database.KEY_COMMUNICATIONS, communicationsInfrastructure);
-        values.put(Database.KEY_OTHER_CONCERNS, otherConcerns);
-        values.put(Database.KEY_DEVELOPMENT, development);
-        values.put(Database.KEY_LOCATION, location);
-        values.put(Database.KEY_CULTURAL_NORMS, cultural_norms);
-        values.put(Database.KEY_SOURCES, sources);
-        values.put(Database.KEY_CURRENCY, currency);
-        values.put(Database.KEY_CURRENCY_CODE, currencyCode);
-        values.put(Database.KEY_CURRENCY_RATE, rate);
-        values.put(Database.KEY_RELIGION, religion);
-        values.put(Database.KEY_TIMEZONE, time_zone);
-        values.put(Database.KEY_SAFETY, safety);
-        values.put(Database.KEY_GOVERNMENT, type_of_government);
-        values.put(Database.KEY_VISAMAP, visa_map_attributions);
-        values.put(Database.KEY_ELECTRICITY, electricity);
-        values.put(Database.KEY_ETHNIC_MAKEUP, ethnic_makeup);
-        values.put(Database.KEY_LANGUAGE_INFORMATION, language);
-        values.put(Database.KEY_VISA_REQUIREMENT, visa_requirements);
-        values.put(Database.KEY_CLIMATE_INFO, climate);
-        values.put(Database.KEY_IMAGE_SECURITY, security_image_url);
-        values.put(Database.KEY_IMAGE_OVERVIEW, overview_image_url);
-        values.put(Database.KEY_IMAGE_CULTURE, culture_image_url);
-        values.put(Database.KEY_IMAGE_INTRO, intro_image_url);
-        values.put(Database.KEY_IMAGE_CURRENCY, currency_image_url);
-        values.put(Database.KEY_EMERGENCY_NUMBER, emergency_numbers);
-        values.put(Database.KEY_HEALTH_CARE, health_care_quality);
-        values.put(Database.KEY_VACCINATION, vaccines_pre_trip_medical);
-        values.put(Database.KEY_HEALTH_CONDITION, health_conditions);
-        values.put(Database.KEY_IMAGE_MEDICAL, medical_image_url);
-        values.put(Database.KEY_TRANSPORTATION, transportation);
-        values.put(Database.KEY_HOLIDAYS, holidays);
-
-        mDatabase.getDb().insert(Database.TABLE_DESTINATION_INFORMATION, null, values);
-    }
-
-    public boolean isTripUnique(String destinationName){
-        return true;
-    }
-
-    private void CreateHealthMedication(String id, String index){
-
-        int indexId = Integer.parseInt(index);
-        ContentValues values = new ContentValues();
-        values.put(Database.KEY_MEDICATION_ID,index);
-        values.put(Database.KEY_MEDICATION_NAME,healthMedicationList.get(indexId).getmMedicationName());
-        values.put(Database.KEY_COUNTRY_ID,id);
-        values.put(Database.KEY_GENERAL_IMAGE_URI, healthMedicationList.get(indexId).getmGeneralImage());
-        values.put(Database.KEY_MEDICATION_BRAND_NAME, healthMedicationList.get(indexId).getmBrandNames());
-        values.put(Database.KEY_MEDICATION_DESCRIPTION, healthMedicationList.get(indexId).getmDescription());
-        values.put(Database.KEY_MEDICATION_SIDE_EFFECTS, healthMedicationList.get(indexId).getmSideEffects());
-        values.put(Database.KEY_MEDICATION_STORAGE, healthMedicationList.get(indexId).getmStorage());
-        values.put(Database.KEY_MEDICATION_NOTES, healthMedicationList.get(indexId).getmNotes());
-
-        mDatabase.getDb().insert(Database.TABLE_HEALTH_MEDICATION, null, values);
-
-    }
-
-    private void CreateHealthCondition(String id, String index){
-
-        int indexId = Integer.parseInt(index);
-        ContentValues values = new ContentValues();
-        values.put(Database.KEY_CONDITION_ID,index);
-        values.put(Database.KEY_CONDITION_NAME,healthConditionList.get(indexId).name);
-        values.put(Database.KEY_COUNTRY_ID,id);
-        values.put(Database.KEY_GENERAL_IMAGE_URI, healthConditionList.get(indexId).images.version3.sourceUrl.replace(" ", "%20"));
-        values.put(Database.KEY_CONDITION_DESCRIPTION,healthConditionList.get(indexId).content.description);
-        values.put(Database.KEY_CONDITION_SYMPTOMS,healthConditionList.get(indexId).content.symptoms);
-        values.put(Database.KEY_CONDITION_PREVENTION,healthConditionList.get(indexId).content.prevention);
-
-        mDatabase.getDb().insert(Database.TABLE_HEALTH_CONDITION, null, values);
-
-    }
 
     private void saveCurrencyImage(String code, String url){
         ContentValues values = new ContentValues();
@@ -536,33 +214,7 @@ public class DestinationsListActivity extends BaseActivity {
         mDatabase.getDb().insert(Database.TABLE_CURRENCY, null, values);
     }
 
-    private void CreateTrip(int position, String generalImageUri){
-        Destination destination = mDestinationList.get(position);
-//        Trip trip = new Trip(destination.getCountry());
 
-
-        ContentValues values = new ContentValues();
-        values.put(Database.KEY_DESTINATION_COUNTRY, destination.getCountry());
-        values.put(Database.KEY_COUNTRY_ID, destination.getId());
-        values.put(Database.KEY_GENERAL_IMAGE_URI, generalImageUri);
-        values.put(Database.KEY_TRIP_USER_ID, SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null));
-
-
-        mDatabase.getDb().insert(Database.TABLE_TRIPS, null, values);
-        if (mCallbackCount == 1) {
-            mDatabase.getDb().close();
-        }else{
-            mCallbackCount = mCallbackCount + 1;
-        }
-        SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), destination.getId());
-        Intent intent = new Intent(DestinationsListActivity.this, ViewDestinationActivity.class);
-        intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.putExtra("destinationId", destination.getId());
-        intent.putExtra("firstTimeFlag","1");
-        startActivity(intent);
-
-    }
 
     private void fetchAlerts(final String countrycode) {
 
