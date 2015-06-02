@@ -207,6 +207,17 @@ public class DatabaseManager {
         }
     }
 
+    public static String getTripDatabaseId(Database database, String destinationId){
+        Cursor cursor = database.getDb().query(Database.TABLE_TRIPS, new String[]{Database.KEY_ID,
+                        Database.KEY_DESTINATION_COUNTRY, Database.KEY_COUNTRY_ID, Database.KEY_GENERAL_IMAGE_URI}, Database.KEY_COUNTRY_ID + "=?",
+                new String[]{destinationId}, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor.getString(0);
+
+    }
+
     public static DestinationInformation getDestinationInformation(Database database, String destinationId){
         Cursor cursor = database.getDb().query(Database.TABLE_DESTINATION_INFORMATION, new String[]{Database.KEY_DESTINATION_ID,
                         Database.KEY_COUNTRY_NAME, Database.KEY_COUNTRY_CODE,Database.KEY_COMMUNICATIONS, Database.KEY_OTHER_CONCERNS, Database.KEY_DEVELOPMENT, Database.KEY_LOCATION,
