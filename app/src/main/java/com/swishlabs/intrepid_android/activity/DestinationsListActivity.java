@@ -26,6 +26,7 @@ import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
+import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.DataDownloader;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
@@ -185,6 +186,12 @@ public class DestinationsListActivity extends BaseActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String text = mEditTextSearch.getText().toString().toLowerCase(Locale.getDefault());
+                if (text.length() == 0){
+                    Common.sendDirectTracking(DestinationsListActivity.this, "Cancel Search", "Add Trip", null, -1);
+                }else {
+                    Common.sendDirectTracking(DestinationsListActivity.this, "Keyword", "Add Trip", text, -1);
+                }
+
                 if (mDestinationsListAdapter != null && !mDestinationsListAdapter.isEmpty()) {
                     mDestinationsListAdapter.getFilter(context).filter(text);
                 }
@@ -192,6 +199,7 @@ public class DestinationsListActivity extends BaseActivity {
 
             }
         });
+        mEditTextSearch.setOnClickListener(Common.setupAnalyticsClickListener(DestinationsListActivity.this, "Search Field", "Add Trip", null, -1));
 
     }
 

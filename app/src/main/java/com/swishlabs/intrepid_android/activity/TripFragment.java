@@ -26,6 +26,7 @@ import com.swishlabs.intrepid_android.customViews.RoundedTransformation;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
+import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.DataDownloader;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.ImageLoader;
@@ -77,6 +78,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
     }
 
     RelativeLayout mContainer;
+    String mDestinationName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -86,6 +88,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
         mTripIndex = getArguments().getInt("id");
         mDestinationId = getArguments().getString("destinationId");
         String destinationName = getArguments().getString("destinationName");
+        mDestinationName = destinationName;
         String imageURL = getArguments().getString("imageURL");
 //        mTrip = DatabaseManager.getTrip(mTripIndex, mDatabase);
 
@@ -117,6 +120,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
 
 
     private void tripClick(){
+        Common.sendDirectTracking(TripPagesActivity.getInstance(), "View Trip", "My Trips", mDestinationName, -1);
         TripPagesActivity.getInstance().network();
         if (TripPagesActivity.getInstance().getNetworkConnectivity()){
             DataDownloader downloader = new DataDownloader();
@@ -204,6 +208,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
                     {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            Common.sendDirectTracking(TripPagesActivity.getInstance(), "Delete Trip", "My Trips", mDestinationName, -1);
                             TranslateAnimation anim = new TranslateAnimation(0, 0, 0, -2000);
                             anim.setDuration(800);
                             anim.setAnimationListener(new Animation.AnimationListener() {

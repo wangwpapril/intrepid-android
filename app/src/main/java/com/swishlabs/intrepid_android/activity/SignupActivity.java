@@ -29,6 +29,7 @@ import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.Country;
 import com.swishlabs.intrepid_android.data.api.model.User;
+import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.StringUtil;
 
@@ -156,6 +157,17 @@ public class SignupActivity extends BaseActivity {
 			}
 			
 		});
+		analyticsClicks();
+	}
+
+	private void analyticsClicks(){
+		signupEmail.setOnClickListener(Common.setupAnalyticsClickListener(SignupActivity.this, "Email Field", "Signup", null, -1));
+		signupPassword.setOnClickListener(Common.setupAnalyticsClickListener(SignupActivity.this, "Password Field", "Signup", null, -1));
+		signupFirstName.setOnClickListener(Common.setupAnalyticsClickListener(SignupActivity.this, "First Name Field", "Signup", null, -1));
+		signupLastName.setOnClickListener(Common.setupAnalyticsClickListener(SignupActivity.this, "Last Name Field", "Signup", null, -1));
+		signupCountry.setOnClickListener(Common.setupAnalyticsClickListener(SignupActivity.this, "Country Field", "Signup", null, -1));
+		signupUserName.setOnClickListener(Common.setupAnalyticsClickListener(SignupActivity.this, "Username Field", "Signup", null, -1));
+		signupPolicyNumber.setOnClickListener(Common.setupAnalyticsClickListener(SignupActivity.this, "Policy Number Field", "Signup", null, -1));
 	}
 	
 	@Override
@@ -168,7 +180,7 @@ public class SignupActivity extends BaseActivity {
             signupCountry.setEnabled(true);
 
 		} else if (v == btnSignUp) {
-
+			Common.sendDirectTracking(SignupActivity.this, "Email Signup", "Signup", null, -1);
 			firstName = signupFirstName.getText().toString();
 			lastName = signupLastName.getText().toString();
 			email = signupEmail.getText().toString();

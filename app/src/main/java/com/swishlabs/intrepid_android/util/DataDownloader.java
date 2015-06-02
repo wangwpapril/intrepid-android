@@ -417,6 +417,9 @@ public class DataDownloader {
         values.put(Database.KEY_COUNTRY_ID, destination.getId());
         values.put(Database.KEY_GENERAL_IMAGE_URI, generalImageUri);
         values.put(Database.KEY_TRIP_USER_ID, SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null));
+        if (mActivity!=null) {
+            Common.sendDirectTracking(mActivity, "New Trip", "Add Trip", destination.getCountry(), -1);
+        }
 
         if (mIsTripUnique){
             mDatabase.getDb().insert(Database.TABLE_TRIPS, null, values);

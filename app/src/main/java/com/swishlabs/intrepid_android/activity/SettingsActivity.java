@@ -29,6 +29,7 @@ import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Country;
 import com.swishlabs.intrepid_android.data.api.model.User;
 import com.swishlabs.intrepid_android.services.LocationService;
+import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 import com.swishlabs.intrepid_android.util.StringUtil;
@@ -107,8 +108,17 @@ public class SettingsActivity extends BaseActivity {
 
         mIntrepidMenu = (IntrepidMenu) findViewById(R.id.intrepidMenu);
         mIntrepidMenu.setupMenu(this, this, true);
-
+        analyticsClicks();
 	}
+
+    private void analyticsClicks(){
+       etEmail.setOnClickListener(Common.setupAnalyticsClickListener(SettingsActivity.this, "Email Field", "Settings", null, -1));
+        etFirstName.setOnClickListener(Common.setupAnalyticsClickListener(SettingsActivity.this, "First Name Field", "Settings", null, -1));
+        etLastName.setOnClickListener(Common.setupAnalyticsClickListener(SettingsActivity.this, "Last Name Field", "Settings", null, -1));
+        etUserName.setOnClickListener(Common.setupAnalyticsClickListener(SettingsActivity.this, "Username Field", "Settings", null, -1));
+        etOldPassword.setOnClickListener(Common.setupAnalyticsClickListener(SettingsActivity.this, "Old Password Field", "Settings", null, -1));
+        etNewPassword.setOnClickListener(Common.setupAnalyticsClickListener(SettingsActivity.this, "New Password Field", "Settings", null, -1));
+    }
 	
 	@Override
 	protected void initTitle() {
@@ -118,10 +128,10 @@ public class SettingsActivity extends BaseActivity {
 	@Override
 	public void onClick(View v) {
 		if (v == signOut) {
-
+            Common.sendDirectTracking(SettingsActivity.this, "Signout", "Settings", null, -1);
             signOut();
 		} else if (v == btnUpdate) {
-
+            Common.sendDirectTracking(SettingsActivity.this, "Update Profile", "Settings", null, -1);
 			firstName = etFirstName.getText().toString();
 			lastName = etLastName.getText().toString();
 			email = etEmail.getText().toString();
@@ -159,6 +169,7 @@ public class SettingsActivity extends BaseActivity {
                     return;
 
                 } else {
+                    Common.sendDirectTracking(SettingsActivity.this, "Change Password", "Settings", null, -1);
                     resetPassword();
                 }
             }else {

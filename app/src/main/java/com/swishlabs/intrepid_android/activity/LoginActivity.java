@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.segment.analytics.Analytics;
+import com.segment.analytics.Traits;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
@@ -19,6 +21,7 @@ import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.User;
 import com.swishlabs.intrepid_android.data.store.beans.UserTable;
 import com.swishlabs.intrepid_android.util.AndroidLocationServices;
+import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 import com.swishlabs.intrepid_android.util.StringUtil;
@@ -66,7 +69,13 @@ public class LoginActivity extends BaseActivity {
         loginBtn.setOnClickListener(this);
         passwordTextField.setTransformationMethod(PasswordTransformationMethod
 				.getInstance());
+        analyticsClicks();
 	}
+
+    private void analyticsClicks(){
+        emailTextField.setOnClickListener(Common.setupAnalyticsClickListener(LoginActivity.this, "Email Field", "Login", null, -1));
+        passwordTextField.setOnClickListener(Common.setupAnalyticsClickListener(LoginActivity.this, "Password Field", "Login", null, -1));
+    }
 
 	@Override
 	protected void initTitle(){
@@ -81,7 +90,7 @@ public class LoginActivity extends BaseActivity {
 	@Override
 	public void onClick(View v) {
         if (v == loginBtn) {
-
+            Common.sendDirectTracking(LoginActivity.this, "Email Login", "Login", null, -1);
             String email = emailTextField.getText().toString();
             String password = passwordTextField.getText().toString();
             if (TextUtils.isEmpty(email)) {
@@ -164,6 +173,7 @@ public class LoginActivity extends BaseActivity {
                         SharedPreferenceUtil.setString(Enums.PreferenceKeys.currencyCode.toString(),user.currencyCode);
                         SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), true);
                         SharedPreferenceUtil.setApList(getApplicationContext(), user.getCompany().getApList());
+                        Analytics.with(LoginActivity.this).identify(user.id, new Traits().putEmail(user.email), null);
 
                         MyApplication.setLoginStatus(true);
 

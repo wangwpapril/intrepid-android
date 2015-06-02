@@ -16,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.crashlytics.android.Crashlytics;
+import com.segment.analytics.Analytics;
+import com.segment.analytics.Traits;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IndicatorLinearLayout;
@@ -114,9 +116,17 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         });
 
         mIndicator = (IndicatorLinearLayout) findViewById(R.id.indicator);
-        mIndicator.initPoints(mTripCount+1, SharedPreferenceUtil.getInt(this, Enums.PreferenceKeys.currentPage.toString(), 0), mViewPager);
+        mIndicator.initPoints(mTripCount + 1, SharedPreferenceUtil.getInt(this, Enums.PreferenceKeys.currentPage.toString(), 0), mViewPager);
         moveToPage();
+        setupTracking();
 
+
+    }
+
+    private void setupTracking(){
+        String email = SharedPreferenceUtil.getString(Enums.PreferenceKeys.email.toString(),"");
+        String userId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(),"");
+        Analytics.with(TripPagesActivity.this).identify(userId, new Traits().putEmail(email), null);
     }
 
     public void redirectToTripOverview(String destinationId){

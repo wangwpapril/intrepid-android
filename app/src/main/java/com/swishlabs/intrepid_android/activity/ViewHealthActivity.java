@@ -31,6 +31,7 @@ import com.swishlabs.intrepid_android.data.api.model.HealthConditionDis;
 import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
+import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 
@@ -129,6 +130,11 @@ public class ViewHealthActivity extends ActionBarActivity {
             public void afterTextChanged(Editable s) {
 //                    String text = mEditTextSearch.getText().toString().toLowerCase(Locale.getDefault());
                 String text = s.toString().toLowerCase(Locale.getDefault());
+                if (text.length() == 0){
+                    Common.sendDirectTracking(ViewHealthActivity.this, "Cancel Search", "Conditions/Medications", null, -1);
+                }else {
+                    Common.sendDirectTracking(ViewHealthActivity.this, "Keyword", "Conditions/Medications", text, -1);
+                }
                 switch (index) {
                     case 1:
                         mHealthListAdapter.getFilter(instance).filter(text);
@@ -140,6 +146,7 @@ public class ViewHealthActivity extends ActionBarActivity {
 
             }
         });
+        mEditTextSearch.setOnClickListener(Common.setupAnalyticsClickListener(ViewHealthActivity.this, "Search Field", "Conditions/Medications", null, -1));
 
 
 
@@ -293,6 +300,7 @@ public class ViewHealthActivity extends ActionBarActivity {
                             HealthConditionDis hcDis = mHealthConList.get((int)id);
                             Intent mIntent = new Intent( instance, DetailHealthConActivity.class);
                             mIntent.putExtra("name", hcDis.getmConditionName());
+                            Common.sendDirectTracking(instance, "Visit Health Detail", "Conditions/Medications", hcDis.getmConditionName(), -1);
                             mIntent.putExtra("description", hcDis.getmDescription());
                             mIntent.putExtra("symptoms", hcDis.getmSymptoms());
                             mIntent.putExtra("prevention", hcDis.getmPrevention());
@@ -316,6 +324,7 @@ public class ViewHealthActivity extends ActionBarActivity {
                             HealthMedicationDis hmDis = mHealthMedList.get((int)id);
                             Intent mIntent = new Intent( instance, DetailHealthMedActivity.class);
                             mIntent.putExtra("name", hmDis.getmMedicationName());
+                            Common.sendDirectTracking(instance, "Visit Health Detail", "Conditions/Medications", hmDis.getmMedicationName(), -1);
                             mIntent.putExtra("brand name", hmDis.getmBrandNames());
                             mIntent.putExtra("description", hmDis.getmDescription());
                             mIntent.putExtra("side effects", hmDis.getmSideEffects());

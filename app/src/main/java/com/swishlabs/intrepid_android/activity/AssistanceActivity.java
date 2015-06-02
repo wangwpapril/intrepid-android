@@ -36,6 +36,7 @@ import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallba
 import com.swishlabs.intrepid_android.data.api.model.AssistanceProvider;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.User;
+import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 import com.swishlabs.intrepid_android.util.StringUtil;
@@ -152,9 +153,11 @@ public class AssistanceActivity extends FragmentActivity implements GoogleApiCli
 
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+
                     AssistanceProvider apSelected = mApList.get(which);
                     Intent call = new Intent(Intent.ACTION_DIAL);
                     call.setData(Uri.parse("tel:" + apSelected.getPhone()));
+                    Common.sendDirectTracking(AssistanceActivity.this, "Call Assistance", "Assistance", apSelected.getPhone(), -1);
                     startActivity(call);
                 }
             };

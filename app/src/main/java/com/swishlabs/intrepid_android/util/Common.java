@@ -5,6 +5,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+
+import com.segment.analytics.Analytics;
+import com.segment.analytics.Properties;
+
 
 public class Common {
 
@@ -88,4 +93,51 @@ public class Common {
 			dialogLoading = null;
 		}
 	}
+
+	public static View.OnClickListener setupAnalyticsClickListener(final Context context, final String action, final String category, final String label, final int value){
+		View.OnClickListener listener;
+		if (label!=null && value!=-1) {
+			listener = new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					Analytics.with(context).track(action, new Properties().putValue("category", category).putValue("label", label).putValue("value", value));
+				}
+			};
+		}else if (label!=null && value== -1){
+			listener = new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					Analytics.with(context).track(action, new Properties().putValue("category", category).putValue("label", label));
+				}
+			};
+		}else if (label==null && value!= -1){
+			listener = new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					Analytics.with(context).track(action, new Properties().putValue("category", category).putValue("value", value));
+				}
+			};
+		}else{
+			listener = new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					Analytics.with(context).track(action, new Properties().putValue("category", category));
+				}
+			};
+		}
+		return listener;
+	}
+
+	public static void sendDirectTracking(final Context context, final String action, final String category, final String label, final int value){
+		if (label!=null && value!=-1){
+			Analytics.with(context).track(action, new Properties().putValue("category", category).putValue("label", label).putValue("value", value));
+		}else if (label!=null && value== -1) {
+			Analytics.with(context).track(action, new Properties().putValue("category", category).putValue("label", label));
+		}else if (label==null && value!= -1){
+			Analytics.with(context).track(action, new Properties().putValue("category", category).putValue("value", value));
+		}else{
+			Analytics.with(context).track(action, new Properties().putValue("category", category));
+		}
+	}
+
 }

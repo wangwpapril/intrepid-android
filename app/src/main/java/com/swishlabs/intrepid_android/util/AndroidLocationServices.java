@@ -93,6 +93,7 @@ public class AndroidLocationServices extends Service {
                     jsonArray.put(jsonObject);
 
                     Log.e("request", jsonArray.toString());
+                    Common.sendDirectTracking(AndroidLocationServices.this, "Update Location", "AppDelegate", null, -1);
                     String latitude = String.valueOf(location.getLatitude());
                     String longitude = String.valueOf(location.getLongitude());
                     AsyncTask service = new UpdateLocationService(AndroidLocationServices.this).execute(latitude, longitude);
