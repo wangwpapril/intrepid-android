@@ -39,7 +39,7 @@ public class ViewAceActivity extends ActionBarActivity implements View.OnClickLi
 
         initialWebView();
 
-        webView.loadUrl("https://www.aceworldview.com/WVEnt/WorldView/ADLogin");
+        webView.loadUrl("https://www.ingleinternational.com/en/travel-insurance/canadian-travellers");
 
     }
 
