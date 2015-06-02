@@ -225,12 +225,17 @@
             android:layout_marginTop="0.2dp"
             android:layout_marginLeft="0.2dp">
 
-            <ImageView
-                android:layout_width="fill_parent"
-                android:src="@drawable/ace_ic"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="imagine"
+                android:textColor="#DFE4E7"
+                android:textSize="24sp"
+                android:layout_marginTop="18dp"
+                android:layout_gravity="center_horizontal|top"/>
 
             <TextView
                 android:layout_width="match_parent"
