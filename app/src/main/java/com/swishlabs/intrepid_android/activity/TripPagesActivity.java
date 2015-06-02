@@ -2,7 +2,9 @@ package com.swishlabs.intrepid_android.activity;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -120,8 +122,26 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         mIndicator.initPoints(mTripCount + 1, SharedPreferenceUtil.getInt(this, Enums.PreferenceKeys.currentPage.toString(), 0), mViewPager);
         moveToPage();
         setupTracking();
+        loadingDialog();
 
+    }
 
+    public ProgressDialog dialogLoading;
+    static DialogInterface.OnDismissListener listenerDismissLoading = new DialogInterface.OnDismissListener() {
+
+        @Override
+        public void onDismiss(DialogInterface dialog) {
+
+        }
+    };
+
+    private void loadingDialog(){
+        dialogLoading = new ProgressDialog(this);
+        dialogLoading.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialogLoading.setMessage("Loading");
+        dialogLoading.setIndeterminate(false);
+        dialogLoading.setCancelable(true);
+        dialogLoading.setOnDismissListener(listenerDismissLoading);
     }
 
     private void setupTracking(){
@@ -131,6 +151,10 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
     }
 
     public void redirectToTripOverview(String destinationId){
+        if (dialogLoading != null) {
+            if (dialogLoading.isShowing())
+                dialogLoading.cancel();
+        }
         SharedPreferenceUtil.setInt(TripPagesActivity.getInstance(), Enums.PreferenceKeys.currentPage.toString(), mViewPager.getCurrentItem());
         Intent intent = new Intent(TripPagesActivity.this, ViewDestinationActivity.class);
         intent.putExtra("destinationId", destinationId);
