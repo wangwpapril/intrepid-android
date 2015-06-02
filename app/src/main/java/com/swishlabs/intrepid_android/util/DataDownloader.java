@@ -193,7 +193,7 @@ public class DataDownloader {
             SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), mDestinationId);
             if (mActivity!=null) {
                 mActivity.redirectToTripOverview(mDestinationId);
-            }else{
+            }else if (mTripPagesActivity!=null){
                 mTripPagesActivity.redirectToTripOverview(mDestinationId);
             }
 //            Intent intent = new Intent(mActivity, ViewDestinationActivity.class);
