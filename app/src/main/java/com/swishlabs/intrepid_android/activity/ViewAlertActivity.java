@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.adapter.AlertListAdapter;
@@ -68,6 +69,12 @@ public class ViewAlertActivity extends ActionBarActivity {
         mDatabaseManager = new DatabaseManager(this.getBaseContext());
         mDatabase = mDatabaseManager.openDatabase("Intrepid.db");
 
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Analytics.with(this).screen(null, "Alerts");
     }
 
     @Override

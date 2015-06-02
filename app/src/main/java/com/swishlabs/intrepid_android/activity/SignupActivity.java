@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
@@ -70,6 +71,12 @@ public class SignupActivity extends BaseActivity {
 		fetchCountries();
 		this.setContentView(R.layout.signup_layout);
 		initView();
+	}
+
+	@Override
+	protected void onResume(){
+		super.onResume();
+		Analytics.with(this).screen(null, "Signup");
 	}
 	
 	private void fetchCountries() {
@@ -223,6 +230,7 @@ public class SignupActivity extends BaseActivity {
 			checkGroupNumber();
 
 		} else if (v == termsOfUseBtn) {
+			Common.sendDirectTracking(SignupActivity.this, "Terms of Use", "Signup", null, -1);
 			Intent i = new Intent();
 			i.setClass(context, LegalActivity.class);
 			context.startActivity(i);

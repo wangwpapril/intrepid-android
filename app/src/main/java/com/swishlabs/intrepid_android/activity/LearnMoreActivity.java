@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IndicatorLinearLayout;
@@ -81,6 +82,12 @@ public class LearnMoreActivity extends ActionBarActivity {
                 instance.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
         });
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Analytics.with(this).screen(null, "Learn More");
     }
 
     private void initContent() {

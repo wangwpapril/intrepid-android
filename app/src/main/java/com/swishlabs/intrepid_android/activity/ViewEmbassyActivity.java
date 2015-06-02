@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
@@ -103,6 +104,12 @@ public class ViewEmbassyActivity extends ActionBarActivity {
         String rawEmails = mEmbassy.getEmail();
         String formattedEmails = rawEmails.replace(", ", "\r\n").replace("; ", ";\r\n");
         return formattedEmails;
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Analytics.with(this).screen(null, "Embassy Detail");
     }
 
     protected void setClickListeners(TextView phone, TextView email){

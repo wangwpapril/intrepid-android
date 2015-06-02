@@ -85,6 +85,13 @@ public class LoginActivity extends BaseActivity {
 //        JSONObject jsonData = (JSONObject)obj;
 //        String test = "";
     }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Analytics.with(this).screen(null, "Login");
+    }
+
 	
 
 	@Override

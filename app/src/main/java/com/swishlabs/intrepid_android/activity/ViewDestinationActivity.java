@@ -27,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.segment.analytics.Analytics;
 import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
@@ -182,6 +183,13 @@ public class ViewDestinationActivity extends ActionBarActivity {
                 InputMethodManager imm = (InputMethodManager) instance.getSystemService(Context.INPUT_METHOD_SERVICE);
                 if (imm.isActive()) {
                     imm.hideSoftInputFromWindow(mViewPager.getWindowToken(), 0);
+                }
+                if (position == 0) {
+                    Analytics.with(ViewDestinationActivity.this).screen(null, "General");
+                }else if (position == 1){
+                    Analytics.with(ViewDestinationActivity.this).screen(null, "Culture");
+                }else if (position == 2){
+                    Analytics.with(ViewDestinationActivity.this).screen(null, "Currency");
                 }
             }
 

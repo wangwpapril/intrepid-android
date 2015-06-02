@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.segment.analytics.Analytics;
 import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
@@ -150,6 +151,12 @@ public class ViewHealthActivity extends ActionBarActivity {
 
 
 
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Analytics.with(this).screen(null, "Medical");
     }
 
     private void setOnPageChangeListener(final ViewPager viewPager){

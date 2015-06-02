@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.adapter.DestinationsListAdapter;
 import com.swishlabs.intrepid_android.customViews.ClearEditText;
@@ -143,10 +144,11 @@ public class DestinationsListActivity extends BaseActivity {
 
     }
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-	}
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Analytics.with(this).screen(null, "Add Trip");
+    }
 
 	@Override
 	protected void onPause() {

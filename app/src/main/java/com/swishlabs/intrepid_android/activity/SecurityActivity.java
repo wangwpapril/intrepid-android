@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.segment.analytics.Analytics;
 import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
@@ -99,6 +100,9 @@ public class SecurityActivity extends ActionBarActivity {
             @Override
             public void onPageSelected(int position) {
 //                mToolbarTitle.setText(tabNames.get(position));
+                if (position == 1){
+                    Analytics.with(SecurityActivity.getInstance()).screen(null, "Embassy");
+                }
             }
 
             @Override
@@ -293,6 +297,12 @@ public class SecurityActivity extends ActionBarActivity {
                 }
             });
         }
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Analytics.with(this).screen(null, "Safety");
     }
 
     @Override

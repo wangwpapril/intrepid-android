@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 
@@ -32,6 +33,12 @@ public class DetailHealthMedActivity extends ActionBarActivity {
 
         initialView();
 
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Analytics.with(this).screen(null, "Medications");
     }
 
 

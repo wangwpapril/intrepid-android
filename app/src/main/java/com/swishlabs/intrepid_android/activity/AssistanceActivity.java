@@ -28,6 +28,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
@@ -92,10 +93,9 @@ public class AssistanceActivity extends FragmentActivity implements GoogleApiCli
 
 
     @Override
-    protected void onResume() {
-        Log.d("Assi", "onResume");
+    protected void onResume(){
         super.onResume();
-
+        Analytics.with(this).screen(null, "Assistance");
     }
 
     GoogleApiClient mGoogleApiClient;

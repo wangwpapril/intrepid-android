@@ -12,6 +12,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
+import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 
@@ -41,6 +42,12 @@ public class ViewVMPdfActivity extends ActionBarActivity implements View.OnClick
         webView.loadUrl(mUrl);
 
 
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Analytics.with(this).screen(null, "ACE Worldview");
     }
 
     public void initialWebView(){

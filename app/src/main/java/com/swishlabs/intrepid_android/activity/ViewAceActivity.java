@@ -13,6 +13,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
+import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
@@ -40,6 +41,12 @@ public class ViewAceActivity extends ActionBarActivity implements View.OnClickLi
 
         webView.loadUrl("https://www.aceworldview.com/WVEnt/WorldView/ADLogin");
 
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Analytics.with(this).screen(null, "ACE Information");
     }
 
     public void initialWebView(){

@@ -149,8 +149,8 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
     public void onResume(){
         super.onResume();
         moveToPage();
+        Analytics.with(this).screen(null, "My Trips");
     }
-
 
     public void startLocationService(){
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);

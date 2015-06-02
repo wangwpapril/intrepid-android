@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
@@ -179,6 +180,12 @@ public class SettingsActivity extends BaseActivity {
 		}
 
 	}
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Analytics.with(this).screen(null, "Settings");
+    }
 
     private void signOut() {
 

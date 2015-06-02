@@ -14,6 +14,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
@@ -65,6 +66,12 @@ public class ViewWeatherActivity extends ActionBarActivity {
         instance = this;
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
         mIntrepidMenu.setupMenu(instance,instance, true);
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Analytics.with(this).screen(null, "Weather");
     }
 
     public static Location getLocation(Activity context) {
