@@ -197,8 +197,6 @@ public class DestinationsListActivity extends BaseActivity {
 
     public void redirectToTripOverview(String destinationId){
         Intent intent = new Intent(DestinationsListActivity.this, ViewDestinationActivity.class);
-        intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("destinationId", destinationId);
         intent.putExtra("firstTimeFlag","1");
         startActivity(intent);

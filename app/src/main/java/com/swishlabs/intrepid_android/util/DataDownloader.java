@@ -193,6 +193,7 @@ public class DataDownloader {
             SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), mDestinationId);
             if (mActivity!=null) {
                 mActivity.redirectToTripOverview(mDestinationId);
+
             }else if (mTripPagesActivity!=null){
                 mTripPagesActivity.redirectToTripOverview(mDestinationId);
             }
@@ -427,6 +428,21 @@ public class DataDownloader {
             mCallbackCount = mCallbackCount + 1;
         }
         SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), destination.getId());
+        List<Trip> tripList = DatabaseManager.getTripArray(mDatabase, SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null));
+        for (int i = 0; i<tripList.size(); i++){
+            if (tripList.get(i).getCountryId().equals(mDestinationId)){
+                Context context;
+                if (mActivity!=null) {
+                   context = mActivity;
+                }else if (mTripPagesActivity!=null){
+                    context = mTripPagesActivity;
+                }else{
+                    context = TripPagesActivity.getInstance();
+                }
+                SharedPreferenceUtil.setInt(context, Enums.PreferenceKeys.currentPage.toString(), i + 1);
+                break;
+            }
+        }
         if (mActivity!=null) {
             mActivity.redirectToTripOverview(mDestinationId);
         }else{

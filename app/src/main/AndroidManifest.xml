@@ -62,6 +62,7 @@
         <activity
             android:name=".activity.DestinationsListActivity"
             android:label="Trips"
+            android:noHistory="true"
             android:screenOrientation="portrait" >
         </activity>
         <activity
