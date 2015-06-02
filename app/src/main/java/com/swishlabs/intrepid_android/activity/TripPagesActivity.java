@@ -129,9 +129,16 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
     private void moveToPage(){
         int page = SharedPreferenceUtil.getInt(this, Enums.PreferenceKeys.currentPage.toString(), 0);
         if (page > 0){
-            mViewPager.setCurrentItem(page);
+            mViewPager.setCurrentItem(page, false);
             SharedPreferenceUtil.setInt(TripPagesActivity.getInstance(), Enums.PreferenceKeys.currentPage.toString(), 0);
+            mIndicator.initPoints(mTripCount+1, page, mViewPager);
         }
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        moveToPage();
     }
 
 
