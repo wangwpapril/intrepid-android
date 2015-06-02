@@ -22,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.segment.analytics.Analytics;
@@ -48,6 +49,7 @@ public class SignupActivity extends BaseActivity {
 	private EditText signupPolicyNumber;
 	private Button btnSignUp;
 	private TextView termsOfUseBtn;
+	private ImageView mBackIv;
 	
 	private List<Country> countryList;
 	
@@ -136,7 +138,7 @@ public class SignupActivity extends BaseActivity {
 		btnSignUp.setOnClickListener(this);
         termsOfUseBtn = (TextView) findViewById(R.id.termsofUse);
         termsOfUseBtn.setOnClickListener(this);
-        termsOfUseBtn.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+//        termsOfUseBtn.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
 
 
         signupCountry.setAdapter(countryAdapter);
@@ -147,24 +149,34 @@ public class SignupActivity extends BaseActivity {
 
 			@Override
 			public void onClick(View v) {
-                signupCountry.showDropDown();
+				signupCountry.showDropDown();
 
 			}
-			
+
 		});
 
         signupCountry.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+									int position, long id) {
 //				countryCode = countryAdapter.getItem(position).toString();
 				countryCode = countryCodes.get(position);
 //				etCountry.setEnabled(false);
-				
+
 			}
-			
+
 		});
+
+		mBackIv = (ImageView)findViewById(R.id.title_back);
+		mBackIv.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				onBackPressed();
+
+			}
+		});
+
 //		analyticsClicks();
 	}
 
@@ -176,6 +188,16 @@ public class SignupActivity extends BaseActivity {
 		signupCountry.setOnClickListener(Common.setupAnalyticsClickListener(SignupActivity.this, "Country Field", "Signup", null, -1));
 		signupUserName.setOnClickListener(Common.setupAnalyticsClickListener(SignupActivity.this, "Username Field", "Signup", null, -1));
 		signupPolicyNumber.setOnClickListener(Common.setupAnalyticsClickListener(SignupActivity.this, "Policy Number Field", "Signup", null, -1));
+
+		mBackIv = (ImageView)findViewById(R.id.title_back);
+		mBackIv.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				onBackPressed();
+
+			}
+		});
+
 	}
 	
 	@Override
