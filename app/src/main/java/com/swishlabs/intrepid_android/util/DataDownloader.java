@@ -255,6 +255,7 @@ public class DataDownloader {
         String destinationId = destination.getString("id");
         String countryName = destination.getJSONObject("country").getString("name");
         String countryCode = destination.getJSONObject("country").getString("country_code");
+        String currCode = destination.getJSONObject("country").getString("currency_code");
         String communicationsInfrastructure = content.getString("communication_infrastructure");
         String otherConcerns = content.getString("other_concerns");
         String development = content.getString("development");
@@ -303,7 +304,7 @@ public class DataDownloader {
         values.put(Database.KEY_CULTURAL_NORMS, cultural_norms);
         values.put(Database.KEY_SOURCES, sources);
         values.put(Database.KEY_CURRENCY, currency);
-        values.put(Database.KEY_CURRENCY_CODE, currencyCode);
+        values.put(Database.KEY_CURRENCY_CODE, currCode);
         values.put(Database.KEY_CURRENCY_RATE, rate);
         values.put(Database.KEY_RELIGION, religion);
         values.put(Database.KEY_TIMEZONE, time_zone);

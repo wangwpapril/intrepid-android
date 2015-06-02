@@ -47,6 +47,7 @@ import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -142,7 +143,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
                 try {
                     currencyInfo = new JSONObject(content);
                     JSONObject ra = currencyInfo.getJSONObject("rates");
-                    String currencyCode = desCurrency.getCurrencyCode();
+                    String currencyCode = mDestinationInformation.getCurrencyCode();
                     rate = currencyInfo.getJSONObject("rates").getDouble(currencyCode);
 
                 } catch (JSONException e) {
@@ -156,7 +157,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
         };
 
         String baseCurrencyCode = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currencyCode.toString(), null);
-        String currencyCode = desCurrency.getCurrencyCode();
+        String currencyCode = mDestinationInformation.getCurrencyCode();
 
         ControllerContentTask cct = new ControllerContentTask(
                 Constants.CURRENCY_URL+"&base="+baseCurrencyCode+"&symbols="+currencyCode, icc,
@@ -494,7 +495,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
             });
 
             TextView desCurrencyTv = (TextView)rootView.findViewById(R.id.des_currency_code);
-            desCurrencyTv.setText(ViewDestinationActivity.getInstance().desCurrency.getCurrencyCode());
+            desCurrencyTv.setText(ViewDestinationActivity.getInstance().mDestinationInformation.getCurrencyCode());
 
             final ImageView desImageIv = (ImageView)rootView.findViewById(R.id.des_currency_icon);
             desImageIv.setTag(ViewDestinationActivity.getInstance().desCurrency.getImageUrl());
@@ -503,7 +504,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
             final EditText desValueEt = (EditText) rootView.findViewById(R.id.des_currency_value);
 //            desValueEt.setText(reFormat(ViewDestinationActivity.getInstance().mDestinationInformation.getCurrencyRate()));
-            desValueEt.setText(reFormat(String.valueOf(rate)));
+            desValueEt.setText(reFormat(rate));
 
             desValueEt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
@@ -540,7 +541,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
                         desValue = baseValue * rate;
                     }
 
-                    desValueEt.setText(reFormat(String.valueOf(desValue)));
+                    desValueEt.setText(reFormat(desValue));
 
                 }
 
@@ -599,7 +600,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
                         baseValue = desValue / rate;
                     }
 
-                    baseValueEt.setText(reFormat(String.valueOf(baseValue)));
+                    baseValueEt.setText(reFormat(baseValue));
                 }
 
                 @Override
@@ -616,17 +617,26 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
         }
 
-        private String reFormat(String input){
-            double value = Double.valueOf(input);
-            value = (double)(Math.round(value*100)/100.0);
-            input = String.valueOf(value);
+        private String reFormat(double input){
+            double value = (double)(Math.round(input*100)/100.0);
+            DecimalFormat df = new DecimalFormat("0.00");
+            String result = df.format(value);
+
+/*            input = String.valueOf(value);
             String result = input;
 
             if (input.contains(".")) {
                 if (input.length() - 1 - input.indexOf(".") > 2) {
                     result = input.subSequence(0,
                             input.toString().indexOf(".") + 3).toString();
+                }else if (input.length() - 1 - input.indexOf(".") == 1) {
+                    result = input + "0";
+                }else if(input.length() - 1 - input.indexOf(".") == 0){
+                    result = input + "00";
                 }
+
+            }else {
+                result = input + ".00";
             }
             if (input.trim().substring(0).equals(".")) {
                 result = "0" + input;
@@ -637,7 +647,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
                 if (!input.substring(1, 2).equals(".")) {
                     result= input.subSequence(0,1).toString();
                 }
-            }
+            }*/
 
             return result;
 
