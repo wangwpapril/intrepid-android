@@ -17,6 +17,7 @@
         <item name="android:windowBackground">@color/theme_window_background</item>
 
         <item name="android:alertDialogTheme">@style/BaseTheme.Dialog</item>
+        
     </style>
 
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
@@ -28,6 +29,7 @@
         <item name="colorPrimary">@color/theme_default_primary</item>
         <item name="colorPrimaryDark">@color/theme_default_primary_dark</item>
         <item name="colorAccent">@color/theme_accent</item>
+        <item name="android:windowBackground">@color/translucent_background</item>
 
     </style>
 
