@@ -140,7 +140,7 @@ public class SignupActivity extends BaseActivity {
 
         signupCountry.setAdapter(countryAdapter);
         signupCountry.setEnabled(true);
-//		etCountry.setDropDownBackgroundResource(R.drawable.login_btn);
+		signupCountry.setDropDownBackgroundResource(R.color.deep_gray);
 
         signupCountry.setOnClickListener(new OnClickListener() {
 
@@ -164,7 +164,7 @@ public class SignupActivity extends BaseActivity {
 			}
 			
 		});
-		analyticsClicks();
+//		analyticsClicks();
 	}
 
 	private void analyticsClicks(){
