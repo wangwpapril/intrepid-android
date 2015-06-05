@@ -94,35 +94,10 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         mTripPagesActivity = this;
         loadDatabase();
-        mTripList = DatabaseManager.getTripArray(mDatabase, SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null));
-        mTripCount = mTripList.size();
-
-
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        mSectionsPagerAdapter = new SectionsPagerAdapter(mViewPager);
-        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-                mIndicator.updatePageIndicator(position, positionOffset);
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
-        mIndicator = (IndicatorLinearLayout) findViewById(R.id.indicator);
-        mIndicator.initPoints(mTripCount + 1, SharedPreferenceUtil.getInt(this, Enums.PreferenceKeys.currentPage.toString(), 0), mViewPager);
-        moveToPage();
         setupTracking();
         loadingDialog();
+
+
 
     }
 
@@ -173,8 +148,34 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
     @Override
     public void onResume(){
         super.onResume();
-        moveToPage();
         Analytics.with(this).screen(null, "My Trips");
+        mTripList = DatabaseManager.getTripArray(mDatabase, SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null));
+        mTripCount = mTripList.size();
+
+
+        mViewPager = (ViewPager) findViewById(R.id.pager);
+        mSectionsPagerAdapter = new SectionsPagerAdapter(mViewPager);
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                mIndicator.updatePageIndicator(position, positionOffset);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        mIndicator = (IndicatorLinearLayout) findViewById(R.id.indicator);
+        mIndicator.initPoints(mTripCount + 1, SharedPreferenceUtil.getInt(this, Enums.PreferenceKeys.currentPage.toString(), 0), mViewPager);
+        moveToPage();
     }
 
     public void startLocationService(){
