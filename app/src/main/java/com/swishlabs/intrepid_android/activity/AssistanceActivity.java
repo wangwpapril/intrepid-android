@@ -78,7 +78,10 @@ public class AssistanceActivity extends FragmentActivity implements GoogleApiCli
         setupCallAssistanceButton();
         TextView instructionalTextView = (TextView)findViewById(R.id.instructionalText);
         String instructions = SharedPreferenceUtil.getString(Enums.PreferenceKeys.instructionalText.toString(), null);
-        if (instructions!=null) {
+        if (instructions == null || instructions.equals("")){
+            instructions = "";
+        }
+        else {
             instructions = instructions.replace("1.", "\n1.");
             instructions = instructions.replace("2.", "\n2.");
             instructionalTextView.setText(instructions);
