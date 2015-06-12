@@ -59,7 +59,7 @@ public class DatabaseManager {
                 + " WHERE " + Database.KEY_COUNTRY_ID  +" = " + id;
 
         Cursor cursor = database.getDb().rawQuery(countQuery,null);
-        if(cursor.moveToFirst()) {
+        if(cursor!=null && cursor.moveToFirst()) {
             while (cursor.isAfterLast() == false) {
                 HealthConditionDis hcDis = new HealthConditionDis( Integer.valueOf(cursor.getString(1)),
                         cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),
@@ -83,7 +83,7 @@ public class DatabaseManager {
                 + " WHERE " + Database.KEY_COUNTRY_ID  +" = " + id;
 
         Cursor cursor = database.getDb().rawQuery(countQuery,null);
-        if(cursor.moveToFirst()) {
+        if(cursor!=null && cursor.moveToFirst()) {
             while (cursor.isAfterLast() == false) {
                 HealthMedicationDis hmDis = new HealthMedicationDis( Integer.valueOf(cursor.getString(1)),
                         cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),
@@ -116,7 +116,7 @@ public class DatabaseManager {
                         Database.KEY_CURRENCY_CODE, Database.KEY_GENERAL_IMAGE_URI}, Database.KEY_CURRENCY_CODE + "=?",
                 new String[]{code}, null, null, null, null);
         Currency currency;
-        if (cursor.moveToFirst()) {
+        if (cursor!=null && cursor.moveToFirst()) {
             currency = new Currency(cursor.getString(1), cursor.getString(2));
         }else {
             currency = new Currency(null,null);
@@ -146,7 +146,7 @@ public class DatabaseManager {
         ArrayList<Trip> tripList= new ArrayList<Trip>();
         Cursor  cursor = database.getDb().rawQuery("select * from " + Database.TABLE_TRIPS + " WHERE " + Database.KEY_TRIP_USER_ID + " = "+user_Id + " ORDER BY "+Database.KEY_DESTINATION_COUNTRY, null);
 
-        if (cursor .moveToFirst()) {
+        if (cursor!=null && cursor.moveToFirst()) {
 
             while (cursor.isAfterLast() == false) {
 //                (int id, String destinationName, String destinationId, String generalImage)
@@ -165,7 +165,7 @@ public class DatabaseManager {
                 new String [] {countryId});
 //        Cursor  cursor = database.getDb().rawQuery("SELECT * FROM " + Database.TABLE_TRIPS + " WHERE "+Database.KEY_EMBASSY_DESTINATION_ID+" = "+'"'+countryId+'"', null);
 
-        if (cursor .moveToFirst()) {
+        if (cursor!=null && cursor.moveToFirst()) {
 
             while (cursor.isAfterLast() == false) {
 
@@ -186,11 +186,12 @@ public class DatabaseManager {
                         Database.KEY_EMBASSY_HOURS_OF_OPERATION, Database.KEY_EMBASSY_NOTES, Database.KEY_EMBASSY_TELEPHONE,
                         Database.KEY_EMBASSY_DESTINATION_ID, Database.KEY_EMBASSY_IMAGE}, Database.KEY_ID + "=?",
                 new String[]{id}, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
-        Embassy embassy = new Embassy(cursor.getString(0), cursor.getString(1), cursor.getString(2),
-                cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
-                cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13));
+        Embassy embassy = null;
+        if (cursor != null && cursor.moveToFirst()) {
+            embassy = new Embassy(cursor.getString(0), cursor.getString(1), cursor.getString(2),
+                    cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
+                    cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13));
+        }
         return embassy;
     }
 
@@ -198,13 +199,14 @@ public class DatabaseManager {
         Cursor cursor = database.getDb().query(Database.TABLE_TRIPS, new String[]{Database.KEY_ID,
                         Database.KEY_DESTINATION_COUNTRY, Database.KEY_COUNTRY_ID, Database.KEY_GENERAL_IMAGE_URI}, Database.KEY_COUNTRY_ID + "=?",
                 new String[]{destinationId}, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
-        if (cursor.getCount() == 0) {
-            return true;
-        }else{
-            return false;
+        if (cursor != null && cursor.moveToFirst()) {
+            if (cursor.getCount() == 0) {
+                return true;
+            } else {
+                return false;
+            }
         }
+        return true;
     }
 
     public static String getTripDatabaseId(Database database, String destinationId){
@@ -228,16 +230,16 @@ public class DatabaseManager {
                         Database.KEY_IMAGE_INTRO, Database.KEY_IMAGE_CURRENCY, Database.KEY_EMERGENCY_NUMBER, Database.KEY_HEALTH_CARE,
                         Database.KEY_VACCINATION, Database.KEY_HEALTH_CONDITION, Database.KEY_IMAGE_MEDICAL, Database.KEY_TRANSPORTATION, Database.KEY_HOLIDAYS}, Database.KEY_DESTINATION_ID + "=?",
                 new String[]{String.valueOf(destinationId)}, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
-        DestinationInformation destinationInformation = new DestinationInformation(cursor.getString(0), cursor.getString(1), cursor.getString(2),
-                cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
-                cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
-                cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18),
-                cursor.getString(19), cursor.getString(20), cursor.getString(21), cursor.getString(22), cursor.getString(23), cursor.getString(24),
-                cursor.getString(25), cursor.getString(26), cursor.getString(27), cursor.getString(28), cursor.getString(29), cursor.getString(30), cursor.getString(31), cursor.getString(32), cursor.getString(33));
+        DestinationInformation destinationInformation = null;
+        if (cursor != null && cursor.moveToFirst()) {
+            destinationInformation = new DestinationInformation(cursor.getString(0), cursor.getString(1), cursor.getString(2),
+                    cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
+                    cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13),
+                    cursor.getString(14), cursor.getString(15), cursor.getString(16), cursor.getString(17), cursor.getString(18),
+                    cursor.getString(19), cursor.getString(20), cursor.getString(21), cursor.getString(22), cursor.getString(23), cursor.getString(24),
+                    cursor.getString(25), cursor.getString(26), cursor.getString(27), cursor.getString(28), cursor.getString(29), cursor.getString(30), cursor.getString(31), cursor.getString(32), cursor.getString(33));
 
-
+        }
         return destinationInformation;
     }
 
@@ -246,7 +248,7 @@ public class DatabaseManager {
         Cursor cursor = database.getDb().query(Database.TABLE_ALERT, new String[]{Database.KEY_COUNTRY_CODE,
         Database.KEY_ALERT_CATEGORY, Database.KEY_ALERT_DESCRIPTION, Database.KEY_ALERT_STARTDATE, Database.KEY_ALERT_ENDDATE},
                 Database.KEY_COUNTRY_CODE + "=?", new String[]{countryCode}, null,null,null,null);
-        if (cursor.moveToFirst()) {
+        if (cursor!=null && cursor.moveToFirst()) {
             while (cursor.isAfterLast() == false) {
 
                 Alert alert = new Alert(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
