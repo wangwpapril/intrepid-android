@@ -174,6 +174,9 @@ public class StringUtil {
     }
 
     public static void showAlertDialog(String strTitle, String strMessage, Context context) {
+        if (context == null)
+            return;
+
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage(strMessage);
         builder.setTitle(strTitle);
