@@ -28,6 +28,7 @@ import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
+import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Country;
 import com.swishlabs.intrepid_android.data.api.model.User;
 import com.swishlabs.intrepid_android.util.Common;
@@ -113,7 +114,7 @@ public class SignupActivity extends BaseActivity {
 			}
 		};
 		ControllerContentTask cct = new ControllerContentTask(
-				"https://staging.intrepid247.com/v1/countries", icc,
+				Constants.BASE_URL + "countries", icc,
 				Enums.ConnMethod.GET, false);
 
 		String ss = null;
@@ -271,7 +272,7 @@ public class SignupActivity extends BaseActivity {
 			}
 		};
 		ControllerContentTask cct = new ControllerContentTask(
-				"https://staging.intrepid247.com/v1/companies/checkGroupNum", icc,
+				Constants.BASE_URL + "companies/checkGroupNum", icc,
 				Enums.ConnMethod.POST, false);
 		
 		JSONObject company = new JSONObject();
@@ -341,7 +342,7 @@ public class SignupActivity extends BaseActivity {
 		};
 		
 		ControllerContentTask cct = new ControllerContentTask(
-				"https://staging.intrepid247.com/v1/users", icc,
+				Constants.BASE_URL + "users", icc,
 				Enums.ConnMethod.POST,false);
 
 		JSONObject user = new JSONObject();
@@ -422,13 +423,13 @@ public class SignupActivity extends BaseActivity {
 		};
 		
 		ControllerContentTask cct = new ControllerContentTask(
-				"https://mandrillapp.com/api/1.0/messages/send.json", icc,
+				Constants.EMAIL_URL, icc,
 				Enums.ConnMethod.POST,false);
 
 
 		String text = String.format("Hi %s,\n\nThank you for signing up with ACE Travel Smart.\n"
 				+ "Please click on the confirmation link below to activate your account.\n"
-				+ "https://app-staging.intrepid247.com/users/activate/%s", firstName, activationCode);
+				+ Constants.ACTIVATION_URL, firstName, activationCode);
 		
 		JSONObject message = new JSONObject();
 		JSONObject to = new JSONObject();
