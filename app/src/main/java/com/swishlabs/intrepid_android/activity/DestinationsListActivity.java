@@ -194,7 +194,7 @@ public class DestinationsListActivity extends BaseActivity {
                     Common.sendDirectTracking(DestinationsListActivity.this, "Keyword", "Add Trip", text, -1);
                 }
 
-                if (mDestinationsListAdapter != null && !mDestinationsListAdapter.isEmpty()) {
+                if (mDestinationsListAdapter != null) {
                     mDestinationsListAdapter.getFilter(context).filter(text);
                 }
 
