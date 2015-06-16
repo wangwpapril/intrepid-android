@@ -87,6 +87,9 @@ public class Common {
 	};
 
 	public static void cancelLoading() {
+		if (context == null)
+			return;
+
 		if (dialogLoading != null) {
 			if (dialogLoading.isShowing())
 				dialogLoading.cancel();
