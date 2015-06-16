@@ -3,6 +3,7 @@ package com.swishlabs.intrepid_android.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
@@ -14,6 +15,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.google.android.gms.location.LocationServices;
 import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
@@ -30,7 +32,6 @@ public class ViewWeatherActivity extends ActionBarActivity {
     private WebView webView;
     double latitude,longitude;
     private String provider;
-    private LocationManager locationManager;
     public DatabaseManager mDatabaseManager;
     public Database mDatabase;
     String mDestinationId;
@@ -75,11 +76,25 @@ public class ViewWeatherActivity extends ActionBarActivity {
     }
 
     public static Location getLocation(Activity context) {
-        LocationManager locMan = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        Location location = locMan.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+        LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+
+        //The following code gets the next best location if the current location is unavailable through standard API
         if (location == null) {
-            location = locMan.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            Criteria criteriaTest = new Criteria();
+            criteriaTest.setAccuracy(Criteria.ACCURACY_COARSE);
+            // Finds a provider that matches the criteria
+            String provider = locationManager.getBestProvider(criteria, true);
+            // Use the provider to get the last known location
+            location = locationManager.getLastKnownLocation(provider);
+
+            if(location == null){
+                location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            }
         }
+
         return location;
     }
 
