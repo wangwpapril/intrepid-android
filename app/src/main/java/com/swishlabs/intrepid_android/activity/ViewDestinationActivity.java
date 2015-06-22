@@ -540,7 +540,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
                     desValueEt.removeTextChangedListener(desWatcher);
                     double baseValue = 0, desValue = 0;
 
-                    if(s.toString().equals("")) {
+                    if(s.toString().equals("") || s.toString().equals(".")) {
                         baseValue = 0;
                         desValue = 0;
                     }else {
@@ -573,33 +573,9 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
                     baseValueEt.removeTextChangedListener(baseWatcher);
 
-/*                    if (s.toString().contains(".")) {
-                        if (s.length() - 1 - s.toString().indexOf(".") > 2) {
-                            s = s.toString().subSequence(0,
-                                    s.toString().indexOf(".") + 3);
-                            desValueEt.setText(s);
-                            desValueEt.setSelection(s.length());
-                        }
-                    }
-                    if (s.toString().trim().substring(0).equals(".")) {
-                        s = "0" + s;
-                        desValueEt.setText(s);
-                        desValueEt.setSelection(2);
-                    }
-
-                    if (s.toString().startsWith("0")
-                            && s.toString().trim().length() > 1) {
-                        if (!s.toString().substring(1, 2).equals(".")) {
-                            desValueEt.setText(s.subSequence(0, 1));
-                            desValueEt.setSelection(1);
-                            return;
-                        }
-                    }*/
-
-
                     double baseValue = 0, desValue =0;
 
-                    if(s.toString().equals("")) {
+                    if(s.toString().equals("") || s.toString().equals(".")) {
                         baseValue = 0;
                         desValue = 0;
                     }else {
@@ -629,33 +605,6 @@ public class ViewDestinationActivity extends ActionBarActivity {
             double value = (double)(Math.round(input*100)/100.0);
             DecimalFormat df = new DecimalFormat("0.00");
             String result = df.format(value);
-
-/*            input = String.valueOf(value);
-            String result = input;
-
-            if (input.contains(".")) {
-                if (input.length() - 1 - input.indexOf(".") > 2) {
-                    result = input.subSequence(0,
-                            input.toString().indexOf(".") + 3).toString();
-                }else if (input.length() - 1 - input.indexOf(".") == 1) {
-                    result = input + "0";
-                }else if(input.length() - 1 - input.indexOf(".") == 0){
-                    result = input + "00";
-                }
-
-            }else {
-                result = input + ".00";
-            }
-            if (input.trim().substring(0).equals(".")) {
-                result = "0" + input;
-            }
-
-            if (input.startsWith("0")
-                    && input.trim().length() > 1) {
-                if (!input.substring(1, 2).equals(".")) {
-                    result= input.subSequence(0,1).toString();
-                }
-            }*/
 
             return result;
 

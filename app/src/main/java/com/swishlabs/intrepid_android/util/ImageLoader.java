@@ -144,7 +144,7 @@ public class ImageLoader {
 
 		// removes all instances of this ImageView
 		public void Clean(ImageView image) {
-			if(photosToLoad.size() == 0 || photosToLoad == null)
+			if(photosToLoad == null || photosToLoad.empty())
 				return;
 
 			for (int j = 0; j < photosToLoad.size();) {
