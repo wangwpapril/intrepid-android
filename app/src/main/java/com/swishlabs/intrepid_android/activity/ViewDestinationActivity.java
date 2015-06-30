@@ -85,7 +85,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
         MyApplication.getInstance().addActivity(this);
         loadDatabase();
 

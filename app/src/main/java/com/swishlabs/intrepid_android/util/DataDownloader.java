@@ -85,6 +85,7 @@ public class DataDownloader {
     }
 
     public void LoadTripFromApi(int test, final String rate){
+        Logger.d("LoadTripFromApi");
         loadDatabase();
         if (mDestination!=null) {
             mDestinationId = mDestination.getId();
@@ -207,6 +208,7 @@ public class DataDownloader {
     }
 
     private void saveEmbassyInformation(final String destinationId, String countryCode){
+        Logger.d("saveEmbassyInformation");
 
         IControllerContentCallback icc = new IControllerContentCallback() {
 
@@ -285,6 +287,8 @@ public class DataDownloader {
     }
 
     private void saveDestinationInformation(JSONObject destination, JSONObject images, String currencyCode, String rate) throws JSONException {
+        Logger.d("saveDestinationInfo");
+
         JSONObject content = destination.getJSONObject("content");
         String destinationId = destination.getString("id");
         String countryName = destination.getJSONObject("country").getString("name");
@@ -307,10 +311,10 @@ public class DataDownloader {
         String language = content.getString("language");
         String visa_requirements = content.getString("visa_requirements");
         String climate = content.getString("climate");
-        String intro_image_url = images.getJSONObject("intro").getString("source_url").replace(" ", "%20");
-        String security_image_url = images.getJSONObject("security").getString("source_url").replace(" ", "%20");
-        String overview_image_url = images.getJSONObject("overview").getString("source_url").replace(" ", "%20");
-        String culture_image_url = images.getJSONObject("culture").getString("source_url").replace(" ", "%20");
+        String intro_image_url = images.getJSONObject("intro").getJSONObject("versions").getJSONObject("3x").getString("source_url").replace(" ", "%20");
+        String security_image_url = images.getJSONObject("security").getJSONObject("versions").getJSONObject("3x").getString("source_url").replace(" ", "%20");
+        String overview_image_url = images.getJSONObject("overview").getJSONObject("versions").getJSONObject("3x").getString("source_url").replace(" ", "%20");
+        String culture_image_url = images.getJSONObject("culture").getJSONObject("versions").getJSONObject("3x").getString("source_url").replace(" ", "%20");
         String currency_image_url = null;
         if(images.has("currency")) {
             currency_image_url = images.getJSONObject("currency").getString("source_url").replace(" ", "%20");
@@ -409,6 +413,8 @@ public class DataDownloader {
     }
 
     private void CreateTrip(int position, String generalImageUri){
+        Logger.d("CreateTrip");
+
         Destination destination = mDestination;
 //        Trip trip = new Trip(destination.getCountry());
 
@@ -461,6 +467,7 @@ public class DataDownloader {
     }
 
     private void fetchAlerts(final String countrycode) {
+        Logger.d("fetchAlerts");
 
         IControllerContentCallback icc = new IControllerContentCallback() {
 

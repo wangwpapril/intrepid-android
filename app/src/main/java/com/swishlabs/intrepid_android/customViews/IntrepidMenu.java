@@ -373,7 +373,7 @@ public class IntrepidMenu extends ScrollView {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        Intent mIntent = new Intent(context, className);
+/*                        Intent mIntent = new Intent(context, className);
                         if(className == TripPagesActivity.class) {
                             mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             mIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -382,7 +382,7 @@ public class IntrepidMenu extends ScrollView {
                         activity.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
                         if (mFinishActivity) {
                             activity.finish();
-                        }
+                        }*/
                     }
 
                     @Override
@@ -398,6 +398,18 @@ public class IntrepidMenu extends ScrollView {
 
             }
         });
+
+        Intent mIntent = new Intent(context, className);
+        if(className == TripPagesActivity.class) {
+            mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        }
+        activity.startActivity(mIntent);
+        activity.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+        if (mFinishActivity) {
+            activity.finish();
+        }
+
     }
 
 }
