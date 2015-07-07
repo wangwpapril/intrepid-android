@@ -96,7 +96,7 @@ public class DestinationsListActivity extends BaseActivity {
                         mDestinationList.add(dest);
                         String currencyCode = null;
 //                        String currencyUrl = mDestinationList.get(i).imageCurrency.sourceUrl.replace(" ", "%20");
-                        String currencyUrl = mDestinationList.get(i).imageCurrency.version3.sourceUrl;
+                        String currencyUrl = dest.currencyUrl;
                         if(currencyUrl != null) {
                             String[] parts = currencyUrl.replace(" ", "%20").split("/");
                             for (int j = 0; j < parts.length; j++) {

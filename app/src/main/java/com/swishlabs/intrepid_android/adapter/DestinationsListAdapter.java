@@ -1,5 +1,6 @@
 package com.swishlabs.intrepid_android.adapter;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -14,6 +15,7 @@ import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.activity.BaseActivity;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
@@ -66,9 +68,18 @@ public class DestinationsListAdapter extends MyBaseAdapter {
 		}
 		Destination model = datas.get(position);
 		holder.countryName.setText(model.name);
-		final ImageView imageView = holder.countryIcon;
-		imageView.setTag(model.imageFlag.version3.sourceUrl);
-		ImageLoader.DisplayImage(model.imageFlag.version3.sourceUrl, context, imageView);
+//		final ImageView imageView = holder.countryIcon;
+//		imageView.setTag(model.imageUrl);
+//		ImageLoader.DisplayImage(model.imageUrl, context, imageView);
+        String url = null;
+        try {
+            url = new URI(model.imageUrl).toASCIIString();
+        }catch (Exception ex) {
+            ex.printStackTrace();
+
+        }
+
+        Picasso.with(context).load(url).placeholder(R.drawable.empty_square).fit().into(holder.countryIcon);
 		convertView.setTag(holder);
 		return convertView;
 	}
