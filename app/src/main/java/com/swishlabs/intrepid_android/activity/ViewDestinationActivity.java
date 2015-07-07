@@ -363,6 +363,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
             DestinationInformation destinationInformation = ViewDestinationActivity.getInstance().mDestinationInformation;
             ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
             Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageOverview()).resize(700, 700).centerCrop().into(generalImage);
+            Picasso.with(TripPagesActivity.getInstance()).load(destinationInformation.getImageIntro()).fetch();
             TextView locationText = (TextView)rootView.findViewById(R.id.destination_content);
             locationText.setText(destinationInformation.getLocation());
             TextView climateText = (TextView)rootView.findViewById(R.id.destination_content2);

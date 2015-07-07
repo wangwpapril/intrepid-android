@@ -47,7 +47,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
     String mDestinationId;
     Database mDatabase;
     TextView mCountryName;
-    ImageView mCountryImage;
+    public ImageView mCountryImage;
 
     protected ImageLoader imageLoader;
 
@@ -246,7 +246,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
 
     public void getCountry(String destinationName, String imageURL){
         mCountryName.setText(destinationName);
-        Picasso.with(TripPagesActivity.getInstance()).load(imageURL).resize(1200, 1200).centerCrop().transform(new RoundedTransformation(50, 4)).into(mCountryImage);
+        Picasso.with(TripPagesActivity.getInstance()).load(imageURL).transform(new RoundedTransformation(50, 4)).fit().into(mCountryImage);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

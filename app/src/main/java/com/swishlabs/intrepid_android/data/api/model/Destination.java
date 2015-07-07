@@ -17,6 +17,12 @@ public class Destination implements Serializable {
     public String currencyCode;
 	public Image imageCurrency;
 	public Image imageFlag;
+    public String imageUrl;
+    public String currencyUrl;
+
+    public Destination(){
+
+    }
 		
 	public Destination(JSONObject obj) throws JSONException {
 
@@ -34,10 +40,9 @@ public class Destination implements Serializable {
 			{
                 Object rr = images.get("currency");
                 if(rr instanceof JSONObject) {
-                    JSONObject imagecy = images.getJSONObject("currency");
-                    imageCurrency = new Image(imagecy);
-                } else {
-                    imageCurrency = new Image(null);
+                    currencyUrl = images.getJSONObject("currency").getJSONObject("versions").getJSONObject("3x")
+                            .optString("source_url");
+
                 }
 			}
 			
@@ -45,10 +50,9 @@ public class Destination implements Serializable {
 			{
                 Object rr = images.get("flag");
                 if(rr instanceof JSONObject) {
-                    JSONObject imagefg = images.getJSONObject("flag");
-                    imageFlag = new Image(imagefg);
-                } else {
-                    imageFlag = new Image(null);
+                    imageUrl = images.getJSONObject("flag").getJSONObject("versions").getJSONObject("3x")
+                            .optString("source_url").replace(" ", "%20");
+
                 }
 			}
 
