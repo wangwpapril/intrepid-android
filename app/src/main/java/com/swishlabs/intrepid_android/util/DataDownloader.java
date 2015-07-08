@@ -527,7 +527,11 @@ public class DataDownloader {
         values.put(Database.KEY_ALERT_DESCRIPTION, mAlertList.get(index).getDescription());
         values.put(Database.KEY_ALERT_STARTDATE, mAlertList.get(index).getStartDate());
         values.put(Database.KEY_ALERT_ENDDATE, mAlertList.get(index).getEndDate());
-        mDatabase.getDb().insert(Database.TABLE_ALERT, null, values);
+        if (mIsTripUnique) {
+            mDatabase.getDb().insert(Database.TABLE_ALERT, null, values);
+        }else{
+            mDatabase.getDb().update(Database.TABLE_ALERT, values, Database.KEY_ID+" ="+mTripDatabaseId, null);
+        }
 
     }
 

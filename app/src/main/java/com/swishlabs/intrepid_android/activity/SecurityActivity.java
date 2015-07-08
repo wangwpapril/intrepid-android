@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.segment.analytics.Analytics;
 import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.MyApplication;
@@ -229,7 +230,7 @@ public class SecurityActivity extends ActionBarActivity {
         public void populateSecurityInfo(View rootView) {
             DestinationInformation destinationInformation = SecurityActivity.getInstance().mDestinationInformation;
             ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
-            Picasso.with(SecurityActivity.getInstance()).load(destinationInformation.getImageSecurity()).resize(1000, 1000).centerCrop().into(generalImage);
+            Glide.with(SecurityActivity.getInstance()).load(destinationInformation.getImageSecurity()).fitCenter().into(generalImage);
             TextView safetyText = (TextView)rootView.findViewById(R.id.safety_content);
             safetyText.setText(destinationInformation.getSafety());
             TextView otherConcernsText = (TextView)rootView.findViewById(R.id.other_concerns_text);
