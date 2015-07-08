@@ -27,7 +27,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.segment.analytics.Analytics;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
@@ -43,6 +45,7 @@ import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.services.LocationService;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.ImageLoader;
+import com.swishlabs.intrepid_android.util.Logger;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 
 import org.json.JSONException;
@@ -362,8 +365,9 @@ public class ViewDestinationActivity extends ActionBarActivity {
         public void populateGeneralOverview(View rootView){
             DestinationInformation destinationInformation = ViewDestinationActivity.getInstance().mDestinationInformation;
             ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
-            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageOverview()).resize(700, 700).centerCrop().into(generalImage);
-            Picasso.with(TripPagesActivity.getInstance()).load(destinationInformation.getImageIntro()).fetch();
+//            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageOverview()).fit().into(generalImage);
+            Glide.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageOverview()).fitCenter().into(generalImage);
+     //       Picasso.with(TripPagesActivity.getInstance()).load(destinationInformation.getImageIntro()).fetch();
             TextView locationText = (TextView)rootView.findViewById(R.id.destination_content);
             locationText.setText(destinationInformation.getLocation());
             TextView climateText = (TextView)rootView.findViewById(R.id.destination_content2);
@@ -412,9 +416,10 @@ public class ViewDestinationActivity extends ActionBarActivity {
         }
 
         public void populateCultureOverview(View rootView){
-            DestinationInformation destinationInformation = ViewDestinationActivity.getInstance().mDestinationInformation;
-            ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
-            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageCulture()).resize(700, 700).centerCrop().into(generalImage);
+            final DestinationInformation destinationInformation = ViewDestinationActivity.getInstance().mDestinationInformation;
+            final ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
+            Glide.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageCulture()).fitCenter().into(generalImage);
+//            Picasso.with(TripPagesActivity.getInstance()).load(destinationInformation.getImageIntro()).fetch();
             TextView normsText = (TextView)rootView.findViewById(R.id.destination_content);
             normsText.setText(destinationInformation.getCulturalNorms());
             TextView ethnicText= (TextView)rootView.findViewById(R.id.destination_content2);
