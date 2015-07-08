@@ -56,6 +56,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener{
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
+		Common.context = null;
 		Log.i(MyApplication.TAG, "Base Activity onDestory()");
 		
 	}
@@ -79,7 +80,13 @@ public abstract class BaseActivity extends Activity implements OnClickListener{
 	@Override
 	protected void onPause() {
 		super.onPause();
-		Common.context = null;
+		Common.context = this;
 	}
-	
+
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		Common.context = this;
+	}
 }
