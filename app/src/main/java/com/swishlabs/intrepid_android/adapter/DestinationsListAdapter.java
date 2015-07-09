@@ -15,9 +15,12 @@ import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.activity.BaseActivity;
+import com.swishlabs.intrepid_android.customViews.RoundedCornersTransformation;
+import com.swishlabs.intrepid_android.customViews.RoundedTransformation;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 
 
@@ -79,7 +82,10 @@ public class DestinationsListAdapter extends MyBaseAdapter {
 
         }
 
-        Picasso.with(context).load(url).placeholder(R.drawable.empty_square).fit().into(holder.countryIcon);
+//        Picasso.with(context).load(url).transform(new RoundedTransformation(10, 2)).placeholder(R.drawable.empty_square).fit().into(holder.countryIcon);
+//        Picasso.with(context).load(url).placeholder(R.drawable.empty_square).fit().into(holder.countryIcon);
+        Glide.with(context).load(url).placeholder(R.drawable.empty_square)
+                .bitmapTransform(new RoundedCornersTransformation(context, 10, 2)).crossFade().into(holder.countryIcon);
 		convertView.setTag(holder);
 		return convertView;
 	}

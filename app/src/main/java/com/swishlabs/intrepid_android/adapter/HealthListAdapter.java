@@ -10,8 +10,10 @@ import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.activity.BaseActivity;
+import com.swishlabs.intrepid_android.customViews.RoundedCornersTransformation;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 import com.swishlabs.intrepid_android.data.api.model.HealthConditionDis;
 import com.swishlabs.intrepid_android.util.ImageLoader;
@@ -74,8 +76,12 @@ public class HealthListAdapter extends BaseAdapter {
 		HealthConditionDis model = datas.get(position);
 		holder.countryName.setText(model.getmConditionName());
 		final ImageView imageView = holder.countryIcon;
-		imageView.setTag(model.getmGeneralImage());
-		ImageLoader.DisplayImage(model.getmGeneralImage(), context, imageView);
+//		imageView.setTag(model.getmGeneralImage());
+//		ImageLoader.DisplayImage(model.getmGeneralImage(), context, imageView);
+
+        Glide.with(context).load(model.getmGeneralImage()).placeholder(R.drawable.empty_square)
+                .bitmapTransform(new RoundedCornersTransformation(context, 10, 2))
+                .crossFade().into(imageView);
 		convertView.setTag(holder);
 		return convertView;
 	}
