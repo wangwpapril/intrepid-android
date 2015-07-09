@@ -251,7 +251,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
         mCountryName.setText(destinationName);
 //        Picasso.with(TripPagesActivity.getInstance()).load(imageURL).transform(new RoundedTransformation(50, 4)).fit().into(mCountryImage);
         Glide.with(TripPagesActivity.getInstance()).load(imageURL).bitmapTransform(new RoundedCornersTransformation(TripPagesActivity.getInstance(), 50, 4))
-                .crossFade().into(mCountryImage);
+                .placeholder(R.drawable.trip_bg).crossFade().into(mCountryImage);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
