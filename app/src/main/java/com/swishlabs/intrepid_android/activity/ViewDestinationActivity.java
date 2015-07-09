@@ -366,7 +366,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
             DestinationInformation destinationInformation = ViewDestinationActivity.getInstance().mDestinationInformation;
             ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
 //            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageOverview()).fit().into(generalImage);
-            Glide.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageOverview()).fitCenter().into(generalImage);
+            Glide.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageOverview()).fitCenter().crossFade().into(generalImage);
      //       Picasso.with(TripPagesActivity.getInstance()).load(destinationInformation.getImageIntro()).fetch();
             TextView locationText = (TextView)rootView.findViewById(R.id.destination_content);
             locationText.setText(destinationInformation.getLocation());
@@ -419,7 +419,7 @@ public class ViewDestinationActivity extends ActionBarActivity {
             final DestinationInformation destinationInformation = ViewDestinationActivity.getInstance().mDestinationInformation;
             final ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
             Glide.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageCulture()).fitCenter().into(generalImage);
-//            Picasso.with(TripPagesActivity.getInstance()).load(destinationInformation.getImageIntro()).fetch();
+//            Glide.with(TripPagesActivity.getInstance()).load(destinationInformation.getImageIntro()).downloadOnly(-2147483648, -2147483648);
             TextView normsText = (TextView)rootView.findViewById(R.id.destination_content);
             normsText.setText(destinationInformation.getCulturalNorms());
             TextView ethnicText= (TextView)rootView.findViewById(R.id.destination_content2);

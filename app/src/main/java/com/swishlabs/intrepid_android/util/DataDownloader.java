@@ -392,7 +392,12 @@ public class DataDownloader {
         values.put(Database.KEY_MEDICATION_STORAGE, healthMedicationList.get(indexId).getmStorage());
         values.put(Database.KEY_MEDICATION_NOTES, healthMedicationList.get(indexId).getmNotes());
 
-        mDatabase.getDb().insert(Database.TABLE_HEALTH_MEDICATION, null, values);
+        if (mIsTripUnique) {
+            mDatabase.getDb().insert(Database.TABLE_HEALTH_MEDICATION, null, values);
+        }else{
+            mDatabase.getDb().update(Database.TABLE_HEALTH_MEDICATION, values, Database.KEY_ID+" ="+mTripDatabaseId, null);
+        }
+
 
     }
 
@@ -408,7 +413,11 @@ public class DataDownloader {
         values.put(Database.KEY_CONDITION_SYMPTOMS,healthConditionList.get(indexId).content.symptoms);
         values.put(Database.KEY_CONDITION_PREVENTION,healthConditionList.get(indexId).content.prevention);
 
-        mDatabase.getDb().insert(Database.TABLE_HEALTH_CONDITION, null, values);
+        if (mIsTripUnique) {
+            mDatabase.getDb().insert(Database.TABLE_HEALTH_CONDITION, null, values);
+        }else{
+            mDatabase.getDb().update(Database.TABLE_HEALTH_CONDITION, values, Database.KEY_ID+" ="+mTripDatabaseId, null);
+        }
 
     }
 

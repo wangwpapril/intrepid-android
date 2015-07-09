@@ -42,5 +42,5 @@ dependencies {
         transitive = true;
     }
     compile files('libs/picasso-2.5.2.jar')
-    compile files('libs/glide-3.6.0.jar')
+    compile files('libs/glide-3.6.1.jar')
 }

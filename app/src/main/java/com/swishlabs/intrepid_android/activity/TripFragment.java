@@ -20,8 +20,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.customViews.RoundedCornersTransformation;
 import com.swishlabs.intrepid_android.customViews.RoundedTransformation;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
@@ -246,7 +249,9 @@ public class TripFragment extends android.support.v4.app.Fragment {
 
     public void getCountry(String destinationName, String imageURL){
         mCountryName.setText(destinationName);
-        Picasso.with(TripPagesActivity.getInstance()).load(imageURL).transform(new RoundedTransformation(50, 4)).fit().into(mCountryImage);
+//        Picasso.with(TripPagesActivity.getInstance()).load(imageURL).transform(new RoundedTransformation(50, 4)).fit().into(mCountryImage);
+        Glide.with(TripPagesActivity.getInstance()).load(imageURL).bitmapTransform(new RoundedCornersTransformation(TripPagesActivity.getInstance(), 50, 4))
+                .crossFade().into(mCountryImage);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

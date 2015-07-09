@@ -278,9 +278,9 @@ public class SecurityActivity extends ActionBarActivity {
             listView.setAdapter(mEmbassyListAdapter);
             ImageView embassyImage = (ImageView)rootView.findViewById(R.id.overview_image);
             if (embassyList.size()>0) {
-                Picasso.with(SecurityActivity.getInstance()).load(embassyList.get(0).getImage()).resize(1000, 1000).centerCrop().into(embassyImage);
+                Glide.with(SecurityActivity.getInstance()).load(embassyList.get(0).getImage()).crossFade().into(embassyImage);
             }else{
-                Picasso.with(SecurityActivity.getInstance()).load(destinationInformation.getImageIntro()).resize(1000, 1000).centerCrop().into(embassyImage);
+                Glide.with(SecurityActivity.getInstance()).load(destinationInformation.getImageIntro()).crossFade().into(embassyImage);
                 TextView emptyEmbassyList = (TextView)rootView.findViewById(R.id.emptyEmbassyList);
                 emptyEmbassyList.setVisibility(View.VISIBLE);
             }
