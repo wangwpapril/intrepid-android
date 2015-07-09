@@ -25,7 +25,7 @@
             android:layout_height="50dp"
             android:layout_marginRight="10dp"
             android:scaleType="fitXY"
-            android:background="@drawable/empty_square" />
+             />
 
         <TextView
             android:layout_width="wrap_content"
