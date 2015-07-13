@@ -203,6 +203,7 @@ public class StringUtil {
             }
         });
 
-        alertDialog.show();
+        if(context != null)
+            alertDialog.show();
     }
 }
