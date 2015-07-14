@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.segment.analytics.Analytics;
 import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.MyApplication;
@@ -281,7 +282,8 @@ public class ViewHealthActivity extends ActionBarActivity {
                 case 0:
                     rootView = inflater.inflate(R.layout.fragment_health_pretrip, container, false);
                     ImageView generalImage = (ImageView)rootView.findViewById(R.id.pretrip_image);
-                    Picasso.with(ViewHealthActivity.getInstance()).load(mDestinationInformation.getImageMedical()).resize(1000, 1000).centerCrop().into(generalImage);
+//                    Picasso.with(ViewHealthActivity.getInstance()).load(mDestinationInformation.getImageMedical()).resize(1000, 1000).centerCrop().into(generalImage);
+                    Glide.with(ViewHealthActivity.getInstance()).load(mDestinationInformation.getImageMedical()).fitCenter().into(generalImage);
                     TextView emergencyNm = (TextView)rootView.findViewById(R.id.destination_content);
                     emergencyNm.setText(mDestinationInformation.getEmergencyNumber());
                     TextView healthCare= (TextView)rootView.findViewById(R.id.destination_content2);
