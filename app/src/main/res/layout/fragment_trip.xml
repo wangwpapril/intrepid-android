@@ -19,7 +19,7 @@
             android:id="@+id/tripImage"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:scaleType="fitXY"
             android:src="@drawable/add_new_trip"
             />
@@ -35,7 +35,8 @@
             android:textSize="17sp"
             android:textColor="#fff"
             android:layout_below="@id/tripImage"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp" />
     </RelativeLayout>
 
 
