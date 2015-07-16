@@ -131,7 +131,7 @@ public class IntrepidMenu extends ScrollView {
                 break;
             case MotionEvent.ACTION_UP:
                 final VelocityTracker velocityTracker = mVelocityTracker;
-                velocityTracker.computeCurrentVelocity(1000);
+                velocityTracker.computeCurrentVelocity(3000);
                 int velocityY= (int) velocityTracker.getYVelocity();
                 Log.e("VELOCITY", velocityY+"");
                 if (velocityY > VELOCITY) {
