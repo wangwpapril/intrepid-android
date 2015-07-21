@@ -550,7 +550,11 @@ public class ViewDestinationActivity extends ActionBarActivity {
                         baseValue = 0;
                         desValue = 0;
                     }else {
-                        baseValue = Double.parseDouble(s.toString());
+                        try {
+                            baseValue = Double.parseDouble(s.toString());
+                        }catch (NumberFormatException e){
+                            System.out.println( "Not a legal number." );
+                        }
 //                        desValue = baseValue * Double.parseDouble(ViewDestinationActivity.getInstance().mDestinationInformation.mCurrencyRate);
                         desValue = baseValue * rate;
                     }
@@ -585,7 +589,11 @@ public class ViewDestinationActivity extends ActionBarActivity {
                         baseValue = 0;
                         desValue = 0;
                     }else {
-                        desValue = Double.parseDouble(s.toString());
+                        try {
+                            desValue = Double.parseDouble(s.toString());
+                        }catch (NumberFormatException e){
+                            System.out.println( "Not a legal number." );
+                        }
 //                        baseValue = desValue / Double.parseDouble(ViewDestinationActivity.getInstance().mDestinationInformation.mCurrencyRate);
                         baseValue = desValue / rate;
                     }
