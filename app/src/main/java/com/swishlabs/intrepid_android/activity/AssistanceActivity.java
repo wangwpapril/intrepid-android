@@ -288,7 +288,7 @@ public class AssistanceActivity extends FragmentActivity implements GoogleApiCli
             String userId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null);
             ControllerContentTask cct = new ControllerContentTask(
                     Constants.BASE_URL+"users/"+userId+"/coordinates?token="+token, icc,
-                    Enums.ConnMethod.POST,false);
+                    Enums.ConnMethod.POST,true);
 
             JSONObject coordinatesDetails = new JSONObject();
         String country = getApplicationContext().getResources().getConfiguration().locale.getDisplayCountry();
