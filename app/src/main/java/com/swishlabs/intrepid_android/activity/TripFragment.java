@@ -250,7 +250,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
     public void getCountry(String destinationName, String imageURL){
         mCountryName.setText(destinationName);
 //        Picasso.with(TripPagesActivity.getInstance()).load(imageURL).transform(new RoundedTransformation(50, 4)).fit().into(mCountryImage);
-        Glide.with(TripPagesActivity.getInstance()).load(imageURL).bitmapTransform(new RoundedCornersTransformation(TripPagesActivity.getInstance(), 50, 4))
+        Glide.with(this).load(imageURL).bitmapTransform(new RoundedCornersTransformation(TripPagesActivity.getInstance(), 50, 4))
                 .placeholder(R.drawable.trip_bg).crossFade().into(mCountryImage);
     }
 
