@@ -43,5 +43,6 @@
     <string name="title_activity_view_vmpdf">ViewVMPdfActivity</string>
     <string name="callIntrepidAssistance">Call Intrepid Assistance</string>
     <string name="title_activity_learn_more">LearnMoreActivity</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>
