@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -65,6 +67,9 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
     public List<Provider> markList = new ArrayList<>();
 
     MainActivity mActivity;
+
+    RelativeLayout infoView;
+    TextView mNameTv, mStaffNameTv, mContactTv, mAddressTv, mPostalTv;
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -154,6 +159,13 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
             mClusterManager.setOnClusterItemClickListener(new ClusterManager.OnClusterItemClickListener<Place>() {
                 @Override
                 public boolean onClusterItemClick(Place place) {
+                    infoView.setVisibility(View.VISIBLE);
+                    int index = place.getIndex();
+                    mNameTv.setText(markList.get(index).getName());
+                    mStaffNameTv.setText("Staff Name: " + markList.get(index).getStaffName());
+                    mContactTv.setText("Contact: " + markList.get(index).getContact());
+                    mAddressTv.setText("Address: " + markList.get(index).getAddress());
+                    mPostalTv.setText("Postal: " + markList.get(index).getPostal());
                     return false;
                 }
             });
@@ -183,8 +195,13 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
                 }
             });
 
+            mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+                @Override
+                public void onMapClick(LatLng latLng) {
+                    infoView.setVisibility(View.GONE);
+                }
+            });
 
-            return;
         }
 
 /*            if (mMap != null) {
@@ -271,6 +288,12 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 //        return inflater.inflate(R.layout.fragment_map, container, false);
         Log.d("MapFragment","CreateView");
         View view = inflater.inflate(R.layout.fragment_map, container, false);
+        infoView = (RelativeLayout) view.findViewById(R.id.infoview);
+        mAddressTv = (TextView) view.findViewById(R.id.address);
+        mNameTv = (TextView) view.findViewById(R.id.name);
+        mContactTv = (TextView) view.findViewById(R.id.contact);
+        mPostalTv = (TextView) view.findViewById(R.id.postal);
+        mStaffNameTv = (TextView) view.findViewById(R.id.staffname);
 
         markList = mActivity.getList();
 
