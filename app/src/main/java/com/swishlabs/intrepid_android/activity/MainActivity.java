@@ -19,6 +19,7 @@ import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.City;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
+import com.swishlabs.intrepid_android.data.api.model.Provider;
 import com.swishlabs.intrepid_android.fragment.MapFragment;
 import com.swishlabs.intrepid_android.fragment.TabFragment;
 import com.swishlabs.intrepid_android.util.Enums;
@@ -55,6 +56,8 @@ MapFragment.OnFragmentInteractionListener{
 
     List<City> infoList ;
 
+    List<Provider> providerList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +72,67 @@ MapFragment.OnFragmentInteractionListener{
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        getCities();
+//        getCities();
+
+        getProviders();
+
+    }
+
+    private void getProviders() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    InputStream is = getAssets().open("provider.txt");
+                    if(is != null) {
+                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is,"UTF-8"));
+                        StringBuffer buffer=new StringBuffer();
+                        String line;
+                        while(null!=(line=bufferedReader.readLine())){
+                            buffer.append(line).append("\n");
+                        }
+
+                        is.close();
+                        String content = buffer.toString();
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(content);
+                            JSONArray array = jsonObject.getJSONArray("providers");
+                            int len = array.length();
+                            providerList = new ArrayList<Provider>(len);
+
+                            for(int i = 0;i < len; i++) {
+                                Provider provider = new Provider();
+                                provider.setId(array.getJSONObject(i).optString("id"));
+                                provider.setType(array.getJSONObject(i).optJSONObject("facility").optJSONObject("type").optString("name"));
+                                provider.setName(array.getJSONObject(i).optJSONObject("facility").optString("name"));
+                                provider.setContent(array.getJSONObject(i).optString("name"));
+                                provider.setLongitude(array.getJSONObject(i).optJSONObject("facility").optJSONObject("location").optString("long"));
+                                provider.setLatitude(array.getJSONObject(i).optJSONObject("facility").optJSONObject("location").optString("lat"));
+                                provider.setAddress(array.getJSONObject(i).optJSONObject("facility").optString("street1"));
+                                provider.setPostal(array.getJSONObject(i).optJSONObject("facility").optString("postal"));
+                                provider.setContact(array.getJSONObject(i).optJSONObject("facility").optJSONObject("contact").optString("phone"));
+                                provider.setStaffName(array.getJSONObject(i).optJSONObject("staff").optString("name"));
+
+                                providerList.add(provider);
+                            }
+
+//                                MapFragment mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.mapfragment);
+                            //                              mapFragment.markList = infoList;
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }).start();
 
     }
 
@@ -265,8 +328,8 @@ MapFragment.OnFragmentInteractionListener{
         }
     }
 
-    public List<City> getList() {
-        return infoList;
+    public List<Provider> getList() {
+        return providerList;
     }
 
     @Override

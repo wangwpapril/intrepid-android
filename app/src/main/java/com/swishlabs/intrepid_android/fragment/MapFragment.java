@@ -31,7 +31,7 @@ import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.clustering.view.DefaultClusterRenderer;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.activity.MainActivity;
-import com.swishlabs.intrepid_android.data.api.model.City;
+import com.swishlabs.intrepid_android.data.api.model.Provider;
 import com.swishlabs.intrepid_android.util.StringUtil;
 
 import java.util.ArrayList;
@@ -62,7 +62,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
     private ClusterManager<Place> mClusterManager;
 
-    public List<City> markList = new ArrayList<>();
+    public List<Provider> markList = new ArrayList<>();
 
     MainActivity mActivity;
     /**
@@ -132,35 +132,16 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
             if(markList != null) {
                 for(int i = 0; i<markList.size(); i++) {
                     if(!markList.get(i).getLatitude().equals("null")&&!markList.get(i).getLongitude().equals("null")) {
-                        mClusterManager.addItem(new Place(
+                        mClusterManager.addItem(new Place( i,
                                 Double.valueOf(markList.get(i).getLatitude()),
                                 Double.valueOf(markList.get(i).getLongitude()),
-                                markList.get(i).getName(),
-                                markList.get(i).getContent()
+                                markList.get(i).getType(),
+                                markList.get(i).getName()
                         ));
                     }
                 }
             }
 
-/*            // Cluster of 4 or 5
-            mClusterManager.addItem(new Place(51.471524, -0.454280, "Title", "Snippet"));
-            mClusterManager.addItem(new Place(51.471311, -0.452257, "Title", "Snippet"));
-            mClusterManager.addItem(new Place(51.471510, -0.453514, "Title", "Snippet"));
-            mClusterManager.addItem(new Place(51.471710, -0.453714, "Title", "Snippet"));
-            // Remove this item to create a group of four
-            mClusterManager.addItem(new Place(51.471810, -0.453714, "Title", "Snippet"));
-
-            // Cluster of 9 (depending on zoom level)
-            mClusterManager.addItem(new Place(51.517399, -0.177480, "Title", "Snippet"));
-            mClusterManager.addItem(new Place(51.509899, -0.134180, "Title", "Snippet"));
-            mClusterManager.addItem(new Place(51.495708, -0.144370, "Title", "Snippet"));
-            mClusterManager.addItem(new Place(51.496112, -0.144162, "Title", "Snippet"));
-            mClusterManager.addItem(new Place(51.512458, -0.118644, "Title", "Snippet"));
-            mClusterManager.addItem(new Place(51.518600, -0.081300, "Title", "Snippet"));
-            mClusterManager.addItem(new Place(51.530449, -0.125480, "Title", "Snippet"));
-            mClusterManager.addItem(new Place(51.513008, -0.088430, "Title", "Snippet"));
-            mClusterManager.addItem(new Place(51.505001, -0.086000, "Title", "Snippet"));
-*/
             mClusterManager.setRenderer(new InfoRender(getActivity(), mMap, mClusterManager));
 
             mClusterManager.setOnClusterClickListener(new ClusterManager.OnClusterClickListener<Place>() {
@@ -400,8 +381,10 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         private final LatLng mPosition;
         private final String mTitle;
         private final String mSnippet;
+        private final int index;
 
-        public Place(double lat, double lng, String t, String s) {
+        public Place(int ind, double lat, double lng, String t, String s) {
+            index = ind;
             mPosition = new LatLng(lat, lng);
             mTitle = t;
             mSnippet = s;
@@ -419,6 +402,8 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         public String getSnippet(){
             return mSnippet;
         }
+
+        public int getIndex() { return index; }
     }
 
     private class InfoRender extends DefaultClusterRenderer<Place> {
