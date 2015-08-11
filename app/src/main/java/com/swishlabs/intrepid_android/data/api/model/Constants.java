@@ -14,6 +14,9 @@ public class Constants {
     public static final String EMAIL_URL = "https://mandrillapp.com/api/1.0/messages/send.json";
     String login = "cshah3@alumni.uwo.ca";
     String pw = "iloveapple";
+
+    public final static String PPN_BASE_URL = "http://devlamp03/ppn_api/public/api/v1/";
+
 // development API:
 //   public final static String BASE_URL = "http://devlamp03/intrepid-api-laravel/public/v1";
 }

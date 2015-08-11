@@ -1,0 +1,2308 @@
+{
+    "facilities": [
+        {
+            "id": "dc5ef579c5c5503d56af0532d18a5da8",
+            "name": "ACUITY HOSPITAL OF SOUTH TEXAS",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "7310 OAK MANOR DR",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "704 8877283",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "9d64fae50971e2df6fcf7f12e1849674",
+            "name": "BAPTIST MEDICAL CENTER",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "111 DALLAS ST",
+            "street2": null,
+            "postal": "78205",
+            "location": {
+                "long": "-98.488400",
+                "lat": "29.426900",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 2977000",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "6da474450ff8442f68833826b139f73b",
+            "name": "COMPASS HOSPITAL",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "14743 JONES MALTSBERGER AVE",
+            "street2": null,
+            "postal": "78247",
+            "location": {
+                "long": null,
+                "lat": null,
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 4020029",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "9e21ff50dc8db8801aae43ad2ce4c639",
+            "name": "LIFECARE HOSPITALS OF SAN ANTO",
+            "type": {
+                "id": "43341873dcfc143da735643c0c39d476",
+                "name": "SPECIALTY HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "8902 FLOYD CURL DR",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 5758005",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "7d05741a46c62579b2facc282a63338e",
+            "name": "NORTH CENTRAL BAPTIST HOSPITAL",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "520 MADISON OAK",
+            "street2": null,
+            "postal": "78258",
+            "location": {
+                "long": "-98.495200",
+                "lat": "29.620700",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 2974000",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "d6d967708c829460ee435250aa63558d",
+            "name": "NORTHEAST BAPTIST HOSPITAL",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "8811 VILLAGE DR",
+            "street2": null,
+            "postal": "78217",
+            "location": {
+                "long": "-98.423900",
+                "lat": "29.539000",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 2972000",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "7540ecf3d05d61442b68e5c8dfe9614d",
+            "name": "KINDRED HOSPITAL SAN ANTONIO",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "3636 MEDICAL DR",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 6160616",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "0d898a3d3bccaad1e5487aae8ba68d94",
+            "name": "SOUTHEAST BAPTIST HOSPITAL",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "4214 E SOUTHCROSS BLVD",
+            "street2": null,
+            "postal": "78222",
+            "location": {
+                "long": "-98.385500",
+                "lat": "29.374400",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 2973000",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "24570b86f25640d14e94e67defa3af2b",
+            "name": "ST LUKE'S BAPTIST HOSPITAL",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "7930 FLOYD CURL DR",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 2975000",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "4f8281f9947b539e6e7d3f9aca4fa1d7",
+            "name": "SOUTHWEST GENERAL HOSPITAL",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "7400 BARLITE BLVD",
+            "street2": null,
+            "postal": "78224",
+            "location": {
+                "long": "-98.539100",
+                "lat": "29.318500",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 9212000",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "02585afee9f7e4f14fa5707419f71032",
+            "name": "SELECT SPECIALTY HOSPITAL SAN",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "111 DALLAS ST 4TH FLOOR",
+            "street2": null,
+            "postal": "78205",
+            "location": {
+                "long": "-98.488400",
+                "lat": "29.426900",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 2977195",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "fa93ea6f40978c12f158f0de04221987",
+            "name": "BAPTIST EMERGENCY HOSPITAL EME",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "16088 SAN PEDRO DRIVE",
+            "street2": null,
+            "postal": "78232",
+            "location": {
+                "long": "-98.478800",
+                "lat": "29.593000",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "281 2922450",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "1017b8d3efb534d8fab9dabcb7f28ad0",
+            "name": "EMERUS BHS SA THOUSAND OAKS LL",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "16088 SAN PEDRO DRIVE",
+            "street2": null,
+            "postal": "78232",
+            "location": {
+                "long": "-98.478800",
+                "lat": "29.593000",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "281 2922450",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "409dec854be3af0b2f848da9059352da",
+            "name": "MEDICAL CENTER",
+            "type": {
+                "id": "43341873dcfc143da735643c0c39d476",
+                "name": "SPECIALTY HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "7302 OAK MANOR DR",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 3448537",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "4538aec9657e2c5acf3bb1277cc3d63f",
+            "name": "METROPOLITAN METHODIST HOSPITA",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "1310 MCCULLOUGH AVE",
+            "street2": null,
+            "postal": "78212",
+            "location": {
+                "long": "-98.495200",
+                "lat": "29.459600",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 2082200",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "c780e9d69d81d729559c2c75244b380c",
+            "name": "METHODIST CHILDREN'S HOSPITAL",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "7700 FLOYD CURL DR",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 5757000",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "830b37087411d43a925e1c9ff4c18053",
+            "name": "SOUTHWEST TEXAS METHODIST",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "7700 FLOYD CURL DR",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 5754000",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "39d743fb54af39143b04e50b1624aa53",
+            "name": "SOUTH TEXAS CANCER INSTITUTE",
+            "type": {
+                "id": "10e3335a9f7982a1f0c627f5ae2a8abb",
+                "name": "CANCER TREATMENT CENTER"
+            },
+            "primary_gender": null,
+            "street1": "7700 FLOYD CURL DR",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 5933801",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "ecc375e358efec8d752d5a195a291b07",
+            "name": "CANCER THERAPY AND RESEARCH CE",
+            "type": {
+                "id": "10e3335a9f7982a1f0c627f5ae2a8abb",
+                "name": "CANCER TREATMENT CENTER"
+            },
+            "primary_gender": null,
+            "street1": "8122 DATAPOINT DR SUITE 250",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 6165840",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "c5d712b0ddabe5465d1b954813c6fb30",
+            "name": "METHODIST SPECIALTY & TRANSPLA",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "8026 FLOYD CURL DR",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 5750355",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "6a4f8404fdec41c9d16febe8fad055a5",
+            "name": "CANCER THERAPY AND RESEARCH CE",
+            "type": {
+                "id": "10e3335a9f7982a1f0c627f5ae2a8abb",
+                "name": "CANCER TREATMENT CENTER"
+            },
+            "primary_gender": null,
+            "street1": "7979 WURZBACH RD",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 6165500",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "bf544785e76446364f46c744e54b8610",
+            "name": "CANCER THERAPY AND RESEARCH CE",
+            "type": {
+                "id": "10e3335a9f7982a1f0c627f5ae2a8abb",
+                "name": "CANCER TREATMENT CENTER"
+            },
+            "primary_gender": null,
+            "street1": "4450 MEDICAL DR",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 6165500",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "3bd0eba6ad1c7d7df2f94f53c8dba082",
+            "name": "CHRISTUS SANTA ROSA HOSPITAL",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "333 NORTH SANTA ROSA ST",
+            "street2": null,
+            "postal": "78207",
+            "location": {
+                "long": "-98.522700",
+                "lat": "29.417500",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 7042011",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "e1b93b1884349c85d1c6edd45de8e081",
+            "name": "CHRISTUS SANTA ROSA MEDICAL CE",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "2827 BABCOCK RD",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 7056300",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "924ce60aa0e07ad4200d7257b2d20af3",
+            "name": "CHRISTUS SANTA ROSA HOSPITAL -",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "11212 STATE HIGHWAY 151",
+            "street2": null,
+            "postal": "78251",
+            "location": {
+                "long": "-98.693100",
+                "lat": "29.469800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 2934400",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "94366815f16e6b6d76dc8ec3ef56adb5",
+            "name": "UNIVERSITY HOSPITAL SAN ANTONI",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "4502 MEDICAL DR",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 3584779",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "9ddc2dd9c297502019f4fda21160bfe2",
+            "name": "TEXSAN HEART HOSPITAL",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "6700 IH 10 W",
+            "street2": null,
+            "postal": "78201",
+            "location": {
+                "long": "-98.533700",
+                "lat": "29.474400",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 7368001",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "55ff5b20b9487ec0c5db66928ee859a3",
+            "name": "METHODIST STONE OAK HOSPITAL",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "1139 EAST SONTERRA BLVD",
+            "street2": null,
+            "postal": "78258",
+            "location": {
+                "long": "-98.495200",
+                "lat": "29.620700",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 6382100",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "a70b324d5f4173d0c272b718d130790f",
+            "name": "METHODIST TEXSAN HOSPITAL",
+            "type": {
+                "id": "15e98417cda2f1a7360a05b3af678a22",
+                "name": "HOSPITAL"
+            },
+            "primary_gender": null,
+            "street1": "6700 W INTERSTATE 10",
+            "street2": null,
+            "postal": "78201",
+            "location": {
+                "long": "-98.533700",
+                "lat": "29.474400",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "210 7366700",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "edca7b2db08db48a2aa55566a8b37c78",
+            "name": "HOMELINK",
+            "type": {
+                "id": "92b062e62a07f8526c3b595c3fc7e6bd",
+                "name": "DURABLE MEDICAL EQUIPMENT"
+            },
+            "primary_gender": null,
+            "street1": "727 S ALAMO",
+            "street2": null,
+            "postal": "78205",
+            "location": {
+                "long": "-98.488400",
+                "lat": "29.426900",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "bfdcc3a2058469216c45bcdda9abee96",
+            "name": "HOMELINK",
+            "type": {
+                "id": "92b062e62a07f8526c3b595c3fc7e6bd",
+                "name": "DURABLE MEDICAL EQUIPMENT"
+            },
+            "primary_gender": null,
+            "street1": "1116 E HOUSTON",
+            "street2": null,
+            "postal": "78205",
+            "location": {
+                "long": "-98.488400",
+                "lat": "29.426900",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "6bd1ee4d30ab3051a84825370375da5e",
+            "name": "HOMELINK",
+            "type": {
+                "id": "92b062e62a07f8526c3b595c3fc7e6bd",
+                "name": "DURABLE MEDICAL EQUIPMENT"
+            },
+            "primary_gender": null,
+            "street1": "1322 E HOUSTON ST",
+            "street2": null,
+            "postal": "78205",
+            "location": {
+                "long": "-98.488400",
+                "lat": "29.426900",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "cd9cd0c072a22afe03a7f6fc0ef50e00",
+            "name": "HOMELINK",
+            "type": {
+                "id": "92b062e62a07f8526c3b595c3fc7e6bd",
+                "name": "DURABLE MEDICAL EQUIPMENT"
+            },
+            "primary_gender": null,
+            "street1": "1014 PEABODY RD",
+            "street2": null,
+            "postal": "78211",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.345500",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "36a7f30cf1ae3744a9e461821750cce2",
+            "name": "HOMELINK",
+            "type": {
+                "id": "92b062e62a07f8526c3b595c3fc7e6bd",
+                "name": "DURABLE MEDICAL EQUIPMENT"
+            },
+            "primary_gender": null,
+            "street1": "1223 E EUCLID AVE SUITE 1",
+            "street2": null,
+            "postal": "78212",
+            "location": {
+                "long": "-98.495200",
+                "lat": "29.459600",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "878805b951ba392a23f05383ee357e88",
+            "name": "HOMELINK",
+            "type": {
+                "id": "92b062e62a07f8526c3b595c3fc7e6bd",
+                "name": "DURABLE MEDICAL EQUIPMENT"
+            },
+            "primary_gender": null,
+            "street1": "401 ISOM RD SUITE 445",
+            "street2": null,
+            "postal": "78216",
+            "location": {
+                "long": "-98.495200",
+                "lat": "29.551700",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "28aabc145fc81a76f401a9321d37c17b",
+            "name": "HOMELINK",
+            "type": {
+                "id": "d3c839f46049e90a7df1ea92df442702",
+                "name": "HOME HEALTH SERVICES"
+            },
+            "primary_gender": null,
+            "street1": "45 NE LOOP 410 SUITE 580",
+            "street2": null,
+            "postal": "78216",
+            "location": {
+                "long": "-98.495200",
+                "lat": "29.551700",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "511c5f081f8e61c4113ba6de017c5f93",
+            "name": "HOMELINK",
+            "type": {
+                "id": "92b062e62a07f8526c3b595c3fc7e6bd",
+                "name": "DURABLE MEDICAL EQUIPMENT"
+            },
+            "primary_gender": null,
+            "street1": "9822 LORENE LN",
+            "street2": null,
+            "postal": "78216",
+            "location": {
+                "long": "-98.495200",
+                "lat": "29.551700",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "7a3248d15a33348466e244e401f4abba",
+            "name": "HOMELINK",
+            "type": {
+                "id": "85d1c764cb8b87689723ecf749287f8c",
+                "name": "ORTHOTICS & PROSTHETICS"
+            },
+            "primary_gender": null,
+            "street1": "6715 SAN PEDRO AVE",
+            "street2": null,
+            "postal": "78216",
+            "location": {
+                "long": "-98.495200",
+                "lat": "29.551700",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "3598ce282b0e706e5032ef30033957e6",
+            "name": "HOMELINK",
+            "type": {
+                "id": "92b062e62a07f8526c3b595c3fc7e6bd",
+                "name": "DURABLE MEDICAL EQUIPMENT"
+            },
+            "primary_gender": null,
+            "street1": "1070 ARION CIR 164",
+            "street2": null,
+            "postal": "78216",
+            "location": {
+                "long": "-98.495200",
+                "lat": "29.551700",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "a0de6688efa92ad12a1f1aab03d5e37f",
+            "name": "HOMELINK",
+            "type": {
+                "id": "92b062e62a07f8526c3b595c3fc7e6bd",
+                "name": "DURABLE MEDICAL EQUIPMENT"
+            },
+            "primary_gender": null,
+            "street1": "814 SW MILITARY DR",
+            "street2": null,
+            "postal": "78221",
+            "location": {
+                "long": "-98.462300",
+                "lat": "29.265700",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "3b8665e855f763910a690475d50997a9",
+            "name": "HOMELINK",
+            "type": {
+                "id": "92b062e62a07f8526c3b595c3fc7e6bd",
+                "name": "DURABLE MEDICAL EQUIPMENT"
+            },
+            "primary_gender": null,
+            "street1": "3330 CLARK AVE SUITE 1",
+            "street2": null,
+            "postal": "78223",
+            "location": {
+                "long": "-98.363600",
+                "lat": "29.306600",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "bb9bd55180296b72a27ad5fc964dd278",
+            "name": "HOMELINK",
+            "type": {
+                "id": "85d1c764cb8b87689723ecf749287f8c",
+                "name": "ORTHOTICS & PROSTHETICS"
+            },
+            "primary_gender": null,
+            "street1": "98 BRIGGS ST SUITE 950",
+            "street2": null,
+            "postal": "78224",
+            "location": {
+                "long": "-98.539100",
+                "lat": "29.318500",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "6f5f8634552f504ba3672c2d5943c11f",
+            "name": "HOMELINK",
+            "type": {
+                "id": "85d1c764cb8b87689723ecf749287f8c",
+                "name": "ORTHOTICS & PROSTHETICS"
+            },
+            "primary_gender": null,
+            "street1": "7355 BARLITE SUITE 501A",
+            "street2": null,
+            "postal": "78224",
+            "location": {
+                "long": "-98.539100",
+                "lat": "29.318500",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "0df6f6c3045c9cef1dca1b7d7a6fcfaa",
+            "name": "HOMELINK",
+            "type": {
+                "id": "92b062e62a07f8526c3b595c3fc7e6bd",
+                "name": "DURABLE MEDICAL EQUIPMENT"
+            },
+            "primary_gender": null,
+            "street1": "4204 WOODCOCK DR SUITE 205",
+            "street2": null,
+            "postal": "78228",
+            "location": {
+                "long": "-98.561100",
+                "lat": "29.455300",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "7d992bebe14c623fbe81a84ffb145e81",
+            "name": "HOMELINK",
+            "type": {
+                "id": "92b062e62a07f8526c3b595c3fc7e6bd",
+                "name": "DURABLE MEDICAL EQUIPMENT"
+            },
+            "primary_gender": null,
+            "street1": "4204 WOODCOCK DR SUITE 250",
+            "street2": null,
+            "postal": "78228",
+            "location": {
+                "long": "-98.561100",
+                "lat": "29.455300",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "7fef5f68f4a8778239a50d69dc0662c7",
+            "name": "HOMELINK",
+            "type": {
+                "id": "92b062e62a07f8526c3b595c3fc7e6bd",
+                "name": "DURABLE MEDICAL EQUIPMENT"
+            },
+            "primary_gender": null,
+            "street1": "2414 BABCOCK RD SUITE 104",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "a3845eb8f9c8e0b7e843865df96188c3",
+            "name": "HOMELINK",
+            "type": {
+                "id": "d3c839f46049e90a7df1ea92df442702",
+                "name": "HOME HEALTH SERVICES"
+            },
+            "primary_gender": null,
+            "street1": "5430 FREDERICKSBURG RD SUITE 130",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "5950d5dd052fe98127d2db5e3ccf647d",
+            "name": "HOMELINK",
+            "type": {
+                "id": "92b062e62a07f8526c3b595c3fc7e6bd",
+                "name": "DURABLE MEDICAL EQUIPMENT"
+            },
+            "primary_gender": null,
+            "street1": "2128 BABCOCK RD BLDG 1",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "c593e1198c6f35f3de83f8425fad7d0e",
+            "name": "HOMELINK",
+            "type": {
+                "id": "92b062e62a07f8526c3b595c3fc7e6bd",
+                "name": "DURABLE MEDICAL EQUIPMENT"
+            },
+            "primary_gender": null,
+            "street1": "2128 BABCOCK RD BLDG 2",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        },
+        {
+            "id": "d373c55f5399acd5bac262651d40059e",
+            "name": "HOMELINK",
+            "type": {
+                "id": "92b062e62a07f8526c3b595c3fc7e6bd",
+                "name": "DURABLE MEDICAL EQUIPMENT"
+            },
+            "primary_gender": null,
+            "street1": "4204 GARDENDALE ST SUITE 102",
+            "street2": null,
+            "postal": "78229",
+            "location": {
+                "long": "-98.566600",
+                "lat": "29.506800",
+                "city": {
+                    "id": "d59cbeb2cc15f699373c4e79901d976b",
+                    "name": "SAN ANTONIO",
+                    "location": {
+                        "long": null,
+                        "lat": null
+                    },
+                    "province": "TX",
+                    "country": {
+                        "id": "US",
+                        "id_alt": "USA",
+                        "name": "United States",
+                        "location": {
+                            "long": 38,
+                            "lat": -97
+                        },
+                        "info": {
+                            "population": 318892103,
+                            "area": 9826675,
+                            "currency": "USD"
+                        }
+                    }
+                }
+            },
+            "contact": {
+                "language": null,
+                "phone": "800 4821993",
+                "contacts": [],
+                "hours": null,
+                "website": null
+            }
+        }
+    ],
+    "meta": {
+        "message": "Okay",
+        "code": 200
+    }
+}
