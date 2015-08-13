@@ -134,6 +134,8 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
             mMap.setOnCameraChangeListener(mClusterManager);
             mMap.setOnMarkerClickListener(mClusterManager);
 
+            markList = mActivity.getList();
+
             if(markList != null) {
                 for(int i = 0; i<markList.size(); i++) {
                     if(!markList.get(i).getLatitude().equals("null")&&!markList.get(i).getLongitude().equals("null")) {
@@ -185,6 +187,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
             });
 
 //            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.5, -0.17), 11));
+            if(markList != null)
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.valueOf(markList.get(0).getLatitude()),
                     Double.valueOf(markList.get(0).getLongitude())), 11));
 
@@ -295,7 +298,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         mPostalTv = (TextView) view.findViewById(R.id.postal);
         mStaffNameTv = (TextView) view.findViewById(R.id.staffname);
 
-        markList = mActivity.getList();
+//        markList = mActivity.getList();
 
         if (network()) {
             buildGoogleApiClient();

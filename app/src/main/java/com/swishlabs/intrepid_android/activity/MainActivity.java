@@ -1,6 +1,7 @@
 package com.swishlabs.intrepid_android.activity;
 
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -64,6 +66,10 @@ MapFragment.OnFragmentInteractionListener{
         setContentView(R.layout.activity_main);
 
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setTitle("");
+//        this.requestWindowFeature(Window.FEATURE_ACTION_BAR);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -80,67 +86,97 @@ MapFragment.OnFragmentInteractionListener{
 
     private void getProviders() {
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    InputStream is = getAssets().open("provider.txt");
-                    if(is != null) {
-                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is,"UTF-8"));
-                        StringBuffer buffer=new StringBuffer();
-                        String line;
-                        while(null!=(line=bufferedReader.readLine())){
-                            buffer.append(line).append("\n");
-                        }
+ //       if(Build.MANUFACTURER.equals("unknown"))
+        if(!Build.MANUFACTURER.equals("Genymotion")) {
 
-                        is.close();
-                        String content = buffer.toString();
-
-                        try {
-                            JSONObject jsonObject = new JSONObject(content);
-                            JSONArray array = jsonObject.getJSONArray("providers");
-                            int len = array.length();
-                            providerList = new ArrayList<Provider>(len);
-
-                            for(int i = 0;i < len; i++) {
-                                Provider provider = new Provider();
-                                provider.setId(array.getJSONObject(i).optString("id"));
-                                provider.setType(array.getJSONObject(i).optJSONObject("facility").optJSONObject("type").optString("name"));
-                                provider.setName(array.getJSONObject(i).optJSONObject("facility").optString("name"));
-                                provider.setContent(array.getJSONObject(i).optString("name"));
-                                provider.setLongitude(array.getJSONObject(i).optJSONObject("facility").optJSONObject("location").optString("long"));
-                                provider.setLatitude(array.getJSONObject(i).optJSONObject("facility").optJSONObject("location").optString("lat"));
-                                provider.setAddress(array.getJSONObject(i).optJSONObject("facility").optString("street1"));
-                                provider.setPostal(array.getJSONObject(i).optJSONObject("facility").optString("postal"));
-                                provider.setContact(array.getJSONObject(i).optJSONObject("facility").optJSONObject("contact").optString("phone"));
-                                provider.setStaffName(array.getJSONObject(i).optJSONObject("staff").optString("name"));
-
-                                providerList.add(provider);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        InputStream is = getAssets().open("provider.txt");
+                        if (is != null) {
+                            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+                            StringBuffer buffer = new StringBuffer();
+                            String line;
+                            while (null != (line = bufferedReader.readLine())) {
+                                buffer.append(line).append("\n");
                             }
 
-//                                MapFragment mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.mapfragment);
-                            //                              mapFragment.markList = infoList;
+                            is.close();
+                            String content = buffer.toString();
 
+                            parseProvider(content);
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
-
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
+
+                }
+            }).start();
+        }else {
+            IControllerContentCallback icc = new IControllerContentCallback() {
+                @Override
+                public void handleSuccess(String content) throws JSONException {
+
+                    parseProvider(content);
                 }
 
-            }
-        }).start();
+                @Override
+                public void handleError(Exception e) {
+
+                }
+            };
+
+            ControllerContentTask cct = new ControllerContentTask(
+                    Constants.PPN_BASE_URL + "providers?by=city&q=d59cbeb2cc15f699373c4e79901d976b", icc,
+                    Enums.ConnMethod.GET, false
+            );
+
+            String ss = null;
+            cct.execute(ss);
+
+
+        }
 
     }
 
+    private void parseProvider(String content) {
+        if(content == null)
+            return;
+
+        try {
+            JSONObject jsonObject = new JSONObject(content);
+            JSONArray array = jsonObject.getJSONArray("providers");
+            int len = array.length();
+            providerList = new ArrayList<Provider>(len);
+
+            for(int i = 0;i < len; i++) {
+                Provider provider = new Provider();
+                provider.setId(array.getJSONObject(i).optString("id"));
+                provider.setType(array.getJSONObject(i).optJSONObject("facility").optJSONObject("type").optString("name"));
+                provider.setName(array.getJSONObject(i).optJSONObject("facility").optString("name"));
+                provider.setContent(array.getJSONObject(i).optString("name"));
+                provider.setLongitude(array.getJSONObject(i).optJSONObject("facility").optJSONObject("location").optString("long"));
+                provider.setLatitude(array.getJSONObject(i).optJSONObject("facility").optJSONObject("location").optString("lat"));
+                provider.setAddress(array.getJSONObject(i).optJSONObject("facility").optString("street1"));
+                provider.setPostal(array.getJSONObject(i).optJSONObject("facility").optString("postal"));
+                provider.setContact(array.getJSONObject(i).optJSONObject("facility").optJSONObject("contact").optString("phone"));
+                provider.setStaffName(array.getJSONObject(i).optJSONObject("staff").optString("name"));
+
+                providerList.add(provider);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main_map, menu);
         return true;
     }
 
@@ -152,7 +188,10 @@ MapFragment.OnFragmentInteractionListener{
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.filter_special_hospital) {
+            return true;
+        } else if (id == R.id.filter_hospital) {
+            getCities();
             return true;
         }
 
@@ -217,7 +256,8 @@ MapFragment.OnFragmentInteractionListener{
 
     private void getCities() {
 
-        if(true) {
+//        if(true) {
+        if(!Build.MANUFACTURER.equals("Genymotion")) {
             Handler handler = new Handler();
             handler.post(new Runnable() {
                 @Override
@@ -274,6 +314,8 @@ MapFragment.OnFragmentInteractionListener{
                 @Override
                 public void handleSuccess(String content) throws JSONException {
 
+                    String s = content;
+                    return;
                 }
 
                 @Override

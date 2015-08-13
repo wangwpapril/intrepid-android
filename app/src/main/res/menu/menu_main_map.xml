@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.swishlabs.intrepid_android.activity.MainActivity">
+    <item android:id="@+id/filter_special_hospital" android:title="SPECIALTY HOSPITAL"
+        android:orderInCategory="201" app:showAsAction="never" />
+
+    <item
+        android:id="@+id/filter_hospital"
+        android:title="HOSPITAL"
+        android:orderInCategory="202" />
+</menu>

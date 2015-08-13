@@ -15,7 +15,7 @@ public class Constants {
     String login = "cshah3@alumni.uwo.ca";
     String pw = "iloveapple";
 
-    public final static String PPN_BASE_URL = "http://devlamp03/ppn_api/public/api/v1/";
+    public final static String PPN_BASE_URL = "http://172.24.10.20/ppn_api/public/api/v1/";
 
 // development API:
 //   public final static String BASE_URL = "http://devlamp03/intrepid-api-laravel/public/v1";
