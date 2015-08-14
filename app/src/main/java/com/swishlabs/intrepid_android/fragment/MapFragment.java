@@ -68,6 +68,8 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
     MainActivity mActivity;
 
+    static public MapFragment mapFragment;
+
     RelativeLayout infoView;
     TextView mNameTv, mStaffNameTv, mContactTv, mAddressTv, mPostalTv;
     /**
@@ -85,6 +87,9 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);*/
+
+        mapFragment = fragment;
+
         return fragment;
     }
 
@@ -94,7 +99,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        setRetainInstance(true);
+//        setRetainInstance(true);
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -134,9 +139,10 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
             mMap.setOnCameraChangeListener(mClusterManager);
             mMap.setOnMarkerClickListener(mClusterManager);
 
-            markList = mActivity.getList();
+//            markList = mActivity.getList();
 
-            if(markList != null) {
+            markList = ((MainActivity) getActivity()).getList();
+/*            if(markList != null) {
                 for(int i = 0; i<markList.size(); i++) {
                     if(!markList.get(i).getLatitude().equals("null")&&!markList.get(i).getLongitude().equals("null")) {
                         mClusterManager.addItem(new Place( i,
@@ -147,7 +153,9 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
                         ));
                     }
                 }
-            }
+            }*/
+
+            setupMarkerList("All");
 
             mClusterManager.setRenderer(new InfoRender(getActivity(), mMap, mClusterManager));
 
@@ -217,6 +225,44 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         }*/
     }
 
+    public void refreshMap(String type) {
+//        mClusterManager.clearItems();
+        mMap.clear();
+
+        setupMarkerList(type);
+//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.valueOf(markList.get(0).getLatitude()),
+  //              Double.valueOf(markList.get(0).getLongitude())), 11));
+
+//        MapFragment mf = (MapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.mapfragment);
+        mClusterManager.setRenderer(new InfoRender(getActivity(), mMap, mClusterManager));
+
+    }
+
+    private void setupMarkerList(String type){
+
+        if(markList == null || markList.isEmpty())
+            return;
+
+        if(mClusterManager == null)
+            return;
+
+        mClusterManager.clearItems();
+
+        for(int i = 0; i<markList.size(); i++) {
+            if(type.equals("All") || markList.get(i).getType().equals(type)) {
+                if (!markList.get(i).getLatitude().equals("null") && !markList.get(i).getLongitude().equals("null")) {
+                    mClusterManager.addItem(new Place(i,
+                            Double.valueOf(markList.get(i).getLatitude()),
+                            Double.valueOf(markList.get(i).getLongitude()),
+                            markList.get(i).getType(),
+                            markList.get(i).getName()
+                    ));
+                }
+            }
+        }
+
+
+    }
     private void setUpMap() {
         Log.d("Assi","setUpMap");
 
@@ -256,7 +302,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
     }
 
     private Location getCurrentLocation(){
-        Log.d("Assi","getCurrentLocation");
+        Log.d("MapFragment","getCurrentLocation");
 
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
@@ -401,6 +447,16 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
                 getFragmentManager().beginTransaction().remove(fragment).commit();
 
 
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        return;
+    }
+
+    @Override
+    public void onDestroy () {
+        super.onDestroy();
     }
 
     private class Place implements ClusterItem {

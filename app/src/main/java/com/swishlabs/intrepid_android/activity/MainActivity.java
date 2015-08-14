@@ -187,8 +187,14 @@ MapFragment.OnFragmentInteractionListener{
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        MapFragment.mapFragment.refreshMap(item.getTitle().toString());
         //noinspection SimplifiableIfStatement
         if (id == R.id.filter_special_hospital) {
+
+            FragmentManager sf = getSupportFragmentManager();
+            MapFragment mf = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.mapfragment);
+
+//            MapFragment.mapFragment.refreshMap("HOSPITAL");
             return true;
         } else if (id == R.id.filter_hospital) {
             getCities();
