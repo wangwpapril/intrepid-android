@@ -1,11 +1,14 @@
 package com.swishlabs.intrepid_android.data.api.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
 /**
  * Created by wwang on 15-08-04.
  */
-public class Provider implements Serializable {
+public class Provider implements Serializable, Parcelable {
 
     String id;
     String name;
@@ -79,5 +82,15 @@ public class Provider implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
     }
 }

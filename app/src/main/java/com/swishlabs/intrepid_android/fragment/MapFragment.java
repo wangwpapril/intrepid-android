@@ -70,6 +70,8 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
     static public MapFragment mapFragment;
 
+    String currentFilter;
+
     RelativeLayout infoView;
     TextView mNameTv, mStaffNameTv, mContactTv, mAddressTv, mPostalTv;
     /**
@@ -99,11 +101,22 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-//        setRetainInstance(true);
+        setRetainInstance(true);
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+
+        markList.clear();
+
+        if(savedInstanceState != null){
+//            markList = savedInstanceState.getParcelableArrayList("List");
+  //          markList = (ArrayList<Provider>) savedInstanceState.getSerializable("List2");
+
+            currentFilter = savedInstanceState.getString("filter");
+        } else {
+            currentFilter = "All";
         }
 
     }
@@ -155,7 +168,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
                 }
             }*/
 
-            setupMarkerList("All");
+            setupMarkerList(currentFilter);
 
             mClusterManager.setRenderer(new InfoRender(getActivity(), mMap, mClusterManager));
 
@@ -228,6 +241,8 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
     public void refreshMap(String type) {
 //        mClusterManager.clearItems();
         mMap.clear();
+
+        currentFilter= type;
 
         setupMarkerList(type);
 //        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.valueOf(markList.get(0).getLatitude()),
@@ -451,7 +466,12 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        return;
+        super.onSaveInstanceState(outState);
+//
+//
+//      outState.putParcelableArrayList("List", (ArrayList<? extends Parcelable>) markList);
+//        outState.putSerializable("List2", (Serializable) markList);
+        outState.putString("filter", currentFilter);
     }
 
     @Override

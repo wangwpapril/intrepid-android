@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -186,14 +187,17 @@ MapFragment.OnFragmentInteractionListener{
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+//        MapFragment mf = (MapFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.pager + ":"+mViewPager.getCurrentItem());
 
+  //      mf.refreshMap(item.getTitle().toString());
         MapFragment.mapFragment.refreshMap(item.getTitle().toString());
         //noinspection SimplifiableIfStatement
         if (id == R.id.filter_special_hospital) {
 
             FragmentManager sf = getSupportFragmentManager();
-            MapFragment mf = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.mapfragment);
+//            MapFragment mf = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.mapfragment);
 
+//            MapFragment mf = (MapFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.pager + ":"+mViewPager.getCurrentItem());
 //            MapFragment.mapFragment.refreshMap("HOSPITAL");
             return true;
         } else if (id == R.id.filter_hospital) {
@@ -220,7 +224,7 @@ MapFragment.OnFragmentInteractionListener{
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
