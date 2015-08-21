@@ -1,7 +1,6 @@
 package com.swishlabs.intrepid_android.activity;
 
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -87,8 +86,8 @@ MapFragment.OnFragmentInteractionListener{
 
     private void getProviders() {
 
- //       if(Build.MANUFACTURER.equals("unknown"))
-        if(!Build.MANUFACTURER.equals("Genymotion")) {
+        if(false) {
+//        if(!Build.MANUFACTURER.equals("Genymotion")) {
 
             new Thread(new Runnable() {
                 @Override
@@ -266,8 +265,8 @@ MapFragment.OnFragmentInteractionListener{
 
     private void getCities() {
 
-//        if(true) {
-        if(!Build.MANUFACTURER.equals("Genymotion")) {
+        if(false) {
+//        if(!Build.MANUFACTURER.equals("Genymotion")) {
             Handler handler = new Handler();
             handler.post(new Runnable() {
                 @Override

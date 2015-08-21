@@ -228,14 +228,6 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
         }
 
-/*            if (mMap != null) {
-                setUpMap();
-            }else{
-                StringUtil.showAlertDialog("Could Not Load Map", "Please install Google Maps on your phone.", getActivity());
-            }
-        }else {
-            //           setUpMap();
-        }*/
     }
 
     public void refreshMap(String type) {
