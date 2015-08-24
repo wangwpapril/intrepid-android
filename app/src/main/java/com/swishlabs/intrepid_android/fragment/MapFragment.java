@@ -10,6 +10,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -187,6 +188,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
                     mNameTv.setText(markList.get(index).getName());
                     mStaffNameTv.setText("Staff Name: " + markList.get(index).getStaffName());
                     mContactTv.setText("Contact: " + markList.get(index).getContact());
+                    Linkify.addLinks(mContactTv, Linkify.PHONE_NUMBERS);
                     mAddressTv.setText("Address: " + markList.get(index).getAddress());
                     mPostalTv.setText("Postal: " + markList.get(index).getPostal());
                     return false;
