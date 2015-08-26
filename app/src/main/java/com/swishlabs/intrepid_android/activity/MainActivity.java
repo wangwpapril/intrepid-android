@@ -60,6 +60,9 @@ MapFragment.OnFragmentInteractionListener{
 
     List<Provider> providerList;
 
+    int current_menu_id = -1;
+    private Menu mainMenu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +80,7 @@ MapFragment.OnFragmentInteractionListener{
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+
 
 //        getCities();
 
@@ -177,6 +181,16 @@ MapFragment.OnFragmentInteractionListener{
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main_map, menu);
+        current_menu_id = menu.getItem(0).getItemId();
+        mainMenu = menu;
+        int size = menu.size();
+        for(int i=0; i<size; i++) {
+            if(menu.getItem(i).getItemId()==current_menu_id) {
+                menu.getItem(i).setChecked(true);
+            }else {
+                menu.getItem(i).setChecked(false);
+            }
+        }
         return true;
     }
 
@@ -186,10 +200,22 @@ MapFragment.OnFragmentInteractionListener{
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-//        MapFragment mf = (MapFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.pager + ":"+mViewPager.getCurrentItem());
+        current_menu_id = id;
 
+        int size = mainMenu.size();
+        for(int i=0; i<size; i++) {
+            if(mainMenu.getItem(i).getItemId()==current_menu_id) {
+                mainMenu.getItem(i).setChecked(true);
+            }else {
+                mainMenu.getItem(i).setChecked(false);
+            }
+        }
+
+//        MapFragment mf = (MapFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.pager + ":"+mViewPager.getCurrentItem());
   //      mf.refreshMap(item.getTitle().toString());
+
         MapFragment.mapFragment.refreshMap(item.getTitle().toString());
+
         //noinspection SimplifiableIfStatement
         if (id == R.id.filter_special_hospital) {
 
@@ -198,10 +224,10 @@ MapFragment.OnFragmentInteractionListener{
 
 //            MapFragment mf = (MapFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.pager + ":"+mViewPager.getCurrentItem());
 //            MapFragment.mapFragment.refreshMap("HOSPITAL");
-            return true;
+
         } else if (id == R.id.filter_hospital) {
-            getCities();
-            return true;
+//            getCities();
+
         }
 
         return super.onOptionsItemSelected(item);

@@ -4,13 +4,20 @@
     tools:context="com.swishlabs.intrepid_android.activity.MainActivity">
     <item android:id="@+id/all"
         android:title="All"
+        android:checkable="true"
+        android:color="@drawable/menu_item_selector"
         android:orderInCategory="200"/>
 
-    <item android:id="@+id/filter_special_hospital" android:title="SPECIALTY HOSPITAL"
+    <item android:id="@+id/filter_special_hospital"
+        android:title="SPECIALTY HOSPITAL"
+        android:checkable="true"
+        android:color="@drawable/menu_item_selector"
         android:orderInCategory="201" app:showAsAction="never" />
 
     <item
         android:id="@+id/filter_hospital"
+        android:color="@drawable/menu_item_selector"
+        android:checkable="true"
         android:title="HOSPITAL"
         android:orderInCategory="202" />
 </menu>

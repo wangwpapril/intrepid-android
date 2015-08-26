@@ -511,8 +511,8 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         @Override
         protected void onBeforeClusterItemRendered(Place item, MarkerOptions markerOptions) {
 //            markerOptions.icon(item.getIcon());
-            markerOptions.snippet(item.getSnippet());
-            markerOptions.title(item.getTitle());
+//            markerOptions.snippet(item.getSnippet());
+//            markerOptions.title(item.getTitle());
             super.onBeforeClusterItemRendered(item, markerOptions);
         }
     }

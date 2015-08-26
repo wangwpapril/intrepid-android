@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="OnPressed" parent="AppTheme">#FF0000</color>
+
     <color name="transparent">#00000000</color>
     <color name="window_bg">#f0f0f0</color>
     <color name="light_gray">#999999</color>
