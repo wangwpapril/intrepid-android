@@ -155,19 +155,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
 //            markList = mActivity.getList();
 
-            markList = ((MainActivity) getActivity()).getList();
-/*            if(markList != null) {
-                for(int i = 0; i<markList.size(); i++) {
-                    if(!markList.get(i).getLatitude().equals("null")&&!markList.get(i).getLongitude().equals("null")) {
-                        mClusterManager.addItem(new Place( i,
-                                Double.valueOf(markList.get(i).getLatitude()),
-                                Double.valueOf(markList.get(i).getLongitude()),
-                                markList.get(i).getType(),
-                                markList.get(i).getName()
-                        ));
-                    }
-                }
-            }*/
+//            markList = ((MainActivity) getActivity()).getList();
 
             setupMarkerList(currentFilter);
 
@@ -248,6 +236,8 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
     }
 
     private void setupMarkerList(String type){
+
+        markList = ((MainActivity) getActivity()).getList();
 
         if(markList == null || markList.isEmpty())
             return;

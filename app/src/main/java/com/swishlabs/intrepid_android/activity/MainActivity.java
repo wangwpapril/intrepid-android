@@ -111,6 +111,8 @@ MapFragment.OnFragmentInteractionListener{
 
                             parseProvider(content);
 
+                            MapFragment.mapFragment.refreshMap(mainMenu.getItem(current_menu_id).getTitle().toString());
+
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
