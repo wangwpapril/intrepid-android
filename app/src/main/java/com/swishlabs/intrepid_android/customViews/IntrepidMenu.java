@@ -20,6 +20,7 @@ import android.widget.ScrollView;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.activity.AceInsuranceActivity;
 import com.swishlabs.intrepid_android.activity.AssistanceActivity;
+import com.swishlabs.intrepid_android.activity.MainActivity;
 import com.swishlabs.intrepid_android.activity.SecurityActivity;
 import com.swishlabs.intrepid_android.activity.SettingsActivity;
 import com.swishlabs.intrepid_android.activity.TripPagesActivity;
@@ -290,7 +291,7 @@ public class IntrepidMenu extends ScrollView {
         weatherButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                animateButton(weatherButton, context, ViewWeatherActivity.class, activity);
+                animateButton(weatherButton, context, MainActivity.class, activity);
             }
         });
 
