@@ -24,6 +24,8 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -58,7 +60,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
     private String mParam1;
     private String mParam2;
 
-    private GoogleMap mMap;
+    public GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
 
     private OnFragmentInteractionListener mListener;
@@ -72,6 +74,8 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
     static public MapFragment mapFragment;
 
     String currentFilter;
+    int index = -1;
+    public boolean flagDone=false;
 
     RelativeLayout infoView;
     TextView mNameTv, mStaffNameTv, mContactTv, mAddressTv, mPostalTv;
@@ -161,6 +165,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
             mClusterManager.setRenderer(new InfoRender(getActivity(), mMap, mClusterManager));
 
+
             mClusterManager.setOnClusterClickListener(new ClusterManager.OnClusterClickListener<Place>() {
                 @Override
                 public boolean onClusterClick(Cluster<Place> cluster) {
@@ -172,13 +177,14 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
                 @Override
                 public boolean onClusterItemClick(Place place) {
                     infoView.setVisibility(View.VISIBLE);
-                    int index = place.getIndex();
+                    index = place.getIndex();
                     mNameTv.setText(markList.get(index).getName());
-                    mStaffNameTv.setText("Staff Name: " + markList.get(index).getStaffName());
-                    mContactTv.setText("Contact: " + markList.get(index).getContact());
+                    mStaffNameTv.setText( markList.get(index).getStaffName());
+                    mContactTv.setText(markList.get(index).getContact());
                     Linkify.addLinks(mContactTv, Linkify.PHONE_NUMBERS);
-                    mAddressTv.setText("Address: " + markList.get(index).getAddress());
-                    mPostalTv.setText("Postal: " + markList.get(index).getPostal());
+                    mAddressTv.setText(markList.get(index).getAddress());
+                    mPostalTv.setText(markList.get(index).getPostal());
+                    refreshMap(currentFilter);
                     return false;
                 }
             });
@@ -209,10 +215,13 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
                 }
             });
 
+
             mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                 @Override
                 public void onMapClick(LatLng latLng) {
                     infoView.setVisibility(View.GONE);
+                    index = -1;
+                    refreshMap(currentFilter);
                 }
             });
 
@@ -223,6 +232,11 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
     public void refreshMap(String type) {
 //        mClusterManager.clearItems();
         mMap.clear();
+
+        if(type.equals("Special Hospital"))
+            type="SPECIALTY HOSPITAL";
+        else if(type.equals("Hospital"))
+            type = "HOSPITAL";
 
         currentFilter= type;
 
@@ -235,7 +249,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
     }
 
-    private void setupMarkerList(String type){
+    public void setupMarkerList(String type){
 
         markList = ((MainActivity) getActivity()).getList();
 
@@ -259,6 +273,8 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
                 }
             }
         }
+
+        flagDone = true;
 
 
     }
@@ -468,6 +484,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         private final String mTitle;
         private final String mSnippet;
         private final int index;
+        private final BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.map_marker_inactive);
 
         public Place(int ind, double lat, double lng, String t, String s) {
             index = ind;
@@ -490,6 +507,8 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         }
 
         public int getIndex() { return index; }
+
+        public BitmapDescriptor getIcon() { return icon; }
     }
 
     private class InfoRender extends DefaultClusterRenderer<Place> {
@@ -500,9 +519,18 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
         @Override
         protected void onBeforeClusterItemRendered(Place item, MarkerOptions markerOptions) {
+
+
+
+            if(index==item.getIndex())
+                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker_active));
+            else
+                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker_inactive));
 //            markerOptions.icon(item.getIcon());
+
 //            markerOptions.snippet(item.getSnippet());
 //            markerOptions.title(item.getTitle());
+//            markerOptions.icon((getResources().getDrawable(R.drawable.health_ic)));
             super.onBeforeClusterItemRendered(item, markerOptions);
         }
     }

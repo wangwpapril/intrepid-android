@@ -19,69 +19,127 @@
         android:layout_height="match_parent"
         android:id="@+id/infoview"
         android:layout_weight="2"
-        android:visibility="gone">
+        android:background="#FF781F"
+        android:paddingLeft="40dp"
+        android:paddingRight="20dp"
+        android:visibility="visible">
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/info_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/name"
-            android:text="Name"
-            android:textSize="17sp"
-            android:gravity="center_horizontal"
-            />
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/hospital_icon"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/name"
+                android:text="Name"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:gravity="left"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/info_staff"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:id="@+id/line1"
-            android:layout_gravity="center_vertical"
-            android:background="@color/gray"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="20dp"
-            android:layout_below="@+id/name"
-            android:layout_marginRight="20dp" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/staffname"
-            android:layout_below="@+id/name"
-            android:layout_marginTop="10dp"
-            android:layout_alignStart="@+id/line1"
-            android:text="Staff Name:"
-            android:textSize="17sp"/>
+            android:layout_below="@+id/info_title"
+            android:layout_marginTop="20dp"
+            android:layout_alignStart="@+id/info_title"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/contact_icon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/staffname"
+                android:layout_marginLeft="10dp"
+                android:text="Staff Name:"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/info_contact"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/contact"
-            android:layout_below="@+id/staffname"
-            android:layout_alignStart="@+id/line1"
-            android:layout_marginTop="10dp"
-            android:text="Contact"
-            android:textSize="17sp"/>
+            android:layout_below="@+id/info_staff"
+            android:layout_alignStart="@+id/info_title"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/phone_icon"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/contact"
+                android:layout_marginLeft="10dp"
+                android:text="Contact"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/info_address"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/address"
-            android:layout_below="@+id/contact"
-            android:layout_alignStart="@+id/line1"
-            android:layout_marginTop="10dp"
-            android:text="Address"
-            android:textSize="17sp"/>
+            android:layout_below="@+id/info_contact"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/postal"
-            android:layout_below="@+id/address"
-            android:layout_alignStart="@+id/line1"
-            android:layout_marginTop="10dp"
-            android:text="Postal"
-            android:textSize="17sp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/location1"/>
 
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/address"
+                android:layout_marginLeft="10dp"
+                android:text="Address"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/postal"
+                android:text="Postal"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+
+
+
+        </LinearLayout>
 
     </RelativeLayout>
 

@@ -2,6 +2,10 @@
 <resources>
     <color name="OnPressed" parent="AppTheme">#FF0000</color>
 
+    <color name="bright_gray">#EFED07</color>
+
+    <color name="orange">#FF781F</color>
+
     <color name="transparent">#00000000</color>
     <color name="window_bg">#f0f0f0</color>
     <color name="light_gray">#999999</color>

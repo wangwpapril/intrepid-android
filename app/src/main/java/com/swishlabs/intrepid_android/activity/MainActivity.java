@@ -70,8 +70,12 @@ MapFragment.OnFragmentInteractionListener{
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+       setSupportActionBar(toolbar);
         setTitle("");
+
+//        toolbar.setBackgroundColor(getResources().getColor(R.color.blue));
+        toolbar.setPopupTheme(R.style.MyActionBar);
+
 //        this.requestWindowFeature(Window.FEATURE_ACTION_BAR);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -111,6 +115,7 @@ MapFragment.OnFragmentInteractionListener{
 
                             parseProvider(content);
 
+                            MapFragment.mapFragment.setupMarkerList("All");
                             MapFragment.mapFragment.refreshMap(mainMenu.getItem(current_menu_id).getTitle().toString());
 
                         }
@@ -126,6 +131,11 @@ MapFragment.OnFragmentInteractionListener{
                 public void handleSuccess(String content) throws JSONException {
 
                     parseProvider(content);
+
+                    if(!MapFragment.mapFragment.flagDone && MapFragment.mapFragment.mMap != null) {
+                        MapFragment.mapFragment.setupMarkerList("All");
+                        MapFragment.mapFragment.refreshMap(mainMenu.getItem(current_menu_id).getTitle().toString());
+                    }
                 }
 
                 @Override
