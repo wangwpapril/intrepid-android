@@ -1,6 +1,7 @@
 package com.swishlabs.intrepid_android.activity;
 
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.SupportMapFragment;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
@@ -64,6 +66,7 @@ MapFragment.OnFragmentInteractionListener{
 
     int current_menu_id = -1;
     private Menu mainMenu;
+    String current_menu_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,8 +98,8 @@ MapFragment.OnFragmentInteractionListener{
 
     private void getProviders() {
 
-        if(false) {
-//        if(!Build.MANUFACTURER.equals("Genymotion")) {
+ //       if(false) {
+       if(!Build.MANUFACTURER.equals("Genymotion")) {
 
             new Thread(new Runnable() {
                 @Override
@@ -116,8 +119,10 @@ MapFragment.OnFragmentInteractionListener{
 
                             parseProvider(content);
 
-                            MapFragment.mapFragment.setupMarkerList("All");
-                            MapFragment.mapFragment.refreshMap(mainMenu.getItem(current_menu_id).getTitle().toString());
+                            if(!MapFragment.mapFragment.flagDone && MapFragment.mapFragment.mMap != null) {
+//                                MapFragment.mapFragment.setupMarkerList("All");
+                                MapFragment.mapFragment.refreshMap(current_menu_title);
+                            }
 
                         }
                     } catch (IOException e) {
@@ -134,8 +139,9 @@ MapFragment.OnFragmentInteractionListener{
                     parseProvider(content);
 
                     if(!MapFragment.mapFragment.flagDone && MapFragment.mapFragment.mMap != null) {
-                        MapFragment.mapFragment.setupMarkerList("All");
-                        MapFragment.mapFragment.refreshMap(mainMenu.getItem(current_menu_id).getTitle().toString());
+//                        MapFragment.mapFragment.setupMarkerList("All");
+//                        MapFragment.mapFragment.refreshMap(current_menu_title);
+                        MapFragment.mapFragment.setUpMapIfNeeded();
                     }
                 }
 
@@ -206,6 +212,7 @@ MapFragment.OnFragmentInteractionListener{
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main_map, menu);
         current_menu_id = menu.getItem(0).getItemId();
+        current_menu_title = menu.getItem(0).getTitle().toString();
         mainMenu = menu;
         int size = menu.size();
         for(int i=0; i<size; i++) {
@@ -225,6 +232,7 @@ MapFragment.OnFragmentInteractionListener{
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         current_menu_id = id;
+        current_menu_title = item.getTitle().toString();
 
         int size = mainMenu.size();
         for(int i=0; i<size; i++) {
@@ -446,7 +454,13 @@ MapFragment.OnFragmentInteractionListener{
     @Override
     public void onBackPressed(){
         Log.e("MainActivity", "onBackPressed_main ");
-//        finish();
+
+        SupportMapFragment fragment = (SupportMapFragment) MapFragment.mapFragment.getChildFragmentManager().findFragmentById(R.id.map1);
+
+        if(fragment != null)
+            getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+
+        finish();
         super.onBackPressed();
         this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }

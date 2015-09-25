@@ -143,7 +143,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         return mActiveNet != null && mActiveNet.isConnectedOrConnecting();
     }
 
-    private void setUpMapIfNeeded() {
+    public void setUpMapIfNeeded() {
         Log.d("MapFragment", "setUpMapIfNeeded");
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
@@ -204,7 +204,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
             });
 
 //            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.5, -0.17), 11));
-            if(markList != null)
+            if(markList != null && !markList.isEmpty())
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.valueOf(markList.get(0).getLatitude()),
                     Double.valueOf(markList.get(0).getLongitude())), 11));
 
@@ -251,6 +251,8 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
     }
 
     public void setupMarkerList(String type){
+
+        flagDone = false;
 
         markList = ((MainActivity) getActivity()).getList();
 
@@ -457,10 +459,10 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         super.onDestroyView();
 
 
-            SupportMapFragment fragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map1);
+/*            SupportMapFragment fragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map1);
 
             if(fragment != null)
-                getFragmentManager().beginTransaction().remove(fragment).commit();
+                getFragmentManager().beginTransaction().remove(fragment).commit();*/
 
 
     }
