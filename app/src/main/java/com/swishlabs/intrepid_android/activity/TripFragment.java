@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,11 +20,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
-import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.RoundedCornersTransformation;
-import com.swishlabs.intrepid_android.customViews.RoundedTransformation;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
@@ -125,7 +121,8 @@ public class TripFragment extends android.support.v4.app.Fragment {
     private void tripClick(){
         Common.sendDirectTracking(TripPagesActivity.getInstance(), "View Trip", "My Trips", mDestinationName, -1);
         TripPagesActivity.getInstance().network();
-        if (TripPagesActivity.getInstance().getNetworkConnectivity()){
+        if (false){
+//            if (TripPagesActivity.getInstance().getNetworkConnectivity()){
             TripPagesActivity.getInstance().dialogLoading.show();
             DataDownloader downloader = new DataDownloader();
             downloader.initializeDownload(TripPagesActivity.getInstance(), null, null, mDestinationId, TripPagesActivity.getInstance());

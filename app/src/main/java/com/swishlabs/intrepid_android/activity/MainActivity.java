@@ -10,12 +10,14 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
@@ -68,6 +70,8 @@ MapFragment.OnFragmentInteractionListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        MyApplication.getInstance().addActivity(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
        setSupportActionBar(toolbar);
@@ -291,7 +295,7 @@ MapFragment.OnFragmentInteractionListener{
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 4;
+            return 1;
         }
 
         @Override
@@ -438,5 +442,14 @@ MapFragment.OnFragmentInteractionListener{
     public void onStart() {
         super.onStart();
     }
+
+    @Override
+    public void onBackPressed(){
+        Log.e("MainActivity", "onBackPressed_main ");
+//        finish();
+        super.onBackPressed();
+        this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
 
 }

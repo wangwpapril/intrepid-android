@@ -158,10 +158,6 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
             mMap.setOnCameraChangeListener(mClusterManager);
             mMap.setOnMarkerClickListener(mClusterManager);
 
-//            markList = mActivity.getList();
-
-//            markList = ((MainActivity) getActivity()).getList();
-
             setupMarkerList(currentFilter);
 
             mClusterManager.setRenderer(new InfoRender(getActivity(), mMap, mClusterManager));
@@ -183,6 +179,9 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
                     mStaffNameTv.setText( markList.get(index).getStaffName());
                     mContactTv.setText(markList.get(index).getContact());
                     Linkify.addLinks(mContactTv, Linkify.PHONE_NUMBERS);
+                    mContactTv.setLinkTextColor(getResources().getColor(R.color.white));
+//                    mContactTv.setPaintFlags(Paint. UNDERLINE_TEXT_FLAG );
+//                    mContactTv.getPaint().setFakeBoldText(true);
                     mAddressTv.setText(markList.get(index).getAddress());
                     mPostalTv.setText(markList.get(index).getPostal());
                     refreshMap(currentFilter);
@@ -473,7 +472,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 //
 //      outState.putParcelableArrayList("List", (ArrayList<? extends Parcelable>) markList);
 //        outState.putSerializable("List2", (Serializable) markList);
-        outState.putString("filter", currentFilter);
+//        outState.putString("filter", currentFilter);
     }
 
     @Override
