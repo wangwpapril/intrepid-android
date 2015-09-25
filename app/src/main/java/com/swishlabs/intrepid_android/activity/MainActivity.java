@@ -85,9 +85,6 @@ MapFragment.OnFragmentInteractionListener{
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-
-//        getCities();
-
         getProviders();
 
     }
@@ -167,7 +164,10 @@ MapFragment.OnFragmentInteractionListener{
             int len = array.length();
             providerList = new ArrayList<Provider>(len);
 
+
             for(int i = 0;i < len; i++) {
+                boolean duplicated = false;
+
                 Provider provider = new Provider();
                 provider.setId(array.getJSONObject(i).optString("id"));
                 provider.setType(array.getJSONObject(i).optJSONObject("facility").optJSONObject("type").optString("name"));
@@ -180,7 +180,15 @@ MapFragment.OnFragmentInteractionListener{
                 provider.setContact(array.getJSONObject(i).optJSONObject("facility").optJSONObject("contact").optString("phone"));
                 provider.setStaffName(array.getJSONObject(i).optJSONObject("staff").optString("name"));
 
-                providerList.add(provider);
+                for (Provider pv : providerList) {
+                    if (provider.getLatitude().equals(pv.getLatitude()) && provider.getLongitude().equals(pv.getLongitude())) {
+                        duplicated = true;
+                        break;
+                    }
+
+                }
+                if(!duplicated)
+                    providerList.add(provider);
             }
 
         } catch (JSONException e) {

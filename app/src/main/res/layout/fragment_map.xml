@@ -22,7 +22,7 @@
         android:background="#FF781F"
         android:paddingLeft="40dp"
         android:paddingRight="20dp"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <LinearLayout
             android:id="@+id/info_title"

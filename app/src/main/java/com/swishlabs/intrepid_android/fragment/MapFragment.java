@@ -530,7 +530,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
 //            markerOptions.snippet(item.getSnippet());
 //            markerOptions.title(item.getTitle());
-//            markerOptions.icon((getResources().getDrawable(R.drawable.health_ic)));
+
             super.onBeforeClusterItemRendered(item, markerOptions);
         }
     }
