@@ -34,6 +34,7 @@ import com.google.maps.android.clustering.Cluster;
 import com.google.maps.android.clustering.ClusterItem;
 import com.google.maps.android.clustering.ClusterManager;
 import com.google.maps.android.clustering.view.DefaultClusterRenderer;
+import com.google.maps.android.ui.IconGenerator;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.activity.MainActivity;
 import com.swishlabs.intrepid_android.data.api.model.Provider;
@@ -219,6 +220,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
             mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                 @Override
                 public void onMapClick(LatLng latLng) {
+
                     infoView.setVisibility(View.GONE);
                     index = -1;
                     refreshMap(currentFilter);
@@ -513,6 +515,9 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
     private class InfoRender extends DefaultClusterRenderer<Place> {
 
+        private final IconGenerator mClusterIconGenerator = new IconGenerator(getActivity());
+
+
         public InfoRender(Context context, GoogleMap map, ClusterManager<Place> clusterManager) {
             super(context, map, clusterManager);
         }
@@ -533,5 +538,30 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
             super.onBeforeClusterItemRendered(item, markerOptions);
         }
+/*
+        @Override
+        protected void onClusterItemRendered(Place clusterItem, Marker marker) {
+            super.onClusterItemRendered(clusterItem, marker);
+        }
+
+        @Override
+        protected void onBeforeClusterRendered(Cluster<Place> cluster, MarkerOptions markerOptions){
+
+            final Drawable clusterIcon = getResources().getDrawable(R.drawable.health_ic);
+//            clusterIcon.setColorFilter(getResources().getColor(android.R.color.holo_orange_light), PorterDuff.Mode.SRC_ATOP);
+
+            mClusterIconGenerator.setBackground(clusterIcon);
+
+            //modify padding for one or two digit numbers
+            if (cluster.getSize() < 10) {
+                mClusterIconGenerator.setContentPadding(40, 20, 0, 0);
+            }
+            else {
+                mClusterIconGenerator.setContentPadding(30, 20, 0, 0);
+            }
+
+            Bitmap icon = mClusterIconGenerator.makeIcon(String.valueOf(cluster.getSize()));
+            markerOptions.icon(BitmapDescriptorFactory.fromBitmap(icon));
+        }*/
     }
 }
