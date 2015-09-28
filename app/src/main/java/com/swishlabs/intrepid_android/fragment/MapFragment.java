@@ -146,7 +146,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
     public void setUpMapIfNeeded() {
         Log.d("MapFragment", "setUpMapIfNeeded");
         // Do a null check to confirm that we have not already instantiated the map.
-        if (mMap == null) {
+        if (mMap == null || flagDone == false) {
             // Try to obtain the map from the SupportMapFragment.
 //            mMap = view.findViewById(R.id.map).getMap
             // Check if we were successful in obtaining the map.

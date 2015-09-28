@@ -122,6 +122,7 @@ MapFragment.OnFragmentInteractionListener{
                             if(!MapFragment.mapFragment.flagDone && MapFragment.mapFragment.mMap != null) {
 //                                MapFragment.mapFragment.setupMarkerList("All");
 //                                MapFragment.mapFragment.refreshMap(current_menu_title);
+                                MapFragment.mapFragment.setUpMapIfNeeded();
                             }
 
                         }
@@ -141,7 +142,7 @@ MapFragment.OnFragmentInteractionListener{
                     if(!MapFragment.mapFragment.flagDone && MapFragment.mapFragment.mMap != null) {
 //                        MapFragment.mapFragment.setupMarkerList("All");
 //                        MapFragment.mapFragment.refreshMap(current_menu_title);
-//                        MapFragment.mapFragment.setUpMapIfNeeded();
+                        MapFragment.mapFragment.setUpMapIfNeeded();
                     }
                 }
 
