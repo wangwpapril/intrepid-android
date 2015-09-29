@@ -194,7 +194,7 @@
 
             <ImageView
                 android:layout_width="fill_parent"
-                android:src="@drawable/weather_ic"
+                android:src="@drawable/map_ic"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp" />
@@ -202,7 +202,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:textColor="#DFE4E7"
-                android:text="Weather"
+                android:text="PPN Map"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|bottom"
