@@ -42,9 +42,9 @@
     <drawable name="divder">#34333a</drawable>
 
 
-    <color name="theme_default_primary">#333f48</color>
-    <color name="theme_default_primary_dark">#333f48</color>
-    <color name="theme_accent">#84bd00</color>
+    <color name="theme_default_primary">#035660</color>
+    <color name="theme_default_primary_dark">#071b23</color>
+    <color name="theme_accent">#FF781F</color>
     <color name="theme_window_background">#ECECEC</color>
 
     <!-- general text colors -->

@@ -54,9 +54,10 @@ public class MainActivity extends AppCompatActivity implements ItemFragment.OnFr
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        toolbar.setTitle("Local Information");
         final ActionBar ab = getSupportActionBar();
-//        ab.setHomeAsUpIndicator(R.drawable.ic_menu);
-  //      ab.setDisplayHomeAsUpEnabled(true);
+        ab.setHomeAsUpIndicator(R.drawable.ic_menu);
+        ab.setDisplayHomeAsUpEnabled(true);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -121,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements ItemFragment.OnFr
 
     @Override
     public void onFragmentInteraction(String id) {
-        
+
     }
 
     static class Adapter extends FragmentPagerAdapter {
