@@ -56,6 +56,11 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name=".activity.MainActivity"
+            android:label="Login"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name=".activity.SignupActivity"
             android:label="Signup"
             android:screenOrientation="portrait" >
