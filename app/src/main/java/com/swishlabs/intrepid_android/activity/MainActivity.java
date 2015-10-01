@@ -42,7 +42,7 @@ import java.util.List;
 /**
  * TODO
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ItemFragment.OnFragmentInteractionListener {
 
     private DrawerLayout mDrawerLayout;
 
@@ -101,9 +101,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new ViewDestinationActivity.OverviewCultureFragment().newInstance(0), "DASHBOARD");
-        adapter.addFragment(new ViewDestinationActivity.OverviewGeneralFragment().newInstance(1), "MY TRIPS");
-        adapter.addFragment(new ViewDestinationActivity.OverviewCurrencyFragment().newInstance(2), "ACE");
+        adapter.addFragment(ItemFragment.newInstance(null, null), "DASHBOARD");
+        adapter.addFragment(ItemFragment.newInstance(null, null), "MY TRIPS");
+        adapter.addFragment(ItemFragment.newInstance(null, null), "ACE");
         viewPager.setAdapter(adapter);
     }
 
@@ -117,6 +117,11 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onFragmentInteraction(String id) {
+        
     }
 
     static class Adapter extends FragmentPagerAdapter {
