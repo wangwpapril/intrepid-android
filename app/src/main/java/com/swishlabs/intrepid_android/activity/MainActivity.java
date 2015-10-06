@@ -17,9 +17,7 @@
 package com.swishlabs.intrepid_android.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -33,8 +31,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewStub;
 
 import com.swishlabs.intrepid_android.R;
+import com.swishlabs.intrepid_android.customViews.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +45,17 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements ItemFragment.OnFragmentInteractionListener {
 
     private DrawerLayout mDrawerLayout;
+
+    protected ViewStub mEmpty;
+    protected View mEmptyView;
+    protected int mEmptyId;
+
+    protected ViewStub mFloatingButtonViewStub;
+    protected View mFloatingButtonView;
+    protected int mFloatingButtonId;
+    protected FloatingActionButton defaultFloatingActionButton;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,14 +83,32 @@ public class MainActivity extends AppCompatActivity implements ItemFragment.OnFr
             setupViewPager(viewPager);
         }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        mFloatingButtonId = R.layout.floating_view;
+        defaultFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
+/*        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
+
+        mEmpty = (ViewStub) findViewById(R.id.emptyview);
+        mFloatingButtonViewStub = (ViewStub) findViewById(R.id.floatingActionViewStub);
+
+        mEmpty.setLayoutResource(mEmptyId);
+
+        mFloatingButtonViewStub.setLayoutResource(mFloatingButtonId);
+
+        if (mEmptyId != 0)
+            mEmptyView = mEmpty.inflate();
+        mEmpty.setVisibility(View.GONE);
+
+        if (mFloatingButtonId != 0) {
+            mFloatingButtonView = mFloatingButtonViewStub.inflate();
+            mFloatingButtonView.setVisibility(View.VISIBLE);
+        }
+
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
