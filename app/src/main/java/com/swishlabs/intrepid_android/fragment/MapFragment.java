@@ -76,6 +76,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
     String currentFilter;
     int index = -1;
+    LatLng selectedLatLng = null;
     public boolean flagDone=false;
 
     RelativeLayout infoView;
@@ -170,6 +171,9 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
                 public boolean onClusterItemClick(Place place) {
                     infoView.setVisibility(View.VISIBLE);
                     index = place.getIndex();
+
+                    selectedLatLng = place.getPosition();
+
                     mNameTv.setText(markList.get(index).getName());
                     mStaffNameTv.setText( markList.get(index).getStaffName());
                     mContactTv.setText(markList.get(index).getContact());
@@ -214,6 +218,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
                     infoView.setVisibility(View.GONE);
                     index = -1;
+                    selectedLatLng = null;
                     refreshMap(currentFilter);
                 }
             });
@@ -505,7 +510,8 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
 
 
-            if(index==item.getIndex())
+            if(index==item.getIndex()||(selectedLatLng!=null&&(item.getPosition().latitude== selectedLatLng.latitude &&
+            item.getPosition().longitude==selectedLatLng.longitude)))
                 markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker_active));
             else
                 markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker_inactive));

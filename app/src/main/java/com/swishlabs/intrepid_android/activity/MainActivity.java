@@ -194,7 +194,7 @@ MapFragment.OnFragmentInteractionListener{
                     }
 
                 }
-                if(!duplicated)
+ //               if(!duplicated)
                     providerList.add(provider);
             }
 
