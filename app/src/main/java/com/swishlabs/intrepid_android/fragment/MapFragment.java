@@ -117,9 +117,6 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         markList.clear();
 
         if(savedInstanceState != null){
-//            markList = savedInstanceState.getParcelableArrayList("List");
-  //          markList = (ArrayList<Provider>) savedInstanceState.getSerializable("List2");
-
             currentFilter = savedInstanceState.getString("filter");
         } else {
             currentFilter = "All";
@@ -147,8 +144,6 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         Log.d("MapFragment", "setUpMapIfNeeded");
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null || flagDone == false) {
-            // Try to obtain the map from the SupportMapFragment.
-//            mMap = view.findViewById(R.id.map).getMap
             // Check if we were successful in obtaining the map.
 
             mMap = ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map1))
@@ -180,8 +175,6 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
                     mContactTv.setText(markList.get(index).getContact());
                     Linkify.addLinks(mContactTv, Linkify.PHONE_NUMBERS);
                     mContactTv.setLinkTextColor(getResources().getColor(R.color.white));
-//                    mContactTv.setPaintFlags(Paint. UNDERLINE_TEXT_FLAG );
-//                    mContactTv.getPaint().setFakeBoldText(true);
                     mAddressTv.setText(markList.get(index).getAddress());
                     mPostalTv.setText(markList.get(index).getPostal());
                     refreshMap(currentFilter);
@@ -203,7 +196,6 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
                 }
             });
 
-//            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.5, -0.17), 11));
             if(markList != null && !markList.isEmpty())
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.valueOf(markList.get(0).getLatitude()),
                     Double.valueOf(markList.get(0).getLongitude())), 11));
@@ -242,10 +234,6 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         currentFilter= type;
 
         setupMarkerList(type);
-//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.valueOf(markList.get(0).getLatitude()),
-  //              Double.valueOf(markList.get(0).getLongitude())), 11));
-
-//        MapFragment mf = (MapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.mapfragment);
         mClusterManager.setRenderer(new InfoRender(getActivity(), mMap, mClusterManager));
 
     }
@@ -352,7 +340,6 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_map, container, false);
         Log.d("MapFragment","CreateView");
         View view = inflater.inflate(R.layout.fragment_map, container, false);
         infoView = (RelativeLayout) view.findViewById(R.id.infoview);
@@ -362,16 +349,12 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         mPostalTv = (TextView) view.findViewById(R.id.postal);
         mStaffNameTv = (TextView) view.findViewById(R.id.staffname);
 
-//        markList = mActivity.getList();
-
         if (network()) {
             buildGoogleApiClient();
         }else{
             connectionFailAlert();
             setUpMapIfNeeded();
         }
-
- //       setUpMapIfNeeded();
 
         return view;
     }
@@ -459,12 +442,6 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         super.onDestroyView();
 
 
-/*            SupportMapFragment fragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map1);
-
-            if(fragment != null)
-                getFragmentManager().beginTransaction().remove(fragment).commit();*/
-
-
     }
 
     @Override
@@ -533,7 +510,6 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
             else
                 markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker_inactive));
 //            markerOptions.icon(item.getIcon());
-
 //            markerOptions.snippet(item.getSnippet());
 //            markerOptions.title(item.getTitle());
 

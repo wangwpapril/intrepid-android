@@ -80,10 +80,8 @@ MapFragment.OnFragmentInteractionListener{
        setSupportActionBar(toolbar);
         setTitle("");
 
-//        toolbar.setBackgroundColor(getResources().getColor(R.color.blue));
         toolbar.setPopupTheme(R.style.MyActionBar);
 
-//        this.requestWindowFeature(Window.FEATURE_ACTION_BAR);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -140,8 +138,6 @@ MapFragment.OnFragmentInteractionListener{
                     parseProvider(content);
 
                     if(!MapFragment.mapFragment.flagDone && MapFragment.mapFragment.mMap != null) {
-//                        MapFragment.mapFragment.setupMarkerList("All");
-//                        MapFragment.mapFragment.refreshMap(current_menu_title);
                         MapFragment.mapFragment.setUpMapIfNeeded();
                     }
                 }
@@ -252,14 +248,12 @@ MapFragment.OnFragmentInteractionListener{
         //noinspection SimplifiableIfStatement
         if (id == R.id.filter_special_hospital) {
 
-            FragmentManager sf = getSupportFragmentManager();
+//            FragmentManager sf = getSupportFragmentManager();
 //            MapFragment mf = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.mapfragment);
-
 //            MapFragment mf = (MapFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.pager + ":"+mViewPager.getCurrentItem());
 //            MapFragment.mapFragment.refreshMap("HOSPITAL");
 
         } else if (id == R.id.filter_hospital) {
-//            getCities();
 
         }
 
@@ -360,10 +354,6 @@ MapFragment.OnFragmentInteractionListener{
 
                                     infoList.add(city);
                                 }
-
-//                                MapFragment mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.mapfragment);
-  //                              mapFragment.markList = infoList;
-
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
