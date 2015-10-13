@@ -3,16 +3,13 @@ package com.swishlabs.intrepid_android.request;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.util.Enums;
 
+import org.apache.http.conn.ConnectTimeoutException;
+
 import java.io.InterruptedIOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
-import java.net.URLConnection;
 import java.net.URLEncoder;
-import java.util.List;
-
-import org.apache.http.conn.ConnectTimeoutException;
 
 
 
@@ -149,7 +146,7 @@ public class SimpleHttpClient {
 				connection.setRequestMethod("POST");
 				connection.setRequestProperty("Content-Type",
 						"application/json");
-				connection.setRequestProperty("Accept", "application/json");
+				connection.setRequestProperty("Accept", "application/vnd.novus+json; version=1");
 
 				connection.setDoOutput(true);
 

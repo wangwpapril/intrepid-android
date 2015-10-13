@@ -9,7 +9,7 @@
         android:orderInCategory="200"/>
 
     <item android:id="@+id/filter_special_hospital"
-        android:title="Special Hospital"
+        android:title="Male"
         android:checkable="true"
         android:color="@drawable/menu_item_selector"
         android:orderInCategory="201" app:showAsAction="never" />
@@ -18,6 +18,6 @@
         android:id="@+id/filter_hospital"
         android:color="@drawable/menu_item_selector"
         android:checkable="true"
-        android:title="Hospital"
+        android:title="Female"
         android:orderInCategory="202" />
 </menu>

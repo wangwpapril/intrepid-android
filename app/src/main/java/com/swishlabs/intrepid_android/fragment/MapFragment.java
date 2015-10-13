@@ -37,7 +37,7 @@ import com.google.maps.android.clustering.view.DefaultClusterRenderer;
 import com.google.maps.android.ui.IconGenerator;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.activity.MainActivity;
-import com.swishlabs.intrepid_android.data.api.model.Provider;
+import com.swishlabs.intrepid_android.data.api.model.Physician;
 import com.swishlabs.intrepid_android.util.StringUtil;
 
 import java.util.ArrayList;
@@ -68,7 +68,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 
     private ClusterManager<Place> mClusterManager;
 
-    public List<Provider> markList = new ArrayList<>();
+    public List<Physician> markList = new ArrayList<>();
 
     MainActivity mActivity;
 
@@ -175,12 +175,12 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
                     selectedLatLng = place.getPosition();
 
                     mNameTv.setText(markList.get(index).getName());
-                    mStaffNameTv.setText( markList.get(index).getStaffName());
+                    mStaffNameTv.setText( markList.get(index).getGender());
                     mContactTv.setText(markList.get(index).getContact());
                     Linkify.addLinks(mContactTv, Linkify.PHONE_NUMBERS);
                     mContactTv.setLinkTextColor(getResources().getColor(R.color.white));
                     mAddressTv.setText(markList.get(index).getAddress());
-                    mPostalTv.setText(markList.get(index).getPostal());
+                    mPostalTv.setText(", "+markList.get(index).getPostal());
                     refreshMap(currentFilter);
                     return false;
                 }
@@ -231,10 +231,10 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
 //        mClusterManager.clearItems();
         mMap.clear();
 
-        if(type.equals("Special Hospital"))
-            type="SPECIALTY HOSPITAL";
-        else if(type.equals("Hospital"))
-            type = "HOSPITAL";
+/*        if(type.equals("Male"))
+            type="MALE";
+        else if(type.equals("Female"))
+            type = "FEMALE";*/
 
         currentFilter= type;
 
@@ -258,12 +258,12 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         mClusterManager.clearItems();
 
         for(int i = 0; i<markList.size(); i++) {
-            if(type.equals("All") || markList.get(i).getType().equals(type)) {
+            if(type.equals("All") || markList.get(i).getGender().equals(type)) {
                 if (!markList.get(i).getLatitude().equals("null") && !markList.get(i).getLongitude().equals("null")) {
                     mClusterManager.addItem(new Place(i,
                             Double.valueOf(markList.get(i).getLatitude()),
                             Double.valueOf(markList.get(i).getLongitude()),
-                            markList.get(i).getType(),
+                            markList.get(i).getGender(),
                             markList.get(i).getName()
                     ));
                 }

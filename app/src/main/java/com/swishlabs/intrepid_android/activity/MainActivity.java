@@ -1,7 +1,6 @@
 package com.swishlabs.intrepid_android.activity;
 
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -25,9 +24,11 @@ import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.City;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
+import com.swishlabs.intrepid_android.data.api.model.Physician;
 import com.swishlabs.intrepid_android.data.api.model.Provider;
 import com.swishlabs.intrepid_android.fragment.MapFragment;
 import com.swishlabs.intrepid_android.fragment.TabFragment;
+import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.Enums;
 
 import org.json.JSONArray;
@@ -64,6 +65,8 @@ MapFragment.OnFragmentInteractionListener{
 
     List<Provider> providerList;
 
+    List<Physician> physiciansList;
+
     int current_menu_id = -1;
     private Menu mainMenu;
     String current_menu_title;
@@ -90,14 +93,17 @@ MapFragment.OnFragmentInteractionListener{
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        Common.context = this;
+
+
         getProviders();
 
     }
 
     private void getProviders() {
 
- //       if(false) {
-       if(!Build.MANUFACTURER.equals("Genymotion")) {
+        if(false) {
+ //      if(!Build.MANUFACTURER.equals("Genymotion")) {
 
             new Thread(new Runnable() {
                 @Override
@@ -135,7 +141,8 @@ MapFragment.OnFragmentInteractionListener{
                 @Override
                 public void handleSuccess(String content) throws JSONException {
 
-                    parseProvider(content);
+//                    parseProvider(content);
+                    parsePhysicians(content);
 
                     if(!MapFragment.mapFragment.flagDone && MapFragment.mapFragment.mMap != null) {
                         MapFragment.mapFragment.setUpMapIfNeeded();
@@ -149,13 +156,43 @@ MapFragment.OnFragmentInteractionListener{
             };
 
             ControllerContentTask cct = new ControllerContentTask(
-                    Constants.PPN_BASE_URL + "providers?by=city&q=d59cbeb2cc15f699373c4e79901d976b", icc,
-                    Enums.ConnMethod.GET, false
+                    Constants.PPN_BASE_URL, icc,
+                    Enums.ConnMethod.POST, false
             );
 
-            String ss = null;
-            cct.execute(ss);
+            JSONObject type = new JSONObject();
 
+            JSONArray filters = new JSONArray();
+            try {
+                type.put("type", "gender");
+                type.put("value", "Male");
+            } catch (JSONException e1) {
+                e1.printStackTrace();
+            }
+
+//            filters.put(type);
+
+            JSONObject type1 = new JSONObject();
+            try {
+                type1.put("type","language");
+                type1.put("value","french");
+            } catch (JSONException e1) {
+                e1.printStackTrace();
+            }
+
+            filters.put(type1);
+
+            JSONObject post = new JSONObject();
+            try {
+                post.put("location", "Toronto");
+                post.put("radius",5);
+                post.put("filters", filters);
+                post.put("page", 1);
+            } catch (JSONException e1) {
+                e1.printStackTrace();
+            }
+
+            cct.execute(post.toString());
 
         }
 
@@ -196,6 +233,48 @@ MapFragment.OnFragmentInteractionListener{
                 }
  //               if(!duplicated)
                     providerList.add(provider);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void parsePhysicians(String content) {
+        if(content == null)
+            return;
+
+        try {
+            JSONObject jsonObject = new JSONObject(content);
+            JSONArray array = jsonObject.getJSONArray("physicians");
+            int len = array.length();
+            physiciansList = new ArrayList<Physician>(len);
+
+
+            for(int i = 0;i < len; i++) {
+                boolean duplicated = false;
+
+                Physician physician = new Physician();
+      //          physician.setId(array.getJSONObject(i).optString("id"));
+                physician.setName(array.getJSONObject(i).optString("name"));
+      //          physician.setContent(array.getJSONObject(i).optString("name"));
+                physician.setLongitude(array.getJSONObject(i).optJSONObject("facility").optJSONObject("location").optString("longitude"));
+                physician.setLatitude(array.getJSONObject(i).optJSONObject("facility").optJSONObject("location").optString("latitude"));
+                physician.setAddress(array.getJSONObject(i).optJSONObject("facility").optString("address_line_1"));
+                physician.setPostal(array.getJSONObject(i).optJSONObject("facility").optString("postal_code"));
+                physician.setContact(array.getJSONObject(i).optString("phone"));
+                physician.setGender(array.getJSONObject(i).optString("gender"));
+
+  /*              for (Provider pv : providerList) {
+                    if (physician.getLatitude().equals(pv.getLatitude()) && physician.getLongitude().equals(pv.getLongitude())) {
+                        duplicated = true;
+                        break;
+                    }
+
+                }*/
+                //               if(!duplicated)
+                physiciansList.add(physician);
             }
 
         } catch (JSONException e) {
@@ -428,13 +507,14 @@ MapFragment.OnFragmentInteractionListener{
         }
     }
 
-    public List<Provider> getList() {
-        return providerList;
+    public List<Physician> getList() {
+        return physiciansList;
     }
 
     @Override
     public void onResume(){
         super.onResume();
+        Common.context = this;
     }
 
     @Override
@@ -454,6 +534,24 @@ MapFragment.OnFragmentInteractionListener{
         finish();
         super.onBackPressed();
         this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        Common.context = null;
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        Common.context = this;
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        Common.context = this;
     }
 
 
