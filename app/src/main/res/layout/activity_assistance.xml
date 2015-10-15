@@ -1,14 +1,14 @@
 
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
-                android:paddingTop="0dp"
-                android:paddingBottom="0dp"
-                tools:context="com.swishlabs.intrepid_android.activity.AssistanceActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp"
+    tools:context="com.swishlabs.intrepid_android.activity.AssistanceActivity">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -33,25 +33,25 @@
         android:layout_height="fill_parent"
         android:layout_below="@id/toolbar"
         android:id="@+id/content">
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="300dp"
-              android:id="@+id/map"
-              tools:context="com.swishlabs.intrepid_android.activity.AssistanceActivity"
-              android:name="com.google.android.gms.maps.SupportMapFragment"/>
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:text="@string/contact_assistance"
-        android:id="@+id/callIntrepidAssistance"
-        android:layout_below="@id/map"
-        android:textColor="#FFF"
-        android:textAllCaps="false"
-        android:background="#84bd00"
-        android:textSize="16sp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_alignParentStart="false" />
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:id="@+id/map"
+            tools:context="com.swishlabs.intrepid_android.activity.AssistanceActivity"
+            android:name="com.google.android.gms.maps.SupportMapFragment"/>
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:text="@string/contact_assistance"
+            android:id="@+id/callIntrepidAssistance"
+            android:layout_below="@id/map"
+            android:textColor="#FFF"
+            android:textAllCaps="false"
+            android:background="#84bd00"
+            android:textSize="16sp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_alignParentStart="false" />
         <TextView
             android:layout_width="fill_parent"
             android:id="@+id/instructionalText"
