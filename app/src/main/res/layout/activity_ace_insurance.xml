@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ACE Insurance"
+            android:text="@string/ace_insurance"
             android:textSize="18sp"
             android:layout_gravity="center"
             android:textColor="#FFF"
@@ -44,7 +44,7 @@
         android:layout_below="@+id/logo"
         android:paddingTop="20dp"
         android:gravity="center_horizontal"
-        android:text="Which service would you like to view?"
+        android:text="@string/travel_smart_tagline"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -59,7 +59,7 @@
     <Button
         android:id="@+id/butAceView"
         android:layout_gravity="center"
-        android:text="ACE Worldview"
+        android:text="@string/ace_worldview"
         android:gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
@@ -78,7 +78,7 @@
     <Button
         android:id="@+id/butPdf"
         android:layout_gravity="center"
-        android:text="ACE Information"
+        android:text="@string/ace_information"
         android:gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"

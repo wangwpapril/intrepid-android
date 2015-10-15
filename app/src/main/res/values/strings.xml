@@ -25,9 +25,7 @@
     <string name="username_length_error">Username must be at least 3 characters.</string>
     <string name="password_length_error">Password must be at least 7 characters.</string>
     <string name="title_activity_legal">Legal</string>
-
     <string name="title_activity_view_destination">Trip</string>
-
     <string name="settings_title_name">Settings</string>
     <string name="title_activity_view_health">ViewHealthActivity</string>
     <string name="title_activity_detail_health_con">DetailHealthConActivity</string>
@@ -43,5 +41,8 @@
     <string name="title_activity_view_vmpdf">ViewVMPdfActivity</string>
     <string name="callIntrepidAssistance">Call Intrepid Assistance</string>
     <string name="title_activity_learn_more">LearnMoreActivity</string>
-
+    <string name="ace_information">ACE Information</string>
+    <string name="ace_worldview">ACE Worldview</string>
+    <string name="ace_insurance">ACE Insurance</string>
+    <string name="travel_smart_tagline">Which service would you like to view?</string>
 </resources>
