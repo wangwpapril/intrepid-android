@@ -45,4 +45,8 @@
     <string name="ace_worldview">ACE Worldview</string>
     <string name="ace_insurance">ACE Insurance</string>
     <string name="travel_smart_tagline">Which service would you like to view?</string>
+
+    <!-- Emergency Assistance-->
+    <string name="emergency_assistance">Emergency Assistance</string>
+    <string name="contact_assistance">Contact ACE Assistance</string>
 </resources>

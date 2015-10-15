@@ -9,8 +9,6 @@
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 tools:context="com.swishlabs.intrepid_android.activity.AssistanceActivity">
-
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -24,14 +22,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Emergency Assistance"
+            android:text="@string/emergency_assistance"
             android:textSize="18sp"
             android:layout_gravity="center"
             android:textColor="#FFF"
             android:id="@+id/toolbar_title" />
     </android.support.v7.widget.Toolbar>
-
-
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -44,17 +40,10 @@
               android:id="@+id/map"
               tools:context="com.swishlabs.intrepid_android.activity.AssistanceActivity"
               android:name="com.google.android.gms.maps.SupportMapFragment"/>
-
-
-
-
-
-
-
     <Button
         android:layout_width="fill_parent"
         android:layout_height="60dp"
-        android:text="Contact ACE Assistance"
+        android:text="@string/contact_assistance"
         android:id="@+id/callIntrepidAssistance"
         android:layout_below="@id/map"
         android:textColor="#FFF"
@@ -63,7 +52,6 @@
         android:textSize="16sp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentStart="false" />
-
         <TextView
             android:layout_width="fill_parent"
             android:id="@+id/instructionalText"
@@ -71,9 +59,7 @@
             android:textColor="#222"
             android:layout_below="@id/callIntrepidAssistance"
             android:layout_height="wrap_content" />
-
     </RelativeLayout>
-
     <include
         android:layout_width="match_parent"
         android:layout_height="25dp"
@@ -81,6 +67,4 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true">
     </include>
-
 </RelativeLayout>
-
