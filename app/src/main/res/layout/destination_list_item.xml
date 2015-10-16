@@ -6,8 +6,6 @@
     android:background="#FFF"
     android:padding="10dp"
     android:orientation="horizontal" >
-
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,31 +16,22 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="false"
         android:id="@+id/relativeLayout">
-
         <ImageView
             android:id="@+id/country_flag_item_iv"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:scaleType="fitXY"
             android:src="@drawable/empty_square" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/country_name"
             android:textSize="18sp"
             android:textColor="#333f48"
-            android:text="Country Name"
+            android:text="@string/country_name"
             android:layout_marginTop="15dp"
-            android:layout_toRightOf="@+id/country_flag_item_iv"
-            android:layout_marginLeft="15dp" />
-
+            android:layout_toEndOf="@+id/country_flag_item_iv"
+            android:layout_marginStart="15dp" />
     </RelativeLayout>
-
-    <!--
-public View llBottomLine;
-llBottomLine = findViewById(R.id.category_bottom_gray_line);
- -->
-
 </RelativeLayout>

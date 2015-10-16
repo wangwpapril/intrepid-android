@@ -84,4 +84,9 @@
     <string name="category_name">Category Name</string>
     <string name="valid">Valid:</string>
     <string name="date">Date</string>
+
+    <string name="edit">Edit</string>
+    <string name="please_input_text">Please input keywords</string>
+    <string name="trips">Trips</string>
+    <string name="country_name">Country Name</string>
 </resources>
