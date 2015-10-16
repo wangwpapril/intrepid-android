@@ -1,5 +1,13 @@
 package com.swishlabs.intrepid_android.util;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import com.swishlabs.intrepid_android.R;
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,20 +22,9 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.text.TextUtils;
-import android.view.KeyEvent;
-
-import com.swishlabs.intrepid_android.R;
-
 public class StringUtil {
-	
-	public static boolean isEmpty(String str) {
+
+    public static boolean isEmpty(String str) {
         return TextUtils.isEmpty(str) || "null".equalsIgnoreCase(str);
     }
 

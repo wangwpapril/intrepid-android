@@ -1,9 +1,7 @@
 package com.swishlabs.intrepid_android.data.store;
 
-
 import android.content.Context;
 import android.database.Cursor;
-
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.data.api.model.Alert;
 import com.swishlabs.intrepid_android.data.api.model.Currency;
@@ -12,7 +10,6 @@ import com.swishlabs.intrepid_android.data.api.model.Embassy;
 import com.swishlabs.intrepid_android.data.api.model.HealthConditionDis;
 import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -66,22 +63,15 @@ public class DatabaseManager {
                         cursor.getString(6), cursor.getString(7));
                 conList.add(hcDis);
                 cursor.moveToNext();
-
             }
-
         }
-
         return conList;
-
     }
 
     public static ArrayList<HealthMedicationDis> getHealthMedArray(Database database, String id){
-
         ArrayList<HealthMedicationDis> medList = new ArrayList<HealthMedicationDis>();
-
         String countQuery = "SELECT * FROM " + Database.TABLE_HEALTH_MEDICATION
                 + " WHERE " + Database.KEY_COUNTRY_ID  +" = " + id;
-
         Cursor cursor = database.getDb().rawQuery(countQuery,null);
         if(cursor!=null && cursor.moveToFirst()) {
             while (cursor.isAfterLast() == false) {
@@ -90,26 +80,11 @@ public class DatabaseManager {
                         cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9));
                 medList.add(hmDis);
                 cursor.moveToNext();
-
             }
-
         }
 
         return medList;
-
     }
-
-//    public static Currency getCurrency(Database database, String code) {
-//        String countQuery = "SELECT * FROM " + Database.TABLE_CURRENCY
-//                + " WHERE " + Database.KEY_CURRENCY_CODE  +" = " + code;
-//
-//        Cursor cursor = database.getDb().rawQuery(countQuery,null);
-//        if(cursor != null)
-//            cursor.moveToFirst();
-//        Currency mCurrency = new Currency( cursor.getString(1), cursor.getString(2));
-//        return mCurrency;
-//
-//    }
 
     public static Currency getCurrency(String code, Database database) {
         Cursor cursor = database.getDb().query(Database.TABLE_CURRENCY, new String[]{Database.KEY_ID,
@@ -129,6 +104,7 @@ public class DatabaseManager {
         Cursor cursor = database.getDb().rawQuery(countQuery, null);
         return cursor.getCount();
     }
+
     public static Trip getTrip(int id, Database database) {
         Cursor cursor = database.getDb().query(Database.TABLE_TRIPS, new String[]{Database.KEY_ID,
                         Database.KEY_DESTINATION_COUNTRY, Database.KEY_COUNTRY_ID, Database.KEY_GENERAL_IMAGE_URI}, Database.KEY_ID + "=?",
@@ -149,7 +125,6 @@ public class DatabaseManager {
         if (cursor!=null && cursor.moveToFirst()) {
 
             while (cursor.isAfterLast() == false) {
-//                (int id, String destinationName, String destinationId, String generalImage)
                 String string0 = cursor.getString(0);
                 Trip trip = new Trip(Integer.valueOf(string0),cursor.getString(1), cursor.getString(4), cursor.getString(2));
                 tripList.add(trip);
@@ -164,20 +139,15 @@ public class DatabaseManager {
         Cursor cursor = database.getDb().rawQuery("SELECT * FROM "+Database.TABLE_EMBASSY+" WHERE "+Database.KEY_EMBASSY_DESTINATION_ID+"=?" ,
                 new String [] {countryId});
 //        Cursor  cursor = database.getDb().rawQuery("SELECT * FROM " + Database.TABLE_TRIPS + " WHERE "+Database.KEY_EMBASSY_DESTINATION_ID+" = "+'"'+countryId+'"', null);
-
         if (cursor!=null && cursor.moveToFirst()) {
-
             while (cursor.isAfterLast() == false) {
-
                 Embassy embassy = new Embassy(cursor.getString(3), cursor.getString(0), cursor.getString(14));
-
                 embassyList.add(embassy);
                 cursor.moveToNext();
             }
         }
         return embassyList;
     }
-
 
     public static Embassy getEmbassy(String id, Database database) {
         Cursor cursor = database.getDb().query(Database.TABLE_EMBASSY, new String[]{Database.KEY_ID,
@@ -217,7 +187,6 @@ public class DatabaseManager {
             cursor.moveToFirst();
         }
         return cursor.getString(0);
-
     }
 
     public static DestinationInformation getDestinationInformation(Database database, String destinationId){
@@ -261,7 +230,6 @@ public class DatabaseManager {
 
     }
 
-
     public static void deleteTrip(int id, Database database){
         database.getDb().delete(Database.TABLE_TRIPS, Database.KEY_ID + "=" + id, null);
         database.getDb().close();
@@ -282,7 +250,4 @@ public class DatabaseManager {
     public static void deleteAllTrips(Database database){
         database.getDb().delete(Database.TABLE_TRIPS, null, null);
     }
-
-
-
 }

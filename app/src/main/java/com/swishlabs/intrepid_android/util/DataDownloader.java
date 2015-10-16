@@ -2,12 +2,8 @@ package com.swishlabs.intrepid_android.util;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
-
 import com.swishlabs.intrepid_android.activity.DestinationsListActivity;
-import com.swishlabs.intrepid_android.activity.TripFragment;
 import com.swishlabs.intrepid_android.activity.TripPagesActivity;
-import com.swishlabs.intrepid_android.activity.ViewDestinationActivity;
 import com.swishlabs.intrepid_android.adapter.DestinationsListAdapter;
 import com.swishlabs.intrepid_android.customViews.ClearEditText;
 import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
@@ -20,11 +16,9 @@ import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,18 +29,15 @@ import java.util.List;
  */
 
 
-
 public class DataDownloader {
 
     private List<Destination> mDestinationList;
     private DestinationsListAdapter mDestinationsListAdapter;
     public static ClearEditText mEditTextSearch;
     private int mCallbackCount = 0;
-
     private List<HealthCondition> healthConditionList;
     private List<HealthMedicationDis> healthMedicationList;
     private List<Alert> mAlertList;
-
     public DestinationsListActivity mActivity;
     public DatabaseManager mDatabaseManager;
     public Database mDatabase;
@@ -57,55 +48,46 @@ public class DataDownloader {
     public TripPagesActivity mTripPagesActivity;
     public String mTripDatabaseId;
     public boolean mIsDestinationNew;
-
-    public void initializeDownload(Context context, Destination destination, DestinationsListActivity activity, String destinationId, TripPagesActivity tripPagesActivity){
-        mContext =context;
+    public void initializeDownload(Context context, Destination destination, DestinationsListActivity activity, String destinationId, TripPagesActivity tripPagesActivity) {
+        mContext = context;
         mActivity = activity;
         mDestination = destination;
 
-        if (destination==null) {
+        if (destination == null) {
             mIsDestinationNew = true;
             mDestinationId = destinationId;
             mTripPagesActivity = tripPagesActivity;
-        }else{
+        } else {
             mIsDestinationNew = false;
         }
         LoadTripFromApi(0, null);
     }
-
-    public void loadDestination(){
-
+    public void loadDestination() {
     }
-
     public boolean mIsTripUnique;
-
-    public void loadDatabase(){
+    public void loadDatabase() {
         mDatabaseManager = new DatabaseManager(mContext);
         mDatabase = mDatabaseManager.openDatabase("Intrepid.db");
     }
-
-    public void LoadTripFromApi(int test, final String rate){
+    public void LoadTripFromApi(int test, final String rate) {
         Logger.d("LoadTripFromApi");
         loadDatabase();
-        if (mDestination!=null) {
+        if (mDestination != null) {
             mDestinationId = mDestination.getId();
         }
         if (true) {
             mIsTripUnique = DatabaseManager.isTripUnique(mDatabase, mDestinationId);
-            if (mDestination!=null) {
+            if (mDestination != null) {
                 mCurrencyCode = mDestination.getCurrencyCode();
             }
-
             IControllerContentCallback icc = new IControllerContentCallback() {
-
                 public void handleSuccess(String content) {
-
                     JSONObject destination;
                     JSONArray healthCondition, healthMedication;
                     String countryId;
                     try {
                         destination = new JSONObject(content).getJSONObject("destination");
-                        if (mIsDestinationNew){
+                        if (mIsDestinationNew) {
                             mDestination = new Destination(destination);
                             mCurrencyCode = mDestination.getCurrencyCode();
                         }
@@ -121,20 +103,16 @@ public class DataDownloader {
                             healthCondition = destination.getJSONArray("health_conditions");
                             int len = healthCondition.length();
                             healthConditionList = new ArrayList<HealthCondition>(len);
-
                             for (int i = 0; i < len; i++) {
                                 healthConditionList.add(new HealthCondition(healthCondition.getJSONObject(i)));
                                 CreateHealthCondition(destination.optString("id"), String.valueOf(i));
-
                             }
-
                         }
 
                         if (destination.has("medications")) {
                             healthMedication = destination.getJSONArray("medications");
                             int len = healthMedication.length();
                             healthMedicationList = new ArrayList<HealthMedicationDis>(len);
-
                             for (int i = 0; i < len; i++) {
                                 JSONObject temp = healthMedication.getJSONObject(i);
                                 HealthMedicationDis tempMed = new HealthMedicationDis();
@@ -148,12 +126,9 @@ public class DataDownloader {
                                 tempMed.mNotes = temp.getJSONObject("content").optString("notes");
                                 tempMed.mGeneralImage = temp.getJSONObject("images").getJSONObject("general")
                                         .getJSONObject("versions").getJSONObject("3x").optString("source_url").replace(" ", "%20");
-
                                 healthMedicationList.add(tempMed);
                                 CreateHealthMedication(countryId, String.valueOf(i));
-
                             }
-
                         }
 
                         JSONObject images = destination.getJSONObject("images");
@@ -163,16 +138,12 @@ public class DataDownloader {
                         saveDestinationInformation(destination, images, mCurrencyCode, rate);
                         String encodedURL = general_image_url.replace(" ", "%20");
                         CreateTrip(0, encodedURL);
-
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
                 }
 
                 public void handleError(Exception e) {
-
                 }
             };
 
@@ -183,41 +154,33 @@ public class DataDownloader {
                     Enums.ConnMethod.GET, false);
             String ss = null;
             cct.execute(ss);
-        }else{
+        } else {
             List<Trip> tripList = DatabaseManager.getTripArray(mDatabase, SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null));
-            for (int i = 0; i<tripList.size(); i++){
-                if (tripList.get(i).getCountryId().equals(mDestinationId)){
-                    SharedPreferenceUtil.setInt(TripPagesActivity.getInstance(), Enums.PreferenceKeys.currentPage.toString(), i+1);
+            for (int i = 0; i < tripList.size(); i++) {
+                if (tripList.get(i).getCountryId().equals(mDestinationId)) {
+                    SharedPreferenceUtil.setInt(TripPagesActivity.getInstance(), Enums.PreferenceKeys.currentPage.toString(), i + 1);
                     break;
                 }
             }
             SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), mDestinationId);
-            if (mActivity!=null) {
+            if (mActivity != null) {
                 mActivity.redirectToTripOverview(mDestinationId);
 
-            }else if (mTripPagesActivity!=null){
+            } else if (mTripPagesActivity != null) {
                 mTripPagesActivity.redirectToTripOverview(mDestinationId);
             }
-//            Intent intent = new Intent(mActivity, ViewDestinationActivity.class);
-//            intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-//            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);
-//            intent.putExtra("destinationId", destinationId);
-//            intent.putExtra("firstTimeFlag", "1");
-//            mActivity.startActivity(intent);
         }
     }
 
-    private void saveEmbassyInformation(final String destinationId, String countryCode){
+    private void saveEmbassyInformation(final String destinationId, String countryCode) {
         Logger.d("saveEmbassyInformation");
-
         IControllerContentCallback icc = new IControllerContentCallback() {
-
             public void handleSuccess(String content) {
                 JSONObject diplomaticOffices;
                 try {
                     diplomaticOffices = new JSONObject(content);
                     JSONArray diplomaticOfficesList = diplomaticOffices.getJSONArray("diplomatic_office");
-                    for(int i = 0;i < diplomaticOfficesList.length();i++){
+                    for (int i = 0; i < diplomaticOfficesList.length(); i++) {
                         JSONObject diplomaticOffice = diplomaticOfficesList.getJSONObject(i);
                         String id = diplomaticOffice.getString("id");
                         String country = diplomaticOffice.getString("country");
@@ -234,7 +197,6 @@ public class DataDownloader {
                         String hoursOfOperation = embassyContent.getString("hours_of_operation");
                         String notes = embassyContent.getString("notes");
                         String telephone = embassyContent.getString("telephone");
-
                         ContentValues values = new ContentValues();
                         values.put(Database.KEY_EMBASSY_ID, id);
                         values.put(Database.KEY_EMBASSY_COUNTRY, country);
@@ -252,26 +214,19 @@ public class DataDownloader {
                         values.put(Database.KEY_EMBASSY_IMAGE, formattedEmbassyImage);
                         if (mIsTripUnique) {
                             mDatabase.getDb().insert(Database.TABLE_EMBASSY, null, values);
-                        }else{
-                            mDatabase.getDb().update(Database.TABLE_EMBASSY, values, Database.KEY_ID+" ="+mTripDatabaseId, null);
+                        } else {
+                            mDatabase.getDb().update(Database.TABLE_EMBASSY, values, Database.KEY_ID + " =" + mTripDatabaseId, null);
                         }
                         if (mCallbackCount == 1) {
-//                            mDatabase.getDb().close();
-                        }else{
+                        } else {
                             mCallbackCount = mCallbackCount + 1;
                         }
-
                     }
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
-
-            public void handleError(Exception e){
-
+            public void handleError(Exception e) {
             }
         };
 
@@ -279,8 +234,8 @@ public class DataDownloader {
         token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
         String currentCountryCode = SharedPreferenceUtil.getString(Enums.PreferenceKeys.countryCode.toString(), null);
         ControllerContentTask cct = new ControllerContentTask(
-                Constants.BASE_URL+"diplomatic-offices/"+countryCode+"?origin_country="+currentCountryCode+"&token=" + token, icc,
-                Enums.ConnMethod.GET,false);
+                Constants.BASE_URL + "diplomatic-offices/" + countryCode + "?origin_country=" + currentCountryCode + "&token=" + token, icc,
+                Enums.ConnMethod.GET, false);
 
         String ss = null;
         cct.execute(ss);
@@ -288,7 +243,6 @@ public class DataDownloader {
 
     private void saveDestinationInformation(JSONObject destination, JSONObject images, String currencyCode, String rate) throws JSONException {
         Logger.d("saveDestinationInfo");
-
         JSONObject content = destination.getJSONObject("content");
         String destinationId = destination.getString("id");
         String countryName = destination.getJSONObject("country").getString("name");
@@ -316,21 +270,17 @@ public class DataDownloader {
         String overview_image_url = images.getJSONObject("overview").getJSONObject("versions").getJSONObject("3x").getString("source_url").replace(" ", "%20");
         String culture_image_url = images.getJSONObject("culture").getJSONObject("versions").getJSONObject("3x").getString("source_url").replace(" ", "%20");
         String currency_image_url = null;
-        if(images.has("currency")) {
+        if (images.has("currency")) {
             currency_image_url = images.getJSONObject("currency").getString("source_url").replace(" ", "%20");
         }
-
         String health_care_quality = content.getString("health_care_quality");
         String vaccines_pre_trip_medical = content.getString("vaccinations_and_pre_trip_medical");
         String health_conditions = content.getString("health_conditions");
         String emergency_numbers = content.getString("emergency_numbers");
         String medical_image_url = images.getJSONObject("medical").getJSONObject("versions").getJSONObject("2x")
                 .getString("source_url").replace(" ", "%20");
-
         String transportation = content.getString("transportation");
         String holidays = content.getString("holidays");
-
-
         ContentValues values = new ContentValues();
         values.put(Database.KEY_DESTINATION_ID, destinationId);
         values.put(Database.KEY_COUNTRY_NAME, countryName);
@@ -368,23 +318,20 @@ public class DataDownloader {
         values.put(Database.KEY_HOLIDAYS, holidays);
         if (mIsTripUnique) {
             mDatabase.getDb().insert(Database.TABLE_DESTINATION_INFORMATION, null, values);
-        }else{
-            mDatabase.getDb().update(Database.TABLE_DESTINATION_INFORMATION, values, Database.KEY_ID+" ="+mTripDatabaseId, null);
+        } else {
+            mDatabase.getDb().update(Database.TABLE_DESTINATION_INFORMATION, values, Database.KEY_ID + " =" + mTripDatabaseId, null);
         }
-
     }
 
-    public boolean isTripUnique(String destinationName){
+    public boolean isTripUnique(String destinationName) {
         return true;
     }
-
-    private void CreateHealthMedication(String id, String index){
-
+    private void CreateHealthMedication(String id, String index) {
         int indexId = Integer.parseInt(index);
         ContentValues values = new ContentValues();
-        values.put(Database.KEY_MEDICATION_ID,index);
-        values.put(Database.KEY_MEDICATION_NAME,healthMedicationList.get(indexId).getmMedicationName());
-        values.put(Database.KEY_COUNTRY_ID,id);
+        values.put(Database.KEY_MEDICATION_ID, index);
+        values.put(Database.KEY_MEDICATION_NAME, healthMedicationList.get(indexId).getmMedicationName());
+        values.put(Database.KEY_COUNTRY_ID, id);
         values.put(Database.KEY_GENERAL_IMAGE_URI, healthMedicationList.get(indexId).getmGeneralImage());
         values.put(Database.KEY_MEDICATION_BRAND_NAME, healthMedicationList.get(indexId).getmBrandNames());
         values.put(Database.KEY_MEDICATION_DESCRIPTION, healthMedicationList.get(indexId).getmDescription());
@@ -394,85 +341,71 @@ public class DataDownloader {
 
         if (mIsTripUnique) {
             mDatabase.getDb().insert(Database.TABLE_HEALTH_MEDICATION, null, values);
-        }else{
-            mDatabase.getDb().update(Database.TABLE_HEALTH_MEDICATION, values, Database.KEY_ID+" ="+mTripDatabaseId, null);
+        } else {
+            mDatabase.getDb().update(Database.TABLE_HEALTH_MEDICATION, values, Database.KEY_ID + " =" + mTripDatabaseId, null);
         }
-
-
     }
 
-    private void CreateHealthCondition(String id, String index){
+    private void CreateHealthCondition(String id, String index) {
 
         int indexId = Integer.parseInt(index);
         ContentValues values = new ContentValues();
-        values.put(Database.KEY_CONDITION_ID,index);
+        values.put(Database.KEY_CONDITION_ID, index);
         values.put(Database.KEY_CONDITION_NAME, healthConditionList.get(indexId).name);
-        values.put(Database.KEY_COUNTRY_ID,id);
+        values.put(Database.KEY_COUNTRY_ID, id);
         values.put(Database.KEY_GENERAL_IMAGE_URI, healthConditionList.get(indexId).images.version3.sourceUrl.replace(" ", "%20"));
-        values.put(Database.KEY_CONDITION_DESCRIPTION,healthConditionList.get(indexId).content.description);
-        values.put(Database.KEY_CONDITION_SYMPTOMS,healthConditionList.get(indexId).content.symptoms);
-        values.put(Database.KEY_CONDITION_PREVENTION,healthConditionList.get(indexId).content.prevention);
+        values.put(Database.KEY_CONDITION_DESCRIPTION, healthConditionList.get(indexId).content.description);
+        values.put(Database.KEY_CONDITION_SYMPTOMS, healthConditionList.get(indexId).content.symptoms);
+        values.put(Database.KEY_CONDITION_PREVENTION, healthConditionList.get(indexId).content.prevention);
 
         if (mIsTripUnique) {
             mDatabase.getDb().insert(Database.TABLE_HEALTH_CONDITION, null, values);
-        }else{
-            mDatabase.getDb().update(Database.TABLE_HEALTH_CONDITION, values, Database.KEY_ID+" ="+mTripDatabaseId, null);
+        } else {
+            mDatabase.getDb().update(Database.TABLE_HEALTH_CONDITION, values, Database.KEY_ID + " =" + mTripDatabaseId, null);
         }
-
     }
 
-    private void CreateTrip(int position, String generalImageUri){
+    private void CreateTrip(int position, String generalImageUri) {
         Logger.d("CreateTrip");
-
         Destination destination = mDestination;
-//        Trip trip = new Trip(destination.getCountry());
-
-
         ContentValues values = new ContentValues();
         values.put(Database.KEY_DESTINATION_COUNTRY, destination.getCountry());
         values.put(Database.KEY_COUNTRY_ID, destination.getId());
         values.put(Database.KEY_GENERAL_IMAGE_URI, generalImageUri);
         values.put(Database.KEY_TRIP_USER_ID, SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null));
-        if (mActivity!=null) {
+        if (mActivity != null) {
             Common.sendDirectTracking(mActivity, "New Trip", "Add Trip", destination.getCountry(), -1);
         }
 
-        if (mIsTripUnique){
+        if (mIsTripUnique) {
             mDatabase.getDb().insert(Database.TABLE_TRIPS, null, values);
         }
         if (mCallbackCount == 1) {
             mDatabase.getDb().close();
-        }else{
+        } else {
             mCallbackCount = mCallbackCount + 1;
         }
         SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), destination.getId());
         List<Trip> tripList = DatabaseManager.getTripArray(mDatabase, SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null));
-        for (int i = 0; i<tripList.size(); i++){
-            if (tripList.get(i).getCountryId().equals(mDestinationId)){
+        for (int i = 0; i < tripList.size(); i++) {
+            if (tripList.get(i).getCountryId().equals(mDestinationId)) {
                 Context context;
-                if (mActivity!=null) {
-                   context = mActivity;
-                }else if (mTripPagesActivity!=null){
+                if (mActivity != null) {
+                    context = mActivity;
+                } else if (mTripPagesActivity != null) {
                     context = mTripPagesActivity;
-                }else{
+                } else {
                     context = TripPagesActivity.getInstance();
                 }
                 SharedPreferenceUtil.setInt(context, Enums.PreferenceKeys.currentPage.toString(), i + 1);
                 break;
             }
         }
-        if (mActivity!=null) {
+        if (mActivity != null) {
             mActivity.redirectToTripOverview(mDestinationId);
-        }else{
+        } else {
             mTripPagesActivity.redirectToTripOverview(mDestinationId);
         }
-//        Intent intent = new Intent(DestinationsListActivity.this, ViewDestinationActivity.class);
-//        intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-//        intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        intent.putExtra("destinationId", destination.getId());
-//        intent.putExtra("firstTimeFlag","1");
-//        startActivity(intent);
-
     }
 
     private void fetchAlerts(final String countrycode) {
@@ -489,7 +422,7 @@ public class DataDownloader {
                     SimpleDateFormat to = new SimpleDateFormat("MMM d, yyyy");
                     SimpleDateFormat from = new SimpleDateFormat("MM/dd/yyyy");
 
-                    for(int i = 0; i < len; i++){
+                    for (int i = 0; i < len; i++) {
                         JSONObject alertObj = alertArray.getJSONObject(i);
                         String cate = alertObj.optString("category");
                         String desc = alertObj.optString("description");
@@ -501,7 +434,7 @@ public class DataDownloader {
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
-                        Alert mAlert = new Alert(countrycode,cate, desc, start, end);
+                        Alert mAlert = new Alert(countrycode, cate, desc, start, end);
                         mAlertList.add(mAlert);
 
                         saveAlert(i);
@@ -509,27 +442,22 @@ public class DataDownloader {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
 
-            public void handleError(Exception e){
-
+            public void handleError(Exception e) {
             }
         };
 
         String token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
 
         ControllerContentTask cct = new ControllerContentTask(
-                Constants.BASE_URL+"alerts/"+countrycode+"?token="+token, icc,
-                Enums.ConnMethod.GET,false);
-
+                Constants.BASE_URL + "alerts/" + countrycode + "?token=" + token, icc,
+                Enums.ConnMethod.GET, false);
         String ss = null;
         cct.execute(ss);
-
-
     }
 
-    private void saveAlert(int index){
+    private void saveAlert(int index) {
         ContentValues values = new ContentValues();
         values.put(Database.KEY_COUNTRY_CODE, mAlertList.get(index).getCountryCode());
         values.put(Database.KEY_ALERT_CATEGORY, mAlertList.get(index).getCategory());
@@ -538,12 +466,8 @@ public class DataDownloader {
         values.put(Database.KEY_ALERT_ENDDATE, mAlertList.get(index).getEndDate());
         if (mIsTripUnique) {
             mDatabase.getDb().insert(Database.TABLE_ALERT, null, values);
-        }else{
-            mDatabase.getDb().update(Database.TABLE_ALERT, values, Database.KEY_ID+" ="+mTripDatabaseId, null);
+        } else {
+            mDatabase.getDb().update(Database.TABLE_ALERT, values, Database.KEY_ID + " =" + mTripDatabaseId, null);
         }
-
     }
-
-
-
 }

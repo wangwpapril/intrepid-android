@@ -10,35 +10,28 @@ import java.io.OutputStream;
 import java.net.URI;
 import java.net.URL;
 import java.util.Stack;
-
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
-
 import com.swishlabs.intrepid_android.data.store.beans.Image;
 
 public class ImageLoader {
-
-
 	int stub_id;
-
 	public ImageLoader(Context context, int iconDefaultResId) {
 		// Make the background thread low priority. This way it will not affect
 		// the UI performance
 		stub_id = iconDefaultResId;
 		photoLoaderThread.setPriority(Thread.NORM_PRIORITY - 1);
-
 	}
 
 	public void DisplayImage(String url, Activity activity, ImageView imageView) {
 
-        if(url == null) {
-            imageView.setImageResource(stub_id);
-            return;
-        }
+		if(url == null) {
+			imageView.setImageResource(stub_id);
+			return;
+		}
 		String Url=null, temp=null;
 		temp = url.replaceAll(" ", "%20");
 
@@ -52,8 +45,8 @@ public class ImageLoader {
 
 		imageView.setTag(Url);
 
-        Bitmap bm = Image.getInstance().get(Url);
-        if (null != bm) 
+		Bitmap bm = Image.getInstance().get(Url);
+		if (null != bm)
 			imageView.setImageBitmap(bm);
 		else {
 			queuePhoto(Url, activity, imageView);
@@ -80,7 +73,6 @@ public class ImageLoader {
 		try {
 			Bitmap bitmap = null;
 			InputStream is = new URL(url).openStream();
-			
 			bitmap = BitmapFactory.decodeStream(new FlushedInputStream(is));
 
 			return bitmap;
@@ -170,10 +162,9 @@ public class ImageLoader {
 						PhotoToLoad photoToLoad;
 						synchronized (photosQueue.photosToLoad) {
 							photoToLoad = photosQueue.photosToLoad.pop();
-
 						}
 						Bitmap bmp = getBitmap(photoToLoad.url);
-		                Image.getInstance().save(photoToLoad.url, bmp);
+						Image.getInstance().save(photoToLoad.url, bmp);
 
 						if (((String) photoToLoad.imageView.getTag())
 								.equals(photoToLoad.url)) {
@@ -213,7 +204,6 @@ public class ImageLoader {
 		}
 	}
 
-
 	public static void CopyStream(InputStream is, OutputStream os) {
 		final int buffer_size = 1024;
 		try {
@@ -228,27 +218,27 @@ public class ImageLoader {
 		}
 	}
 
-    public static class FlushedInputStream extends FilterInputStream {
-        public FlushedInputStream(InputStream inputStream) {
-            super(inputStream);
-        }
+	public static class FlushedInputStream extends FilterInputStream {
+		public FlushedInputStream(InputStream inputStream) {
+			super(inputStream);
+		}
 
-        @Override
-        public long skip(long n) throws IOException {
-            long totalBytesSkipped = 0L;
-            while (totalBytesSkipped < n) {
-                long bytesSkipped = in.skip(n - totalBytesSkipped);
-                if (bytesSkipped == 0L) {
-                    int byteValue = read();
-                    if (byteValue < 0) {
-                        break;  // we reached EOF
-                    } else {
-                        bytesSkipped = 1; // we read one byte
-                    }
-                }
-                totalBytesSkipped += bytesSkipped;
-            }
-            return totalBytesSkipped;
-        }
-    }
+		@Override
+		public long skip(long n) throws IOException {
+			long totalBytesSkipped = 0L;
+			while (totalBytesSkipped < n) {
+				long bytesSkipped = in.skip(n - totalBytesSkipped);
+				if (bytesSkipped == 0L) {
+					int byteValue = read();
+					if (byteValue < 0) {
+						break;  // we reached EOF
+					} else {
+						bytesSkipped = 1; // we read one byte
+					}
+				}
+				totalBytesSkipped += bytesSkipped;
+			}
+			return totalBytesSkipped;
+		}
+	}
 }

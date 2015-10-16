@@ -7,7 +7,6 @@ public class PostParameter {
 		this.name=name;
 		this.object=object;
 	}
-	
 	public String getName() {
 		return name;
 	}
@@ -20,6 +19,4 @@ public class PostParameter {
 	public void setObject(Object object) {
 		this.object = object;
 	}
-	
-	
 }

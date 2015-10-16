@@ -5,10 +5,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.util.StringUtil;
-
 import java.util.ArrayList;
 
 public class Database {
@@ -22,7 +20,6 @@ public class Database {
     public static final String TABLE_EMBASSY = "embassy";
     public static final String TABLE_CURRENCY = "currencyTb";
     public static final String TABLE_ALERT = "alert";
-
     public static final String KEY_ID = "id";
     public static final String KEY_COUNTRY_ID = "countryId";
     public static final String KEY_COUNTRY_NAME = "countryName";
@@ -32,13 +29,11 @@ public class Database {
     public static final String KEY_GENERAL_IMAGE_URI = "imageGeneral";
     public static final String KEY_DESTINATION_COUNTRY = "destinationCountry";
     public static final String KEY_TRIP_USER_ID = "userId";
-
     public static final String KEY_CONDITION_ID = "healthConditionId";
     public static final String KEY_CONDITION_NAME = "healthConditionName";
     public static final String KEY_CONDITION_DESCRIPTION = "healthConditionDescription";
     public static final String KEY_CONDITION_SYMPTOMS = "healthConditionSymptoms";
     public static final String KEY_CONDITION_PREVENTION = "healthConditionPrevention";
-
     public static final String KEY_MEDICATION_ID = "healthMedicationId";
     public static final String KEY_MEDICATION_NAME = "healthMedicationName";
     public static final String KEY_MEDICATION_DESCRIPTION = "healthMedicationDescription";
@@ -46,7 +41,6 @@ public class Database {
     public static final String KEY_MEDICATION_SIDE_EFFECTS = "healthMedicationSideEffects";
     public static final String KEY_MEDICATION_STORAGE = "healthMedicationStorage";
     public static final String KEY_MEDICATION_NOTES = "healthMedicationNotes";
-
     public static final String KEY_DESTINATION_ID = "destinationId";
     public static final String KEY_COMMUNICATIONS = "communicationsInfrastructure";
     public static final String KEY_OTHER_CONCERNS = "otherConcerns";
@@ -77,7 +71,6 @@ public class Database {
     public static final String KEY_VACCINATION = "vaccinationspretripmedical";
     public static final String KEY_HEALTH_CONDITION = "healthconditions";
     public static final String KEY_IMAGE_MEDICAL = "medicalimage";
-
     public static final String KEY_EMBASSY_ID = "embassyId";
     public static final String KEY_EMBASSY_COUNTRY = "embassyCountry";
     public static final String KEY_EMBASSY_NAME = "embassyName";
@@ -92,7 +85,6 @@ public class Database {
     public static final String KEY_EMBASSY_TELEPHONE = "embassyTelephone";
     public static final String KEY_EMBASSY_DESTINATION_ID = "embassyDestinationId";
     public static final String KEY_EMBASSY_IMAGE = "embassyImage";
-
     public static final String KEY_ALERT_CATEGORY = "alertCategory";
     public static final String KEY_ALERT_DESCRIPTION = "alertDescription";
     public static final String KEY_ALERT_STARTDATE = "alertStartDate";

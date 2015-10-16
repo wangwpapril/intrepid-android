@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -21,11 +20,8 @@ import org.json.JSONObject;
  * Created by ryanracioppo on 15-05-06.
  */
 public class AndroidLocationServices extends Service {
-
     PowerManager.WakeLock wakeLock;
-
     private LocationManager locationManager;
-
     public AndroidLocationServices() {
         // TODO Auto-generated constructor stub\
     }
@@ -40,16 +36,9 @@ public class AndroidLocationServices extends Service {
     public void onCreate() {
         // TODO Auto-generated method stub
         super.onCreate();
-
         PowerManager pm = (PowerManager) getSystemService(this.POWER_SERVICE);
-
         wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "DoNotSleep");
-
-        // Toast.makeText(getApplicationContext(), "Service Created",
-        // Toast.LENGTH_SHORT).show();
-
         Log.e("Google", "Service Created");
-
     }
 
     @Override
@@ -57,41 +46,29 @@ public class AndroidLocationServices extends Service {
     public void onStart(Intent intent, int startId) {
         // TODO Auto-generated method stub
         super.onStart(intent, startId);
-
         Log.e("Google", "Service Started");
-
         locationManager = (LocationManager) getApplicationContext()
                 .getSystemService(Context.LOCATION_SERVICE);
-
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
                 5000, 5, listener);
-
     }
 
     private LocationListener listener = new LocationListener() {
-
         @Override
         public void onLocationChanged(Location location) {
             // TODO Auto-generated method stub
-
             Log.e("Google", "Location Changed");
-
             if (location == null)
                 return;
-
             if (isConnectingToInternet(getApplicationContext())) {
                 JSONArray jsonArray = new JSONArray();
                 JSONObject jsonObject = new JSONObject();
-
                 try {
                     Log.e("latitude", location.getLatitude() + "");
                     Log.e("longitude", location.getLongitude() + "");
-
                     jsonObject.put("latitude", location.getLatitude());
                     jsonObject.put("longitude", location.getLongitude());
-
                     jsonArray.put(jsonObject);
-
                     Log.e("request", jsonArray.toString());
                     Common.sendDirectTracking(AndroidLocationServices.this, "Update Location", "AppDelegate", null, -1);
                     String latitude = String.valueOf(location.getLatitude());
@@ -101,9 +78,7 @@ public class AndroidLocationServices extends Service {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-
             }
-
         }
 
         @Override
@@ -129,12 +104,8 @@ public class AndroidLocationServices extends Service {
     public void onDestroy() {
         // TODO Auto-generated method stub
         super.onDestroy();
-
         wakeLock.release();
-
     }
-
-
 
     public static boolean isConnectingToInternet(Context _context) {
         ConnectivityManager connectivity = (ConnectivityManager) _context
@@ -146,9 +117,7 @@ public class AndroidLocationServices extends Service {
                     if (info[i].getState() == NetworkInfo.State.CONNECTED) {
                         return true;
                     }
-
         }
         return false;
     }
-
 }

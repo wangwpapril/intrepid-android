@@ -8,29 +8,22 @@ import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
-import android.os.Handler;
 import android.util.Log;
-
 import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
-import com.swishlabs.intrepid_android.data.api.model.User;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
-import com.swishlabs.intrepid_android.util.StringUtil;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.logging.LogRecord;
 
 public class LocationService extends Service {
     private static final int MESSAGE_AUTO_SEND_LOCATION = 1;
@@ -38,7 +31,7 @@ public class LocationService extends Service {
     private static final long INTERVAL = 2700000;
 
     private Timer mTimer = new Timer();
-    private TimerTask mTimerTask ;
+    private TimerTask mTimerTask;
     private static String userId;
     private static String token;
 
@@ -50,40 +43,31 @@ public class LocationService extends Service {
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
         return null;
-//        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.e("Travel onStartCommand", String.valueOf(startId));
-
-        if(token == null)
+        if (token == null)
             token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
-        if(userId == null)
+        if (userId == null)
             userId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null);
-
-        if(token == null || userId == null)
-            return super.onStartCommand(intent,flags,startId);
-
+        if (token == null || userId == null)
+            return super.onStartCommand(intent, flags, startId);
         if (intent != null) {
             String action = intent.getAction();
-
-            if(action != null) {
+            if (action != null) {
                 Log.e("action=", action);
-                if(ACTION_REPORT_POSITION.equals(action)){
+                if (ACTION_REPORT_POSITION.equals(action)) {
                     final Location mLocation = getCurrentLocation();
-                    if(mLocation != null){
+                    if (mLocation != null) {
                         sendCoordinatesToIntrepid(mLocation.getLongitude(), mLocation.getLatitude());
                     }
 
                 }
             }
         }
-//        initTimer();
-
-//        return super.onStartCommand(intent, Service.START_REDELIVER_INTENT, startId);
         return START_REDELIVER_INTENT;
-
     }
 
     private void initTimer() {
@@ -93,31 +77,26 @@ public class LocationService extends Service {
                 Message message = new Message();
                 message.what = MESSAGE_AUTO_SEND_LOCATION;
                 handler.sendMessage(message);
-
             }
         };
-
         mTimer.schedule(mTimerTask, 2000, INTERVAL);
     }
-
 
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == MESSAGE_AUTO_SEND_LOCATION) {
-
                 Log.e("Timer is running:", "continue");
-
                 final Location mLocation = getCurrentLocation();
-                if(mLocation != null){
+                if (mLocation != null) {
                     sendCoordinatesToIntrepid(mLocation.getLongitude(), mLocation.getLatitude());
-               }
+                }
                 super.handleMessage(msg);
             }
         }
     };
 
-    private Location getCurrentLocation(){
+    private Location getCurrentLocation() {
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
 
@@ -131,82 +110,66 @@ public class LocationService extends Service {
             // Use the provider to get the last known location
             location = locationManager.getLastKnownLocation(provider);
 
-            if(location == null){
+            if (location == null) {
                 location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             }
-
         }
-
-         return location;
+        return location;
     }
 
-    private void sendCoordinatesToIntrepid(double longitude, double latitude){
-
+    private void sendCoordinatesToIntrepid(double longitude, double latitude) {
         IControllerContentCallback icc = new IControllerContentCallback() {
-            public void handleSuccess(String content){
-
+            public void handleSuccess(String content) {
                 JSONObject jsonObj = null;
                 Log.d("Location", content);
-
                 try {
                     jsonObj = new JSONObject(content);
-                    if(jsonObj.has("error")) {
+                    if (jsonObj.has("error")) {
                         return;
-                    }else if(jsonObj.has("coordinate")) {
+                    } else if (jsonObj.has("coordinate")) {
                         //success
                         Log.e("Location sending:", "Success!");
                         return;
-                    }else {
+                    } else {
 
                         return;
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
-
-            public void handleError(Exception e){
+            public void handleError(Exception e) {
                 return;
 
             }
         };
 
         ControllerContentTask cct = new ControllerContentTask(
-                Constants.BASE_URL+"users/"+userId+"/coordinates?token="+token, icc,
-                Enums.ConnMethod.POST,true);
-
+                Constants.BASE_URL + "users/" + userId + "/coordinates?token=" + token, icc,
+                Enums.ConnMethod.POST, true);
         JSONObject coordinatesDetails = new JSONObject();
         String country = getApplicationContext().getResources().getConfiguration().locale.getDisplayCountry();
         String cityName = "Not Found";
         Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
-        try
-        {
+        try {
             List<Address> addresses = gcd.getFromLocation(latitude, longitude, 1);
-            if (addresses.size() > 0)
-            {
+            if (addresses.size() > 0) {
                 country = addresses.get(0).getCountryName();
                 cityName = addresses.get(0).getLocality();
                 // you should also try with addresses.get(0).toSring();
-                if(cityName == null){
+                if (cityName == null) {
                     cityName = addresses.get(0).getSubLocality();
                 }
-
-//                System.out.println(cityName);
             }
-        } catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
-        if(cityName == null){
+        if (cityName == null) {
             cityName = "Not Found";
         }
-
-        if(country == null){
+        if (country == null) {
             country = "Not Found";
         }
-
         try {
             coordinatesDetails.put("city", cityName);
             coordinatesDetails.put("country", country);
@@ -224,8 +187,5 @@ public class LocationService extends Service {
             e1.printStackTrace();
         }
         cct.execute(coordinate.toString());
-
-
     }
-
 }
