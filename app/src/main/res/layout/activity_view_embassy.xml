@@ -1,319 +1,303 @@
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.swishlabs.intrepid_android.activity.ViewEmbassyActivity">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:elevation="4dp"
+        android:transitionName="actionBar">
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:elevation="4dp"
-            android:transitionName="actionBar">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_titlebar_return"
-                android:id="@+id/title_back" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/embassy"
-                android:textSize="18sp"
-                android:layout_gravity="center"
-                android:textColor="#FFF"
-                android:id="@+id/toolbar_title"
-                android:textStyle="normal" />
-        </android.support.v7.widget.Toolbar>
-
-        <ScrollView
+            android:src="@drawable/icon_titlebar_return"
+            android:id="@+id/title_back" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/embassy"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:textColor="#FFF"
+            android:id="@+id/toolbar_title"
+            android:textStyle="normal" />
+    </android.support.v7.widget.Toolbar>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/toolbar"
+        android:background="@android:color/transparent">
+        <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_below="@+id/toolbar"
-            android:background="@android:color/transparent">
+            android:layout_height="wrap_content"
+            android:id="@+id/content"
+            android:background="@android:color/white"
+            android:padding="16dp">
+
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/content"
-                android:background="@android:color/white"
-                android:padding="16dp">
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
+                android:id="@+id/brand"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/brand"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp"
-                    android:paddingBottom="16dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/address"
-                        android:id="@+id/brand_name_subtitle"
-                        android:layout_alignParentStart="false"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@+id/brand_name_icon"
-                        android:textColor="#333f48"
-                        android:layout_alignParentEnd="true" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=""
-                        android:id="@+id/embassy_address"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentStart="false"
-                        android:layout_below="@+id/section_divider20"
-                        android:textColor="#333f48" />
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:id="@+id/section_divider20"
-                        android:layout_below="@+id/brand_name_subtitle"
-                        android:layout_alignStart="@+id/brand_name_icon"
-                        android:layout_alignEnd="@+id/brand_name_subtitle"
-                        android:background="#EDEDED"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp" />
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/brand_name_icon"
-                        android:layout_above="@+id/section_divider20"
-                        android:layout_alignParentEnd="false"
-                        android:layout_alignTop="@+id/brand_name_subtitle"
-                        android:src="@drawable/embassy_icon"
-                        android:layout_marginEnd="10dp" />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/address"
+                    android:id="@+id/brand_name_subtitle"
+                    android:layout_alignParentStart="false"
+                    android:textStyle="bold"
+                    android:layout_toEndOf="@+id/brand_name_icon"
+                    android:textColor="#333f48"
+                    android:layout_alignParentEnd="true" />
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/brand"
-                    android:id="@+id/contact"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/contact_information"
-                        android:id="@+id/contact_subtitle"
-                        android:layout_alignParentStart="false"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@+id/section_icon"
-                        android:textColor="#333f48"
-                        android:layout_alignParentEnd="true" />
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:id="@+id/section_divider21"
-                        android:layout_below="@+id/contact_subtitle"
-                        android:layout_alignStart="@+id/section_icon"
-                        android:layout_alignEnd="@+id/contact_subtitle"
-                        android:background="#EDEDED"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=""
-                        android:id="@+id/contact_phone"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentStart="false"
-                        android:layout_below="@+id/section_divider21"
-                        android:textColor="#333f48" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=""
-                        android:id="@+id/contact_fax"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentStart="false"
-                        android:layout_below="@+id/contact_phone"
-                        android:layout_marginTop="10dp"
-                        android:textColor="#333f48" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=""
-                        android:id="@+id/contact_email"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentStart="false"
-                        android:layout_below="@+id/contact_fax"
-                        android:layout_marginTop="10dp"
-                        android:textColor="#333f48" />
-
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/section_icon"
-                        android:layout_above="@+id/section_divider21"
-                        android:layout_alignParentEnd="false"
-                        android:layout_alignTop="@+id/contact_subtitle"
-                        android:src="@drawable/communication_icon"
-                        android:layout_marginEnd="10dp" />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/embassy_address"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_below="@+id/section_divider20"
+                    android:textColor="#333f48" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:id="@+id/section_divider20"
+                    android:layout_below="@+id/brand_name_subtitle"
+                    android:layout_alignStart="@+id/brand_name_icon"
+                    android:layout_alignEnd="@+id/brand_name_subtitle"
+                    android:background="#EDEDED"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp" />
+                <ImageView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/hours"
-                    android:layout_below="@+id/contact"
-                    android:padding="16dp">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:id="@+id/section_divider22"
-                        android:layout_below="@+id/hours_subtitle"
-                        android:layout_alignStart="@+id/section_icon2"
-                        android:layout_alignEnd="@+id/hours_subtitle"
-                        android:background="#EDEDED"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/hours_of_operation"
-                        android:id="@+id/hours_subtitle"
-                        android:layout_alignParentStart="false"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@+id/section_icon2"
-                        android:textColor="#333f48"
-                        android:layout_alignParentEnd="true" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=""
-                        android:id="@+id/embassy_hours"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentStart="false"
-                        android:layout_below="@+id/section_divider22"
-                        android:textColor="#333f48" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/section_icon2"
-                        android:layout_above="@+id/section_divider22"
-                        android:layout_alignParentEnd="false"
-                        android:layout_alignTop="@+id/hours_subtitle"
-                        android:src="@drawable/government_icon"
-                        android:layout_marginRight="10dp" />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/notes"
-                    android:layout_below="@+id/hours"
-                    android:padding="16dp">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:id="@+id/section_divider23"
-                        android:layout_below="@+id/notes_subtitle"
-                        android:layout_alignStart="@+id/notes_icon"
-                        android:layout_alignEnd="@+id/notes_subtitle"
-                        android:background="#EDEDED"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/notes"
-                        android:id="@+id/notes_subtitle"
-                        android:layout_alignParentStart="false"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@+id/notes_icon"
-                        android:textColor="#333f48"
-                        android:layout_alignParentEnd="true" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=""
-                        android:id="@+id/notes_text"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentStart="false"
-                        android:layout_below="@+id/section_divider23"
-                        android:textColor="#333f48" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/notes_icon"
-                        android:layout_above="@+id/section_divider23"
-                        android:layout_alignParentEnd="false"
-                        android:layout_alignTop="@+id/notes_subtitle"
-                        android:src="@drawable/example_icon"
-                        android:layout_marginEnd="10dp" />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/services"
-                    android:layout_below="@+id/notes"
-                    android:padding="16dp">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:id="@+id/section_divider24"
-                        android:layout_below="@+id/services_subtitle"
-                        android:layout_alignStart="@+id/services_icon"
-                        android:layout_alignEnd="@+id/services_subtitle"
-                        android:background="#EDEDED"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/services"
-                        android:id="@+id/services_subtitle"
-                        android:layout_alignParentStart="false"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@+id/services_icon"
-                        android:textColor="#333f48"
-                        android:layout_alignParentEnd="true" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=""
-                        android:id="@+id/services_text"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentStart="false"
-                        android:layout_below="@+id/section_divider24"
-                        android:textColor="#333f48" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/services_icon"
-                        android:layout_above="@id/services_text"
-                        android:layout_alignParentEnd="false"
-                        android:layout_alignTop="@+id/section_divider24"
-                        android:src="@drawable/development_icon"
-                        android:layout_marginEnd="10dp" />
-                </RelativeLayout>
+                    android:id="@+id/brand_name_icon"
+                    android:layout_above="@+id/section_divider20"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignTop="@+id/brand_name_subtitle"
+                    android:src="@drawable/embassy_icon"
+                    android:layout_marginEnd="10dp" />
             </RelativeLayout>
-        </ScrollView>
-    </RelativeLayout>
-
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/brand"
+                android:id="@+id/contact"
+                android:padding="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/contact_information"
+                    android:id="@+id/contact_subtitle"
+                    android:layout_alignParentStart="false"
+                    android:textStyle="bold"
+                    android:layout_toEndOf="@+id/section_icon"
+                    android:textColor="#333f48"
+                    android:layout_alignParentEnd="true" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:id="@+id/section_divider21"
+                    android:layout_below="@+id/contact_subtitle"
+                    android:layout_alignStart="@+id/section_icon"
+                    android:layout_alignEnd="@+id/contact_subtitle"
+                    android:background="#EDEDED"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/contact_phone"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_below="@+id/section_divider21"
+                    android:textColor="#333f48" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/contact_fax"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_below="@+id/contact_phone"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333f48" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/contact_email"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_below="@+id/contact_fax"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333f48" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/section_icon"
+                    android:layout_above="@+id/section_divider21"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignTop="@+id/contact_subtitle"
+                    android:src="@drawable/communication_icon"
+                    android:layout_marginEnd="10dp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/hours"
+                android:layout_below="@+id/contact"
+                android:padding="16dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:id="@+id/section_divider22"
+                    android:layout_below="@+id/hours_subtitle"
+                    android:layout_alignStart="@+id/section_icon2"
+                    android:layout_alignEnd="@+id/hours_subtitle"
+                    android:background="#EDEDED"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/hours_of_operation"
+                    android:id="@+id/hours_subtitle"
+                    android:layout_alignParentStart="false"
+                    android:textStyle="bold"
+                    android:layout_toEndOf="@+id/section_icon2"
+                    android:textColor="#333f48"
+                    android:layout_alignParentEnd="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/embassy_hours"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_below="@+id/section_divider22"
+                    android:textColor="#333f48" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/section_icon2"
+                    android:layout_above="@+id/section_divider22"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignTop="@+id/hours_subtitle"
+                    android:src="@drawable/government_icon"
+                    android:layout_marginRight="10dp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/notes"
+                android:layout_below="@+id/hours"
+                android:padding="16dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:id="@+id/section_divider23"
+                    android:layout_below="@+id/notes_subtitle"
+                    android:layout_alignStart="@+id/notes_icon"
+                    android:layout_alignEnd="@+id/notes_subtitle"
+                    android:background="#EDEDED"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/notes"
+                    android:id="@+id/notes_subtitle"
+                    android:layout_alignParentStart="false"
+                    android:textStyle="bold"
+                    android:layout_toEndOf="@+id/notes_icon"
+                    android:textColor="#333f48"
+                    android:layout_alignParentEnd="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/notes_text"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_below="@+id/section_divider23"
+                    android:textColor="#333f48" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/notes_icon"
+                    android:layout_above="@+id/section_divider23"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignTop="@+id/notes_subtitle"
+                    android:src="@drawable/example_icon"
+                    android:layout_marginEnd="10dp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/services"
+                android:layout_below="@+id/notes"
+                android:padding="16dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:id="@+id/section_divider24"
+                    android:layout_below="@+id/services_subtitle"
+                    android:layout_alignStart="@+id/services_icon"
+                    android:layout_alignEnd="@+id/services_subtitle"
+                    android:background="#EDEDED"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/services"
+                    android:id="@+id/services_subtitle"
+                    android:layout_alignParentStart="false"
+                    android:textStyle="bold"
+                    android:layout_toEndOf="@+id/services_icon"
+                    android:textColor="#333f48"
+                    android:layout_alignParentEnd="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/services_text"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_below="@+id/section_divider24"
+                    android:textColor="#333f48" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/services_icon"
+                    android:layout_above="@id/services_text"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignTop="@+id/section_divider24"
+                    android:src="@drawable/development_icon"
+                    android:layout_marginEnd="10dp" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

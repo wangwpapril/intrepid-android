@@ -4,11 +4,7 @@
     android:layout_height="fill_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
-
     tools:context="com.swishlabs.intrepid_android.activity.ViewHealthActivity">
-
-
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -22,13 +18,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Health"
+        android:text="@string/health"
         android:textSize="18sp"
         android:layout_gravity="center"
         android:textColor="#FFF"
         android:id="@+id/toolbar_title" />
     </android.support.v7.widget.Toolbar>
-
     <com.swishlabs.intrepid_android.customViews.CustomTabContainer
         android:layout_width="fill_parent"
         android:id="@+id/tabContainer"
@@ -41,7 +36,8 @@
             android:id="@+id/tabLayout"
             android:layout_height="fill_parent"
             android:background="?attr/colorPrimary"
-            android:alpha="0.8"></LinearLayout>
+            android:alpha="0.8">
+        </LinearLayout>
         <TextView
             android:layout_width="50dp"
             android:id="@+id/tabSelector"
@@ -49,7 +45,6 @@
             android:layout_marginTop="-3dp"
             android:layout_height="1dp"/>
     </com.swishlabs.intrepid_android.customViews.CustomTabContainer>
-
     <com.swishlabs.intrepid_android.customViews.ClearEditText
         android:id="@+id/search_ed"
         android:layout_width="fill_parent"
@@ -58,20 +53,18 @@
         android:layout_centerHorizontal="true"
         android:background="#e1e1e1"
         android:cursorVisible="true"
-        android:drawableLeft="@drawable/search_icon_blue"
+        android:drawableStart="@drawable/search_icon_blue"
         android:drawablePadding="10dip"
-        android:drawableRight="@drawable/exit"
-        android:paddingRight="20dip"
-        android:hint="Tap to Search"
-        android:paddingLeft="30dip"
+        android:drawableEnd="@drawable/exit"
+        android:paddingEnd="20dip"
+        android:hint="@string/tap_to_search"
+        android:paddingStart="30dip"
         android:textColor="#333f48"
         android:textColorHint="#333f48"
         android:textCursorDrawable="@null"
         android:visibility="gone"
         android:maxLines="1"
         android:imeOptions="actionDone"/>
-
-
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -83,7 +76,6 @@
             android:layout_width="fill_parent">
         </android.support.v4.view.ViewPager>
     </RelativeLayout>
-
     <include
         android:layout_width="match_parent"
         android:layout_height="25dp"
@@ -91,7 +83,4 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true">
     </include>
-
-
 </RelativeLayout>
-

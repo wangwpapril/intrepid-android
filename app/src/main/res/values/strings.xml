@@ -48,7 +48,7 @@
     <string name="travel_smart_tagline">Which service would you like to view?</string>
     <!-- Emergency Assistance-->
     <string name="emergency_assistance">Emergency Assistance</string>
-    <string name="contact_assistance">Contact ACE Assistance</string>
+    <string name="contact_assistance"  >Contact ACE Assistance</string>
     <!-- Detail Health Conditions & Medications-->
     <string name="description">Description</string>
     <string name="symptoms">Symptoms</string>
@@ -69,4 +69,10 @@
     <string name="contact_information">Contact Information</string>
     <string name="hours_of_operation">Hours of Operation</string>
     <string name="services">Services</string>
+    <!-- Health-->
+    <string name="health">Health</string>
+    <string name="tap_to_search">Tap to Search</string>
+
+    <!-- Security -->
+    <string name="security">Security</string>
 </resources>
