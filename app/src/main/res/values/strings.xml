@@ -120,4 +120,13 @@
     <!-- Tab-->
     <string name="tab">Tab</string>
     <string name="splash_pic">SplashPic</string>
+    <!-- Login -->
+    <string name="travel_smart">TRAVEL SMART</string>
+    <string name="email">EMAIL</string>
+    <string name="signup">Signup</string>
+    <string name="first_name">FIRST NAME</string>
+    <string name="last_name">LAST NAME</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="password">PASSWORD</string>
+    <string name="log_in">LOG IN</string>
 </resources>
