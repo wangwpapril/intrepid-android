@@ -44,8 +44,7 @@
         android:layout_marginTop="70dp"
         android:layout_gravity="top"
         android:id="@+id/pager">
-        </android.support.v4.view.ViewPager>
-
+    </android.support.v4.view.ViewPager>
     <com.swishlabs.intrepid_android.customViews.IndicatorLinearLayout
         android:layout_width="match_parent"
         android:layout_height="15dp"
@@ -54,8 +53,5 @@
         android:gravity="center_horizontal"
         android:layout_marginBottom="15dp"
         >
-
-        </com.swishlabs.intrepid_android.customViews.IndicatorLinearLayout>
-
+    </com.swishlabs.intrepid_android.customViews.IndicatorLinearLayout>
 </FrameLayout>
-

@@ -41,6 +41,7 @@
     <string name="title_activity_view_vmpdf">ViewVMPdfActivity</string>
     <string name="callIntrepidAssistance">Call Intrepid Assistance</string>
     <string name="title_activity_learn_more">LearnMoreActivity</string>
+    <!-- ACE Insurance-->
     <string name="ace_information">ACE Information</string>
     <string name="ace_worldview">ACE Worldview</string>
     <string name="ace_insurance">ACE Insurance</string>
@@ -57,7 +58,6 @@
     <string name="storage">Storage</string>
     <string name="notes">Notes</string>
     <!-- Learn More-->
-
-
     <string name="learn_more">Learn More</string>
+
 </resources>
