@@ -129,4 +129,20 @@
     <string name="sign_up">SIGN UP</string>
     <string name="password">PASSWORD</string>
     <string name="log_in">LOG IN</string>
+    <!-- Signup -->
+    <string name="terms_of_use_description">By registering for or using any portion of the Services, I accept the</string>
+    <string name="policy_number">POLICY NUMBER</string>
+    <string name="username">USERNAME</string>
+    <string name="country">COUNTRY</string>
+    <!-- Settings-->
+    <string name="first_name_hint">First Name:</string>
+    <string name="last_name_hint">Last Name:</string>
+    <string name="email_hint">Email:</string>
+    <string name="username_hint">Username:</string>
+    <string name="old_password_hint">Old Password:</string>
+    <string name="optional">(Optional)</string>
+    <string name="new_password_hint">New Password:</string>
+    <string name="update">Update</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="version">Version: </string>
 </resources>

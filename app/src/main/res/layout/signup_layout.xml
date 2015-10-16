@@ -63,7 +63,6 @@
             android:layout_alignParentTop="false"
             android:layout_below="@+id/firstNameEditText"
             android:layout_marginRight="20dp" />
-
         <EditText
             android:id="@+id/lastNameEditText"
             android:layout_width="wrap_content"
@@ -101,8 +100,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:ems="10"
-            android:gravity="left"
-            android:hint="EMAIL"
+            android:gravity="start"
+            android:hint="@string/email"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
             android:textSize="17sp"
@@ -136,7 +135,7 @@
             android:cursorVisible="false"
             android:editable="false"
             android:gravity="start"
-            android:hint="COUNTRY"
+            android:hint="@string/country"
             android:textColorHint="@color/white"
             android:textSize="17sp"
             android:textColor="@color/white"
@@ -151,15 +150,12 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1"
             android:background="@color/gray"
             android:layout_alignParentStart="false"
             android:layout_marginLeft="20dp"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/countryEditText"
             android:layout_marginRight="20dp" />
-
-
         <EditText
             android:id="@+id/userNameEditText"
             android:layout_width="wrap_content"
@@ -168,7 +164,7 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:gravity="start"
-            android:hint="USERNAME"
+            android:hint="@string/username"
             android:textColorHint="@color/white"
             android:textSize="17sp"
             android:textColor="@color/white"
@@ -179,7 +175,6 @@
             android:layout_alignParentTop="false"
             android:layout_below="@+id/countryEditText"
             android:layout_marginRight="20dp">
-
         </EditText>
         <TextView
             android:layout_width="match_parent"
@@ -199,7 +194,7 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:gravity="start"
-            android:hint="PASSWORD"
+            android:hint="@string/password"
             android:textColorHint="@color/white"
             android:textSize="17sp"
             android:textColor="@color/white"
@@ -210,7 +205,6 @@
             android:layout_alignParentTop="false"
             android:layout_below="@+id/userNameEditText"
             android:layout_marginRight="20dp">
-
         </EditText>
         <TextView
             android:layout_width="match_parent"
@@ -222,7 +216,6 @@
             android:layout_alignParentTop="false"
             android:layout_below="@+id/PasswordEditText"
             android:layout_marginRight="20dp" />
-
         <EditText
             android:id="@+id/policyNumberEditText"
             android:layout_width="wrap_content"
@@ -230,8 +223,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:ems="10"
-            android:gravity="left"
-            android:hint="POLICY NUMBER"
+            android:gravity="start"
+            android:hint="@string/policy_number"
             android:textColorHint="@color/white"
             android:textSize="17sp"
             android:textColor="@color/white"
@@ -242,13 +235,11 @@
             android:layout_alignParentTop="false"
             android:layout_below="@+id/PasswordEditText"
             android:layout_marginRight="20dp">
-
         </EditText>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1"
             android:background="@color/gray"
             android:layout_alignParentStart="false"
             android:layout_marginLeft="20dp"
@@ -256,9 +247,7 @@
             android:layout_below="@+id/policyNumberEditText"
             android:layout_marginRight="20dp"
             android:textSize="17sp" />
-
     </RelativeLayout>
-
     <Button
         android:id="@+id/butSignUp"
         android:layout_gravity="center"
@@ -286,7 +275,7 @@
         android:paddingTop="0dp"
         android:paddingLeft="60dip"
         android:paddingRight="60dip"
-        android:text="By registering for or using any portion of the Services, I accept the"
+        android:text="@string/terms_of_use_description"
         android:textColor="@color/white"
         android:textSize="12sp"
         android:textAppearance="?android:attr/textAppearanceSmall"
