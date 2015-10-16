@@ -13,7 +13,6 @@ public class HealthMedicationDis {
     public String mSideEffects;
     public String mStorage;
     public String mNotes;
-
     public HealthMedicationDis(int id, String Mname, String countryId, String imgUrl,
                                String Bname,String description, String effect, String storage,
                                String notes){
@@ -27,11 +26,9 @@ public class HealthMedicationDis {
         this.mStorage = storage;
         this.mNotes = notes;
     }
-
     public HealthMedicationDis(){
 
     }
-
     public String getmMedicationName(){
         return mMedicationName;
     }

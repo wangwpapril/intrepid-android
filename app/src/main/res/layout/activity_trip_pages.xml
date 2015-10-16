@@ -6,19 +6,16 @@
     android:orientation="vertical"
     tools:context="com.swishlabs.intrepid_android.activity.TripPagesActivity"
     android:background="@drawable/bg_login" >
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/pagerView">
-
         <android.support.v4.view.ViewPager
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:id="@+id/pager">
         </android.support.v4.view.ViewPager>
-
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,9 +23,7 @@
             android:visibility="invisible"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
-
     </RelativeLayout>
-
     <com.swishlabs.intrepid_android.customViews.IndicatorLinearLayout
         android:layout_width="match_parent"
         android:layout_height="15dp"
@@ -37,11 +32,5 @@
         android:gravity="center_horizontal"
         android:layout_marginBottom="15dp"
         >
-
     </com.swishlabs.intrepid_android.customViews.IndicatorLinearLayout>
-
-
 </FrameLayout>
-
-
-

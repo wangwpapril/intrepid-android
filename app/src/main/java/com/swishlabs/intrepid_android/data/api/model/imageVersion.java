@@ -1,7 +1,6 @@
 package com.swishlabs.intrepid_android.data.api.model;
 
 import java.io.Serializable;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 

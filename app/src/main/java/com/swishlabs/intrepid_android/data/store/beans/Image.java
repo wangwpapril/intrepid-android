@@ -1,27 +1,20 @@
 package com.swishlabs.intrepid_android.data.store.beans;
 
 import java.io.ByteArrayOutputStream;
-
-
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
 import com.swishlabs.intrepid_android.data.store.Bean;
 import com.swishlabs.intrepid_android.util.StringUtil;
 
-
 public class Image extends Bean {
     private static final String tableName = "image";
-
     private static Image instance;
-
     public static Image getInstance() {
         if (instance == null)
             instance = new Image();
         return instance;
     }
-
     public Image() {
         super();
     }

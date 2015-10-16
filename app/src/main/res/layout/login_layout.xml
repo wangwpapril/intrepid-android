@@ -4,8 +4,6 @@
     android:layout_height="fill_parent"
     android:background="@drawable/bg_login"
     android:id="@+id/login_page">
-
-
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
@@ -18,7 +16,6 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dip"
         android:layout_marginBottom="10dp" />
-
     <TextView
         android:id="@+id/travel_smart"
         android:layout_width="match_parent"
@@ -26,11 +23,10 @@
         android:layout_below="@+id/logo"
         android:paddingTop="0dip"
         android:gravity="center_horizontal"
-        android:text="TRAVEL SMART"
+        android:text="@string/travel_smart"
         android:textColor="@color/white"
         android:textSize="22sp"
         android:textAppearance="?android:attr/textAppearanceSmall" />
-
     <RelativeLayout
         android:id="@+id/inputLayout"
         android:layout_width="260dp"
@@ -40,10 +36,8 @@
         android:gravity="center_horizontal"
         android:layout_below="@+id/travel_smart"
         android:layout_centerHorizontal="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp">
-
-
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp">
         <EditText
             android:id="@+id/signinEmailEditText"
             android:layout_width="wrap_content"
@@ -51,75 +45,67 @@
             android:layout_gravity="center_horizontal"
             android:ems="10"
             android:gravity="left"
-            android:hint="EMAIL"
+            android:hint="@string/email"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
             android:textSize="17sp"
             android:background="#00000000"
             android:inputType="textEmailAddress"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:padding="10dp">
-
         </EditText>
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="2px"
+            android:layout_height="1dp"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1"
             android:background="@color/gray"
-            android:layout_alignParentLeft="false"
-            android:layout_marginLeft="20dp"
+            android:layout_alignParentStart="false"
+            android:layout_marginStart="20dp"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/signinEmailEditText"
-            android:layout_marginRight="20dp" />
-
-
+            android:layout_marginEnd="20dp" />
         <EditText
             android:id="@+id/signinPasswordEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:ems="10"
-            android:gravity="left"
-            android:hint="PASSWORD"
+            android:gravity="start"
+            android:hint="@string/password"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
             android:textSize="17sp"
             android:background="#00000000"
             android:inputType="textPassword"
-            android:layout_alignParentLeft="false"
-            android:layout_marginLeft="20dp"
+            android:layout_alignParentStart="false"
+            android:layout_marginStart="20dp"
             android:layout_alignParentTop="false"
             android:layout_marginTop="20dp"
             android:layout_below="@+id/signinEmailEditText"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:padding="10dp">
-
         </EditText>
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="2px"
+            android:layout_height="1dp"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1"
             android:background="@color/gray"
-            android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false"
             android:layout_alignParentTop="false"
             android:layout_below="@+id/signinPasswordEditText"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp" />
-
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp" />
     </RelativeLayout>
-
     <TextView
         android:id="@+id/sign_up"
         android:layout_marginTop="15dip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="0dp"
-        android:text="Sign Up"
+        android:text="@string/signup"
         android:textColor="#ececec"
         android:textSize="18sp"
         android:gravity="center_horizontal"
@@ -130,26 +116,24 @@
         android:layout_below="@+id/butSignIn"
         android:linksClickable="false"
         android:padding="10dp" />
-
     <TextView
         android:id="@+id/learnMore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:text="Learn More"
+        android:layout_gravity="start"
+        android:text="@string/learn_more"
         android:textSize="16sp"
         android:textColor="@color/white"
         android:layout_alignParentEnd="true"
         android:layout_alignBottom="@+id/termsofuse"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:padding="10dp" />
-
     <TextView
         android:id="@+id/termsofuse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="Terms of Use"
+        android:layout_gravity="end"
+        android:text="@string/terms_of_use"
         android:textSize="16sp"
         android:textColor="@color/white"
         android:layout_alignParentBottom="true"
@@ -159,12 +143,11 @@
         android:paddingRight="10dp"
         android:paddingTop="10dp"
         android:padding="10dp"
-        android:layout_marginLeft="10dp" />
-
+        android:layout_marginStart="10dp" />
     <Button
         android:id="@+id/butSignIn"
         android:layout_gravity="center"
-        android:text="LOG IN"
+        android:text="@string/log_in"
         android:gravity="center"
         android:paddingLeft="0dp"
         android:paddingRight="0dp"
@@ -180,5 +163,4 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dip"
         android:textAlignment="center" />
-
 </RelativeLayout>

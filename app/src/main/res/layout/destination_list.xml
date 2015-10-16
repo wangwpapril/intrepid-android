@@ -13,35 +13,32 @@
         android:paddingTop="16dp"
         android:elevation="4dp"
         android:transitionName="actionBar">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="Trips"
-        android:layout_gravity="center"
-        android:textColor="#FFF"
-        android:id="@+id/toolbar_title" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="@string/trips"
+            android:layout_gravity="center"
+            android:textColor="#FFF"
+            android:id="@+id/toolbar_title" />
     </android.support.v7.widget.Toolbar>
-
     <com.swishlabs.intrepid_android.customViews.ClearEditText
         android:id="@+id/search_ed"
         android:layout_width="fill_parent"
         android:layout_height="50dip"
-        android:layout_centerHorizontal="true"
         android:background="#e1e1e1"
         android:cursorVisible="true"
-        android:drawableLeft="@drawable/search_icon_blue"
+        android:drawableStart="@drawable/search_icon_blue"
         android:drawablePadding="10dip"
-        android:drawableRight="@drawable/exit"
-        android:paddingRight="20dip"
-        android:hint="Tap to Search"
-        android:paddingLeft="30dip"
+        android:drawableEnd="@drawable/exit"
+        android:paddingEnd="20dip"
+        android:hint="@string/tap_to_search"
+        android:paddingStart="30dip"
         android:textColor="#333f48"
         android:textColorHint="#333f48"
         android:textCursorDrawable="@null"
         android:maxLines="1"
         android:imeOptions="actionDone"/>
-
     <ListView
         android:id="@+id/trip_list"
         android:layout_width="fill_parent"
@@ -50,7 +47,6 @@
         android:divider="@color/common_list_divider"
         android:dividerHeight="@dimen/common_list_divider_height"
         android:scrollbars="none" />
-
     <android.support.v4.widget.DrawerLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/drawer_layout"
@@ -66,13 +62,13 @@
             android:layout_height="match_parent" />
         <!-- The navigation drawer -->
         <ListView android:id="@+id/left_drawer"
-                  android:layout_width="240dp"
-                  android:layout_height="match_parent"
-                  android:layout_gravity="start"
-                  android:choiceMode="singleChoice"
-                  android:divider="@android:color/transparent"
-                  android:dividerHeight="0dp"
-                  android:background="#111"/>
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:choiceMode="singleChoice"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"
+            android:background="#111"/>
     </android.support.v4.widget.DrawerLayout>
 
 </LinearLayout>

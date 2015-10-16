@@ -1,38 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#fff">
-
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="#fff">
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/content">
-
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="320dp"
                 android:scaleType="centerCrop"
                 android:id="@+id/overview_image" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/overview_image"
                 android:id="@+id/emptyEmbassyList"
-                android:text="Embassy information does not apply."
+                android:text="@string/embassy_information_not_apply"
                 android:textAlignment="center"
                 android:textColor="#222"
                 android:visibility="invisible"
                 android:layout_centerHorizontal="true"
                 android:textSize="17sp"
                 android:layout_marginTop="50dp" />
-
             <ListView
                 android:layout_width="fill_parent"
                 android:id="@+id/list"

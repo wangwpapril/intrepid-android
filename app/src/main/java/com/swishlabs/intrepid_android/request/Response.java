@@ -69,12 +69,9 @@ public class Response {
 				throw new Exception(ioe.getMessage(),ioe);
 			}
 		}
-		
 		return responseAsString;
 	}
-
 	public int getStatusCode() {
 		return statusCode;
 	}
-
 }

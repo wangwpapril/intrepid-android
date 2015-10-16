@@ -16,8 +16,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.crashlytics.android.Crashlytics;
 import com.segment.analytics.Analytics;
 import com.segment.analytics.Traits;
 import com.swishlabs.intrepid_android.MyApplication;
@@ -27,15 +25,11 @@ import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.services.LocationService;
-import com.swishlabs.intrepid_android.util.AndroidLocationServices;
-import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
-
 import java.util.List;
 
-public class TripPagesActivity extends ActionBarActivity implements TripFragment.OnFragmentInteractionListener
-{
+public class TripPagesActivity extends ActionBarActivity implements TripFragment.OnFragmentInteractionListener {
 
     public DatabaseManager mDatabaseManager;
     public Database mDatabase;
@@ -43,23 +37,18 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
     public TripPagesActivity mTripPagesActivity;
     public static TripPagesActivity instance;
     public List<Trip> mTripList;
-
     public static PendingIntent pendingIntent;
-
-    public static TripPagesActivity getInstance(){
+    public static TripPagesActivity getInstance() {
         return instance;
     }
-
     private ConnectivityManager mConnectivityManager;
     private boolean mNetworkConnectivity;
-
-    public boolean getNetworkConnectivity(){
+    public boolean getNetworkConnectivity() {
         return mNetworkConnectivity;
     }
-
-    public void network(){
+    public void network() {
         mConnectivityManager =
-                (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+                (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo activeNetwork = mConnectivityManager.getActiveNetworkInfo();
         mNetworkConnectivity = activeNetwork != null &&
@@ -74,21 +63,20 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
     ViewPager mViewPager;
     IndicatorLinearLayout mIndicator;
 
-    public Database getDatabase(){
+    public Database getDatabase() {
         return mDatabase;
     }
 
-    public void loadDatabase(){
+    public void loadDatabase() {
         mDatabaseManager = new DatabaseManager(this.getBaseContext());
         mDatabase = mDatabaseManager.openDatabase("Intrepid.db");
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         MyApplication.getInstance().addActivity(this);
-        instance=this;
+        instance = this;
         setContentView(R.layout.activity_trip_pages);
         startLocationService();
         this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
@@ -96,8 +84,6 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         loadDatabase();
         setupTracking();
         loadingDialog();
-
-
 
     }
 
@@ -110,7 +96,7 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         }
     };
 
-    private void loadingDialog(){
+    private void loadingDialog() {
         dialogLoading = new ProgressDialog(this);
         dialogLoading.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialogLoading.setMessage("Loading");
@@ -119,13 +105,13 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         dialogLoading.setOnDismissListener(listenerDismissLoading);
     }
 
-    private void setupTracking(){
-        String email = SharedPreferenceUtil.getString(Enums.PreferenceKeys.email.toString(),"");
-        String userId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(),"");
+    private void setupTracking() {
+        String email = SharedPreferenceUtil.getString(Enums.PreferenceKeys.email.toString(), "");
+        String userId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), "");
         Analytics.with(TripPagesActivity.this).identify(userId, new Traits().putEmail(email), null);
     }
 
-    public void redirectToTripOverview(String destinationId){
+    public void redirectToTripOverview(String destinationId) {
         if (dialogLoading != null) {
             if (dialogLoading.isShowing())
                 dialogLoading.cancel();
@@ -136,17 +122,17 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         startActivity(intent);
     }
 
-    private void moveToPage(){
+    private void moveToPage() {
         int page = SharedPreferenceUtil.getInt(this, Enums.PreferenceKeys.currentPage.toString(), 0);
-        if (page > 0){
+        if (page > 0) {
             mViewPager.setCurrentItem(page, false);
             SharedPreferenceUtil.setInt(TripPagesActivity.getInstance(), Enums.PreferenceKeys.currentPage.toString(), 0);
-            mIndicator.initPoints(mTripCount+1, page, mViewPager);
+            mIndicator.initPoints(mTripCount + 1, page, mViewPager);
         }
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         Analytics.with(this).screen(null, "My Trips");
         mTripList = DatabaseManager.getTripArray(mDatabase, SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null));
@@ -178,11 +164,11 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
         moveToPage();
     }
 
-    public void startLocationService(){
+    public void startLocationService() {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, LocationService.class);
         intent.setAction(LocationService.ACTION_REPORT_POSITION);
-        pendingIntent = PendingIntent.getService(this,1,intent,PendingIntent.FLAG_CANCEL_CURRENT);
+        pendingIntent = PendingIntent.getService(this, 1, intent, PendingIntent.FLAG_CANCEL_CURRENT);
         alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, 0, 45 * 60 * 1000, pendingIntent);
     }
 
@@ -215,7 +201,6 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
 
     }
 
-
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -231,30 +216,26 @@ public class TripPagesActivity extends ActionBarActivity implements TripFragment
 
         @Override
         public Fragment getItem(int position) {
-            if (position == 0){
+            if (position == 0) {
                 return TripFragment.newInstance(-1, "", "", "");
-            }else{
-//                Trip trip = DatabaseManager.getTrip(position - 1, mDatabase);
-                Trip trip = mTripList.get(position -1);
+            } else {
+                Trip trip = mTripList.get(position - 1);
 
                 return TripFragment.newInstance(trip.getId(), trip.getDestinationName(), trip.getGeneralImage(), trip.getCountryId());
             }
-
         }
 
         @Override
         public int getCount() {
             // number of pages to be able to swipe through
-            return mTripCount+1;
+            return mTripCount + 1;
         }
-
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         super.onBackPressed();
         this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
     }
-
 }

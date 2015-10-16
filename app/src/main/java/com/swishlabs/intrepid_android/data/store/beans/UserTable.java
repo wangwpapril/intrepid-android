@@ -5,31 +5,22 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
-
 import android.database.Cursor;
 import android.util.Base64;
-
 import com.swishlabs.intrepid_android.data.api.model.User;
 import com.swishlabs.intrepid_android.data.store.Bean;
 import com.swishlabs.intrepid_android.util.StringUtil;
 
 
 public class UserTable extends Bean {
-
 	public static final String TABLE_NAME = "user";
-
 	private static final String USER_ID = "user_id";
     private static final String SAVE_COMP = "save_company";
-    
-
     private static UserTable instance;
-
     public static UserTable getInstance() {
         if (null == instance) {
             instance = new UserTable();
         }
-
         return instance;
     }
 
@@ -49,8 +40,6 @@ public class UserTable extends Bean {
                     				                               + ")";
             db.execSql(sql);
         }
-        
-        
         try {
             ByteArrayOutputStream bao = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(bao);
@@ -58,9 +47,7 @@ public class UserTable extends Bean {
             oos.flush();
             oos.close();
             bao.close();
-
             String dealStream = Base64.encodeToString(bao.toByteArray(), Base64.DEFAULT);
-            
             String sql;
             String userId = user.id;
             if (getCount() > 0) {
@@ -70,21 +57,14 @@ public class UserTable extends Bean {
             	sql = StringUtil.simpleFormat("replace into %s (%s,%s) values (?,?)", TABLE_NAME, SAVE_COMP, USER_ID);
             	 db.execSql(sql, dealStream,userId);
             }
-
-            
         } catch (Exception e) {
- //           Logg.e(e);
         }
-        
     }
-
         public synchronized User getUser( String userid ) {
             String sql = "SELECT " + SAVE_COMP + " FROM " + TABLE_NAME  + " WHERE " + USER_ID  +" = " + userid;
             Cursor cursor = db.getDb().rawQuery(sql, null);
-
             return paserUser(cursor);
         }
-
         private User paserUser(Cursor cursor) {
         	User user = null;
             if (cursor == null || !cursor.moveToFirst()) {
@@ -104,7 +84,6 @@ public class UserTable extends Bean {
 
                 return (User) object;
             } catch (Exception e) {
-     //           Logg.e(e);
             } finally {
                 try {
                     if (bis != null) {
@@ -114,14 +93,11 @@ public class UserTable extends Bean {
                         ois.close();
                     }
                 } catch (IOException e) {
-      //              Logg.e(e);
                 }
                 cursor.close();
             }
-
             return user;
         }       
-        
 
     public int getCount() {
         String sql = "SELECT COUNT(*) FROM " + TABLE_NAME;

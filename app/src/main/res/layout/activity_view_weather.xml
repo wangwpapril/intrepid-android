@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.swishlabs.intrepid_android.activity.ViewWeatherActivity">
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -17,21 +16,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Weather"
+            android:text="@string/weather"
             android:textSize="18sp"
             android:layout_gravity="center"
             android:textColor="#FFF"
             android:id="@+id/toolbar_title" />
     </android.support.v7.widget.Toolbar>
-
     <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/weather_view"
         android:layout_below="@+id/toolbar">
-
     </WebView>
-
     <include
         android:layout_width="match_parent"
         android:layout_height="25dp"
@@ -39,6 +35,4 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true">
     </include>
-
-
 </RelativeLayout>

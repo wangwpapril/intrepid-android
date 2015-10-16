@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.api.model.Currency;
 import com.swishlabs.intrepid_android.data.api.model.Embassy;
@@ -15,19 +14,16 @@ import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
-
 import java.util.List;
 
 /**
- * Created by ryanracioppo on 2015-04-15.
+ * Created by jcarrharris on 2015-04-15.
  */
 public class EmbassyListAdapter extends MyBaseAdapter {
     private List<Embassy> mEmbassyList;
     private Context mContext;
     private Database mDatabase;
     private Currency tempCurrency;
-
-
 
     public EmbassyListAdapter(List<Embassy> datas,
                                    Activity context, Database database) {
@@ -84,12 +80,8 @@ public class EmbassyListAdapter extends MyBaseAdapter {
         convertView.setTag(holder);
         return convertView;
     }
-
-
     private class ViewHolder {
         public ImageView countryIcon;
         public TextView countryName;
     }
-
-
 }

@@ -1,22 +1,20 @@
 package com.swishlabs.intrepid_android.activity;
 
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IndicatorLinearLayout;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,18 +32,8 @@ public class LearnMoreActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         MyApplication.getInstance().addActivity(this);
         instance = this;
-
         initContent();
-
-
         setContentView(R.layout.activity_learn_more);
-
-/*        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }*/
-
         mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -58,16 +46,10 @@ public class LearnMoreActivity extends ActionBarActivity {
 
             @Override
             public void onPageSelected(int position) {
-
-
-
-//                TextView t = (TextView)mViewPager.getChildAt(position).findViewById(R.id.learnMoreContent);
-  //              t.setText("test");
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
 
@@ -94,7 +76,6 @@ public class LearnMoreActivity extends ActionBarActivity {
         mLearnMoreContent = new ArrayList<LearnMoreContent>();
         int resId;
         String des;
-
         final String packageName = getPackageName();
 
         resId = getResources().getIdentifier("overview", "drawable", packageName);
@@ -115,9 +96,7 @@ public class LearnMoreActivity extends ActionBarActivity {
 
     }
 
-
     public class ViewPagerAdapter extends FragmentPagerAdapter {
-
         public ViewPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -132,25 +111,20 @@ public class LearnMoreActivity extends ActionBarActivity {
             return mLearnMoreContent.size();
         }
     }
-
     /**
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {
-
         ImageView mImageView ;
         public TextView mTextView;
         private final static String FRAGMENT_INDEX = "index";
-
         public PlaceholderFragment() {
         }
 
         public static PlaceholderFragment newInstance (int position){
-
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
             args.putInt(FRAGMENT_INDEX, position);
-
             fragment.setArguments(args);
             return fragment;
 
@@ -163,10 +137,8 @@ public class LearnMoreActivity extends ActionBarActivity {
             View rootView = inflater.inflate(R.layout.fragment_learn_more, container, false);
             mImageView = (ImageView) rootView.findViewById(R.id.learnMoreImage);
             mImageView.setImageResource(instance.mLearnMoreContent.get(index).getRsId());
-
             mTextView = (TextView) rootView.findViewById(R.id.learnMoreContent);
             mTextView.setText(instance.mLearnMoreContent.get(index).getLearnMoreDes());
-
             return rootView;
         }
     }
@@ -174,7 +146,6 @@ public class LearnMoreActivity extends ActionBarActivity {
     public class LearnMoreContent {
         int rsId;
         String learnMoreDes;
-
         public LearnMoreContent(int id, String description) {
             this.rsId = id;
             this.learnMoreDes = description;
@@ -183,6 +154,5 @@ public class LearnMoreActivity extends ActionBarActivity {
         int getRsId() { return rsId; }
 
         String getLearnMoreDes() { return learnMoreDes; }
-
     }
 }

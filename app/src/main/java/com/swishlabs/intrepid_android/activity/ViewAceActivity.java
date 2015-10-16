@@ -1,28 +1,21 @@
 package com.swishlabs.intrepid_android.activity;
 
 import android.graphics.Color;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.DisplayMetrics;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
-
 import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
-import com.swishlabs.intrepid_android.data.api.model.Constants;
 
 public class ViewAceActivity extends ActionBarActivity implements View.OnClickListener {
-
     WebView webView;
     ImageView backViewIv;
-
     public static ViewAceActivity instance;
 
     @Override
@@ -31,25 +24,20 @@ public class ViewAceActivity extends ActionBarActivity implements View.OnClickLi
         MyApplication.getInstance().addActivity(this);
         instance = this;
         setContentView(R.layout.activity_view_ace);
-
         webView = (WebView) findViewById(R.id.ace_view);
-
         backViewIv = (ImageView) findViewById(R.id.title_back);
         backViewIv.setOnClickListener(this);
-
         initialWebView();
-
         webView.loadUrl("https://www.aceworldview.com/WVEnt/WorldView/ADLogin");
-
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         Analytics.with(this).screen(null, "ACE Information");
     }
 
-    public void initialWebView(){
+    public void initialWebView() {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setLoadWithOverviewMode(true);
@@ -78,7 +66,7 @@ public class ViewAceActivity extends ActionBarActivity implements View.OnClickLi
 
         webView.setBackgroundColor(Color.LTGRAY);
 
-        webView.setWebViewClient( new WebViewClient() {
+        webView.setWebViewClient(new WebViewClient() {
 
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 webView.loadUrl(url);
@@ -90,27 +78,14 @@ public class ViewAceActivity extends ActionBarActivity implements View.OnClickLi
                 super.onPageFinished(view, url);
 
             }
-
-
         });
 
 
     }
 
-/*    @Override
-    public boolean onKeyDown (int keyCode, KeyEvent event){
-        if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
-            webView.goBack();
-            return true;
-        }
-
-        return super.onKeyDown(keyCode,event);
-    }
-*/
-
     @Override
     public void onClick(View v) {
-        if(v == backViewIv){
+        if (v == backViewIv) {
 
             onBackPressed();
             this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);

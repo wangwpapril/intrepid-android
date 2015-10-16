@@ -17,10 +17,8 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.segment.analytics.Analytics;
-import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.adapter.EmbassyListAdapter;
@@ -32,7 +30,6 @@ import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
-
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -54,7 +51,6 @@ public class SecurityActivity extends ActionBarActivity {
     ArrayList<String> tabNames = new ArrayList<String>();
 
     private String[] tabs = {"Security", "Embassy"};
-
     public static SecurityActivity getInstance() {
         return instance;
     }
@@ -71,25 +67,19 @@ public class SecurityActivity extends ActionBarActivity {
         mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
         mIntrepidMenu.setupMenu(instance, SecurityActivity.this, true);
         setupTabNames();
-
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
-
-
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
-
     }
 
     public void loadDatabase() {
         mDatabaseManager = new DatabaseManager(this.getBaseContext());
         mDatabase = mDatabaseManager.openDatabase("Intrepid.db");
     }
-
 
     private void setOnPageChangeListener(ViewPager viewPager) {
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -128,8 +118,6 @@ public class SecurityActivity extends ActionBarActivity {
         mTabContainer = (CustomTabContainer) findViewById(R.id.tabContainer);
         mTabContainer.createTabs(tabNames, mViewPager);
         setOnPageChangeListener(mViewPager);
-
-
     }
 
 
@@ -155,7 +143,6 @@ public class SecurityActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
     /**
      * A {@link android.support.v4.app.FragmentPagerAdapter} that returns a fragment corresponding to
@@ -187,14 +174,6 @@ public class SecurityActivity extends ActionBarActivity {
         @Override
         public CharSequence getPageTitle(int position) {
             Locale l = Locale.getDefault();
-//            switch (position) {
-//                case 0:
-//                    return "Overview";
-//                case 1:
-//                    return "Overview";
-//                case 2:
-//                    return "Overview";
-//            }
             return null;
         }
     }
@@ -203,11 +182,7 @@ public class SecurityActivity extends ActionBarActivity {
      * A placeholder fragment containing a simple view.
      */
     public static class SecurityFragment extends Fragment {
-
-
-
         private static final String ARG_SECTION_NUMBER = "section_number";
-
         public static SecurityFragment newInstance(int sectionNumber) {
             SecurityFragment fragment = new SecurityFragment();
             Bundle args = new Bundle();
@@ -315,5 +290,4 @@ public class SecurityActivity extends ActionBarActivity {
         super.onBackPressed();
         this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
     }
-
 }

@@ -2,20 +2,16 @@ package com.swishlabs.intrepid_android.data.api.callback;
 
 import android.os.AsyncTask;
 import android.os.Handler;
-
 import com.swishlabs.intrepid_android.request.IContentParms;
 import com.swishlabs.intrepid_android.request.ResultHolder;
 import com.swishlabs.intrepid_android.request.SimpleHttpClient;
 import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.Enums;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class ControllerContentTask extends
 		AsyncTask<String, Void, ResultHolder> {
@@ -24,9 +20,7 @@ public class ControllerContentTask extends
 	private String url;
 	private Enums.ConnMethod connMethod;
 	private boolean isHideLoading;
-	private static int NORMAL_TIMEOUT = 6000;				
-
-
+	private static int NORMAL_TIMEOUT = 6000;
 	public ControllerContentTask(String url, IControllerContentCallback icc,
 			Enums.ConnMethod connMethod,boolean isHideLoading){
 		this.icc = icc;
@@ -34,8 +28,7 @@ public class ControllerContentTask extends
 		this.connMethod = connMethod;
 		this.isHideLoading = isHideLoading;
 	}
-	
-	
+
 	@Override
 	protected void onPreExecute() {
 		super.onPreExecute();
@@ -62,7 +55,6 @@ public class ControllerContentTask extends
 	}
 
 	protected ResultHolder doInBackground(String... params){
-
 		ResultHolder rh = new ResultHolder();
 		String json = null;
 		if(params[0] != null)
@@ -74,14 +66,11 @@ public class ControllerContentTask extends
 				rh.setResult(SimpleHttpClient.doGet(url, NORMAL_TIMEOUT));
 				break;
 			case POST:
-//				rh.setResult(SimpleHttpClient.post(url, getParams(params)));
 				rh.setResult(SimpleHttpClient.post(json, url, NORMAL_TIMEOUT));
 					
 				break;
             case PUT:
                 rh.setResult(SimpleHttpClient.put(json, url, NORMAL_TIMEOUT));
-
-
             }
 			rh.setSuccess(true);
 		} catch (Exception e) {
@@ -105,6 +94,4 @@ public class ControllerContentTask extends
 			icc.handleError(new Exception(result.getResult()));
 		}
 	}
-	
-	
 }

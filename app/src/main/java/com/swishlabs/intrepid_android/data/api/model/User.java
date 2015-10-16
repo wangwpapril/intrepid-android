@@ -1,9 +1,6 @@
 package com.swishlabs.intrepid_android.data.api.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,7 +15,6 @@ public class User implements Serializable {
 	public String phone;
 	public String countryCode;
 	public String currencyCode;
-
 	public Company company;
 	public String ipAddress;
 	public String lastIpAddress;
@@ -32,11 +28,9 @@ public class User implements Serializable {
 	public String updatedAt;
 	public String token;
 	public String forgotPasswordToken;
-
 	public Company getCompany() {
 		return company;
 	}
-	
 	public User(JSONObject obj) throws JSONException {
 
         if(obj == null){
@@ -63,9 +57,7 @@ public class User implements Serializable {
 		updatedAt = obj.getString("updated_at");
 		token = obj.getString("token");
 		forgotPasswordToken = obj.getString("forgot_password_token");
-		
 		if (obj.has("company")) {
-
             Object tmp = obj.get("company");
             if(tmp instanceof JSONObject) {
                 JSONObject cp = obj.getJSONObject("company");
@@ -74,7 +66,5 @@ public class User implements Serializable {
                 company = new Company(null);
             }
 		}
-		
 	}
-
 }

@@ -2,7 +2,6 @@ package com.swishlabs.intrepid_android.data.api.model;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.Serializable;
 
 public class Destination implements Serializable {
@@ -19,9 +18,7 @@ public class Destination implements Serializable {
 	public Image imageFlag;
     public String imageUrl;
     public String currencyUrl;
-
     public Destination(){
-
     }
 		
 	public Destination(JSONObject obj) throws JSONException {
@@ -52,12 +49,9 @@ public class Destination implements Serializable {
                 if(rr instanceof JSONObject) {
                     imageUrl = images.getJSONObject("flag").getJSONObject("versions").getJSONObject("3x")
                             .optString("source_url").replace(" ", "%20");
-
                 }
 			}
-
 		}
-		
 	}
 
     public String getCountry(){
@@ -75,5 +69,4 @@ public class Destination implements Serializable {
     }
 
     public String getCurrencyCode() { return currencyCode; }
-
 }

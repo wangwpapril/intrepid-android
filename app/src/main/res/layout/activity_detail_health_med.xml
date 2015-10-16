@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
             android:textSize="18sp"
             android:layout_gravity="center"
             android:singleLine="true"
@@ -32,7 +32,6 @@
             android:id="@+id/toolbar_title"
             android:textStyle="normal" />
     </android.support.v7.widget.Toolbar>
-
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -40,11 +39,10 @@
         android:background="@android:color/transparent">
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/content"
             android:background="@android:color/white"
             android:padding="16dp">
-
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
@@ -57,8 +55,8 @@
                     android:layout_height="1dp"
                     android:id="@+id/section_divider15"
                     android:layout_below="@+id/brand_name_subtitle"
-                    android:layout_alignLeft="@+id/brand_name_icon"
-                    android:layout_alignRight="@+id/brand_name_subtitle"
+                    android:layout_alignStart="@+id/brand_name_icon"
+                    android:layout_alignEnd="@+id/brand_name_subtitle"
                     android:background="#EDEDED"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp" />
@@ -66,14 +64,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Brand Name"
+                    android:text="@string/brand_name"
                     android:id="@+id/brand_name_subtitle"
                     android:layout_alignParentStart="false"
                     android:textStyle="bold"
-                    android:layout_toRightOf="@+id/brand_name_icon"
+                    android:layout_toEndOf="@+id/brand_name_icon"
                     android:textColor="#333f48"
                     android:layout_alignParentEnd="true" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -84,7 +81,6 @@
                     android:layout_alignParentStart="false"
                     android:layout_below="@+id/section_divider15"
                     android:textColor="#333f48" />
-
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -93,7 +89,7 @@
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/brand_name_subtitle"
                     android:src="@drawable/brand_icon"
-                    android:layout_marginRight="10dp" />
+                    android:layout_marginEnd="10dp" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="fill_parent"
@@ -106,8 +102,8 @@
                     android:layout_height="1dp"
                     android:id="@+id/section_divider16"
                     android:layout_below="@+id/destination_subtitle"
-                    android:layout_alignLeft="@+id/section_icon"
-                    android:layout_alignRight="@+id/destination_subtitle"
+                    android:layout_alignStart="@+id/section_icon"
+                    android:layout_alignEnd="@+id/destination_subtitle"
                     android:background="#EDEDED"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp" />
@@ -115,14 +111,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Description"
+                    android:text="@string/description"
                     android:id="@+id/destination_subtitle"
                     android:layout_alignParentStart="false"
                     android:textStyle="bold"
-                    android:layout_toRightOf="@+id/section_icon"
+                    android:layout_toEndOf="@+id/section_icon"
                     android:textColor="#333f48"
                     android:layout_alignParentEnd="true" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -133,7 +128,6 @@
                     android:layout_alignParentStart="false"
                     android:layout_below="@+id/section_divider16"
                     android:textColor="#333f48" />
-
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -142,7 +136,7 @@
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/destination_subtitle"
                     android:src="@drawable/description_icon"
-                    android:layout_marginRight="10dp" />
+                    android:layout_marginEnd="10dp" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="fill_parent"
@@ -155,12 +149,11 @@
                     android:layout_height="1dp"
                     android:id="@+id/section_divider17"
                     android:layout_below="@+id/destination_subtitle2"
-                    android:layout_alignLeft="@+id/section_icon2"
-                    android:layout_alignRight="@+id/destination_subtitle2"
+                    android:layout_alignStart="@+id/section_icon2"
+                    android:layout_alignEnd="@+id/destination_subtitle2"
                     android:background="#EDEDED"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -176,11 +169,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Side Effects"
+                    android:text="@string/side_effects"
                     android:id="@+id/destination_subtitle2"
                     android:layout_alignParentStart="false"
                     android:textStyle="bold"
-                    android:layout_toRightOf="@+id/section_icon2"
+                    android:layout_toEndOf="@+id/section_icon2"
                     android:textColor="#333f48"
                     android:layout_alignParentEnd="true" />
 
@@ -192,7 +185,7 @@
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/destination_subtitle2"
                     android:src="@drawable/side_effects_icon"
-                    android:layout_marginRight="10dp" />
+                    android:layout_marginEnd="10dp" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="fill_parent"
@@ -205,8 +198,8 @@
                     android:layout_height="1dp"
                     android:id="@+id/section_divider18"
                     android:layout_below="@+id/destination_subtitle3"
-                    android:layout_alignLeft="@+id/section_icon3"
-                    android:layout_alignRight="@+id/destination_subtitle3"
+                    android:layout_alignStart="@+id/section_icon3"
+                    android:layout_alignEnd="@+id/destination_subtitle3"
                     android:background="#EDEDED"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp" />
@@ -214,11 +207,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Storage"
+                    android:text="@string/storage"
                     android:id="@+id/destination_subtitle3"
                     android:layout_alignParentStart="false"
                     android:textStyle="bold"
-                    android:layout_toRightOf="@+id/section_icon3"
+                    android:layout_toEndOf="@+id/section_icon3"
                     android:textColor="#333f48"
                     android:layout_alignParentEnd="true" />
 
@@ -241,7 +234,7 @@
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/destination_subtitle3"
                     android:src="@drawable/storage_icon"
-                    android:layout_marginRight="10dp" />
+                    android:layout_marginEnd="10dp" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="fill_parent"
@@ -254,8 +247,8 @@
                     android:layout_height="1dp"
                     android:id="@+id/section_divider19"
                     android:layout_below="@+id/destination_subtitle4"
-                    android:layout_alignLeft="@+id/section_icon4"
-                    android:layout_alignRight="@+id/destination_subtitle4"
+                    android:layout_alignStart="@+id/section_icon4"
+                    android:layout_alignEnd="@+id/destination_subtitle4"
                     android:background="#EDEDED"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp" />
@@ -263,14 +256,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Notes"
+                    android:text="@string/notes"
                     android:id="@+id/destination_subtitle4"
                     android:layout_alignParentStart="false"
                     android:textStyle="bold"
-                    android:layout_toRightOf="@+id/section_icon4"
+                    android:layout_toEndOf="@+id/section_icon4"
                     android:textColor="#333f48"
                     android:layout_alignParentEnd="true" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -281,7 +273,6 @@
                     android:layout_alignParentStart="false"
                     android:layout_below="@+id/section_divider19"
                     android:textColor="#333f48" />
-
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -290,7 +281,7 @@
                     android:layout_alignParentEnd="false"
                     android:layout_alignTop="@+id/destination_subtitle4"
                     android:src="@drawable/notes_icon"
-                    android:layout_marginRight="10dp" />
+                    android:layout_marginEnd="10dp" />
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>

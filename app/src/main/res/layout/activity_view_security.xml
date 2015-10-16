@@ -2,11 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-
     tools:context="com.swishlabs.intrepid_android.activity.SecurityActivity">
-
-
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -17,20 +13,15 @@
         android:paddingBottom="8dp"
         android:elevation="4dp"
         android:transitionName="actionBar">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Security"
-        android:textSize="18sp"
-        android:layout_gravity="center"
-        android:textColor="#FFF"
-        android:id="@+id/toolbar_title" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/security"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:textColor="#FFF"
+            android:id="@+id/toolbar_title" />
     </android.support.v7.widget.Toolbar>
-
-
-
-
-
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -42,7 +33,6 @@
             android:layout_width="fill_parent">
         </android.support.v4.view.ViewPager>
     </RelativeLayout>
-
     <com.swishlabs.intrepid_android.customViews.CustomTabContainer
         android:layout_width="fill_parent"
         android:id="@+id/tabContainer"
@@ -54,7 +44,8 @@
             android:layout_width="fill_parent"
             android:id="@+id/tabLayout"
             android:layout_height="fill_parent"
-            android:background="@drawable/subnav_transparent_bg"></LinearLayout>
+            android:background="@drawable/subnav_transparent_bg">
+        </LinearLayout>
         <TextView
             android:layout_width="50dp"
             android:id="@+id/tabSelector"
@@ -62,7 +53,6 @@
             android:layout_marginTop="-3dp"
             android:layout_height="1dp"/>
     </com.swishlabs.intrepid_android.customViews.CustomTabContainer>
-
     <include
         android:layout_width="match_parent"
         android:layout_height="25dp"
@@ -70,7 +60,5 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true">
     </include>
-
-
 </RelativeLayout>
 

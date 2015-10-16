@@ -11,11 +11,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
-import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
 import com.swishlabs.intrepid_android.data.api.model.Embassy;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
@@ -46,37 +44,37 @@ public class ViewEmbassyActivity extends ActionBarActivity {
         mDatabase = mDatabaseManager.openDatabase("Intrepid.db");
     }
 
-    protected void getEmbassyInfo(){
+    protected void getEmbassyInfo() {
         Bundle extras = getIntent().getExtras();
         String embassyId = extras.getString("embassyId");
         mEmbassy = DatabaseManager.getEmbassy(embassyId, mDatabase);
     }
 
-    protected void populateEmbassyInfo(){
-        TextView address = (TextView)findViewById(R.id.embassy_address);
+    protected void populateEmbassyInfo() {
+        TextView address = (TextView) findViewById(R.id.embassy_address);
         address.setText(mEmbassy.getAddress());
-        TextView phone = (TextView)findViewById(R.id.contact_phone);
+        TextView phone = (TextView) findViewById(R.id.contact_phone);
         String formattedPhones = formatPhoneNumbers();
-        phone.setText(Html.fromHtml("Phone: "+ formattedPhones));
-        TextView fax = (TextView)findViewById(R.id.contact_fax);
+        phone.setText(Html.fromHtml("Phone: " + formattedPhones));
+        TextView fax = (TextView) findViewById(R.id.contact_fax);
         fax.setText("Fax: " + mEmbassy.getFax());
-        TextView email = (TextView)findViewById(R.id.contact_email);
+        TextView email = (TextView) findViewById(R.id.contact_email);
         String formattedEmails = formatEmails();
-        email.setText(Html.fromHtml("Email: "+ formattedEmails));
-        TextView hours = (TextView)findViewById(R.id.embassy_hours);
+        email.setText(Html.fromHtml("Email: " + formattedEmails));
+        TextView hours = (TextView) findViewById(R.id.embassy_hours);
         hours.setText(mEmbassy.getHoursofOperation());
-        TextView notes = (TextView)findViewById(R.id.notes_text);
-        if (mEmbassy.getNotes().isEmpty()){
-            RelativeLayout notesBox = (RelativeLayout)findViewById(R.id.notes);
+        TextView notes = (TextView) findViewById(R.id.notes_text);
+        if (mEmbassy.getNotes().isEmpty()) {
+            RelativeLayout notesBox = (RelativeLayout) findViewById(R.id.notes);
             notesBox.setVisibility(View.INVISIBLE);
-        }else {
+        } else {
             notes.setText(mEmbassy.getNotes());
         }
-        TextView services = (TextView)findViewById(R.id.services_text);
-        if (mEmbassy.getServicesOffered().isEmpty()){
-            RelativeLayout servicesBox = (RelativeLayout)findViewById(R.id.services);
+        TextView services = (TextView) findViewById(R.id.services_text);
+        if (mEmbassy.getServicesOffered().isEmpty()) {
+            RelativeLayout servicesBox = (RelativeLayout) findViewById(R.id.services);
             servicesBox.setVisibility(View.INVISIBLE);
-        }else {
+        } else {
             services.setText(mEmbassy.getServicesOffered());
         }
         setClickListeners(phone, email);
@@ -91,56 +89,28 @@ public class ViewEmbassyActivity extends ActionBarActivity {
         });
     }
 
-    protected String formatPhoneNumbers(){
-//        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-//                ViewGroup.LayoutParams.WRAP_CONTENT);
-//        params.addRule(RelativeLayout.BELOW, R.id.below_id);
+    protected String formatPhoneNumbers() {
         String rawPhones = mEmbassy.getTelephone();
         String formattedPhones = rawPhones.replace(", ", "\r\n").replace("; ", ";\r\n");
         return formattedPhones;
     }
 
-    protected String formatEmails(){
+    protected String formatEmails() {
         String rawEmails = mEmbassy.getEmail();
         String formattedEmails = rawEmails.replace(", ", "\r\n").replace("; ", ";\r\n");
         return formattedEmails;
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         Analytics.with(this).screen(null, "Embassy Detail");
     }
 
-    protected void setClickListeners(TextView phone, TextView email){
+    protected void setClickListeners(TextView phone, TextView email) {
         Linkify.addLinks(phone, Linkify.PHONE_NUMBERS);
         Linkify.addLinks(email, Linkify.EMAIL_ADDRESSES);
-//        phone.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String phoneNumber = mEmbassy.getTelephone();
-//                Intent call = new Intent(Intent.ACTION_DIAL);
-//                call.setData(Uri.parse("tel:" + phoneNumber));
-//                startActivity(call);
-//            }
-//        });
-//        email.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(Intent.ACTION_SEND);
-//                i.setType("message/rfc822");
-//                i.putExtra(Intent.EXTRA_EMAIL, new String[]{mEmbassy.getEmail()});
-//                i.putExtra(Intent.EXTRA_SUBJECT, "");
-//                i.putExtra(Intent.EXTRA_TEXT   , "");
-//                try {
-//                    startActivity(Intent.createChooser(i, "Send E-mail"));
-//                } catch (android.content.ActivityNotFoundException ex) {
-//                    Toast.makeText(ViewEmbassyActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -160,9 +130,6 @@ public class ViewEmbassyActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
-
-
 }

@@ -1,15 +1,10 @@
 package com.swishlabs.intrepid_android.activity;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
-
-import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.IntrepidMenu;
@@ -41,10 +36,6 @@ public class AceInsuranceActivity extends ActionBarActivity implements View.OnCl
             pdfViewBt.setVisibility(View.INVISIBLE);
         }
     }
-
-
-
-
     @Override
     public void onClick(View v) {
         if (v == aceViewBt) {
@@ -58,7 +49,6 @@ public class AceInsuranceActivity extends ActionBarActivity implements View.OnCl
 
         }
     }
-
     @Override
     public void onBackPressed(){
         if(mIntrepidMenu.mState == 1){
@@ -68,5 +58,4 @@ public class AceInsuranceActivity extends ActionBarActivity implements View.OnCl
         super.onBackPressed();
         this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
     }
-
 }

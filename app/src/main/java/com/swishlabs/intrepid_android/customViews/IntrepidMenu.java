@@ -16,7 +16,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
-
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.activity.AceInsuranceActivity;
 import com.swishlabs.intrepid_android.activity.AssistanceActivity;
@@ -32,14 +31,12 @@ import com.swishlabs.intrepid_android.activity.ViewWeatherActivity;
  * Created by ryanracioppo on 2015-04-09.
  */
 
-
-
 public class IntrepidMenu extends ScrollView {
 
     public static final int MENUHEIGHT = 338;
     public static final int MINHEIGHT = 25;
     public static final int VELOCITY = 150;
-    private int mInitialHeight =0;
+    private int mInitialHeight = 0;
     private ImageButton mExpandMenu;
     private ImageView mArrow;
     public int mState = 0;
@@ -56,38 +53,30 @@ public class IntrepidMenu extends ScrollView {
 
     }
 
-    public IntrepidMenu (Context context, AttributeSet attrs, int defStyleAttr){
+    public IntrepidMenu(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mInitialHeight = this.getLayoutParams().height;
 
     }
 
     @Override
-    public void onFinishInflate(){
+    public void onFinishInflate() {
         super.onFinishInflate();
-        mArrow = (ImageView)findViewById(R.id.intrepidMenuArrow);
+        mArrow = (ImageView) findViewById(R.id.intrepidMenuArrow);
 
     }
 
 
     @Override
-    public void onScrollChanged(int x, int y, int oldx, int oldy){
+    public void onScrollChanged(int x, int y, int oldx, int oldy) {
         super.onScrollChanged(x, y, oldx, oldy);
-
-//        final float scale = getContext().getResources().getDisplayMetrics().density;
-//        int dps = 10;
-//        int width = this.getWidth();
-//        int pixels = (int) (dps * scale + 0.5f);
-//
-//        this.setLayoutParams(new RelativeLayout.LayoutParams(width, y));
-//        this.setScrollY(0);
     }
+
     private int maxScroll = 0;
     private float mLastMotionY;
     private int mDeltaY = 0;
     private int mLastDeltaY = 0;
     private VelocityTracker mVelocityTracker;
-
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -99,10 +88,7 @@ public class IntrepidMenu extends ScrollView {
         final float y = event.getRawY();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-
-
                 // Remember where the motion event started
-
                 break;
             case MotionEvent.ACTION_MOVE:
                 if (maxScroll == 0) {
@@ -110,40 +96,36 @@ public class IntrepidMenu extends ScrollView {
                 }
 
                 mDeltaY = (int) (mLastMotionY - y);
-
                 mLastMotionY = y;
-                Log.e("y", y+"is y");
-                Log.e("delta", mDeltaY+" is deltay");
+                Log.e("y", y + "is y");
+                Log.e("delta", mDeltaY + " is deltay");
                 if (mDeltaY < 100 && mDeltaY > -100) {
-                    if (mDeltaY > 0 && this.getHeight()> convertDPtoPixels(MENUHEIGHT)){
+                    if (mDeltaY > 0 && this.getHeight() > convertDPtoPixels(MENUHEIGHT)) {
 
-                    }else {
+                    } else {
                         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
                                 this.getLayoutParams();
-                        int minHeight =  Math.min(this.getLayoutParams().height + mDeltaY, convertDPtoPixels(MENUHEIGHT));
-                        params.height = Math.max(minHeight,convertDPtoPixels(MINHEIGHT));
+                        int minHeight = Math.min(this.getLayoutParams().height + mDeltaY, convertDPtoPixels(MENUHEIGHT));
+                        params.height = Math.max(minHeight, convertDPtoPixels(MINHEIGHT));
 
                         this.setLayoutParams(params);
                     }
                 }
 
-
                 break;
             case MotionEvent.ACTION_UP:
                 final VelocityTracker velocityTracker = mVelocityTracker;
                 velocityTracker.computeCurrentVelocity(3000);
-                int velocityY= (int) velocityTracker.getYVelocity();
-                Log.e("VELOCITY", velocityY+"");
+                int velocityY = (int) velocityTracker.getYVelocity();
+                Log.e("VELOCITY", velocityY + "");
                 if (velocityY > VELOCITY) {
                     snapToBottom();
-
-
                 } else if (velocityY < -VELOCITY) {
                     snapToTop();
                 } else {
-                    if (this.getHeight() < convertDPtoPixels(MENUHEIGHT/2)) {
+                    if (this.getHeight() < convertDPtoPixels(MENUHEIGHT / 2)) {
                         snapToBottom();
-                    }else{
+                    } else {
                         snapToTop();
                     }
                 }
@@ -156,60 +138,54 @@ public class IntrepidMenu extends ScrollView {
                 break;
             case MotionEvent.ACTION_CANCEL:
 
-             }
-       return true;
+        }
+        return true;
     }
-
 
     public void snapToBottom() {
-            int movement = this.getHeight()-convertDPtoPixels(MINHEIGHT);
-            TranslateAnimation anim = new TranslateAnimation(0, 0, 0, movement);
-            anim.setDuration(MENUHEIGHT);
-            final ScrollView scroller = this;
-            this.startAnimation(anim);
+        int movement = this.getHeight() - convertDPtoPixels(MINHEIGHT);
+        TranslateAnimation anim = new TranslateAnimation(0, 0, 0, movement);
+        anim.setDuration(MENUHEIGHT);
+        final ScrollView scroller = this;
+        this.startAnimation(anim);
+        anim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                scroller.setDrawingCacheEnabled(true);
+            }
 
-            anim.setAnimationListener(new Animation.AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation animation) {
-                    scroller.setDrawingCacheEnabled(true);
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
+                        scroller.getLayoutParams();
+                params.height = convertDPtoPixels(MINHEIGHT);
+                scroller.setLayoutParams(params);
+                scroller.setDrawingCacheEnabled(false);
+                scroller.clearAnimation();
+            }
 
-                }
-
-                @Override
-                public void onAnimationEnd(Animation animation) {
-                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
-                            scroller.getLayoutParams();
-                    params.height = convertDPtoPixels(MINHEIGHT);
-                    scroller.setLayoutParams(params);
-                    scroller.setDrawingCacheEnabled(false);
-                    scroller.clearAnimation();
-                }
-
-                @Override
-                public void onAnimationRepeat(Animation animation) {
-
-                }
-            });
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+        });
         mArrow.setImageDrawable(getResources().getDrawable(R.drawable.arrow_up));
         mState = 0;
-
     }
 
-    public void snapToTop(){
+    public void snapToTop() {
         int initial_position = this.getHeight();
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
                 this.getLayoutParams();
         params.height = convertDPtoPixels(MENUHEIGHT);
         this.setLayoutParams(params);
-
-        TranslateAnimation anim = new TranslateAnimation(0, 0, convertDPtoPixels(MENUHEIGHT)-initial_position, 0);
+        TranslateAnimation anim = new TranslateAnimation(0, 0, convertDPtoPixels(MENUHEIGHT) - initial_position, 0);
         anim.setDuration(MENUHEIGHT);
         this.startAnimation(anim);
         mArrow.setImageDrawable(getResources().getDrawable(R.drawable.arrow_down));
         mState = 1;
     }
 
-    public void appearTop(){
+    public void appearTop() {
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
                 this.getLayoutParams();
         params.height = convertDPtoPixels(MENUHEIGHT);
@@ -217,17 +193,13 @@ public class IntrepidMenu extends ScrollView {
         mState = 1;
     }
 
-    private int convertDPtoPixels(int dp){
+    private int convertDPtoPixels(int dp) {
         final float scale = getContext().getResources().getDisplayMetrics().density;
         int pixels = (int) (dp * scale + 0.5f);
         return pixels;
     }
 
     protected boolean mFinishActivity;
-
-
-
-
 
     public void setupMenu(final Context context, final Activity activity, boolean finish) {
         mFinishActivity = finish;
@@ -239,7 +211,7 @@ public class IntrepidMenu extends ScrollView {
             }
         });
 
-        if(context instanceof ViewDestinationActivity){
+        if (context instanceof ViewDestinationActivity) {
             overviewButton.setAlpha(0.65f);
         }
 
@@ -251,7 +223,7 @@ public class IntrepidMenu extends ScrollView {
             }
         });
 
-        if(context instanceof SecurityActivity){
+        if (context instanceof SecurityActivity) {
             securityButton.setAlpha(0.65f);
         }
 
@@ -263,7 +235,7 @@ public class IntrepidMenu extends ScrollView {
             }
         });
 
-        if(context instanceof SettingsActivity){
+        if (context instanceof SettingsActivity) {
             settingsButton.setAlpha(0.65f);
         }
 
@@ -282,7 +254,7 @@ public class IntrepidMenu extends ScrollView {
             }
         });
 
-        if(context instanceof ViewHealthActivity){
+        if (context instanceof ViewHealthActivity) {
             healthButton.setAlpha(0.65f);
         }
 
@@ -294,7 +266,7 @@ public class IntrepidMenu extends ScrollView {
             }
         });
 
-        if(context instanceof ViewWeatherActivity){
+        if (context instanceof ViewWeatherActivity) {
             weatherButton.setAlpha(0.65f);
         }
 
@@ -306,7 +278,7 @@ public class IntrepidMenu extends ScrollView {
             }
         });
 
-        if(context instanceof ViewAlertActivity){
+        if (context instanceof ViewAlertActivity) {
             alertButton.setAlpha(0.65f);
         }
 
@@ -318,7 +290,7 @@ public class IntrepidMenu extends ScrollView {
             }
         });
 
-        if(context instanceof AssistanceActivity){
+        if (context instanceof AssistanceActivity) {
             assistanceButton.setAlpha(0.65f);
         }
 
@@ -330,7 +302,7 @@ public class IntrepidMenu extends ScrollView {
             }
         });
 
-        if(context instanceof AceInsuranceActivity){
+        if (context instanceof AceInsuranceActivity) {
             aceButton.setAlpha(0.65f);
         }
 
@@ -345,12 +317,9 @@ public class IntrepidMenu extends ScrollView {
                 }
             }
         });
-
-
     }
 
-
-    protected void animateButton(final FrameLayout button, final Context context, final Class className, final Activity activity){
+    protected void animateButton(final FrameLayout button, final Context context, final Class className, final Activity activity) {
         AlphaAnimation anim = new AlphaAnimation(1, 0.5F);
         anim.setDuration(250);
         button.startAnimation(anim);
@@ -368,26 +337,14 @@ public class IntrepidMenu extends ScrollView {
                 anim2.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
-
                     }
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-/*                        Intent mIntent = new Intent(context, className);
-                        if(className == TripPagesActivity.class) {
-                            mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            mIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        }
-                        activity.startActivity(mIntent);
-                        activity.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-                        if (mFinishActivity) {
-                            activity.finish();
-                        }*/
                     }
 
                     @Override
                     public void onAnimationRepeat(Animation animation) {
-
                     }
                 });
 
@@ -400,7 +357,7 @@ public class IntrepidMenu extends ScrollView {
         });
 
         Intent mIntent = new Intent(context, className);
-        if(className == TripPagesActivity.class) {
+        if (className == TripPagesActivity.class) {
             mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             mIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         }
@@ -409,7 +366,5 @@ public class IntrepidMenu extends ScrollView {
         if (mFinishActivity) {
             activity.finish();
         }
-
     }
-
 }

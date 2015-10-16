@@ -3,7 +3,6 @@ package com.swishlabs.intrepid_android.activity;
 import android.app.AlarmManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,23 +13,17 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.segment.analytics.Analytics;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.CustomTabContainer;
@@ -42,15 +35,11 @@ import com.swishlabs.intrepid_android.data.api.model.Currency;
 import com.swishlabs.intrepid_android.data.api.model.DestinationInformation;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
-import com.swishlabs.intrepid_android.services.LocationService;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.ImageLoader;
-import com.swishlabs.intrepid_android.util.Logger;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -76,12 +65,13 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
     boolean firstFlag = false;
 
-//    TextView mToolbarTitle;
+    //    TextView mToolbarTitle;
     CustomTabContainer mTabContainer;
     ArrayList<String> tabNames = new ArrayList<String>();
 
-    private String[] tabs = { "Overview", "Climate", "Currency" };
-    public static ViewDestinationActivity getInstance(){
+    private String[] tabs = {"Overview", "Climate", "Currency"};
+
+    public static ViewDestinationActivity getInstance() {
         return instance;
     }
 
@@ -91,26 +81,18 @@ public class ViewDestinationActivity extends ActionBarActivity {
         this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
         MyApplication.getInstance().addActivity(this);
         loadDatabase();
-
         mDestinationId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currentCountryId.toString(), null);
         mDestinationInformation = DatabaseManager.getDestinationInformation(mDatabase, mDestinationId);
-
         baseCurrencyCode = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currencyCode.toString(), null);
         baseCurrency = DatabaseManager.getCurrency(baseCurrencyCode, mDatabase);
         desCurrency = DatabaseManager.getCurrency(mDestinationInformation.getCurrencyCode(), mDatabase);
-
         LoadCurrencyInfo();
-
         setContentView(R.layout.activity_view_destination);
         instance = this;
-        mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
+        mIntrepidMenu = (IntrepidMenu) findViewById(R.id.intrepidMenu);
         mIntrepidMenu.setupMenu(instance, ViewDestinationActivity.this, false);
-
         setupTabNames();
-
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
-
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -118,30 +100,25 @@ public class ViewDestinationActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
 
-        if("1".equals(getIntent().getStringExtra("firstTimeFlag"))){
+        if ("1".equals(getIntent().getStringExtra("firstTimeFlag"))) {
             firstFlag = true;
         }
-
-
     }
 
     public void checkMenuClick(View v) {
         Log.d("check", "hi");
-        if (v != mIntrepidMenu && v.getParent()!=mIntrepidMenu){
+        if (v != mIntrepidMenu && v.getParent() != mIntrepidMenu) {
             mIntrepidMenu.snapToBottom();
         }
     }
 
-
-
-    public void loadDatabase(){
+    public void loadDatabase() {
         mDatabaseManager = new DatabaseManager(this.getBaseContext());
         mDatabase = mDatabaseManager.openDatabase("Intrepid.db");
     }
 
-    public void LoadCurrencyInfo(){
+    public void LoadCurrencyInfo() {
         IControllerContentCallback icc = new IControllerContentCallback() {
-
             public void handleSuccess(String content) {
                 JSONObject currencyInfo;
                 try {
@@ -153,33 +130,29 @@ public class ViewDestinationActivity extends ActionBarActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
 
-            public void handleError(Exception e){
-           }
+            public void handleError(Exception e) {
+            }
         };
 
         String baseCurrencyCode = SharedPreferenceUtil.getString(Enums.PreferenceKeys.currencyCode.toString(), null);
         String currencyCode = mDestinationInformation.getCurrencyCode();
 
         ControllerContentTask cct = new ControllerContentTask(
-                Constants.CURRENCY_URL+"&base="+baseCurrencyCode+"&symbols="+currencyCode, icc,
-                Enums.ConnMethod.GET,true);
+                Constants.CURRENCY_URL + "&base=" + baseCurrencyCode + "&symbols=" + currencyCode, icc,
+                Enums.ConnMethod.GET, true);
 
         String ss = null;
         cct.execute(ss);
-
     }
 
-
-    private void setOnPageChangeListener(ViewPager viewPager){
+    private void setOnPageChangeListener(ViewPager viewPager) {
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 mTabContainer.slideScrollIndicator(position, positionOffsetPixels);
-
-        }
+            }
 
             @Override
             public void onPageSelected(int position) {
@@ -189,9 +162,9 @@ public class ViewDestinationActivity extends ActionBarActivity {
                 }
                 if (position == 0) {
                     Analytics.with(ViewDestinationActivity.this).screen(null, "General");
-                }else if (position == 1){
+                } else if (position == 1) {
                     Analytics.with(ViewDestinationActivity.this).screen(null, "Culture");
-                }else if (position == 2){
+                } else if (position == 2) {
                     Analytics.with(ViewDestinationActivity.this).screen(null, "Currency");
                 }
             }
@@ -200,12 +173,11 @@ public class ViewDestinationActivity extends ActionBarActivity {
             public void onPageScrollStateChanged(int state) {
                 if (mIntrepidMenu.mState == 1)
                     mIntrepidMenu.snapToBottom();
-
             }
         });
     }
 
-    protected void setupTabNames(){
+    protected void setupTabNames() {
         tabNames.add("GENERAL");
         tabNames.add("CULTURE");
         tabNames.add("CURRENCY");
@@ -217,37 +189,31 @@ public class ViewDestinationActivity extends ActionBarActivity {
         createTabs();
     }
 
-    private void createTabs(){
-        mTabContainer = (CustomTabContainer)findViewById(R.id.tabContainer);
+    private void createTabs() {
+        mTabContainer = (CustomTabContainer) findViewById(R.id.tabContainer);
         mTabContainer.createTabs(tabNames, mViewPager);
         setOnPageChangeListener(mViewPager);
-
-
     }
 
-    private void openMenu(){
-        if(firstFlag){
+    private void openMenu() {
+        if (firstFlag) {
             firstFlag = false;
-            if(mIntrepidMenu.mState == 0){
+            if (mIntrepidMenu.mState == 0) {
                 mIntrepidMenu.appearTop();
             }
         }
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
-//        if (mIntrepidMenu!=null){
-//            mIntrepidMenu.snapToBottom();
-//        }
     }
-
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
- //       getMenuInflater().inflate(R.menu.menu_view_destination, menu);
+        //       getMenuInflater().inflate(R.menu.menu_view_destination, menu);
         return true;
     }
 
@@ -257,10 +223,8 @@ public class ViewDestinationActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-
             SharedPreferenceUtil.setString(Enums.PreferenceKeys.userId.toString(), "");
             SharedPreferenceUtil.setString(Enums.PreferenceKeys.token.toString(), "");
             SharedPreferenceUtil.setString(Enums.PreferenceKeys.email.toString(), "");
@@ -272,30 +236,23 @@ public class ViewDestinationActivity extends ActionBarActivity {
             SharedPreferenceUtil.setApList(this, null);
             SharedPreferenceUtil.setBoolean(getApplicationContext(), Enums.PreferenceKeys.loginStatus.toString(), false);
             MyApplication.setLoginStatus(false);
-
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             alarmManager.cancel(TripPagesActivity.pendingIntent);
-
             mDatabaseManager.deleteDatabase("Intrepid.db");
-
             Intent mIntent = new Intent(this, LoginActivity.class);
             startActivity(mIntent);
             this.finish();
-
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-
-
     /**
      * A {@link android.support.v4.app.FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -306,9 +263,9 @@ public class ViewDestinationActivity extends ActionBarActivity {
             // Return a PlaceholderFragment (defined as a static inner class below).
             if (position == 0) {
                 return OverviewGeneralFragment.newInstance(position + 1);
-            }else if (position == 1){
+            } else if (position == 1) {
                 return OverviewCultureFragment.newInstance(position + 1);
-            }else {
+            } else {
                 return OverviewCurrencyFragment.newInstance(position + 1);
                 //TODO change this to a currency fragment
             }
@@ -323,14 +280,6 @@ public class ViewDestinationActivity extends ActionBarActivity {
         @Override
         public CharSequence getPageTitle(int position) {
             Locale l = Locale.getDefault();
-//            switch (position) {
-//                case 0:
-//                    return "Overview";
-//                case 1:
-//                    return "Overview";
-//                case 2:
-//                    return "Overview";
-//            }
             return null;
         }
     }
@@ -362,33 +311,30 @@ public class ViewDestinationActivity extends ActionBarActivity {
             return rootView;
         }
 
-        public void populateGeneralOverview(View rootView){
+        public void populateGeneralOverview(View rootView) {
             DestinationInformation destinationInformation = ViewDestinationActivity.getInstance().mDestinationInformation;
-            ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
-//            Picasso.with(ViewDestinationActivity.getInstance()).load(destinationInformation.getImageOverview()).fit().into(generalImage);
+            ImageView generalImage = (ImageView) rootView.findViewById(R.id.overview_image);
             Glide.with(this).load(destinationInformation.getImageOverview()).fitCenter().crossFade().into(generalImage);
-     //       Picasso.with(TripPagesActivity.getInstance()).load(destinationInformation.getImageIntro()).fetch();
-            TextView locationText = (TextView)rootView.findViewById(R.id.destination_content);
+            TextView locationText = (TextView) rootView.findViewById(R.id.destination_content);
             locationText.setText(destinationInformation.getLocation());
-            TextView climateText = (TextView)rootView.findViewById(R.id.destination_content2);
+            TextView climateText = (TextView) rootView.findViewById(R.id.destination_content2);
             climateText.setText(destinationInformation.getClimate());
-            TextView governmentText = (TextView)rootView.findViewById(R.id.destination_content3);
+            TextView governmentText = (TextView) rootView.findViewById(R.id.destination_content3);
             governmentText.setText(destinationInformation.getTypeOfGovernment());
-            TextView visaText = (TextView)rootView.findViewById(R.id.destination_content4);
+            TextView visaText = (TextView) rootView.findViewById(R.id.destination_content4);
             visaText.setText(destinationInformation.getVisaRequirements());
-            TextView communication = (TextView)rootView.findViewById(R.id.destination_content5);
+            TextView communication = (TextView) rootView.findViewById(R.id.destination_content5);
             communication.setText(destinationInformation.getCommunicationsInfrastructure());
-            TextView electricityText = (TextView)rootView.findViewById(R.id.destination_content6);
+            TextView electricityText = (TextView) rootView.findViewById(R.id.destination_content6);
             electricityText.setText(destinationInformation.getElectricity());
-            TextView developmentText = (TextView)rootView.findViewById(R.id.destination_content7);
+            TextView developmentText = (TextView) rootView.findViewById(R.id.destination_content7);
             developmentText.setText(destinationInformation.getDevelopment());
-            TextView moneyText = (TextView)rootView.findViewById(R.id.destination_content8);
+            TextView moneyText = (TextView) rootView.findViewById(R.id.destination_content8);
             moneyText.setText(destinationInformation.getCurrency());
-            TextView transportationText = (TextView)rootView.findViewById(R.id.destination_content9);
+            TextView transportationText = (TextView) rootView.findViewById(R.id.destination_content9);
             transportationText.setText(destinationInformation.getTransportation());
-            TextView holidayText = (TextView)rootView.findViewById(R.id.destination_content10);
+            TextView holidayText = (TextView) rootView.findViewById(R.id.destination_content10);
             holidayText.setText(destinationInformation.getmHolidays());
-
         }
     }
 
@@ -415,20 +361,19 @@ public class ViewDestinationActivity extends ActionBarActivity {
             return rootView;
         }
 
-        public void populateCultureOverview(View rootView){
+        public void populateCultureOverview(View rootView) {
             final DestinationInformation destinationInformation = ViewDestinationActivity.getInstance().mDestinationInformation;
-            final ImageView generalImage = (ImageView)rootView.findViewById(R.id.overview_image);
+            final ImageView generalImage = (ImageView) rootView.findViewById(R.id.overview_image);
             Glide.with(this).load(destinationInformation.getImageCulture()).fitCenter().into(generalImage);
 //            Glide.with(TripPagesActivity.getInstance()).load(destinationInformation.getImageIntro()).downloadOnly(-2147483648, -2147483648);
-            TextView normsText = (TextView)rootView.findViewById(R.id.destination_content);
+            TextView normsText = (TextView) rootView.findViewById(R.id.destination_content);
             normsText.setText(destinationInformation.getCulturalNorms());
-            TextView ethnicText= (TextView)rootView.findViewById(R.id.destination_content2);
+            TextView ethnicText = (TextView) rootView.findViewById(R.id.destination_content2);
             ethnicText.setText(destinationInformation.getEthnicMakeup());
-            TextView languageText = (TextView)rootView.findViewById(R.id.destination_content3);
+            TextView languageText = (TextView) rootView.findViewById(R.id.destination_content3);
             languageText.setText(destinationInformation.getLanguageInfo());
-            TextView religionText = (TextView)rootView.findViewById(R.id.destination_content4);
+            TextView religionText = (TextView) rootView.findViewById(R.id.destination_content4);
             religionText.setText(destinationInformation.getReligion());
-
         }
     }
 
@@ -448,7 +393,6 @@ public class ViewDestinationActivity extends ActionBarActivity {
             return fragment;
         }
 
-
         public OverviewCurrencyFragment() {
         }
 
@@ -460,21 +404,18 @@ public class ViewDestinationActivity extends ActionBarActivity {
             return rootView;
         }
 
-        public void populateCurrencyOverview(View rootView){
-
+        public void populateCurrencyOverview(View rootView) {
             if (ImageLoader == null) {
                 ImageLoader = new ImageLoader(ViewDestinationActivity.getInstance(), R.drawable.empty_square);
             }
 
-            TextView baseCurrencyTv = (TextView)rootView.findViewById(R.id.base_currency_code);
+            TextView baseCurrencyTv = (TextView) rootView.findViewById(R.id.base_currency_code);
             baseCurrencyTv.setText(ViewDestinationActivity.getInstance().baseCurrency.getCurrencyCode());
-
-            ImageView baseImageIv = (ImageView)rootView.findViewById(R.id.base_currency_icon);
+            ImageView baseImageIv = (ImageView) rootView.findViewById(R.id.base_currency_icon);
             baseImageIv.setTag(ViewDestinationActivity.getInstance().baseCurrency.getImageUrl());
             ImageLoader.DisplayImage(ViewDestinationActivity.getInstance().baseCurrency.getImageUrl(),
                     ViewDestinationActivity.getInstance(), baseImageIv);
-
-            ImageView overview = (ImageView)rootView.findViewById(R.id.overview_image);
+            ImageView overview = (ImageView) rootView.findViewById(R.id.overview_image);
             overview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -485,80 +426,65 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
                     if (instance.mIntrepidMenu.mState == 1)
                         instance.mIntrepidMenu.snapToBottom();
-
-
                 }
             });
 
             final ImageView baseSelector = (ImageView) rootView.findViewById(R.id.currency_selector);
             final ImageView desSelector = (ImageView) rootView.findViewById(R.id.currency_selector2);
-
-
-            final EditText baseValueEt = (EditText)rootView.findViewById(R.id.base_currency_value);
-
+            final EditText baseValueEt = (EditText) rootView.findViewById(R.id.base_currency_value);
             baseValueEt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
-                    if(hasFocus){
+                    if (hasFocus) {
                         baseSelector.setVisibility(View.INVISIBLE);
-                    }else {
+                    } else {
 
                         baseSelector.setVisibility(View.VISIBLE);
                     }
                 }
             });
 
-            TextView desCurrencyTv = (TextView)rootView.findViewById(R.id.des_currency_code);
+            TextView desCurrencyTv = (TextView) rootView.findViewById(R.id.des_currency_code);
             desCurrencyTv.setText(ViewDestinationActivity.getInstance().mDestinationInformation.getCurrencyCode());
-
-            final ImageView desImageIv = (ImageView)rootView.findViewById(R.id.des_currency_icon);
+            final ImageView desImageIv = (ImageView) rootView.findViewById(R.id.des_currency_icon);
             desImageIv.setTag(ViewDestinationActivity.getInstance().desCurrency.getImageUrl());
             ImageLoader.DisplayImage(ViewDestinationActivity.getInstance().desCurrency.getImageUrl(),
                     ViewDestinationActivity.getInstance(), desImageIv);
 
             final EditText desValueEt = (EditText) rootView.findViewById(R.id.des_currency_value);
-//            desValueEt.setText(reFormat(ViewDestinationActivity.getInstance().mDestinationInformation.getCurrencyRate()));
             desValueEt.setText(reFormat(rate));
-
             desValueEt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
-                    if(hasFocus){
+                    if (hasFocus) {
 
                         desSelector.setVisibility(View.INVISIBLE);
                     } else {
 
                         desSelector.setVisibility(View.VISIBLE);
                     }
-
                 }
             });
-
             baseWatcher = new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
                 }
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-
                     desValueEt.removeTextChangedListener(desWatcher);
                     double baseValue = 0, desValue = 0;
-
-                    if(s.toString().equals("") || s.toString().equals(".")) {
+                    if (s.toString().equals("") || s.toString().equals(".")) {
                         baseValue = 0;
                         desValue = 0;
-                    }else {
+                    } else {
                         try {
                             baseValue = Double.parseDouble(s.toString());
-                        }catch (NumberFormatException e){
-                            System.out.println( "Not a legal number." );
+                        } catch (NumberFormatException e) {
+                            System.out.println("Not a legal number.");
                         }
-//                        desValue = baseValue * Double.parseDouble(ViewDestinationActivity.getInstance().mDestinationInformation.mCurrencyRate);
                         desValue = baseValue * rate;
                     }
-
                     desValueEt.setText(reFormat(desValue));
 
                 }
@@ -567,15 +493,12 @@ public class ViewDestinationActivity extends ActionBarActivity {
                 public void afterTextChanged(Editable s) {
 
                     desValueEt.addTextChangedListener(desWatcher);
-
-
                 }
             };
 
             desWatcher = new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
                 }
 
                 @Override
@@ -583,58 +506,48 @@ public class ViewDestinationActivity extends ActionBarActivity {
 
                     baseValueEt.removeTextChangedListener(baseWatcher);
 
-                    double baseValue = 0, desValue =0;
+                    double baseValue = 0, desValue = 0;
 
-                    if(s.toString().equals("") || s.toString().equals(".")) {
+                    if (s.toString().equals("") || s.toString().equals(".")) {
                         baseValue = 0;
                         desValue = 0;
-                    }else {
+                    } else {
                         try {
                             desValue = Double.parseDouble(s.toString());
-                        }catch (NumberFormatException e){
-                            System.out.println( "Not a legal number." );
+                        } catch (NumberFormatException e) {
+                            System.out.println("Not a legal number.");
                         }
 //                        baseValue = desValue / Double.parseDouble(ViewDestinationActivity.getInstance().mDestinationInformation.mCurrencyRate);
                         baseValue = desValue / rate;
                     }
-
                     baseValueEt.setText(reFormat(baseValue));
                 }
 
                 @Override
                 public void afterTextChanged(Editable s) {
-
                     baseValueEt.addTextChangedListener(baseWatcher);
-
                 }
             };
 
             baseValueEt.addTextChangedListener(baseWatcher);
-            desValueEt.addTextChangedListener(desWatcher );
-
-
+            desValueEt.addTextChangedListener(desWatcher);
         }
 
-        private String reFormat(double input){
-            double value = (double)(Math.round(input*100)/100.0);
+        private String reFormat(double input) {
+            double value = (double) (Math.round(input * 100) / 100.0);
             DecimalFormat df = new DecimalFormat("0.00");
             String result = df.format(value);
-
             return result;
-
         }
-
     }
 
     @Override
-    public void onBackPressed(){
-        if(mIntrepidMenu.mState == 1){
+    public void onBackPressed() {
+        if (mIntrepidMenu.mState == 1) {
             mIntrepidMenu.snapToBottom();
             return;
         }
         super.onBackPressed();
         this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
-
-
 }

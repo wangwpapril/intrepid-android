@@ -1,6 +1,5 @@
 package com.swishlabs.intrepid_android.activity;
 
-import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,11 +7,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-
 import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.adapter.DestinationsListAdapter;
@@ -24,7 +21,6 @@ import com.swishlabs.intrepid_android.data.api.model.Constants;
 import com.swishlabs.intrepid_android.data.api.model.Destination;
 import com.swishlabs.intrepid_android.data.api.model.HealthCondition;
 import com.swishlabs.intrepid_android.data.api.model.HealthMedicationDis;
-import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Common;
@@ -32,13 +28,9 @@ import com.swishlabs.intrepid_android.util.DataDownloader;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 import com.swishlabs.intrepid_android.util.StringUtil;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -46,36 +38,32 @@ import java.util.Locale;
 
 public class DestinationsListActivity extends BaseActivity {
 
-	protected static final String TAG = "TripsListActivity";
-	private ListView listView;
-	private List<Destination> mDestinationList;
-	private DestinationsListAdapter mDestinationsListAdapter;
+    protected static final String TAG = "TripsListActivity";
+    private ListView listView;
+    private List<Destination> mDestinationList;
+    private DestinationsListAdapter mDestinationsListAdapter;
     public static ClearEditText mEditTextSearch;
     private int mCallbackCount = 0;
-
     private List<HealthCondition> healthConditionList;
     private List<HealthMedicationDis> healthMedicationList;
     private List<Alert> mAlertList;
 
-
-
     @Override
-	protected void onCreate(Bundle savedInstanceState){
-		super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
         this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         this.setContentView(R.layout.destination_list);
-		initView();
+        initView();
 
-		if(mDestinationList == null) {
-			getTripList();
-		}else{
-			mDestinationsListAdapter = new DestinationsListAdapter(
+        if(mDestinationList == null) {
+            getTripList();
+        }else{
+            mDestinationsListAdapter = new DestinationsListAdapter(
                     mDestinationList, context);
-			listView.setAdapter(mDestinationsListAdapter);
-		}
-	
-	}
+            listView.setAdapter(mDestinationsListAdapter);
+        }
+    }
 
     private void getTripList(){
 
@@ -122,7 +110,6 @@ public class DestinationsListActivity extends BaseActivity {
                     StringUtil.showAlertDialog("Trips", "Data error !", context);
                     e.printStackTrace();
                 }
-
             }
 
             public void handleError(Exception e){
@@ -135,13 +122,11 @@ public class DestinationsListActivity extends BaseActivity {
 
         String token = null;
         token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
-
         ControllerContentTask cct = new ControllerContentTask(
                 Constants.BASE_URL+"destinations?short_list=true&token=" + token, icc,
                 Enums.ConnMethod.GET,false);
         String ss = null;
         cct.execute(ss);
-
     }
 
     @Override
@@ -150,15 +135,15 @@ public class DestinationsListActivity extends BaseActivity {
         Analytics.with(this).screen(null, "Add Trip");
     }
 
-	@Override
-	protected void onPause() {
-		super.onPause();
-	}
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
 
-	private void initView(){
-		super.initTitleView();
-		listView = (ListView) findViewById(R.id.trip_list);
-		listView.setOnItemClickListener(new OnItemClickListener() {
+    private void initView(){
+        super.initTitleView();
+        listView = (ListView) findViewById(R.id.trip_list);
+        listView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapter, View view, int position,
                                     long arg3) {
                 Log.d("Trip list", "You hit destination:" + position);
@@ -167,22 +152,17 @@ public class DestinationsListActivity extends BaseActivity {
 //                LoadTripFromApi((int) arg3, null);
                 DataDownloader downloader = new DataDownloader();
                 downloader.initializeDownload(DestinationsListActivity.this, mDestinationList.get((int) arg3), DestinationsListActivity.this, null, null);
-
-
             }
         });
-
 
         mEditTextSearch = (ClearEditText) findViewById(R.id.search_ed);
         mEditTextSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -212,8 +192,6 @@ public class DestinationsListActivity extends BaseActivity {
         startActivity(intent);
     }
 
-
-
     private void saveCurrencyImage(String code, String url){
         ContentValues values = new ContentValues();
         values.put(Database.KEY_GENERAL_IMAGE_URI, url);
@@ -221,16 +199,13 @@ public class DestinationsListActivity extends BaseActivity {
         mDatabase.getDb().insert(Database.TABLE_CURRENCY, null, values);
     }
 
-
+    @Override
+    protected void initTitle(){
+    }
 
     @Override
-	protected void initTitle(){
-	}
-
-	@Override
-	public void onClick(View v){
-	}
-
+    public void onClick(View v){
+    }
 
     @Override
     public void onBackPressed(){

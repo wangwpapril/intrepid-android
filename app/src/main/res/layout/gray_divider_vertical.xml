@@ -5,10 +5,9 @@
     android:gravity="center"
     android:background="@color/white"
     android:orientation="vertical" >
-    <TextView 
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="#dddddd"
         />
-
 </LinearLayout>
