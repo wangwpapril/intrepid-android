@@ -59,5 +59,14 @@
     <string name="notes">Notes</string>
     <!-- Learn More-->
     <string name="learn_more">Learn More</string>
-
+    <!-- Alerts-->
+    <string name="no_alert">No recent alerts</string>
+    <string name="alerts">Alerts</string>
+    <!-- View Embassy-->
+    <string name="overview">Overview</string>
+    <string name="embassy">Embassy</string>
+    <string name="address">Address</string>
+    <string name="contact_information">Contact Information</string>
+    <string name="hours_of_operation">Hours of Operation</string>
+    <string name="services">Services</string>
 </resources>
