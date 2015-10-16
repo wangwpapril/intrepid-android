@@ -14,7 +14,6 @@
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="email_format_error">The email format you entered is invalid</string>
@@ -27,20 +26,20 @@
     <string name="title_activity_legal">Legal</string>
     <string name="title_activity_view_destination">Trip</string>
     <string name="settings_title_name">Settings</string>
-    <string name="title_activity_view_health">ViewHealthActivity</string>
-    <string name="title_activity_detail_health_con">DetailHealthConActivity</string>
-    <string name="title_activity_security">SecurityActivity</string>
-    <string name="title_activity_detail_health_med">DetailHealthMedActivity</string>
-    <string name="title_activity_view_embassy">ViewEmbassyActivity</string>
-    <string name="title_activity_view_weather">ViewWeatherActivity</string>
-    <string name="title_activity_view_alert">ViewAlertActivity</string>
-    <string name="title_activity_assistance">AssistanceActivity</string>
+    <string name="title_activity_view_health">View Health</string>
+    <string name="title_activity_detail_health_con">Detailed Conditions</string>
+    <string name="title_activity_security">Security</string>
+    <string name="title_activity_detail_health_med">Detailed Medications</string>
+    <string name="title_activity_view_embassy">Embassy</string>
+    <string name="title_activity_view_weather">Weather</string>
+    <string name="title_activity_view_alert">Alerts</string>
+    <string name="title_activity_assistance">Emergency Assistance</string>
     <string name="title_activity_temdeletep">Map</string>
-    <string name="title_activity_ace_insurance">AceInsuranceActivity</string>
-    <string name="title_activity_view_ace">ViewAceActivity</string>
-    <string name="title_activity_view_vmpdf">ViewVMPdfActivity</string>
+    <string name="title_activity_ace_insurance">Ace Insurance</string>
+    <string name="title_activity_view_ace">View ACE</string>
+    <string name="title_activity_view_vmpdf">View PDF</string>
     <string name="callIntrepidAssistance">Call Intrepid Assistance</string>
-    <string name="title_activity_learn_more">LearnMoreActivity</string>
+    <string name="title_activity_learn_more">Learn More</string>
     <!-- ACE Insurance-->
     <string name="ace_information">ACE Information</string>
     <string name="ace_worldview">ACE Worldview</string>
@@ -145,4 +144,5 @@
     <string name="update">Update</string>
     <string name="sign_out">Sign Out</string>
     <string name="version">Version: </string>
+    <string name="log_out">Logout</string>
 </resources>

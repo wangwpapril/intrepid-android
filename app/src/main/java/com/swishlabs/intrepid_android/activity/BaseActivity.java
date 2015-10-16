@@ -6,16 +6,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.swishlabs.intrepid_android.MyApplication;
-import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Common;
-
 
 public abstract class BaseActivity extends Activity implements OnClickListener{
 
@@ -23,7 +20,6 @@ public abstract class BaseActivity extends Activity implements OnClickListener{
 	protected TextView tvTitleName;
 	protected ImageView ivTitleBack;
 	protected ImageView ivTitleRight;
-
     public DatabaseManager mDatabaseManager;
     public Database mDatabase;
 	

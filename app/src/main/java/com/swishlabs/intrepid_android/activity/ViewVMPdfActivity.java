@@ -1,11 +1,9 @@
 package com.swishlabs.intrepid_android.activity;
 
 import android.graphics.Color;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.DisplayMetrics;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -23,7 +21,6 @@ public class ViewVMPdfActivity extends ActionBarActivity implements View.OnClick
 
     public static ViewVMPdfActivity instance;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,26 +28,20 @@ public class ViewVMPdfActivity extends ActionBarActivity implements View.OnClick
         instance = this;
         setContentView(R.layout.activity_view_vmpdf);
         mUrl = getIntent().getStringExtra("link");
-
         webView = (WebView) findViewById(R.id.info_view);
-
         backViewIv = (ImageView) findViewById(R.id.title_back);
         backViewIv.setOnClickListener(this);
-
         initialWebView();
-
         webView.loadUrl(mUrl);
-
-
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         Analytics.with(this).screen(null, "ACE Worldview");
     }
 
-    public void initialWebView(){
+    public void initialWebView() {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setLoadWithOverviewMode(true);
@@ -76,10 +67,8 @@ public class ViewVMPdfActivity extends ActionBarActivity implements View.OnClick
         }
         webView.getSettings().setDefaultZoom(zoomDensity);
         webView.getSettings().setTextZoom(120);
-
         webView.setBackgroundColor(Color.LTGRAY);
-
-        webView.setWebViewClient( new WebViewClient() {
+        webView.setWebViewClient(new WebViewClient() {
 
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 webView.loadUrl(url);
@@ -89,19 +78,13 @@ public class ViewVMPdfActivity extends ActionBarActivity implements View.OnClick
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-
             }
-
-
         });
-
-
     }
-
 
     @Override
     public void onClick(View v) {
-        if(v == backViewIv){
+        if (v == backViewIv) {
             onBackPressed();
             this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
         }

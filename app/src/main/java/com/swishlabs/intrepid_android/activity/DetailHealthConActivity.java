@@ -1,9 +1,7 @@
 package com.swishlabs.intrepid_android.activity;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,10 +13,8 @@ import com.swishlabs.intrepid_android.R;
 public class DetailHealthConActivity extends ActionBarActivity {
 
     private String mName, mDescription, mSymptoms, mPrevention;
-
     private TextView mTitleTv, mDesTv, mSymTv, mPreTv;
     private ImageView mBackIv;
-
     public DetailHealthConActivity instance;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +26,7 @@ public class DetailHealthConActivity extends ActionBarActivity {
         mDescription = getIntent().getStringExtra("description");
         mSymptoms = getIntent().getStringExtra("symptoms");
         mPrevention = getIntent().getStringExtra("prevention");
-
         initialView();
-
     }
 
     @Override
@@ -41,20 +35,15 @@ public class DetailHealthConActivity extends ActionBarActivity {
         Analytics.with(this).screen(null, "Conditions");
     }
 
-
     protected void initialView(){
         mTitleTv = (TextView) findViewById(R.id.toolbar_title);
         mTitleTv.setText(mName);
-
         mDesTv = (TextView)findViewById(R.id.destination_content);
         mDesTv.setText(mDescription);
-
         mSymTv = (TextView)findViewById(R.id.destination_content2);
         mSymTv.setText(mSymptoms);
-
         mPreTv = (TextView)findViewById(R.id.destination_content3);
         mPreTv.setText(mPrevention);
-
         mBackIv = (ImageView)findViewById(R.id.title_back);
         mBackIv.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -70,5 +59,4 @@ public class DetailHealthConActivity extends ActionBarActivity {
         super.onBackPressed();
         this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
-
 }

@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,11 +20,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
-import com.squareup.picasso.Picasso;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.RoundedCornersTransformation;
-import com.swishlabs.intrepid_android.customViews.RoundedTransformation;
 import com.swishlabs.intrepid_android.data.api.model.Trip;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
@@ -51,33 +47,27 @@ public class TripFragment extends android.support.v4.app.Fragment {
     Database mDatabase;
     TextView mCountryName;
     public ImageView mCountryImage;
-
     protected ImageLoader imageLoader;
-
     private OnFragmentInteractionListener mListener;
-
     // TODO: Rename and change types and number of parameters
     public static TripFragment newInstance(int id, String destinationName, String imageURL, String destinationId) {
         TripFragment fragment = new TripFragment();
         Bundle args = new Bundle();
-
         args.putInt("id", id);
         args.putString("destinationName", destinationName);
         args.putString("destinationId", destinationId);
         args.putString("imageURL", imageURL);
         fragment.setArguments(args);
-
         return fragment;
     }
 
     public TripFragment() {
-        // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        imageLoader = new ImageLoader(TripPagesActivity.getInstance(),  R.drawable.abc_item_background_holo_light);
+        imageLoader = new ImageLoader(TripPagesActivity.getInstance(), R.drawable.abc_item_background_holo_light);
     }
 
     RelativeLayout mContainer;
@@ -87,14 +77,12 @@ public class TripFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trip, container, false);
-        mContainer = (RelativeLayout)view.findViewById(R.id.container);
+        mContainer = (RelativeLayout) view.findViewById(R.id.container);
         mTripIndex = getArguments().getInt("id");
         mDestinationId = getArguments().getString("destinationId");
         String destinationName = getArguments().getString("destinationName");
         mDestinationName = destinationName;
         String imageURL = getArguments().getString("imageURL");
-//        mTrip = DatabaseManager.getTrip(mTripIndex, mDatabase);
-
         mCountryImage = (ImageView) view.findViewById(R.id.tripImage);
         mCountryName = (TextView) view.findViewById(R.id.tripName);
         if (mTripIndex == -1) {
@@ -105,7 +93,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
                     startActivity(mIntent);
                 }
             });
-        }else{
+        } else {
             Log.d("TripFragment", "Loaded: " + destinationName);
             getCountry(destinationName, imageURL);
             setupSwipe(view, mCountryImage, mTripIndex);
@@ -116,20 +104,17 @@ public class TripFragment extends android.support.v4.app.Fragment {
                 }
             });
         }
-
         return view;
     }
 
-
-
-    private void tripClick(){
+    private void tripClick() {
         Common.sendDirectTracking(TripPagesActivity.getInstance(), "View Trip", "My Trips", mDestinationName, -1);
         TripPagesActivity.getInstance().network();
-        if (TripPagesActivity.getInstance().getNetworkConnectivity()){
+        if (TripPagesActivity.getInstance().getNetworkConnectivity()) {
             TripPagesActivity.getInstance().dialogLoading.show();
             DataDownloader downloader = new DataDownloader();
             downloader.initializeDownload(TripPagesActivity.getInstance(), null, null, mDestinationId, TripPagesActivity.getInstance());
-        }else {
+        } else {
             SharedPreferenceUtil.setString(Enums.PreferenceKeys.currentCountryId.toString(), mDestinationId);
             SharedPreferenceUtil.setInt(TripPagesActivity.getInstance(), Enums.PreferenceKeys.currentPage.toString(), TripPagesActivity.getInstance().mViewPager.getCurrentItem());
             Intent mIntent = new Intent(TripPagesActivity.getInstance(), ViewDestinationActivity.class);
@@ -140,7 +125,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
         }
     }
 
-    private void setupSwipe(View view, ImageView countryImage, int index){
+    private void setupSwipe(View view, ImageView countryImage, int index) {
         final GestureDetector detector = new GestureDetector(new UpSwipeGestureListener(view, countryImage, index));
         final GestureDetector singleTapDetector = new GestureDetector(new SingleTapConfirm());
         mCountryImage.setOnTouchListener(new View.OnTouchListener() {
@@ -150,7 +135,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
                 if (singleTapDetector.onTouchEvent(event)) {
                     tripClick();
                     return true;
-                }else {
+                } else {
                     detector.onTouchEvent(event);
                     return true;
                 }
@@ -159,7 +144,6 @@ public class TripFragment extends android.support.v4.app.Fragment {
     }
 
     private class SingleTapConfirm extends GestureDetector.SimpleOnGestureListener {
-
         @Override
         public boolean onSingleTapUp(MotionEvent event) {
             return true;
@@ -169,18 +153,16 @@ public class TripFragment extends android.support.v4.app.Fragment {
     private static final int SWIPE_MIN_DISTANCE = 120;
     private static final int SWIPE_MAX_OFF_PATH = 250;
     private static final int SWIPE_THRESHOLD_VELOCITY = 200;
-
     protected class UpSwipeGestureListener extends GestureDetector.SimpleOnGestureListener {
-
         View mView;
         ImageView mCountryImage;
         int mIndex;
-
-        UpSwipeGestureListener(View view, ImageView countryImage, int index){
+        UpSwipeGestureListener(View view, ImageView countryImage, int index) {
             mView = view;
             mCountryImage = countryImage;
             mIndex = index;
         }
+
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                                float velocityY) {
@@ -188,7 +170,7 @@ public class TripFragment extends android.support.v4.app.Fragment {
             Log.d("e1.getY():", String.valueOf(e1.getY()));
             Log.d("e2.getY():", String.valueOf(e2.getY()));
             try {
-                if (Math.abs(e1.getX() - e2.getX()) > SWIPE_MAX_OFF_PATH){
+                if (Math.abs(e1.getX() - e2.getX()) > SWIPE_MAX_OFF_PATH) {
                     return false;
                 }
                 // right to left swipe
@@ -202,14 +184,13 @@ public class TripFragment extends android.support.v4.app.Fragment {
             return false;
         }
 
-        public void onUpSwipe(final ImageView view, final int index){
+        public void onUpSwipe(final ImageView view, final int index) {
             Log.d("TripPages", "Upward swipe detected");
             new AlertDialog.Builder(TripPagesActivity.getInstance())
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setTitle("Confirmation")
                     .setMessage("Are you sure you want to remove this trip?")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                    {
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Common.sendDirectTracking(TripPagesActivity.getInstance(), "Delete Trip", "My Trips", mDestinationName, -1);
@@ -218,18 +199,15 @@ public class TripFragment extends android.support.v4.app.Fragment {
                             anim.setAnimationListener(new Animation.AnimationListener() {
                                 @Override
                                 public void onAnimationStart(Animation animation) {
-
                                 }
 
                                 @Override
                                 public void onAnimationEnd(Animation animation) {
-                                   Database db = TripPagesActivity.getInstance().getDatabase();
-                                   DatabaseManager.deleteTrip(index, db);
-                                    Intent mIntent = new Intent(TripPagesActivity.getInstance(),TripPagesActivity.class);
+                                    Database db = TripPagesActivity.getInstance().getDatabase();
+                                    DatabaseManager.deleteTrip(index, db);
+                                    Intent mIntent = new Intent(TripPagesActivity.getInstance(), TripPagesActivity.class);
                                     startActivity(mIntent);
-
                                     TripPagesActivity.getInstance().finish();
-
                                 }
 
                                 @Override
@@ -247,9 +225,8 @@ public class TripFragment extends android.support.v4.app.Fragment {
         }
     }
 
-    public void getCountry(String destinationName, String imageURL){
+    public void getCountry(String destinationName, String imageURL) {
         mCountryName.setText(destinationName);
-//        Picasso.with(TripPagesActivity.getInstance()).load(imageURL).transform(new RoundedTransformation(50, 4)).fit().into(mCountryImage);
         Glide.with(this).load(imageURL).bitmapTransform(new RoundedCornersTransformation(TripPagesActivity.getInstance(), 50, 4))
                 .placeholder(R.drawable.trip_bg).crossFade().into(mCountryImage);
     }

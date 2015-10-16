@@ -19,7 +19,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -37,7 +36,6 @@ import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
 import com.swishlabs.intrepid_android.data.api.callback.IControllerContentCallback;
 import com.swishlabs.intrepid_android.data.api.model.AssistanceProvider;
 import com.swishlabs.intrepid_android.data.api.model.Constants;
-import com.swishlabs.intrepid_android.data.api.model.User;
 import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
@@ -86,7 +84,6 @@ public class AssistanceActivity extends FragmentActivity implements GoogleApiCli
             instructions = instructions.replace("2.", "\n2.");
             instructionalTextView.setText(instructions);
         }
-
     }
 
     private ConnectivityManager mConnectivityManager;
@@ -95,14 +92,10 @@ public class AssistanceActivity extends FragmentActivity implements GoogleApiCli
     public void network(){
         mConnectivityManager =
                 (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
-
         NetworkInfo activeNetwork = mConnectivityManager.getActiveNetworkInfo();
         mNetworkConnectivity = activeNetwork != null &&
                 activeNetwork.isConnectedOrConnecting();
     }
-
-
-
 
     @Override
     protected void onResume(){
@@ -188,7 +181,7 @@ public class AssistanceActivity extends FragmentActivity implements GoogleApiCli
                 StringUtil.showAlertDialog("Could Not Load Map", "Please install Google Maps on your phone.", AssistanceActivity.this);
             }
         }else {
- //           setUpMap();
+            //           setUpMap();
         }
     }
 
@@ -251,46 +244,45 @@ public class AssistanceActivity extends FragmentActivity implements GoogleApiCli
     private void sendCoordinatesToIntrepid(double longitude, double latitude){
         Log.d("Assi","sendCoord");
 
-            IControllerContentCallback icc = new IControllerContentCallback() {
-                public void handleSuccess(String content){
+        IControllerContentCallback icc = new IControllerContentCallback() {
+            public void handleSuccess(String content){
 
-                    JSONObject jsonObj = null;
-                    Log.d("Assistance", content);
+                JSONObject jsonObj = null;
+                Log.d("Assistance", content);
 
-                    try {
-                        jsonObj = new JSONObject(content);
-                        if(jsonObj.has("error")) {
-                            JSONArray errorMessage = jsonObj.getJSONObject("error").getJSONArray("message");
-                            String message = String.valueOf((Object) errorMessage.get(0));
-                            StringUtil.showAlertDialog("Error", message, AssistanceActivity.this);
+                try {
+                    jsonObj = new JSONObject(content);
+                    if(jsonObj.has("error")) {
+                        JSONArray errorMessage = jsonObj.getJSONObject("error").getJSONArray("message");
+                        String message = String.valueOf((Object) errorMessage.get(0));
+                        StringUtil.showAlertDialog("Error", message, AssistanceActivity.this);
 
-                        }else if(jsonObj.has("coordinate")) {
-                            //success
-                            return;
-                        }else {
+                    }else if(jsonObj.has("coordinate")) {
+                        //success
+                        return;
+                    }else {
 //                            StringUtil.showAlertDialog("Error", "Could not send your coordinates to Intrepid API", AssistanceActivity.this);
-                            return;
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                        return;
                     }
-
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
 
-                public void handleError(Exception e){
+            }
+
+            public void handleError(Exception e){
 //                    StringUtil.showAlertDialog("Error", "Could not send your coordinates to Intrepid API", AssistanceActivity.this);
+                return;
 
-                    return;
+            }
+        };
+        String token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
+        String userId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null);
+        ControllerContentTask cct = new ControllerContentTask(
+                Constants.BASE_URL+"users/"+userId+"/coordinates?token="+token, icc,
+                Enums.ConnMethod.POST,true);
 
-                }
-            };
-            String token = SharedPreferenceUtil.getString(Enums.PreferenceKeys.token.toString(), null);
-            String userId = SharedPreferenceUtil.getString(Enums.PreferenceKeys.userId.toString(), null);
-            ControllerContentTask cct = new ControllerContentTask(
-                    Constants.BASE_URL+"users/"+userId+"/coordinates?token="+token, icc,
-                    Enums.ConnMethod.POST,true);
-
-            JSONObject coordinatesDetails = new JSONObject();
+        JSONObject coordinatesDetails = new JSONObject();
         String country = getApplicationContext().getResources().getConfiguration().locale.getDisplayCountry();
         String cityName = null;
         Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
@@ -325,20 +317,18 @@ public class AssistanceActivity extends FragmentActivity implements GoogleApiCli
             coordinatesDetails.put("latitude", String.valueOf(latitude));
             coordinatesDetails.put("longitude", String.valueOf(longitude));
 
-            } catch (JSONException e1) {
-                e1.printStackTrace();
-            }
-
-            JSONObject coordinate = new JSONObject();
-            try {
-                coordinate.put("coordinate", coordinatesDetails);
-            } catch (JSONException e1) {
-                e1.printStackTrace();
-            }
-            cct.execute(coordinate.toString());
-
-
+        } catch (JSONException e1) {
+            e1.printStackTrace();
         }
+
+        JSONObject coordinate = new JSONObject();
+        try {
+            coordinate.put("coordinate", coordinatesDetails);
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+        cct.execute(coordinate.toString());
+    }
 
     @Override
     public void onBackPressed(){
@@ -349,7 +339,4 @@ public class AssistanceActivity extends FragmentActivity implements GoogleApiCli
         super.onBackPressed();
         this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
-
-
-
 }

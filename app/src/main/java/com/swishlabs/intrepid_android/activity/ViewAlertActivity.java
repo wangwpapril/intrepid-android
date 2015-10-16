@@ -1,7 +1,7 @@
 package com.swishlabs.intrepid_android.activity;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,10 +15,8 @@ import com.swishlabs.intrepid_android.data.api.model.Alert;
 import com.swishlabs.intrepid_android.data.api.model.DestinationInformation;
 import com.swishlabs.intrepid_android.data.store.Database;
 import com.swishlabs.intrepid_android.data.store.DatabaseManager;
-import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
-
 
 import java.util.List;
 
@@ -31,10 +29,8 @@ public class ViewAlertActivity extends ActionBarActivity {
     protected ListView mAlertListLv;
     protected TextView mListEmpTv;
     protected AlertListAdapter mAlertListAdapter;
-
-
     public static ViewAlertActivity instance;
-    public List<Alert> mAlertList ;
+    public List<Alert> mAlertList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,21 +44,20 @@ public class ViewAlertActivity extends ActionBarActivity {
         mAlertList = DatabaseManager.getAlertList(mDatabase, mDestinationInformation.getCountryCode());
 
         setContentView(R.layout.activity_view_alert);
-        mIntrepidMenu = (IntrepidMenu)findViewById(R.id.intrepidMenu);
-        mIntrepidMenu.setupMenu(instance,ViewAlertActivity.this,true);
+        mIntrepidMenu = (IntrepidMenu) findViewById(R.id.intrepidMenu);
+        mIntrepidMenu.setupMenu(instance, ViewAlertActivity.this, true);
 
         mAlertListLv = (ListView) findViewById(R.id.alerts_list);
 
         mListEmpTv = (TextView) findViewById(R.id.empty_list);
 
-        if(mAlertList.size()>0) {
+        if (mAlertList.size() > 0) {
             mAlertListAdapter = new AlertListAdapter(mAlertList, instance);
             mAlertListLv.setAdapter(mAlertListAdapter);
-        }else {
+        } else {
             mAlertListLv.setVisibility(View.GONE);
             mListEmpTv.setVisibility(View.VISIBLE);
         }
-
     }
 
     private void loadDatabase() {
@@ -72,19 +67,18 @@ public class ViewAlertActivity extends ActionBarActivity {
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         Analytics.with(this).screen(null, "Alerts");
     }
 
     @Override
-    public void onBackPressed(){
-        if(mIntrepidMenu.mState == 1){
+    public void onBackPressed() {
+        if (mIntrepidMenu.mState == 1) {
             mIntrepidMenu.snapToBottom();
             return;
         }
         super.onBackPressed();
         this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
     }
-
 }
