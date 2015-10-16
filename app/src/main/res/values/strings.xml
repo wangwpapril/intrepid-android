@@ -104,4 +104,15 @@
     <string name="one">1.00</string>
     <string name="usd">USD</string>
     <string name="two">2.00</string>
+    <!-- Overview General -->
+    <string name="location">Location</string>
+    <string name="climate">Climate</string>
+    <string name="type_of_government">Type of Government</string>
+    <string name="visa_requirements">Visa Requirements"</string>
+    <string name="communication_infrastructure">Communication Infrastructure</string>
+    <string name="electricity">Electricity</string>
+    <string name="development">Development</string>
+    <string name="money">Money</string>
+    <string name="transportation">Transportation</string>
+    <string name="holiday">Holidays</string>
 </resources>
