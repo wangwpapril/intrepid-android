@@ -18,7 +18,6 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.customViews.RoundedCornersTransformation;

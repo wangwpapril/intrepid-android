@@ -14,7 +14,6 @@ import android.view.KeyEvent;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
 import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.MyApplication;
 import com.swishlabs.intrepid_android.R;
@@ -126,9 +125,7 @@ public class ViewWeatherActivity extends ActionBarActivity {
         }
         webView.getSettings().setDefaultZoom(zoomDensity);
         webView.getSettings().setTextZoom(120);
-
         webView.setBackgroundColor(Color.LTGRAY);
-
         webView.setWebViewClient(new WebViewClient() {
 
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -162,5 +159,4 @@ public class ViewWeatherActivity extends ActionBarActivity {
         super.onBackPressed();
         this.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
     }
-
 }

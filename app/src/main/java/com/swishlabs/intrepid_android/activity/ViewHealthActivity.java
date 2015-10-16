@@ -16,7 +16,6 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.MyApplication;
@@ -34,7 +33,6 @@ import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;

@@ -2,11 +2,9 @@ package com.swishlabs.intrepid_android.activity;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -23,7 +21,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.data.api.callback.ControllerContentTask;
@@ -34,7 +31,6 @@ import com.swishlabs.intrepid_android.data.api.model.User;
 import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.StringUtil;
-
 
 public class SignupActivity extends BaseActivity {
 
@@ -48,9 +44,7 @@ public class SignupActivity extends BaseActivity {
 	private EditText signupPolicyNumber;
 	private Button btnSignUp;
 	private TextView termsOfUseBtn;
-	
 	private List<Country> countryList;
-	
 	private ArrayAdapter countryAdapter = null;
 	private String countryCode = null;
 	private String companyId = null;

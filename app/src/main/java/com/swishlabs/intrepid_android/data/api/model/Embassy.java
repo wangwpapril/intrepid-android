@@ -99,5 +99,4 @@ public class Embassy {
         this.mCountry = country;
         this.mImage = image;
     }
-    //id, country, name, servicesOffered, fax, source, website, email, address, hoursOfOperation, notes, telephone
 }

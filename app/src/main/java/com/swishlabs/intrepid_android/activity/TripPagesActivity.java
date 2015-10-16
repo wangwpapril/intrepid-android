@@ -16,7 +16,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.segment.analytics.Analytics;
 import com.segment.analytics.Traits;
 import com.swishlabs.intrepid_android.MyApplication;
@@ -28,7 +27,6 @@ import com.swishlabs.intrepid_android.data.store.DatabaseManager;
 import com.swishlabs.intrepid_android.services.LocationService;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
-
 import java.util.List;
 
 public class TripPagesActivity extends ActionBarActivity implements TripFragment.OnFragmentInteractionListener {

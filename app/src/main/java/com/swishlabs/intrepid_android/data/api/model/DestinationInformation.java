@@ -26,20 +26,13 @@ public class DestinationInformation {
     public String mLanguageInfo;
     public String mVisaRequirements;
     public String mClimate;
-
-
-
     public String mTransportation;
     public String mHolidays;
-
     public String mEmergencyNumber;
     public String mHealthCare;
     public String mVacciMedical;
     public String mHealthCondition;
     public String mImageMedical;
-
-
-
     public String mImageSecurity;
     public String mImageOverview;
     public String mImageCulture;
@@ -199,8 +192,4 @@ public class DestinationInformation {
     public String getmHolidays() {
         return mHolidays;
     }
-
-
-
 }
-

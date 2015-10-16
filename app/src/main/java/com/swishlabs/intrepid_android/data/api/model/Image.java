@@ -1,9 +1,6 @@
 package com.swishlabs.intrepid_android.data.api.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,14 +19,12 @@ public class Image implements Serializable {
 	public imageVersion version2;
 	public imageVersion version3;
 	public Image(JSONObject obj) throws JSONException {
-//		id = obj.getString("id");
         if (obj == null) {
             version1 = new imageVersion(null);
             version2 = new imageVersion(null);
             version3 = new imageVersion(null);
             return;
         }
-
 		pid = obj.getString("pid");
 		sourceUrl = obj.getString("source_url");
 		localeCode = obj.getString("locale_code");
@@ -37,9 +32,7 @@ public class Image implements Serializable {
 		width = obj.getString("width");
 		height = obj.getString("height");
 		fileSize = obj.getString("file_size");
-		
 		if (obj.has("versions")) {
-			
 			JSONObject ve = obj.getJSONObject("versions");
 			if (ve.has("1x")) {
 				version1 = new imageVersion (ve.getJSONObject("1x"));

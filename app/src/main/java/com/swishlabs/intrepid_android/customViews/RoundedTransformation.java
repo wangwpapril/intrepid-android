@@ -16,7 +16,6 @@ import android.graphics.Shader;
 public class RoundedTransformation implements com.squareup.picasso.Transformation {
     private final int radius;
     private final int margin;  // dp
-
     // radius is corner radii in dp
     // margin is the board in dp
     public RoundedTransformation(final int radius, final int margin) {
@@ -29,7 +28,6 @@ public class RoundedTransformation implements com.squareup.picasso.Transformatio
         final Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setShader(new BitmapShader(source, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
-
         Bitmap output = Bitmap.createBitmap(source.getWidth(), source.getHeight(), Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
         canvas.drawRoundRect(new RectF(margin, margin, source.getWidth() - margin, source.getHeight() - margin), radius, radius, paint);

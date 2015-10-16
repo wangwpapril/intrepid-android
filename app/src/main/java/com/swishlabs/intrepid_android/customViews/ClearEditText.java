@@ -1,17 +1,13 @@
 package com.swishlabs.intrepid_android.customViews;
 
 import android.content.Context;
-
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
-
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-
 import android.widget.EditText;
-
 import com.swishlabs.intrepid_android.R;
 
 /**
@@ -20,20 +16,16 @@ import com.swishlabs.intrepid_android.R;
 public class ClearEditText extends EditText implements View.OnFocusChangeListener, TextWatcher {
     private Drawable mClearDrawable;
     private boolean hasFocus;
-
     public ClearEditText(Context context) {
         this(context, null);
     }
-
     public ClearEditText(Context context, AttributeSet attrs) {
         this(context, attrs, android.R.attr.editTextStyle);
     }
-
     public ClearEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
-
 
     private void init() {
 
@@ -43,16 +35,11 @@ public class ClearEditText extends EditText implements View.OnFocusChangeListene
             mClearDrawable = getResources().getDrawable(R.drawable.close);
         }
 
-       mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth(), mClearDrawable.getIntrinsicHeight());
-
+        mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth(), mClearDrawable.getIntrinsicHeight());
         setClearIconVisible(false);
-
         setOnFocusChangeListener(this);
-
         addTextChangedListener(this);
-
     }
-
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -81,7 +68,6 @@ public class ClearEditText extends EditText implements View.OnFocusChangeListene
         }
     }
 
-
     protected void setClearIconVisible(boolean visible) {
         Drawable right = visible ? mClearDrawable : null;
         setCompoundDrawables(getCompoundDrawables()[0],
@@ -92,7 +78,7 @@ public class ClearEditText extends EditText implements View.OnFocusChangeListene
     @Override
     public void onTextChanged(CharSequence s, int start, int count,
                               int after) {
-        if(hasFocus){
+        if (hasFocus) {
             setClearIconVisible(s.length() > 0);
         }
     }

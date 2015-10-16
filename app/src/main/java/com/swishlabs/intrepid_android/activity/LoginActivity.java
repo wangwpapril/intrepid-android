@@ -1,6 +1,5 @@
 package com.swishlabs.intrepid_android.activity;
 
-
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.segment.analytics.Analytics;
 import com.segment.analytics.Traits;
 import com.swishlabs.intrepid_android.MyApplication;
@@ -24,11 +22,9 @@ import com.swishlabs.intrepid_android.util.Common;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 import com.swishlabs.intrepid_android.util.StringUtil;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 
 public class LoginActivity extends BaseActivity {
 

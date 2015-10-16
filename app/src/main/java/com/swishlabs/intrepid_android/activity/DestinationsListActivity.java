@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-
 import com.segment.analytics.Analytics;
 import com.swishlabs.intrepid_android.R;
 import com.swishlabs.intrepid_android.adapter.DestinationsListAdapter;
@@ -29,11 +28,9 @@ import com.swishlabs.intrepid_android.util.DataDownloader;
 import com.swishlabs.intrepid_android.util.Enums;
 import com.swishlabs.intrepid_android.util.SharedPreferenceUtil;
 import com.swishlabs.intrepid_android.util.StringUtil;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;

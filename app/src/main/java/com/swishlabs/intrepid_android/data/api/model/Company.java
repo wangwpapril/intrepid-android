@@ -3,7 +3,6 @@ package com.swishlabs.intrepid_android.data.api.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,28 +17,20 @@ public class Company implements Serializable {
 	public Parent parent;
 	public String classes;
 	public String countryCode;
-
 	public List<AssistanceProvider> getApList() {
 		return apList;
 	}
 	public String getInstructionalText(){
 		return instructionalText;
 	}
-
 	public List<AssistanceProvider> apList;
 	public String content;
-
-
-
-
 	public String images;
 	public String localeCode;
 	public String createdAt;
 	public String updatedAt;
 	public String instructionalText;
 	public Company(JSONObject obj) throws JSONException {
-
-
 
 		if(obj == null){
             parent = new Parent(null);
@@ -70,8 +61,6 @@ public class Company implements Serializable {
             }
 		}
 
-
-		
 		if (obj.has("assistance_providers")) {
 			JSONArray array = obj.getJSONArray("assistance_providers");
 			int len = array.length();
@@ -84,6 +73,4 @@ public class Company implements Serializable {
 			}
 		}
 	}
-
-
 }
