@@ -45,11 +45,9 @@
     <string name="ace_worldview">ACE Worldview</string>
     <string name="ace_insurance">ACE Insurance</string>
     <string name="travel_smart_tagline">Which service would you like to view?</string>
-
     <!-- Emergency Assistance-->
     <string name="emergency_assistance">Emergency Assistance</string>
     <string name="contact_assistance">Contact ACE Assistance</string>
-
     <!-- Detail Health Conditions & Medications-->
     <string name="description">Description</string>
     <string name="symptoms">Symptoms</string>
@@ -58,4 +56,8 @@
     <string name="side_effects">Side Effects</string>
     <string name="storage">Storage</string>
     <string name="notes">Notes</string>
+    <!-- Learn More-->
+
+
+    <string name="learn_more">Learn More</string>
 </resources>
