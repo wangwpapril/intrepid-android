@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.swishlabs.intrepid_android.activity.LearnMoreActivity">
-
     <ImageView
         android:layout_width="300dp"
         android:layout_height="400dp"
@@ -24,5 +23,4 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         />
-
 </RelativeLayout>
