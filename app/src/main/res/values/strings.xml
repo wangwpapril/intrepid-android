@@ -115,4 +115,9 @@
     <string name="money">Money</string>
     <string name="transportation">Transportation</string>
     <string name="holiday">Holidays</string>
+    <!-- Legal-->
+    <string name="terms_of_use">Terms of Use</string>
+    <!-- Tab-->
+    <string name="tab">Tab</string>
+    <string name="splash_pic">SplashPic</string>
 </resources>
