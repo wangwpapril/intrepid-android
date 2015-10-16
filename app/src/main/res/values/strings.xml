@@ -50,8 +50,12 @@
     <string name="emergency_assistance">Emergency Assistance</string>
     <string name="contact_assistance">Contact ACE Assistance</string>
 
-    <!-- Detail Health Conditions-->
+    <!-- Detail Health Conditions & Medications-->
     <string name="description">Description</string>
     <string name="symptoms">Symptoms</string>
     <string name="prevention">Prevention/Treatment</string>
+    <string name="brand_name">Brand Name</string>
+    <string name="side_effects">Side Effects</string>
+    <string name="storage">Storage</string>
+    <string name="notes">Notes</string>
 </resources>
